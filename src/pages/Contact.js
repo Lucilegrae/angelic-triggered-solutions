@@ -1,75 +1,89 @@
-import React, { useState } from "react";
+import React from "react";
+import "./../theme.css";
 
-function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Thank you, ${formData.name}! Your message has been received.`);
-    setFormData({ name: "", email: "", message: "" });
-  };
-
+export default function Contact() {
   return (
-    <div style={{ padding: "40px", maxWidth: "600px", margin: "0 auto" }}>
-      <h1 style={{ textAlign: "center", color: "#004080", marginBottom: "30px" }}>
-        Contact Us
+    <section
+      className="aura-bg"
+      style={{
+        padding: "4rem 2rem",
+        minHeight: "100vh",
+        textAlign: "center"
+      }}
+    >
+      {/* Covenant Heading */}
+      <h1 className="slogan-arc aura-heading" style={{ marginBottom: "2rem" }}>
+        ✦ Contact Angelic Triggered Solutions ✦
       </h1>
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          style={{ padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          style={{ padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          rows="5"
-          style={{ padding: "10px", borderRadius: "6px", border: "1px solid #ccc" }}
-        />
-        <button
-          type="submit"
-          style={{
-            backgroundColor: "#004080",
-            color: "white",
-            padding: "12px 24px",
-            border: "none",
-            borderRadius: "6px",
-            fontSize: "16px",
-            cursor: "pointer"
-          }}
-        >
-          Send Message
-        </button>
-      </form>
-    </div>
+
+      {/* Pledge Line */}
+      <p
+        className="pledge-line"
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto 2rem",
+          fontSize: "16px",
+          lineHeight: "1.8"
+        }}
+      >
+        Every communication is a covenantal glyph — narratable, motif‑driven, and spiritually resonant.  
+        We pledge transparency and accessibility. Reach out for stakeholder dialogue, communal affirmation, or project collaboration.
+      </p>
+
+      {/* Glyph Cards for Contact Details */}
+      <div
+        style={{
+          display: "grid",
+          gap: "2rem",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          justifyContent: "center",
+          marginTop: "2rem"
+        }}
+      >
+        <div className="glyph-card">
+          <h2 className="slogan-arc aura-heading">Head Office</h2>
+          <p>
+            Angelic Triggered Solutions Pvt Ltd  
+            5 Elephant Close, Borrowdale West, Harare, Zimbabwe
+          </p>
+        </div>
+
+        <div className="glyph-card">
+          <h2 className="slogan-arc aura-heading">Phone</h2>
+          <p>
+            +263 785 002 561  
+            +263 779 129 187
+          </p>
+        </div>
+
+        <div className="glyph-card">
+          <h2 className="slogan-arc aura-heading">Email</h2>
+          <p>
+            info@angelictriggeredsolutions.co.zw  
+            pnovontony@yahoo.com
+          </p>
+        </div>
+
+        <div className="glyph-card">
+          <h2 className="slogan-arc aura-heading">Political Partner</h2>
+          <p>
+            Regis Muzembe — Associated with Angelic Triggered Solutions Pvt Ltd  
+            Harare Southlands Slum Restructuring Project
+          </p>
+        </div>
+      </div>
+
+      {/* Closing Arc */}
+      <p
+        className="pledge-line"
+        style={{
+          marginTop: "3rem",
+          fontSize: "14px",
+          opacity: "0.85"
+        }}
+      >
+        ✦ Each contact is a covenantal arc — affirming trust, resonance, and communal participation. ✦
+      </p>
+    </section>
   );
 }
-
-export default Contact;

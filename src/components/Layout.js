@@ -2,18 +2,14 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-function Layout({ children }) {
+export default function Layout({ children }) {
   return (
-    <>
+    <div className="aura-bg">
       <Navbar />
-      {/* Banner tagline */}
-      <div className="banner">
-        ✨ Motif‑driven healing for communities ✨
-      </div>
-      <main>{children}</main>
+      <main style={{ minHeight: "80vh" }}>
+        {children}
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
-
-export default Layout;

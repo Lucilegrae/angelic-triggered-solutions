@@ -1,18 +1,18 @@
 import React from "react";
-import "./../theme.css";
 
-function Footer() {
+export default function Footer() {
   return (
-    <footer className="footer">
-      <p>© 2026 Angelic Triggered Solutions Pvt Ltd. All rights reserved.</p>
-      <div className="footer-icons">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">📘</a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">🐦</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">💼</a>
-        <a href="mailto:info@angelictriggered.com">✉️</a>
-      </div>
+    <footer style={{
+      background: "#111",
+      color: "#fff",
+      textAlign: "center",
+      padding: "1rem",
+      position: "relative"
+    }}>
+      <p>&copy; {new Date().getFullYear()} Angelic Triggered Solutions</p>
+      <h2 className="slogan-arc">
+        “Our covenant guides every path.”
+      </h2>
     </footer>
   );
 }
-
-export default Footer;

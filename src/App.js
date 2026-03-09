@@ -1,59 +1,33 @@
-import "./theme.css";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import Navbar from "./pages/Navbar";
-import Footer from "./pages/Footer";
-import Banner from "./components/Banner";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Mission from "./pages/Mission";
+import Vision from "./pages/Vision";
+import Values from "./pages/Values";
 import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
+import "./theme.css";
 
-function AnimatedRoutes() {
-  const location = useLocation();
-
-  const bannerMap = {
-    "/": { text: "Welcome to Angelic Triggered Solutions", className: "banner-home" },
-    "/about": { text: "About Our Vision", className: "banner-about" },
-    "/projects": { text: "Our Projects", className: "banner-projects" },
-    "/services": { text: "Our Services", className: "banner-services" },
-    "/contact": { text: "Contact Us", className: "banner-contact" }
-  };
-
-  const { text, className } = bannerMap[location.pathname] || {
-    text: "Angelic Triggered Solutions",
-    className: "banner-home"
-  };
-
+export default function App() {
   return (
-    <>
-      <AnimatePresence mode="wait">
-        <Banner key={location.pathname} text={text} className={className} />
-      </AnimatePresence>
-
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
+    <Router>
+      <Layout>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/mission" element={<Mission />} />
+          <Route path="/vision" element={<Vision />} />
+          <Route path="/values" element={<Values />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </AnimatePresence>
-    </>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <Navbar />
-      <AnimatedRoutes />
-      <Footer />
+      </Layout>
     </Router>
   );
 }
-
-export default App;
