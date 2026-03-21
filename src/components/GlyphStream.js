@@ -28,8 +28,16 @@ export default function GlyphStream() {
 
   const exportPDF = () => {
     const doc = new jsPDF();
+
+    // Ceremonial Seal (Watermark)
+    doc.setFontSize(60);
+    doc.setTextColor(200, 200, 255); // soft aura glow
+    doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
+
+    // Title
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
+    doc.setTextColor(0, 0, 0);
     doc.text("✦ Collective Glyph Focus ✦", 20, 20);
 
     let y = 40;
