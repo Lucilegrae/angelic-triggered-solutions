@@ -66,6 +66,16 @@ export default function GlyphStream() {
       doc.setTextColor(200, 200, 255);
       doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
 
+      // Illuminated Border Frame
+      doc.setDrawColor(0, 128, 255); // aura blue
+      doc.setLineWidth(1.5);
+      doc.rect(10, 10, 190, 277); // full-page frame
+
+      // Inner glowing frame
+      doc.setDrawColor(0, 255, 128); // aura green
+      doc.setLineWidth(0.5);
+      doc.rect(15, 15, 180, 267);
+
       // Title
       doc.setFont("helvetica", "bold");
       doc.setFontSize(18);
@@ -80,6 +90,7 @@ export default function GlyphStream() {
       doc.setFontSize(12);
       doc.text("✦ Each project is a glyph in our anthology — covenantally affirmed and spiritually resonant. ✦", 20, 100);
 
+
       // Signature Lines
       doc.setFontSize(14);
       doc.text("✦ Stakeholder Affirmation ✦", 20, 130);
@@ -93,10 +104,17 @@ export default function GlyphStream() {
       doc.setTextColor(100, 100, 100);
       doc.text("✦ Footnote: This glyph resonates within the communal covenant, echoing stakeholder trust and ceremonial affirmation. ✦", 20, 280);
 
+      // Marginalia (side annotations)
+      doc.setFontSize(10);
+      doc.setTextColor(120, 120, 120);
+      doc.text("✦ Marginalia: Stakeholder notes and ceremonial commentary ✦", 120, 200);
+      doc.text("__________________________________________", 120, 210);
+      doc.text("__________________________________________", 120, 220);
+      doc.text("__________________________________________", 120, 230);
+
       if (index < focusedGlyphs.length - 1) {
         doc.addPage();
       }
-    });
 
     // ✦ Closing Page ✦
     doc.addPage();
