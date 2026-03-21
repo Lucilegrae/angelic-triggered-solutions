@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard"; // ✦ New import
 import "./theme.css";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} /> {/* ✦ New route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
