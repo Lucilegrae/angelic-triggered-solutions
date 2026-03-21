@@ -45,6 +45,21 @@ export default function GlyphStream() {
 
     doc.addPage();
 
+    // ✦ Index Page ✦
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(0, 0, 0);
+    doc.text("✦ Anthology Index ✦", 20, 40);
+
+    doc.setFontSize(14);
+    let y = 70;
+    focusedGlyphs.forEach((glyph, index) => {
+      doc.text(`${index + 2} — ${glyph.title}`, 20, y); // page numbers start after cover+index
+      y += 12;
+    });
+
+    doc.addPage();
+
     // ✦ Glyph Pages ✦
     focusedGlyphs.forEach((glyph, index) => {
       // Watermark Seal
