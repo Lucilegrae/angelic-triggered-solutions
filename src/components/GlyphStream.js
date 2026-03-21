@@ -29,8 +29,25 @@ export default function GlyphStream() {
   const exportPDF = () => {
     const doc = new jsPDF();
 
+    // ✦ Cover Page ✦
+    doc.setFontSize(28);
+    doc.setFont("helvetica", "bold");
+    doc.text("✦ Angelic Triggered Solutions ✦", 20, 40);
+    doc.setFontSize(20);
+    doc.text("Ceremonial Glyph Anthology", 20, 70);
+    doc.setFontSize(14);
+    doc.text("Covenantally affirmed and spiritually resonant", 20, 90);
+
+    // Aura Seal on Cover
+    doc.setFontSize(60);
+    doc.setTextColor(200, 200, 255);
+    doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
+
+    doc.addPage();
+
+    // ✦ Glyph Pages ✦
     focusedGlyphs.forEach((glyph, index) => {
-      // Ceremonial Seal (Watermark)
+      // Watermark Seal
       doc.setFontSize(60);
       doc.setTextColor(200, 200, 255);
       doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
@@ -57,11 +74,25 @@ export default function GlyphStream() {
       doc.text("Name: _______________________________", 20, 165);
       doc.text("Date: _______________________________", 20, 180);
 
-      // Add new page if not last glyph
       if (index < focusedGlyphs.length - 1) {
         doc.addPage();
       }
     });
+
+    // ✦ Closing Page ✦
+    doc.addPage();
+    doc.setFontSize(24);
+    doc.setFont("helvetica", "bold");
+    doc.text("✦ Covenant Benediction ✦", 20, 40);
+    doc.setFontSize(14);
+    doc.text("This anthology is sealed in communal trust,", 20, 70);
+    doc.text("affirmed by stakeholders, and sanctified as a living covenant.", 20, 85);
+    doc.text("✦ May each glyph resonate eternally ✦", 20, 110);
+
+    // Closing Seal
+    doc.setFontSize(60);
+    doc.setTextColor(200, 200, 255);
+    doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
 
     doc.save("glyph-anthology.pdf");
   };
