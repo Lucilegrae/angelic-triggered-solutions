@@ -281,3 +281,26 @@ section {
     filter: blur(0);
   }
 }
+
+/* Affirmation Arc Fade-In */
+.banner-overlay {
+  animation: arcFade 1.5s ease forwards;
+}
+
+@keyframes arcFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-4px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
