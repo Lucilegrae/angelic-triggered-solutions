@@ -364,3 +364,71 @@ section {
   box-shadow: 0 0 24px rgba(0,255,128,0.8);
   background: linear-gradient(135deg, rgba(0,128,255,0.1), rgba(0,255,128,0.1));
 }
+
+/* Animated Aura Borders for Glyph Cards */
+@keyframes auraBorder {
+  0% {
+    border: 2px solid rgba(0,128,255,0.4);
+    box-shadow: 0 0 12px rgba(0,128,255,0.4);
+  }
+  50% {
+    border: 2px solid rgba(0,255,128,0.6);
+    box-shadow: 0 0 24px rgba(0,255,128,0.8);
+  }
+  100% {
+    border: 2px solid rgba(0,128,255,0.4);
+    box-shadow: 0 0 12px rgba(0,128,255,0.4);
+  }
+}
+
+.glyph-card {
+  animation: auraBorder 6s infinite alternate;
+  transition: transform 0.4s ease;
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+/* Layered Aura Gradients per Glyph Theme */
+.glyph-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: #fff;
+}
+
+/* Harare Southlands Settlement */
+.glyph-card:nth-child(1) {
+  background: linear-gradient(135deg, rgba(0,128,255,0.2), rgba(0,255,128,0.2));
+  box-shadow: 0 0 18px rgba(0,128,255,0.6);
+}
+
+/* Community Empowerment Programs */
+.glyph-card:nth-child(2) {
+  background: linear-gradient(135deg, rgba(255,128,0,0.2), rgba(255,0,128,0.2));
+  box-shadow: 0 0 18px rgba(255,128,0,0.6);
+}
+
+/* Infrastructure Healing */
+.glyph-card:nth-child(3) {
+  background: linear-gradient(135deg, rgba(128,0,255,0.2), rgba(0,255,255,0.2));
+  box-shadow: 0 0 18px rgba(128,0,255,0.6);
+}
+
+/* Southlands Slum Restructuring */
+.glyph-card:nth-child(4) {
+  background: linear-gradient(135deg, rgba(0,255,128,0.2), rgba(255,255,0,0.2));
+  box-shadow: 0 0 18px rgba(0,255,128,0.6);
+}
+
+/* Mining Rights Expansion */
+.glyph-card:nth-child(5) {
+  background: linear-gradient(135deg, rgba(255,0,0,0.2), rgba(255,128,0,0.2));
+  box-shadow: 0 0 18px rgba(255,0,0,0.6);
+}
+
+/* Urban Renewal Initiatives */
+.glyph-card:nth-child(6) {
+  background: linear-gradient(135deg, rgba(0,128,255,0.2), rgba(128,255,0,0.2));
+  box-shadow: 0 0 18px rgba(0,128,255,0.6);
+}
