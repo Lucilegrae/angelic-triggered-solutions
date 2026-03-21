@@ -327,3 +327,25 @@ section {
     letter-spacing: 0.5px;
   }
 }
+
+/* Synchronized Glow Pulses */
+@keyframes glyphPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(0,128,255,0.6);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255,215,0,0.9);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(0,128,255,0.6);
+    opacity: 0.9;
+  }
+}
+
+/* Apply to banner overlays and pledge lines */
+.banner-overlay,
+.pledge-line {
+  animation: glyphPulse 6s infinite alternate;
+}
