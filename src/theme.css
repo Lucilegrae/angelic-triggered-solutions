@@ -110,3 +110,174 @@ section {
   border-radius: 12px;
   box-shadow: 0 0 20px #ffd700;
 }
+
+.tab-btn {
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tab-btn.active {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.8);
+}
+
+.tab-btn {
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tab-btn.active {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.8);
+}
+
+/* Aura pulse animation for logo */
+.logo {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(255, 215, 0, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+  }
+}
+
+/* Aura glow trail for navigation tabs */
+.tab-btn {
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+}
+
+.tab-btn.active {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(74, 144, 226, 0.9);
+  animation: auraTrail 1.5s infinite;
+}
+
+/* Trail animation */
+@keyframes auraTrail {
+  0% {
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 14px rgba(255, 215, 0, 1);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+  }
+}
+
+/* Banner aura animation */
+@keyframes bannerGlow {
+  0% {
+    box-shadow: 0 0 12px rgba(74,144,226,0.6);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255,215,0,1);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(74,144,226,0.6);
+  }
+}
+
+.banner-overlay h2 {
+  text-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+
+/* Base aura background */
+.aura-bg {
+  min-height: 100vh;
+  transition: background 1s ease, box-shadow 1s ease;
+}
+
+/* Route-specific overlays */
+.projects-aura {
+  background: linear-gradient(135deg, rgba(0,128,255,0.3), rgba(0,255,128,0.3));
+  box-shadow: 0 0 24px rgba(0,128,255,0.6);
+}
+
+.dashboard-aura {
+  background: linear-gradient(135deg, rgba(74,144,226,0.4), rgba(255,215,0,0.4));
+  box-shadow: 0 0 24px rgba(255,215,0,0.8);
+}
+
+.contact-aura {
+  background: linear-gradient(135deg, rgba(255,0,128,0.3), rgba(255,128,0,0.3));
+  box-shadow: 0 0 24px rgba(255,0,128,0.6);
+}
+
+/* Fade-in aura transition */
+.aura-bg {
+  animation: fadeAura 1.2s ease forwards;
+}
+
+@keyframes fadeAura {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(6px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(4px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
