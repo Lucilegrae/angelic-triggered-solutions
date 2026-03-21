@@ -1,0 +1,20 @@
+body {
+  background: #0d0d0d;
+  color: #e0dfff;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+.aura-overlay {
+  animation: pulse 3s infinite;
+  text-shadow: 0 0 10px #a020f0;
+}
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px #a020f0; }
+  50% { text-shadow: 0 0 20px #ff69b4; }
+  100% { text-shadow: 0 0 5px #a020f0; }
+}
+.pledge-line {
+  margin-top: 50px;
+  font-style: italic;
+  color: #ffccff;
+}
