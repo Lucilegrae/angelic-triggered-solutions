@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./../theme.css";
 
 export default function Navigation() {
@@ -19,7 +19,7 @@ export default function Navigation() {
       {/* Logo with Aura */}
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
         <img
-          src="/logo.png"   // <-- logo.png must be inside public/
+          src="/logo.png"   // logo.png must be inside public/
           alt="ATS Logo"
           className="logo"
           style={{
@@ -38,14 +38,15 @@ export default function Navigation() {
 
       {/* Covenant Links */}
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-        <Link to="/" className="aura-link">Home</Link>
-        <Link to="/about" className="aura-link">About</Link>
-        <Link to="/mission" className="aura-link">Mission</Link>
-        <Link to="/vision" className="aura-link">Vision</Link>
-        <Link to="/values" className="aura-link">Values</Link>
-        <Link to="/projects" className="aura-link">Projects</Link>
-        <Link to="/services" className="aura-link">Services</Link>
-        <Link to="/contact" className="aura-link">Contact</Link>
+        <NavLink to="/" className="tab-btn">Home</NavLink>
+        <NavLink to="/about" className="tab-btn">About</NavLink>
+        <NavLink to="/mission" className="tab-btn">Mission</NavLink>
+        <NavLink to="/vision" className="tab-btn">Vision</NavLink>
+        <NavLink to="/values" className="tab-btn">Values</NavLink>
+        <NavLink to="/projects" className="tab-btn">Projects</NavLink>
+        <NavLink to="/dashboard" className="tab-btn">Dashboard</NavLink>
+        <NavLink to="/services" className="tab-btn">Services</NavLink>
+        <NavLink to="/contact" className="tab-btn">Contact</NavLink>
       </div>
     </nav>
   );

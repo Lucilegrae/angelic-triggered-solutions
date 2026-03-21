@@ -4,6 +4,7 @@ import AddProjectForm from "../components/AddProjectForm";
 import ProjectsList from "../components/ProjectsList";
 import StakeholdersList from "../components/StakeholdersList";
 import AffirmationsList from "../components/AffirmationsList";
+import GlyphCard from "../components/GlyphCard";
 
 export default function Projects() {
   return (
@@ -15,7 +16,6 @@ export default function Projects() {
         textAlign: "center"
       }}
     >
-
       {/* Covenant Heading */}
       <h1 className="slogan-arc aura-heading" style={{ marginBottom: "2rem" }}>
         ✦ Our Projects ✦
@@ -33,13 +33,12 @@ export default function Projects() {
           animation: "bannerGlow 4s infinite alternate"
         }}
       >
-        <h2
-          className="slogan-arc aura-heading"
-          style={{ fontSize: "1.2rem", fontWeight: "bold", margin: 0 }}
-        >
-          ✦ Innovation Glyphs — Projects covenantally affirmed ✦
+
+
+        <h2 className="slogan-arc aura-heading" style={{ margin: "3rem 0 1.5rem" }}>
+          ✦ Glyph Stream ✦
         </h2>
-      </div>
+        <GlyphStream />
 
       {/* Pledge Line */}
       <p
@@ -78,7 +77,7 @@ export default function Projects() {
       </h2>
       <AffirmationsList />
 
-      {/* Glyph Cards Grid (Static ceremonial themes) */}
+      {/* Glyph Cards Grid (Ceremonial themes) */}
       <div
         style={{
           display: "grid",
@@ -88,53 +87,36 @@ export default function Projects() {
           marginTop: "3rem"
         }}
       >
-        <div className="glyph-card">
-          <h2 className="slogan-arc aura-heading">Harare Southlands Settlement</h2>
-          <p>
-            Transforming informal settlements into sustainable housing environments,
-            backed by trusted guarantors and covenantal participation.
-          </p>
-        </div>
-
-        <div className="glyph-card">
-          <h2 className="slogan-arc aura-heading">Community Empowerment Programs</h2>
-          <p>
-            Equipping communities with skills, resources, and ceremonial affirmation
-            for sustainable growth and stakeholder resonance.
-          </p>
-        </div>
-
-        <div className="glyph-card">
-          <h2 className="slogan-arc aura-heading">Infrastructure Healing</h2>
-          <p>
-            Blending technical precision with aura overlays to restore communal trust
-            and create narratable, motif‑driven environments.
-          </p>
-        </div>
-
-        <div className="glyph-card">
-          <h2 className="slogan-arc aura-heading">Southlands Slum Restructuring</h2>
-          <p>
-            Transforming informal settlements into sustainable, covenantal communities.
-            Infrastructure healing meets expressive branding for stakeholder resonance.
-          </p>
-        </div>
-
-        <div className="glyph-card">
-          <h2 className="slogan-arc aura-heading">Mining Rights Expansion</h2>
-          <p>
-            Extending approved mining rights by 45 hectares, ensuring sustainable extraction
-            anchored in communal affirmation and covenantal stewardship.
-          </p>
-        </div>
-
-        <div className="glyph-card">
-          <h2 className="slogan-arc aura-heading">Urban Renewal Initiatives</h2>
-          <p>
-            Revitalizing urban spaces with aura overlays, glow effects, and stakeholder‑ready
-            storytelling. Every renewal is a glyph in our anthology.
-          </p>
-        </div>
+        <GlyphCard
+          title="Harare Southlands Settlement"
+          description="Transforming informal settlements into sustainable housing environments, backed by trusted guarantors and covenantal participation."
+          sound="/chime.mp3"
+        />
+        <GlyphCard
+          title="Community Empowerment Programs"
+          description="Equipping communities with skills, resources, and ceremonial affirmation for sustainable growth and stakeholder resonance."
+          sound="/chime.mp3"
+        />
+        <GlyphCard
+          title="Infrastructure Healing"
+          description="Blending technical precision with aura overlays to restore communal trust and create narratable, motif‑driven environments."
+          sound="/chime.mp3"
+        />
+        <GlyphCard
+          title="Southlands Slum Restructuring"
+          description="Transforming informal settlements into sustainable, covenantal communities. Infrastructure healing meets expressive branding for stakeholder resonance."
+          sound="/chime.mp3"
+        />
+        <GlyphCard
+          title="Mining Rights Expansion"
+          description="Extending approved mining rights by 45 hectares, ensuring sustainable extraction anchored in communal affirmation and covenantal stewardship."
+          sound="/chime.mp3"
+        />
+        <GlyphCard
+          title="Urban Renewal Initiatives"
+          description="Revitalizing urban spaces with aura overlays, glow effects, and stakeholder‑ready storytelling. Every renewal is a glyph in our anthology."
+          sound="/chime.mp3"
+        />
       </div>
 
       {/* Closing Arc */}

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./../theme.css";
 
 export default function Footer() {
@@ -18,7 +19,7 @@ export default function Footer() {
       {/* Logo with Aura */}
       <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
         <img
-          src="/logo.png"   // <-- logo.png must be inside public/
+          src="/logo.png"   // logo.png must be inside public/
           alt="ATS Logo"
           className="logo"
           style={{
@@ -33,6 +34,14 @@ export default function Footer() {
         >
           Angelic Triggered Solutions
         </span>
+      </div>
+
+      {/* Covenant Links */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+        <NavLink to="/" className="tab-btn">Home</NavLink>
+        <NavLink to="/projects" className="tab-btn">Projects</NavLink>
+        <NavLink to="/dashboard" className="tab-btn">Dashboard</NavLink>
+        <NavLink to="/contact" className="tab-btn">Contact</NavLink>
       </div>
 
       {/* Covenant Closing Arc */}
@@ -69,7 +78,7 @@ export default function Footer() {
         <div className="glyph-card" style={{ maxWidth: "250px" }}>
           <h2 className="slogan-arc aura-heading">Phone</h2>
           <p style={{ fontSize: "13px", lineHeight: "1.6" }}>
-            +263 785 002 561  
+            +263 785 002 561<br />
             +263 779 129 187
           </p>
         </div>
@@ -77,7 +86,7 @@ export default function Footer() {
         <div className="glyph-card" style={{ maxWidth: "250px" }}>
           <h2 className="slogan-arc aura-heading">Email</h2>
           <p style={{ fontSize: "13px", lineHeight: "1.6" }}>
-            info@angelictriggeredsolutions.co.zw  
+            info@angelictriggeredsolutions.co.zw<br />
             pnovontony@yahoo.com
           </p>
         </div>
