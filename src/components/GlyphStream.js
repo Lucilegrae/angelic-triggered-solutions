@@ -48,13 +48,12 @@ export default function GlyphStream() {
     // ✦ Index Page ✦
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
-    doc.setTextColor(0, 0, 0);
     doc.text("✦ Anthology Index ✦", 20, 40);
 
     doc.setFontSize(14);
     let y = 70;
     focusedGlyphs.forEach((glyph, index) => {
-      doc.text(`${index + 2} — ${glyph.title}`, 20, y); // page numbers start after cover+index
+      doc.text(`${index + 2} — ${glyph.title}`, 20, y);
       y += 12;
     });
 
@@ -88,6 +87,11 @@ export default function GlyphStream() {
       doc.text("Signature: ___________________________", 20, 150);
       doc.text("Name: _______________________________", 20, 165);
       doc.text("Date: _______________________________", 20, 180);
+
+      // Footnote Commentary
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      doc.text("✦ Footnote: This glyph resonates within the communal covenant, echoing stakeholder trust and ceremonial affirmation. ✦", 20, 280);
 
       if (index < focusedGlyphs.length - 1) {
         doc.addPage();
