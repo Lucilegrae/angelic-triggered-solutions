@@ -432,3 +432,24 @@ section {
   background: linear-gradient(135deg, rgba(0,128,255,0.2), rgba(128,255,0,0.2));
   box-shadow: 0 0 18px rgba(0,128,255,0.6);
 }
+
+/* Communal Aura Ripple Between Glyph Cards */
+.glyph-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  padding: 1.5rem;
+  border-radius: 12px;
+  position: relative;
+}
+
+/* Ripple effect when hovering a glyph card */
+.glyph-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 24px rgba(0,255,128,0.8);
+}
+
+/* Neighbor ripple aura */
+.glyph-card:hover ~ .glyph-card {
+  box-shadow: 0 0 18px rgba(0,128,255,0.6);
+  transform: scale(1.01);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
