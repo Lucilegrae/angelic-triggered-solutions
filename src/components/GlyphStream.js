@@ -29,40 +29,41 @@ export default function GlyphStream() {
   const exportPDF = () => {
     const doc = new jsPDF();
 
-    // Ceremonial Seal (Watermark)
-    doc.setFontSize(60);
-    doc.setTextColor(200, 200, 255); // soft aura glow
-    doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
-
-    // Title
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(18);
-    doc.setTextColor(0, 0, 0);
-    doc.text("✦ Collective Glyph Focus ✦", 20, 20);
-
-    let y = 40;
     focusedGlyphs.forEach((glyph, index) => {
-      doc.setFontSize(14);
-      doc.text(`${glyph.title}`, 20, y);
-      y += 10;
+      // Ceremonial Seal (Watermark)
+      doc.setFontSize(60);
+      doc.setTextColor(200, 200, 255);
+      doc.text("✦ ATS ✦", 60, 150, { angle: 45, opacity: 0.2 });
+
+      // Title
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.setTextColor(0, 0, 0);
+      doc.text(`✦ ${glyph.title} ✦`, 20, 30);
+
+      // Description
       doc.setFontSize(12);
-      doc.text(doc.splitTextToSize(glyph.description, 170), 20, y);
-      y += 20;
+      doc.text(doc.splitTextToSize(glyph.description, 170), 20, 50);
+
+      // Pledge Line
+      doc.setFontSize(12);
+      doc.text("✦ Each project is a glyph in our anthology — covenantally affirmed and spiritually resonant. ✦", 20, 100);
+
+      // Signature Lines
+      doc.setFontSize(14);
+      doc.text("✦ Stakeholder Affirmation ✦", 20, 130);
+      doc.setFontSize(12);
+      doc.text("Signature: ___________________________", 20, 150);
+      doc.text("Name: _______________________________", 20, 165);
+      doc.text("Date: _______________________________", 20, 180);
+
+      // Add new page if not last glyph
+      if (index < focusedGlyphs.length - 1) {
+        doc.addPage();
+      }
     });
 
-    // Communal signature lines
-    y += 20;
-    doc.setFontSize(14);
-    doc.text("✦ Stakeholder Affirmation ✦", 20, y);
-    y += 15;
-    doc.setFontSize(12);
-    doc.text("Signature: ___________________________", 20, y);
-    y += 15;
-    doc.text("Name: _______________________________", 20, y);
-    y += 15;
-    doc.text("Date: _______________________________", 20, y);
-
-    doc.save("glyph-gallery.pdf");
+    doc.save("glyph-anthology.pdf");
   };
 
   return (
