@@ -1,20 +1,45 @@
 import React from "react";
 import "./../theme.css";
+import AddProjectForm from "../components/AddProjectForm";
+import ProjectsList from "../components/ProjectsList";
+import StakeholdersList from "../components/StakeholdersList";
+import AffirmationsList from "../components/AffirmationsList";
 
 export default function Projects() {
   return (
     <section
-      className="aura-bg"
+      className="aura-bg projects-aura"
       style={{
         padding: "4rem 2rem",
         minHeight: "100vh",
         textAlign: "center"
       }}
     >
+
       {/* Covenant Heading */}
       <h1 className="slogan-arc aura-heading" style={{ marginBottom: "2rem" }}>
         ✦ Our Projects ✦
       </h1>
+
+      {/* Route-Specific Affirmation Arc */}
+      <div
+        className="banner-overlay"
+        style={{
+          marginBottom: "2rem",
+          padding: "1rem",
+          background: "linear-gradient(90deg, rgba(0,128,255,0.4), rgba(0,255,128,0.4))",
+          borderRadius: "8px",
+          boxShadow: "0 0 18px rgba(0,128,255,0.8)",
+          animation: "bannerGlow 4s infinite alternate"
+        }}
+      >
+        <h2
+          className="slogan-arc aura-heading"
+          style={{ fontSize: "1.2rem", fontWeight: "bold", margin: 0 }}
+        >
+          ✦ Innovation Glyphs — Projects covenantally affirmed ✦
+        </h2>
+      </div>
 
       {/* Pledge Line */}
       <p
@@ -30,16 +55,39 @@ export default function Projects() {
         Each initiative is a living glyph in our anthology — covenantally affirmed and stakeholder‑ready.
       </p>
 
-      {/* Glyph Cards Grid */}
+      {/* 🔮 Supabase-powered Form */}
+      <div style={{ marginBottom: "3rem" }}>
+        <AddProjectForm />
+      </div>
+
+      {/* 🌐 Live Supabase Projects */}
+      <h2 className="slogan-arc aura-heading" style={{ marginBottom: "1.5rem" }}>
+        ✦ Live Projects ✦
+      </h2>
+      <ProjectsList />
+
+      {/* 🌐 Live Stakeholder Pledges */}
+      <h2 className="slogan-arc aura-heading" style={{ margin: "3rem 0 1.5rem" }}>
+        ✦ Stakeholder Affirmations ✦
+      </h2>
+      <StakeholdersList />
+
+      {/* 🌐 Live Affirmations */}
+      <h2 className="slogan-arc aura-heading" style={{ margin: "3rem 0 1.5rem" }}>
+        ✦ Ceremonial Affirmations ✦
+      </h2>
+      <AffirmationsList />
+
+      {/* Glyph Cards Grid (Static ceremonial themes) */}
       <div
         style={{
           display: "grid",
           gap: "2rem",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          justifyContent: "center"
+          justifyContent: "center",
+          marginTop: "3rem"
         }}
       >
-        {/* Broad Covenant Themes */}
         <div className="glyph-card">
           <h2 className="slogan-arc aura-heading">Harare Southlands Settlement</h2>
           <p>
@@ -64,7 +112,6 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Specific Initiatives */}
         <div className="glyph-card">
           <h2 className="slogan-arc aura-heading">Southlands Slum Restructuring</h2>
           <p>
