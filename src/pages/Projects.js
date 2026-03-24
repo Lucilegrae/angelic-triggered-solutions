@@ -33,12 +33,11 @@ export default function Projects() {
           animation: "bannerGlow 4s infinite alternate"
         }}
       >
-
-
         <h2 className="slogan-arc aura-heading" style={{ margin: "3rem 0 1.5rem" }}>
           ✦ Glyph Stream ✦
         </h2>
         <GlyphStream />
+      </div>
 
       {/* Pledge Line */}
       <p
@@ -120,16 +119,18 @@ export default function Projects() {
       </div>
 
       {/* Closing Arc */}
-      <p
-        className="pledge-line"
-        style={{
-          marginTop: "3rem",
-          fontSize: "14px",
-          opacity: "0.85"
-        }}
-      >
-        ✦ Each project is a glyph in our anthology — covenantally affirmed and spiritually resonant. ✦
-      </p>
+      <div>
+        <p
+          className="pledge-line"
+          style={{
+            marginTop: "3rem",
+            fontSize: "14px",
+            opacity: "0.85"
+          }}
+        >
+          ✦ Each project is a glyph in our anthology — covenantally affirmed and spiritually resonant. ✦
+        </p>
+      </div>
     </section>
   );
 }
