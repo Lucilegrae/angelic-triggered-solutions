@@ -1,0 +1,446 @@
+/* 🌌 Global Aura Background */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #000 70%, #111 100%);
+  color: #ffd700; /* golden glow text */
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* 📖 Page Sections */
+section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgb(0 0 0 / 60%);
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ffd700;
+}
+
+/* ✨ Aura Headings */
+h1,
+h2,
+.aura-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  text-shadow:
+    0 0 20px #f60,
+    0 0 40px #fc0,
+    0 0 8px rgb(255 255 255 / 70%);
+  animation: pulse-glow 3s infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 0 0 5px #ffd700;
+  }
+
+  50% {
+    text-shadow: 0 0 20px #ffd700;
+  }
+
+  100% {
+    text-shadow: 0 0 5px #ffd700;
+  }
+}
+
+/* 🔮 Pledge Line */
+.pledge-line {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  color: #ffd700;
+  text-shadow:
+    0 0 10px rgb(255 204 0 / 50%),
+    0 0 6px rgb(255 255 255 / 60%);
+  animation: closing-arc 2s ease forwards;
+}
+
+/* 🔮 Closing Arc Fade-In */
+@keyframes closing-arc {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    letter-spacing: 2px;
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(6px);
+    letter-spacing: 1px;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.5px;
+  }
+}
+
+/* 🎨 Logo Hover Glow */
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgb(255 215 0 / 100%));
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    filter: drop-shadow(0 0 6px rgb(255 215 0 / 60%));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 18px rgb(255 215 0 / 100%));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 6px rgb(255 215 0 / 60%));
+  }
+}
+
+/* ✨ Tab Buttons Aura Trail */
+.tab-btn {
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn:hover {
+  background: rgb(255 255 255 / 20%);
+  box-shadow: 0 0 12px rgb(255 215 0 / 80%);
+}
+
+.tab-btn.active {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 0 16px rgb(74 144 226 / 90%);
+  animation: aura-trail 1.5s infinite;
+}
+
+@keyframes aura-trail {
+  0% {
+    text-shadow: 0 0 6px rgb(255 215 0 / 60%);
+  }
+
+  50% {
+    text-shadow: 0 0 14px rgb(255 215 0 / 100%);
+  }
+
+  100% {
+    text-shadow: 0 0 6px rgb(255 215 0 / 60%);
+  }
+}
+
+/* 🔮 Banner Glow Animation */
+@keyframes banner-glow {
+  0% {
+    box-shadow: 0 0 12px rgb(74 144 226 / 60%);
+  }
+
+  50% {
+    box-shadow: 0 0 24px rgb(255 215 0 / 100%);
+  }
+
+  100% {
+    box-shadow: 0 0 12px rgb(74 144 226 / 60%);
+  }
+}
+
+.banner-overlay h2 {
+  text-shadow: 0 0 6px rgb(255 255 255 / 80%);
+}
+
+/* 🌌 Base Aura Background */
+.aura-bg {
+  min-height: 100vh;
+  transition:
+    background 1s ease,
+    box-shadow 1s ease;
+  animation: fade-aura 1.2s ease forwards;
+}
+
+/* Route-Specific Overlays */
+.projects-aura {
+  background: linear-gradient(
+    135deg,
+    rgb(0 128 255 / 30%),
+    rgb(0 255 128 / 30%)
+  );
+  box-shadow: 0 0 24px rgb(0 128 255 / 60%);
+}
+
+.dashboard-aura {
+  background: linear-gradient(
+    135deg,
+    rgb(74 144 226 / 40%),
+    rgb(255 215 0 / 40%)
+  );
+  box-shadow: 0 0 24px rgb(255 215 0 / 80%);
+}
+
+.contact-aura {
+  background: linear-gradient(
+    135deg,
+    rgb(255 0 128 / 30%),
+    rgb(255 128 0 / 30%)
+  );
+  box-shadow: 0 0 24px rgb(255 0 128 / 60%);
+}
+
+/* Fade-In Aura Transition */
+@keyframes fade-aura {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(6px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(4px);
+    filter: blur(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Affirmation Arc Fade-In */
+.banner-overlay {
+  animation: arc-fade 1.5s ease forwards;
+}
+
+@keyframes arc-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+    filter: blur(6px);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-4px);
+    filter: blur(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ✨ Synchronized Glow Pulses */
+@keyframes glyph-pulse {
+  0% {
+    box-shadow: 0 0 12px rgb(0 128 255 / 60%);
+    opacity: 0.9;
+  }
+
+  50% {
+    box-shadow: 0 0 24px rgb(255 215 0 / 90%);
+    opacity: 1;
+  }
+
+  100% {
+    box-shadow: 0 0 12px rgb(0 128 255 / 60%);
+    opacity: 0.9;
+  }
+}
+
+.banner-overlay,
+.pledge-line {
+  animation: glyph-pulse 6s infinite alternate;
+}
+
+/* 🕊️ Glyph Card Base */
+.glyph-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 5%);
+  color: #fff;
+  position: relative;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  animation: aura-border 6s infinite alternate;
+}
+
+/* Hover Aura & Neighbor Ripple */
+.glyph-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 24px rgb(0 255 128 / 80%);
+  background: linear-gradient(
+    135deg,
+    rgb(0 128 255 / 10%),
+    rgb(0 255 128 / 10%)
+  );
+}
+
+/* Animated Aura Borders */
+@keyframes aura-border {
+  0% {
+    border: 2px solid rgb(0 128 255 / 40%);
+    box-shadow: 0 0 12px rgb(0 128 255 / 40%);
+  }
+
+  50% {
+    border: 2px solid rgb(0 255 128 / 60%);
+    box-shadow: 0 0 24px rgb(0 255 128 / 80%);
+  }
+
+  100% {
+    border: 2px solid rgb(0 128 255 / 40%);
+    box-shadow: 0 0 12px rgb(0 128 255 / 40%);
+  }
+}
+
+/* 🌐 Thematic Gradients per Glyph */
+.glyph-card:nth-child(1):hover ~ .glyph-card {
+  background: linear-gradient(
+    135deg,
+    rgb(0 128 255 / 20%),
+    rgb(0 255 128 / 20%)
+  );
+  box-shadow: 0 0 18px rgb(0 128 255 / 60%);
+}
+
+.glyph-card:nth-child(2):hover ~ .glyph-card {
+  background: linear-gradient(
+    135deg,
+    rgb(255 128 0 / 20%),
+    rgb(255 0 128 / 20%)
+  );
+  box-shadow: 0 0 18px rgb(255 128 0 / 60%);
+}
+
+.glyph-card:nth-child(3):hover ~ .glyph-card {
+  background: linear-gradient(
+    135deg,
+    rgb(128 0 255 / 20%),
+    rgb(0 255 255 / 20%)
+  );
+  box-shadow: 0 0 18px rgb(128 0 255 / 60%);
+}
+
+.glyph-card:nth-child(4):hover ~ .glyph-card {
+  background: linear-gradient(
+    135deg,
+    rgb(0 255 128 / 20%),
+    rgb(255 255 0 / 20%)
+  );
+  box-shadow: 0 0 18px rgb(0 255 128 / 60%);
+}
+
+.glyph-card:nth-child(5):hover ~ .glyph-card {
+  background: linear-gradient(
+    135deg,
+    rgb(255 0 0 / 20%),
+    rgb(255 128 0 / 20%)
+  );
+  box-shadow: 0 0 18px rgb(255 0 0 / 60%);
+}
+
+.glyph-card:nth-child(6):hover ~ .glyph-card {
+  background: linear-gradient(
+    135deg,
+    rgb(0 128 255 / 20%),
+    rgb(128 255 0 / 20%)
+  );
+  box-shadow: 0 0 18px rgb(0 128 255 / 60%);
+}
+
+/* 🌊 Glyph Stream Carousel */
+.glyph-stream {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.glyph-stream-inner {
+  display: flex;
+  gap: 2rem;
+  animation: stream-flow 30s linear infinite;
+}
+
+@keyframes stream-flow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 🔘 Aura Buttons */
+.aura-button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 0.5rem;
+  box-shadow: 0 0 12px rgb(0 128 255 / 60%);
+  transition: all 0.3s ease;
+}
+
+.aura-button:hover {
+  box-shadow: 0 0 24px rgb(0 255 128 / 80%);
+  transform: scale(1.05);
+}
+
+/* 🔍 Focus Mode */
+.glyph-focus {
+  background: rgb(255 255 255 / 5%);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 24px rgb(0 255 128 / 80%);
+  margin-top: 2rem;
+  animation: focus-glow 4s infinite alternate;
+}
+
+@keyframes focus-glow {
+  0% {
+    box-shadow: 0 0 12px rgb(0 128 255 / 60%);
+  }
+
+  100% {
+    box-shadow: 0 0 24px rgb(0 255 128 / 80%);
+  }
+}
+
+/* 🏛️ Collective Glyph Gallery */
+.glyph-gallery {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgb(0 255 128 / 10%);
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgb(0 128 255 / 80%);
+}
+
+.glyph-gallery-inner {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
