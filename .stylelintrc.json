@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "declaration-block-single-line-max-declarations": 1,
+    "keyframes-name-pattern": "^[a-z][a-z0-9-]*$",
+    "no-duplicate-selectors": true,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-order": []
+  }
+}

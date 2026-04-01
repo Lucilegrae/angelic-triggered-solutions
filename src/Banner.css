@@ -1,0 +1,18 @@
+/* Banner.css */
+
+.banner {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--accent-bg, #eef6ff);
+  color: var(--text-h, #222);
+}
+
+.banner h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1rem;
+  opacity: 0.8;
+}

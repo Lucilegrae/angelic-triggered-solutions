@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Global body styling */
 body {
   margin: 0;
@@ -61,4 +62,172 @@ h1, h2 {
   0%   { text-shadow: 0 0 5px #ffd700; }
   50%  { text-shadow: 0 0 20px #ffd700; }
   100% { text-shadow: 0 0 5px #ffd700; }
+=======
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;   /* light aura background */
+  color: #333;                 /* text color */
+  line-height: 1.6;
+}
+
+/* Accent Headings */
+h1, h2, h3 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--accent); /* accent aura */
+  margin-bottom: 1rem;
+}
+
+/* Accent Highlight Class */
+.highlight {
+  background-color: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Accent Hover for Headings */
+h1:hover, h2:hover, h3:hover {
+  color: var(--accent-border);
+  text-shadow: 0 0 6px var(--accent-bg);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--accent-border);
+}
+
+/* Buttons */
+button {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+button:hover {
+  background-color: var(--accent-border);
+}
+
+/* Container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Buttons */
+button {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #004999;
+}
+
+/* Aura variables and advanced theme */
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgb(170 59 255 / 10%);
+  --accent-border: rgb(170 59 255 / 50%);
+  --social-bg: rgb(244 243 236 / 50%);
+  --shadow: rgb(0 0 0 / 10%) 0 10px 15px -3px, rgb(0 0 0 / 5%) 0 4px 6px -2px;
+  --sans: system-ui, "Segoe UI", roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", roboto, sans-serif;
+  --mono: ui-monospace, consolas, monospace;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgb(192 132 252 / 15%);
+    --accent-border: rgb(192 132 252 / 50%);
+    --social-bg: rgb(47 48 58 / 50%);
+    --shadow: rgb(0 0 0 / 40%) 0 10px 15px -3px, rgb(0 0 0 / 25%) 0 4px 6px -2px;
+  }
+}
+
+/* Root container */
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Typography */
+h1, h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0;
+}
+
+/* Code blocks */
+code, .counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+>>>>>>> cf9d65af (Supabase showcase with aura overlays)
 }

@@ -1,0 +1,15 @@
+/* AffirmationsList.css */
+
+.affirmations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.affirmations-list li {
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  background: var(--accent-bg, #f0f0f0);
+  color: var(--text-h, #333);
+}

@@ -1,0 +1,18 @@
+import React from "react";
+
+export default function App() {
+  return (
+    <div
+      style={{
+        padding: "3rem",
+        textAlign: "center",
+        background: "#f0f0f0",
+        color: "#333",
+        borderRadius: "8px",
+      }}
+    >
+      <h1>✦ Angelic Triggered Solutions ✦</h1>
+      <p>Hello Prince — your React app is now rendering!</p>
+    </div>
+  );
+}

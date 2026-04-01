@@ -1,0 +1,15 @@
+/* StakeholdersList.css */
+
+.stakeholders-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stakeholders-list li {
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  background: var(--accent-bg, #f9f9f9);
+  color: var(--text-h, #333);
+}

@@ -1,0 +1,36 @@
+/* Dashboard.css */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.dashboard h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgb(255 255 255 / 70%);
+}
+
+.dashboard section {
+  background: var(--accent-bg, #f9f9f9);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+.dashboard h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: var(--text-h, #333);
+}
+
+.dashboard .pledge-line {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 2rem;
+  opacity: 0.8;
+}
