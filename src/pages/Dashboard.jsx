@@ -1,12 +1,33 @@
-import React, { useState } from "react"
-import "./../theme.css"
-import AddProjectForm from "../components/AddProjectForm"
-import ProjectsList from "../components/ProjectsList"
-import StakeholdersList from "../components/StakeholdersList"
-import AffirmationsList from "../components/AffirmationsList"
+import React, { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient";
+import "./../theme.css";
+import AddProjectForm from "../components/AddProjectForm";
+import ProjectsList from "../components/ProjectsList";
+import StakeholdersList from "../components/StakeholdersList";
+import AffirmationsList from "../components/AffirmationsList";
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("projects")
+  const [activeTab, setActiveTab] = useState("projects");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching projects:", error);
+      } else {
+        setProjects(data);
+      }
+      setLoading(false);
+    }
+
+    fetchProjects();
+  }, []);
 
   return (
     <section
@@ -28,7 +49,8 @@ export default function Dashboard() {
         style={{
           marginBottom: "2rem",
           padding: "1rem",
-          background: "linear-gradient(90deg, rgba(74,144,226,0.6), rgba(255,215,0,0.6))",
+          background:
+            "linear-gradient(90deg, rgba(74,144,226,0.6), rgba(255,215,0,0.6))",
           borderRadius: "8px",
           boxShadow: "0 0 18px rgba(255,215,0,0.8)",
           animation: "bannerGlow 4s infinite alternate"
@@ -70,6 +92,17 @@ export default function Dashboard() {
           <h2 className="slogan-arc aura-heading">✦ Live Projects ✦</h2>
           <AddProjectForm />
           <ProjectsList />
+          {loading ? (
+            <p>Loading projects...</p>
+          ) : (
+            <ul>
+              {projects.map((p) => (
+                <li key={p.id}>
+                  <strong>{p.name}</strong> — {p.description}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
 
@@ -99,5 +132,5 @@ export default function Dashboard() {
         ✦ Each glyph is covenantally affirmed, spiritually resonant, and stakeholder‑ready. ✦
       </p>
     </section>
-  )
+  );
 }
