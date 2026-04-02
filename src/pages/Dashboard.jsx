@@ -27,6 +27,36 @@ export default function Dashboard() {
     }
 
     fetchProjects();
+
+    // Real-time subscription for project changes
+    const subscription = supabase
+      .channel("projects-changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "projects" },
+        (payload) => {
+          console.log("Project change received!", payload);
+
+          if (payload.eventType === "INSERT") {
+            setProjects((prev) => [{ ...payload.new }, ...prev]);
+          }
+          if (payload.eventType === "UPDATE") {
+            setProjects((prev) =>
+              prev.map((p) =>
+                p.id === payload.new.id ? { ...payload.new } : p
+              )
+            );
+          }
+          if (payload.eventType === "DELETE") {
+            setProjects((prev) => prev.filter((p) => p.id !== payload.old.id));
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
   }, []);
 
   return (
