@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./GlyphStream.css"; // aura animations
+import "./GlyphStream.css";
 
 export default function GlyphStream() {
-  const [glyphs, setGlyphs] = useState([
+  const [glyphs] = useState([
     "✦ Covenant Affirmed ✦",
     "✦ Aura Resonance ✦",
     "✦ Stakeholder Ready ✦",
@@ -16,7 +16,7 @@ export default function GlyphStream() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % glyphs.length);
-    }, 3000); // cycle every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, [glyphs.length]);
 
