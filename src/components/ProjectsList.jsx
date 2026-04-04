@@ -9,9 +9,9 @@ export default function ProjectsList() {
   useEffect(() => {
     const fetchProjects = async () => {
       const { data, error } = await supabase
-        .from("projects") // ⚡ ensure table name matches Supabase exactly
+        .from("projects")
         .select("*")
-        .order("created_at", { ascending: false }); // ⚡ requires created_at column
+        .order("created_at", { ascending: false }); // requires created_at column
 
       if (error) {
         console.error("Error fetching projects:", error.message, error.details, error.hint);

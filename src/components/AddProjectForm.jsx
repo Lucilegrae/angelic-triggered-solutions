@@ -16,11 +16,11 @@ export default function AddProjectForm() {
 
     const { error } = await supabase.from("projects").insert([
       {
-        name: title,
-        description,
-        aura_overlay: aura,
-        pdf_export_link: pdfLink,
-        created_at: new Date().toISOString(),
+        title,                // ✅ matches schema
+        description,          // ✅ matches schema
+        aura_overlay: aura,   // optional field
+        pdf_export_link: pdfLink // optional field
+        // created_at auto-populates in Supabase
       },
     ]);
 
