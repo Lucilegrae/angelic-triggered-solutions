@@ -10,6 +10,7 @@ import Footer from "./components/Footer.jsx";
 import Navbar from "./components/Navbar.jsx";
 import StakeholdersList from "./components/StakeholdersList.jsx";
 import GlyphCard from "./components/GlyphCard.jsx";
+import GlyphStream from "./components/GlyphStream.jsx";
 
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -29,6 +30,7 @@ export default function App() {
     <Router>
       <Layout>
         <Banner />
+        <GlyphStream />   {/* <-- added here */}
         <AffirmationsList />
         <ProjectsList />
         <AddProjectForm />

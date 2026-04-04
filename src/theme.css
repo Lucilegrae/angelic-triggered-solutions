@@ -7,13 +7,16 @@ body {
   color: #ffd700;
   font-family: "Segoe UI", sans-serif;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers all content horizontally */
 }
 
 /* ✨ Aura Headings */
 h1, h2, .aura-heading {
   font-size: 2.5rem;
   font-weight: bold;
-  text-align: center;
+  text-align: center;    /* ensures headings are centered */
   color: #fff;
   text-shadow: 0 0 20px #ff6600, 0 0 40px #ffcc00, 0 0 8px rgba(255,255,255,0.7);
   animation: pulseGlow 3s infinite;
@@ -25,21 +28,66 @@ h1, h2, .aura-heading {
   100% { text-shadow: 0 0 5px #ffd700; }
 }
 
-/* 🔮 Pledge Line */
-.pledge-line {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  opacity: 0.9;
-  color: #ffd700;
-  text-shadow: 0 0 10px rgba(255, 204, 0, 0.5), 0 0 6px rgba(255,255,255,0.6);
-  animation: closingArc 2s ease forwards;
+/* 🕊️ Glyph Cards Grid */
+.glyph-gallery-inner,
+.glyph-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-items: center;   /* centers each card in its grid cell */
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
 }
-@keyframes closingArc {
-  0% { opacity: 0; transform: translateY(12px); letter-spacing: 2px; }
-  50% { opacity: 0.5; transform: translateY(6px); letter-spacing: 1px; }
-  100% { opacity: 1; transform: translateY(0); letter-spacing: 0.5px; }
+
+/* 🌐 Navigation Bar */
+nav {
+  width: 100%;
+  background-color: #111;
+  padding: 1rem;
+  display: flex;
+  justify-content: center; /* center nav links */
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.nav-link, nav a {
+  margin: 0 1rem;
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-link:hover, nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 15px #ff6600, 0 0 25px #ffcc00;
+}
+
+/* 🔮 Banner Overlay */
+.banner-overlay {
+  margin: 0 auto 2rem;     /* centers the banner block */
+  max-width: 900px;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;      /* centers text inside banner */
+  background: linear-gradient(90deg, rgba(0,128,255,0.4), rgba(0,255,128,0.4));
+  box-shadow: 0 0 18px rgba(0,128,255,0.8);
+  animation: bannerGlow 4s infinite alternate;
+}
+.banner-overlay h2 {
+  text-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+@keyframes bannerGlow {
+  0%   { box-shadow: 0 0 12px rgba(74,144,226,0.6); }
+  50%  { box-shadow: 0 0 24px rgba(255,215,0,1); }
+  100% { box-shadow: 0 0 12px rgba(74,144,226,0.6); }
+}
+
+/* 🔮 Forms (AddProjectForm, AddAffirmationForm) */
+.aura-form {
+  margin: 0 auto 2rem;     /* centers form block */
+  max-width: 600px;
+  text-align: center;
 }
 
 /* 🕊️ Glyph Cards */
@@ -62,173 +110,58 @@ h1, h2, .aura-heading {
   100% { border: 2px solid rgba(0,128,255,0.4); box-shadow: 0 0 12px rgba(0,128,255,0.4); }
 }
 
-/* 🌐 Navigation Bar */
-nav {
-  width: 100%;
-  background-color: #111;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-  z-index: 10;
-}
-.nav-link, nav a {
-  margin: 0 1rem;
-  color: #ffcc00;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.nav-link:hover, nav a:hover {
-  color: #fff;
-  text-shadow: 0 0 15px #ff6600, 0 0 25px #ffcc00;
-}
-
-/* 🎨 Logo Styling */
-.logo {
-  height: 50px;
-  width: auto;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-.logo:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1));
-  animation: pulseGlow 1.5s infinite;
-}
-
-/* ✨ Tab Buttons Aura Trail */
-.tab-btn {
-  margin: 0 0.5rem;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.tab-btn:hover {
-  background: rgba(255,255,255,0.2);
-  box-shadow: 0 0 12px rgba(255,215,0,0.8);
-}
-.tab-btn.active {
-  background: #4a90e2;
-  color: #fff;
-  box-shadow: 0 0 16px rgba(74,144,226,0.9);
-  animation: auraTrail 1.5s infinite;
-}
-@keyframes auraTrail {
-  0%   { text-shadow: 0 0 6px rgba(255,215,0,0.6); }
-  50%  { text-shadow: 0 0 14px rgba(255,215,0,1); }
-  100% { text-shadow: 0 0 6px rgba(255,215,0,0.6); }
-}
-
-/* 🔮 Banner Glow Animation */
-@keyframes bannerGlow {
-  0%   { box-shadow: 0 0 12px rgba(74,144,226,0.6); }
-  50%  { box-shadow: 0 0 24px rgba(255,215,0,1); }
-  100% { box-shadow: 0 0 12px rgba(74,144,226,0.6); }
-}
-.banner-overlay h2 {
-  text-shadow: 0 0 6px rgba(255,255,255,0.8);
-}
-
-/* 🌌 Base Aura Background */
-.aura-bg {
-  min-height: 100vh;
-  transition: background 1s ease, box-shadow 1s ease;
-  animation: fadeAura 1.2s ease forwards;
-}
-.projects-aura {
-  background: linear-gradient(135deg, rgba(0,128,255,0.3), rgba(0,255,128,0.3));
-  box-shadow: 0 0 24px rgba(0,128,255,0.6);
-}
-.dashboard-aura {
-  background: linear-gradient(135deg, rgba(74,144,226,0.4), rgba(255,215,0,0.4));
-  box-shadow: 0 0 24px rgba(255,215,0,0.8);
-}
-.contact-aura {
-  background: linear-gradient(135deg, rgba(255,0,128,0.3), rgba(255,128,0,0.3));
-  box-shadow: 0 0 24px rgba(255,0,128,0.6);
-}
-@keyframes fadeAura {
-  0%   { opacity: 0; transform: translateY(12px); filter: blur(6px); }
-  50%  { opacity: 0.5; transform: translateY(4px); filter: blur(3px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-/* 🌊 Glyph Stream Carousel */
-.glyph-stream {
-  overflow: hidden;
-  width: 100%;
-  margin-top: 3rem;
-}
-.glyph-stream-inner {
-  display: flex;
-  gap: 2rem;
-  animation: streamFlow 30s linear infinite;
-}
-@keyframes streamFlow {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* 🔘 Aura Buttons */
-.aura-button {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 0 0 12px rgba(0,128,255,0.6);
-  transition: all 0.3s ease;
-}
-.aura-button:hover {
-  box-shadow: 0 0 24px rgba(0,255,128,0.8);
-  transform: scale(1.05);
-}
-
-/* 🔍 Focus Mode */
-.glyph-focus {
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 0 24px rgba(0,255,128,0.8);
-  margin-top: 2rem;
-  animation: focusGlow 4s infinite alternate;
-}
-@keyframes focusGlow {
-  0%   { box-shadow: 0 0 12px rgba(0,128,255,0.6); }
-  100% { box-shadow: 0 0 24px rgba(0,255,128,0.8); }
-}
-
-/* 🏛️ Collective Glyph Gallery */
-.glyph-gallery {
-  margin-top: 2rem;
-  padding: 2rem;
-  background: rgba(0,255,128,0.1);
-  border-radius: 12px;
-  box-shadow: 0 0 24px rgba(0,128,255,0.8);
-}
-.glyph-gallery-inner {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-/* ✨ Synchronized Glow Pulses */
-@keyframes glyphPulse {
-  0%   { box-shadow: 0 0 12px rgba(0,128,255,0.6); opacity: 0.9; }
-  50%  { box-shadow: 0 0 24px rgba(255,215,0,0.9); opacity: 1; }
-  100% { box-shadow: 0 0 12px rgba(0,128,255,0.6); opacity: 0.9; }
-}
-.banner-overlay,
+/* 🔮 Pledge Line */
 .pledge-line {
-  animation: glyphPulse 6s infinite alternate;
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  color: #ffd700;
+  text-align: center;      /* centers pledge lines */
+  margin: 0 auto;
+  max-width: 900px;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.5), 0 0 6px rgba(255,255,255,0.6);
+  animation: closingArc 2s ease forwards;
+}
+@keyframes closingArc {
+  0% { opacity: 0; transform: translateY(12px); letter-spacing: 2px; }
+  50% { opacity: 0.5; transform: translateY(6px); letter-spacing: 1px; }
+  100% { opacity: 1; transform: translateY(0); letter-spacing: 0.5px; }
+}
+
+/* Projects page aura styling */
+.projects-aura {
+  max-width: 1200px;       /* keeps content centered */
+  margin: 0 auto;          /* centers horizontally */
+  padding: 2rem;
+  text-align: center;
+  color: #ffd700;          /* glowing golden text */
+}
+
+.projects-aura h1,
+.projects-aura h2 {
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8),
+               0 0 16px rgba(255, 215, 0, 0.6);
+}
+
+.projects-aura .pledge-line {
+  font-style: italic;
+  color: #fff8dc;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+/* Grid aura for GlyphCards */
+.projects-aura .glyph-card {
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.projects-aura .glyph-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
