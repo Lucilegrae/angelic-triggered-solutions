@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
-import "./AffirmationsList.css"; // aura animations
+import "./AuraCards.css"; // unified aura card styling
+import "./AuraGrid.css";  // canonical grid layout
+import "./AuraHeadings.css";
 
 export default function AffirmationsList() {
   const [affirmations, setAffirmations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchAffirmations() {
@@ -15,6 +18,7 @@ export default function AffirmationsList() {
 
       if (error) {
         console.error("Error fetching affirmations:", error);
+        setError(error.message);
       } else {
         setAffirmations(data);
       }
@@ -23,8 +27,8 @@ export default function AffirmationsList() {
 
     fetchAffirmations();
 
-    // Real-time subscription
-    const subscription = supabase
+    // ✅ Safe realtime subscription pattern
+    const channel = supabase
       .channel("affirmations-changes")
       .on(
         "postgres_changes",
@@ -46,25 +50,21 @@ export default function AffirmationsList() {
             setAffirmations((prev) => prev.filter((a) => a.id !== payload.old.id));
           }
         }
-      )
-      .subscribe();
+      );
+
+    channel.subscribe();
 
     return () => {
-      supabase.removeChannel(subscription);
+      supabase.removeChannel(channel);
     };
   }, []);
 
   if (loading) return <p>Loading affirmations...</p>;
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gap: "2rem",
-        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-        justifyContent: "center"
-      }}
-    >
+    <div className="aura-grid">
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
+      {affirmations.length === 0 && <p>No affirmations found.</p>}
       {affirmations.map((a) => (
         <div key={a.id} className={`glyph-card ${a.animate ? "aura-fade" : ""}`}>
           <h2 className="slogan-arc aura-heading">{a.slogan}</h2>

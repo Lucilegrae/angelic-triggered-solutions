@@ -1,0 +1,16 @@
+/* ✦ Aura Headings ✦ */
+.aura-heading {
+  color: #ffd700;
+  margin-bottom: 0.75rem;
+  text-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.8),
+    0 0 16px rgba(255, 215, 0, 0.6),
+    0 0 24px rgba(255, 215, 0, 0.4);
+  font-weight: bold;
+}
+
+.slogan-arc {
+  font-family: "Cinzel Decorative", serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

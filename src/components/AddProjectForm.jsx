@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../supabaseClient";
-import "./AddProjectForm.css"; // aura animations
+import "./AuraForms.css"; // ✅ use canonical aura styling
 
 export default function AddProjectForm() {
   const [title, setTitle] = useState("");
@@ -13,6 +13,13 @@ export default function AddProjectForm() {
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
+
+    // Optional validation for PDF link
+    if (pdfLink && !/^https?:\/\//.test(pdfLink)) {
+      setMessage("Error: PDF link must be a valid URL");
+      setLoading(false);
+      return;
+    }
 
     const { error } = await supabase.from("projects").insert([
       {
@@ -27,7 +34,7 @@ export default function AddProjectForm() {
     if (error) {
       setMessage(`Error: ${error.message}`);
     } else {
-      setMessage("Project added successfully!");
+      setMessage("✨ Project added successfully!");
       setTitle("");
       setDescription("");
       setAura("");
