@@ -1,31 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { logAuditTrail } from "./LogAuditTrail";
 
-export default function KPIPanel({ errors }) {
+export default function KPIPanel({ errors, user }) {
   const totalErrors = errors.length;
-  const today = new Date().toISOString().split("T")[0];
-  const todayErrors = errors.filter(
-    (err) => new Date(err.created_at).toISOString().split("T")[0] === today
-  ).length;
   const severityCounts = errors.reduce((acc, err) => {
     const sev = err.severity || "Medium";
     acc[sev] = (acc[sev] || 0) + 1;
     return acc;
   }, {});
-  const highSeverity = severityCounts["High"] || 0;
-  const highSeverityPercent = totalErrors > 0 ? ((highSeverity / totalErrors) * 100).toFixed(1) : 0;
+
+  useEffect(() => {
+    if (errors.length > 0) {
+      // Log KPI recalculation into audit_trail
+      logAuditTrail(
+        user,
+        errors,
+        "KPI_REFRESH",
+        {
+          totalErrors,
+          severityDistribution: severityCounts
+        }
+      );
+    }
+  }, [errors, user]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginBottom: "2rem" }}>
-      <div style={{ background: "#222", padding: "1rem 2rem", borderRadius: "8px", color: "#fff" }}>
-        <h3>Total Errors</h3><p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{totalErrors}</p>
-      </div>
-      <div style={{ background: "#222", padding: "1rem 2rem", borderRadius: "8px", color: "#fff" }}>
-        <h3>Errors Today</h3><p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{todayErrors}</p>
-      </div>
-      <div style={{ background: "#222", padding: "1rem 2rem", borderRadius: "8px", color: "#fff" }}>
-        <h3>High Severity %</h3>
-        <p style={{ fontSize: "1.5rem", fontWeight: "bold", color: "#ff4d4d" }}>{highSeverityPercent}%</p>
-      </div>
+    <div style={{ marginBottom: "2rem" }}>
+      <h2>KPI Panel</h2>
+      <p><strong>Total Errors:</strong> {totalErrors}</p>
+      {Object.entries(severityCounts).map(([severity, count]) => (
+        <p key={severity}><strong>{severity}:</strong> {count}</p>
+      ))}
     </div>
   );
 }
