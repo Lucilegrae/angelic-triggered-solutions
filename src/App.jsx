@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
@@ -7,7 +7,6 @@ import AffirmationsList from "./components/AffirmationsList";
 import AddProjectForm from "./components/AddProjectForm";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import StakeholdersList from "./components/StakeholdersList";
 import GlyphStream from "./components/GlyphStream";
 
 import Home from "./pages/Home";
@@ -20,15 +19,17 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
-import ErrorDashboard from "./pages/ErrorDashboard";  // ✅ new dashboard page
 
 import ErrorBoundary from "./components/ErrorBoundary";
 import "./theme.css";
 
+// ✅ Lazy load modular ErrorDashboard
+const ErrorDashboard = lazy(() => import("./components/ErrorDashboard/ErrorDashboard"));
+
 export default function App() {
   return (
-    <ErrorBoundary>
-      <Router>
+    <Router>
+      <ErrorBoundary>
         <Layout>
           <Navbar />
           <Banner />
@@ -46,13 +47,23 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/errors" element={<ErrorDashboard />} /> {/* ✅ new route */}
+
+            {/* ✅ Modular ErrorDashboard route */}
+            <Route
+              path="/errors"
+              element={
+                <Suspense fallback={<p>Loading Error Dashboard...</p>}>
+                  <ErrorDashboard />
+                </Suspense>
+              }
+            />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
 
           <Footer />
         </Layout>
-      </Router>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </Router>
   );
 }

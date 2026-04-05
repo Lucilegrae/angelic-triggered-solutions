@@ -1,9 +1,19 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    visualizer({
+      filename: "stats.html",
+      template: "treemap", // or "sunburst", "network"
+    })
+  ],
   build: {
-    outDir: 'dist'
+    outDir: "dist",
+    rollupOptions: {
+      plugins: [visualizer()]
+    }
   }
-})
+});
