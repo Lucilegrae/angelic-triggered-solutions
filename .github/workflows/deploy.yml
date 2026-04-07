@@ -1,0 +1,25 @@
+name: Deploy Supabase Functions
+
+on:
+  push:
+    branches:
+      - main   # triggers on pushes to main branch
+  workflow_dispatch:  # allows manual trigger from GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Supabase CLI
+        run: |
+          curl -fsSL https://get.supabase.com/install.sh | sh
+          echo "$HOME/.supabase/bin" >> $GITHUB_PATH
+
+      - name: Deploy weekly-audit-export function
+        run: |
+          supabase functions deploy weekly-audit-export \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_ID }} \
+            --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
