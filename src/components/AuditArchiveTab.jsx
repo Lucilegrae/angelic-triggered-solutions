@@ -1,0 +1,91 @@
+import { useEffect, useState } from "react";
+import { supabase } from "../supabaseClient"; // adjust import to your setup
+
+export default function AuditArchiveTab() {
+  const [archives, setArchives] = useState([]);
+
+  useEffect(() => {
+    const fetchArchives = async () => {
+      const { data, error } = await supabase
+        .from("audit_archive")
+        .select("*")
+        .order("uploaded_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching audit archive:", error);
+      } else {
+        setArchives(data);
+      }
+    };
+
+    fetchArchives();
+  }, []);
+
+  const getSignedUrl = async (path) => {
+    const { data, error } = await supabase
+      .storage
+      .from("audit_exports")
+      .createSignedUrl(path, 3600); // 1 hour expiry
+
+    if (error) {
+      console.error("Error creating signed URL:", error);
+      return null;
+    }
+    return data.signedUrl;
+  };
+
+  const handleDownload = async (path) => {
+    const url = await getSignedUrl(path);
+    if (url) {
+      window.open(url, "_blank");
+    }
+  };
+
+  // Group by date
+  const grouped = archives.reduce((acc, file) => {
+    const date = new Date(file.uploaded_at).toLocaleDateString();
+    if (!acc[date]) acc[date] = {};
+    acc[date][file.filetype] = file;
+    return acc;
+  }, {});
+
+  return (
+    <div className="audit-archive">
+      <h2>Audit Archive</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>CSV</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(grouped).map(([date, files]) => (
+            <tr key={date}>
+              <td>{date}</td>
+              <td>
+                {files.csv ? (
+                  <button onClick={() => handleDownload(files.csv.storage_path)}>
+                    📊 Download CSV
+                  </button>
+                ) : (
+                  "-"
+                )}
+              </td>
+              <td>
+                {files.pdf ? (
+                  <button onClick={() => handleDownload(files.pdf.storage_path)}>
+                    📄 Download PDF
+                  </button>
+                ) : (
+                  "-"
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
