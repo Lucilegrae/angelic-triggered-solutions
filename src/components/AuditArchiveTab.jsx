@@ -3,9 +3,28 @@ import { supabase } from "../supabaseClient"; // adjust import to your setup
 
 export default function AuditArchiveTab() {
   const [archives, setArchives] = useState([]);
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    // Listen for auth changes
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setSession(session);
+      }
+    );
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     const fetchArchives = async () => {
+      if (!session) return; // only fetch if signed in
       const { data, error } = await supabase
         .from("audit_archive")
         .select("*")
@@ -19,13 +38,13 @@ export default function AuditArchiveTab() {
     };
 
     fetchArchives();
-  }, []);
+  }, [session]);
 
   const getSignedUrl = async (path) => {
     const { data, error } = await supabase
       .storage
       .from("audit_exports")
-      .createSignedUrl(path, 3600); // 1 hour expiry
+      .createSignedUrl(path, 3600);
 
     if (error) {
       console.error("Error creating signed URL:", error);
@@ -41,13 +60,16 @@ export default function AuditArchiveTab() {
     }
   };
 
-  // Group by date
   const grouped = archives.reduce((acc, file) => {
     const date = new Date(file.uploaded_at).toLocaleDateString();
     if (!acc[date]) acc[date] = {};
     acc[date][file.filetype] = file;
     return acc;
   }, {});
+
+  if (!session) {
+    return <p>Please sign in to view the Audit Archive.</p>;
+  }
 
   return (
     <div className="audit-archive">
