@@ -1,0 +1,30 @@
+name: Weekly Audit Export
+
+on:
+  schedule:
+    - cron: "0 6 * * MON"   # every Monday at 06:00 UTC
+  workflow_dispatch:        # allows manual trigger from GitHub UI
+
+jobs:
+  weekly-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Supabase CLI
+        run: |
+          curl -fsSL https://get.supabase.com/install.sh | sh
+          echo "$HOME/.supabase/bin" >> $GITHUB_PATH
+
+      - name: Deploy weekly-audit-export function
+        run: |
+          supabase functions deploy weekly-audit-export \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_ID }} \
+            --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Invoke weekly-audit-export function
+        run: |
+          supabase functions invoke weekly-audit-export \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_ID }} \
+            --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
