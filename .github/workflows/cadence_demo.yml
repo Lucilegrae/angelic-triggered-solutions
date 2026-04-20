@@ -1,0 +1,33 @@
+import plotly.express as px
+import pandas as pd
+
+# Import shared functions from your cadence base script
+from cadence_scripts import (
+    upload_chart,
+    insert_dashboard_link,
+    notify_stakeholders
+)
+
+def demo_runner():
+    # Create dummy data for preview
+    df = pd.DataFrame({
+        "timestamp": pd.date_range("2026-01-01", periods=5, freq="D"),
+        "kpi_value": [10, 20, 15, 30, 25],
+        "role": ["Admin", "User", "Investor", "Gov", "Community"]
+    })
+
+    cadences = ["daily", "weekly", "monthly", "quarterly", "yearly"]
+
+    for cadence in cadences:
+        fig = px.line(df, x="timestamp", y="kpi_value", color="role",
+                      title=f"{cadence.capitalize()} Legitimacy Snapshot",
+                      template="plotly_dark")
+        filename = f"{cadence}_demo_legitimacy.html"
+
+        # Ritualized flow
+        upload_chart(fig, filename)
+        insert_dashboard_link(cadence, filename)
+        notify_stakeholders(cadence, filename)
+
+if __name__ == "__main__":
+    demo_runner()

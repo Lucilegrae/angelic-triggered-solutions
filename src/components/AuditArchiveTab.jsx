@@ -1,30 +1,14 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient"; // adjust import to your setup
+import { useAuth } from "../context/AuthContext";
 
 export default function AuditArchiveTab() {
+  const { session, role } = useAuth();
   const [archives, setArchives] = useState([]);
-  const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    // Listen for auth changes
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setSession(session);
-      }
-    );
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
-  }, []);
 
   useEffect(() => {
     const fetchArchives = async () => {
-      if (!session) return; // only fetch if signed in
+      if (!session || role !== "stakeholder") return; // only fetch if signed in as stakeholder
       const { data, error } = await supabase
         .from("audit_archive")
         .select("*")
@@ -38,7 +22,7 @@ export default function AuditArchiveTab() {
     };
 
     fetchArchives();
-  }, [session]);
+  }, [session, role]);
 
   const getSignedUrl = async (path) => {
     const { data, error } = await supabase
@@ -69,6 +53,10 @@ export default function AuditArchiveTab() {
 
   if (!session) {
     return <p>Please sign in to view the Audit Archive.</p>;
+  }
+
+  if (role !== "stakeholder") {
+    return <p>You do not have permission to view the Audit Archive.</p>;
   }
 
   return (

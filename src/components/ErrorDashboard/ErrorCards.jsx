@@ -1,24 +1,15 @@
 import React, { useState } from "react";
-import { logAuditTrail } from "./LogAuditTrail";
 
-export default function ErrorCards({ errors, user }) {
+export default function ErrorCards({ errors, user, onInspect }) {
   const [expandedId, setExpandedId] = useState(null);
 
   const handleExpand = (error) => {
     const newId = expandedId === error.id ? null : error.id;
     setExpandedId(newId);
 
-    // Log card interaction into audit_trail
-    logAuditTrail(
-      user,
-      errors,
-      "ERRORCARD_INTERACTION",
-      {
-        errorId: error.id,
-        message: error.message,
-        expanded: newId !== null
-      }
-    );
+    if (onInspect) {
+      onInspect(error, newId !== null);
+    }
   };
 
   if (errors.length === 0) return <p>No errors logged yet.</p>;

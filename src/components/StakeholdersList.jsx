@@ -27,32 +27,38 @@ export default function StakeholdersList() {
 
     fetchStakeholders();
 
-    // ✅ Safe realtime subscription pattern
+    // ✅ Attach handlers BEFORE subscribe()
     const channel = supabase
       .channel("stakeholders-changes")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "stakeholders" },
+        { event: "INSERT", schema: "public", table: "stakeholders" },
         (payload) => {
-          console.log("Stakeholder change received!", payload);
-
-          if (payload.eventType === "INSERT") {
-            setStakeholders((prev) => [{ ...payload.new, animate: true }, ...prev]);
-          }
-          if (payload.eventType === "UPDATE") {
-            setStakeholders((prev) =>
-              prev.map((s) =>
-                s.id === payload.new.id ? { ...payload.new, animate: true } : s
-              )
-            );
-          }
-          if (payload.eventType === "DELETE") {
-            setStakeholders((prev) => prev.filter((s) => s.id !== payload.old.id));
-          }
+          console.log("New stakeholder:", payload);
+          setStakeholders((prev) => [{ ...payload.new, animate: true }, ...prev]);
         }
-      );
-
-    channel.subscribe();
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "stakeholders" },
+        (payload) => {
+          console.log("Updated stakeholder:", payload);
+          setStakeholders((prev) =>
+            prev.map((s) =>
+              s.id === payload.new.id ? { ...payload.new, animate: true } : s
+            )
+          );
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "stakeholders" },
+        (payload) => {
+          console.log("Deleted stakeholder:", payload);
+          setStakeholders((prev) => prev.filter((s) => s.id !== payload.old.id));
+        }
+      )
+      .subscribe(); // 🔥 Subscribe only after all handlers are attached
 
     return () => {
       supabase.removeChannel(channel);

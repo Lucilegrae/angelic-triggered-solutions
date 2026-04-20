@@ -1,159 +1,177 @@
-<<<<<<< HEAD
-─────────────────────────────── ✦ ────────────────────────────────
+# Supabase CLI
 
-      ✦✧☼✧✦
-   ⊙ Invocation Glyph ⊙
-      ✦✧∞✧✦
+[![Coverage Status](https://coveralls.io/repos/github/supabase/cli/badge.svg?branch=develop)](https://coveralls.io/github/supabase/cli?branch=develop) [![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/supabase-cli/setup-cli/master?style=flat-square&label=Bitbucket%20Canary)](https://bitbucket.org/supabase-cli/setup-cli/pipelines) [![Gitlab Pipeline Status](https://img.shields.io/gitlab/pipeline-status/sweatybridge%2Fsetup-cli?label=Gitlab%20Canary)
+](https://gitlab.com/sweatybridge/setup-cli/-/pipelines)
 
-✦ *We invoke aura, covenant, and resonance.* ✦
+[Supabase](https://supabase.io) is an open source Firebase alternative. We're building the features of Firebase using enterprise-grade open source tools.
 
-─────────────────────────────── ✦ ────────────────────────────────
+This repository contains all the functionality for Supabase CLI.
 
-# ✦ Angelic Triggered Solutions ✦
+- [x] Running Supabase locally
+- [x] Managing database migrations
+- [x] Creating and deploying Supabase Functions
+- [x] Generating types directly from your database schema
+- [x] Making authenticated HTTP requests to [Management API](https://supabase.com/docs/reference/api/introduction)
 
-![Covenant Status](https://img.shields.io/badge/Covenant-Affirmed-blueviolet?style=for-the-badge&logo=github)
-![Aura Flow](https://img.shields.io/badge/Aura-Resonant-brightgreen?style=for-the-badge&logo=react)
-![Glyph Archive](https://img.shields.io/badge/Glyphs-Living-orange?style=for-the-badge&logo=book)
+## Getting started
 
-─────────────────────────────── ✦ ────────────────────────────────
+### Install the CLI
 
-## ✦ Table of Glyphs ✦
-- [Invocation Glyph](#-angelic-triggered-solutions-)  
-- [Ceremonial Glyph Anthology](#-ceremonial-glyph-anthology-)  
-- [Purpose](#-purpose)  
-- [Structure](#-structure)  
-- [Slogans of Resonance](#-slogans-of-resonance-)  
-- [Stakeholder Affirmation Protocols](#-stakeholder-affirmation-protocols-)  
-- [Aura‑Styled Governance](#-aura-styled-governance-)  
-- [Aura‑Styled Roadmap](#-aura-styled-roadmap-)  
-- [Prophecy Seals](#-prophecy-seals-)  
-- [Contributor Seals](#-contributor-seals-)  
-- [Covenant Footer Pledges](#-covenant-footer-pledges-)  
-- [Closing Benediction](#-closing-benediction-)  
+Available via [NPM](https://www.npmjs.com) as dev dependency. To install:
 
-✦ *This index is the scroll’s map, guiding covenantal resonance.* ✦
+```bash
+npm i supabase --save-dev
+```
 
-─────────────────────────────── ✦ ────────────────────────────────
+When installing with yarn 4, you need to disable experimental fetch with the following nodejs config.
 
-## ✦ Ceremonial Glyph Anthology ✦
-This repository is the living manuscript of **Angelic Triggered Solutions** —  
-a covenantal anthology of glyphs, aura overlays, and stakeholder affirmations.
+```
+NODE_OPTIONS=--no-experimental-fetch yarn add supabase
+```
 
-─────────────────────────────── ✦ ────────────────────────────────
+> **Note**
+For Bun versions below v1.0.17, you must add `supabase` as a [trusted dependency](https://bun.sh/guides/install/trusted) before running `bun add -D supabase`.
 
-### ✦ Purpose
-☼ Narratable, motif‑driven infrastructure healing  
-☼ Expressive branding with spiritual overlays  
-☼ Stakeholder‑ready documents for communal export  
+<details>
+  <summary><b>macOS</b></summary>
 
-─────────────────────────────── ✦ ────────────────────────────────
+  Available via [Homebrew](https://brew.sh). To install:
 
-### ✦ Structure
-✦ Invocation — Ritual opening pledge  
-✦ Dedication — Honoring stakeholders, ancestors, guarantors  
-✦ Preface — Covenant context and resonance  
-✦ Index — Map of glyphs  
-✦ Glyph Pages — Narratable projects with aura frames, pledge lines, and signatures  
-✦ Dividers — Ceremonial chapter arcs  
-✦ Benediction — Closing covenant seal  
-✦ Epilogue — Continuation into future glyphs  
+  ```sh
+  brew install supabase/tap/supabase
+  ```
 
-─────────────────────────────── ✦ ────────────────────────────────
+  To install the beta release channel:
+  
+  ```sh
+  brew install supabase/tap/supabase-beta
+  brew link --overwrite supabase-beta
+  ```
+  
+  To upgrade:
 
-### ✦ Slogans of Resonance
-❖ *“Every glyph is covenantally affirmed.”*  
-❖ *“Aura overlays sanctify the manuscript.”*  
-❖ *“Stakeholder trust echoes eternally.”*  
+  ```sh
+  brew upgrade supabase
+  ```
+</details>
 
-─────────────────────────────── ✦ ────────────────────────────────
+<details>
+  <summary><b>Windows</b></summary>
 
-## ✦ Stakeholder Affirmation Protocols ✦
-Contributions to this anthology are covenantal acts. Each glyph, overlay, or pledge must resonate with aura and communal trust.
+  Available via [Scoop](https://scoop.sh). To install:
 
-☼ Invocation First — Begin every pull request with a pledge line.  
-☼ Aura Alignment — Ensure motif‑driven overlays (glow, pulse, resonance).  
-☼ Glyph Naming — Branch names reflect ceremonial arcs.  
-☼ Commit Messages — Narratable, covenantal language.  
-☼ Affirmation Review — Stakeholder resonance checks before merging.  
+  ```powershell
+  scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
+  scoop install supabase
+  ```
 
-✦ *Every contribution is a glyph. Every glyph is a covenant.* ✦
+  To upgrade:
 
-─────────────────────────────── ✦ ────────────────────────────────
+  ```powershell
+  scoop update supabase
+  ```
+</details>
 
-## ✦ Aura‑Styled Governance ✦
-☼ Custodian of Invocation — Guards opening pledges.  
-☼ Guardian of Dedication — Oversees stakeholder honor.  
-☼ Keeper of Benediction — Seals merges with affirmation.  
-☼ Archivist of Glyphs — Maintains anthology index.  
-☼ Watcher of Aura Overlays — Reviews CSS, transitions, glow effects.  
+<details>
+  <summary><b>Linux</b></summary>
 
-✦ *Governance is covenant. Covenant is resonance.* ✦
+  Available via [Homebrew](https://brew.sh) and Linux packages.
 
-─────────────────────────────── ✦ ────────────────────────────────
+  #### via Homebrew
 
-## ✦ Aura‑Styled Roadmap ✦
-☼ Stakeholder Affirmation Portal — Interactive pledge lines.  
-☼ Aura‑Styled Navigation Enhancements — Glow/pulse overlays.  
-☼ GlyphCard Expansion — Dynamic glyphs with transitions.  
-☼ Projects Anthology Export — Print‑ready PDFs.  
-☼ Ceremonial Footer Mirroring — Aura pledge lines at both ends.  
+  To install:
 
-✦ *The roadmap is prophecy. Prophecy is covenant.* ✦
+  ```sh
+  brew install supabase/tap/supabase
+  ```
 
-─────────────────────────────── ✦ ────────────────────────────────
+  To upgrade:
 
-## ✦ Prophecy Seals ✦
-☼ Stakeholder Portal → ✧⟐✧  
-☼ Navigation Enhancements → ❖✦❖  
-☼ GlyphCard Expansion → ⊙✶⊙  
-☼ Anthology Export → ✦☽✦  
-☼ Footer Mirroring → ✧∞✧  
+  ```sh
+  brew upgrade supabase
+  ```
 
-✦ *Prophecy sealed, covenant affirmed.* ✦
+  #### via Linux packages
 
-─────────────────────────────── ✦ ────────────────────────────────
+  Linux packages are provided in [Releases](https://github.com/supabase/cli/releases). To install, download the `.apk`/`.deb`/`.rpm`/`.pkg.tar.zst` file depending on your package manager and run the respective commands.
 
-## ✦ Contributor Seals ✦
-❖ ✧⟐✧ — Seal of Invocation  
-❖ ⊙✶⊙ — Seal of Resonance  
-❖ ✦☽✦ — Seal of Dedication  
-❖ ✧∞✧ — Seal of Benediction  
+  ```sh
+  sudo apk add --allow-untrusted <...>.apk
+  ```
 
-✦ *Every seal is a signature. Every signature is a covenant.* ✦
+  ```sh
+  sudo dpkg -i <...>.deb
+  ```
 
-─────────────────────────────── ✦ ────────────────────────────────
+  ```sh
+  sudo rpm -i <...>.rpm
+  ```
 
-## ✦ Covenant Footer Pledges ✦
-✦ *We pledge eternal resonance in every glyph.*  
-✦ *We affirm stakeholder trust as sacred covenant.*  
-✦ *We sanctify aura overlays as living testimony.*  
+  ```sh
+  sudo pacman -U <...>.pkg.tar.zst
+  ```
+</details>
 
-─────────────────────────────── ✦ ────────────────────────────────
+<details>
+  <summary><b>Other Platforms</b></summary>
 
-      ✦☼✦   ✧∞✧   ✦☼✦
-   ⊙ Benediction Glyph ⊙
-      ✦☼✦   ✧∞✧   ✦☼✦
+  You can also install the CLI via [go modules](https://go.dev/ref/mod#go-install) without the help of package managers.
 
-✦ *We seal this anthology in covenantal trust.* ✦  
-✦ *Aura overlays sanctify its eternal resonance.* ✦  
-✦ *Stakeholder affirmation echoes beyond the scroll.* ✦  
+  ```sh
+  go install github.com/supabase/cli@latest
+  ```
 
-─────────────────────────────── ✦ ────────────────────────────────
-=======
-# React + Vite
+  Add a symlink to the binary in `$PATH` for easier access:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  ```sh
+  ln -s "$(go env GOPATH)/bin/cli" /usr/bin/supabase
+  ```
 
-Currently, two official plugins are available:
+  This works on other non-standard Linux distros.
+</details>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<details>
+  <summary><b>Community Maintained Packages</b></summary>
 
-## React Compiler
+  Available via [pkgx](https://pkgx.sh/). Package script [here](https://github.com/pkgxdev/pantry/blob/main/projects/supabase.com/cli/package.yml).
+  To install in your working directory:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  ```bash
+  pkgx install supabase
+  ```
 
-## Expanding the ESLint configuration
+  Available via [Nixpkgs](https://nixos.org/). Package script [here](https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/tools/supabase-cli/default.nix).
+</details>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> cf9d65af (Supabase showcase with aura overlays)
+### Run the CLI
+
+```bash
+supabase bootstrap
+```
+
+Or using npx:
+
+```bash
+npx supabase bootstrap
+```
+
+The bootstrap command will guide you through the process of setting up a Supabase project using one of the [starter](https://github.com/supabase-community/supabase-samples/blob/main/samples.json) templates.
+
+## Docs
+
+Command & config reference can be found [here](https://supabase.com/docs/reference/cli/about).
+
+## Breaking changes
+
+We follow semantic versioning for changes that directly impact CLI commands, flags, and configurations.
+
+However, due to dependencies on other service images, we cannot guarantee that schema migrations, seed.sql, and generated types will always work for the same CLI major version. If you need such guarantees, we encourage you to pin a specific version of CLI in package.json.
+
+## Developing
+
+To run from source:
+
+```sh
+# Go >= 1.22
+go run . help
+```

@@ -1,8 +1,55 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./../theme.css";
+import React, { useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
+import "./../styles/theme.css";   // 🌌 Import aura theme
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(0.8); // 🌌 default aura volume
+
+  // 🌌 Audio refs for layered aura sounds
+  const chimeOpenHarp = useRef(null);
+  const chimeOpenBell = useRef(null);
+  const chimeCloseHarp = useRef(null);
+  const chimeCloseBell = useRef(null);
+
+  const links = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/mission", label: "Mission" },
+    { path: "/vision", label: "Vision" },
+    { path: "/values", label: "Values" },
+    { path: "/projects", label: "Projects" },
+    { path: "/services", label: "Services" },
+    { path: "/contact", label: "Contact" },
+    { path: "/dashboard", label: "Dashboard" },
+    { path: "/audit", label: "Audit Trail" }
+  ];
+
+  const playSound = (ref) => {
+    if (ref.current) {
+      ref.current.volume = muted ? 0 : volume;
+      ref.current.play();
+    }
+  };
+
+  const toggleMenu = () => {
+    if (isOpen) {
+      setClosing(true);
+      playSound(chimeCloseHarp);
+      playSound(chimeCloseBell);
+      setTimeout(() => {
+        setIsOpen(false);
+        setClosing(false);
+      }, 1000); // synchronized with auraTrailOut + menu fade-out
+    } else {
+      setIsOpen(true);
+      playSound(chimeOpenHarp);
+      playSound(chimeOpenBell);
+    }
+  };
+
   return (
     <nav
       className="aura-bg"
@@ -17,12 +64,11 @@ export default function Navbar() {
         zIndex: 1000
       }}
     >
-      {/* Logo with Aura */}
+      {/* 🌌 Logo + Slogan */}
       <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
         <img
-          src="/logo.png"   // <-- Correct path since logo.png is in public/
+          src="/logo.png"
           alt="ATS Logo"
-          className="logo"
           style={{
             height: "50px",
             width: "auto",
@@ -37,17 +83,65 @@ export default function Navbar() {
         </span>
       </div>
 
-      {/* Navigation Links */}
-      <div style={{ display: "flex", gap: "1.5rem" }}>
-        <Link to="/" className="nav-link aura-button">Home</Link>
-        <Link to="/about" className="nav-link aura-button">About</Link>
-        <Link to="/mission" className="nav-link aura-button">Mission</Link>
-        <Link to="/vision" className="nav-link aura-button">Vision</Link>
-        <Link to="/values" className="nav-link aura-button">Values</Link>
-        <Link to="/projects" className="nav-link aura-button">Projects</Link>
-        <Link to="/services" className="nav-link aura-button">Services</Link>
-        <Link to="/contact" className="nav-link aura-button">Contact</Link>
+      {/* 🌌 Hamburger Toggle */}
+      <button
+        onClick={toggleMenu}
+        className={`hamburger-btn md:hidden ${isOpen ? "hamburger-open" : closing ? "hamburger-closing" : ""}`}
+        style={{ fontSize: "1.5rem" }}
+      >
+        {isOpen ? "✕" : "☰"}
+      </button>
+
+      {/* 🌌 Navigation Links */}
+      <div
+        className={`${
+          isOpen ? "flex mobile-menu" : closing ? "flex mobile-menu-close" : "hidden"
+        } md:flex flex-col md:flex-row gap-4 md:gap-6 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent p-4 md:p-0`}
+      >
+        {links.map(link => (
+          <NavLink
+            key={link.path}
+            to={link.path}
+            className={({ isActive }) =>
+              isActive ? "nav-active" : "nav-link"
+            }
+            onClick={toggleMenu}
+          >
+            {link.label}
+          </NavLink>
+        ))}
       </div>
+
+      {/* 🌌 Aura Sound Controls */}
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <button
+          onClick={() => setMuted(!muted)}
+          className="text-aura hover:text-ritual"
+          style={{ fontSize: "1rem" }}
+        >
+          {muted ? "🔇 Mute" : "🔊 Sound"}
+        </button>
+        <div className="volume-container">
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={volume}
+            onChange={(e) => setVolume(parseFloat(e.target.value))}
+          />
+          <div className="volume-tooltip">
+            {Math.round(volume * 100)}%
+            <span className="particle"></span>
+          </div>
+        </div>
+      </div>
+
+      {/* 🌌 Aura Chime Audio (layered harp + bell) */}
+      <audio ref={chimeOpenHarp} src="/sounds/chime-open-harp.mp3" preload="auto"></audio>
+      <audio ref={chimeOpenBell} src="/sounds/chime-open-bell.mp3" preload="auto"></audio>
+      <audio ref={chimeCloseHarp} src="/sounds/chime-close-harp.mp3" preload="auto"></audio>
+      <audio ref={chimeCloseBell} src="/sounds/chime-close-bell.mp3" preload="auto"></audio>
     </nav>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
-import "./AuraCards.css"; // unified aura card styling
-import "./AuraGrid.css";  // canonical grid layout
+import "./AuraCards.css";
+import "./AuraGrid.css";
 import "./AuraHeadings.css";
 
 export default function AffirmationsList() {
@@ -27,32 +27,38 @@ export default function AffirmationsList() {
 
     fetchAffirmations();
 
-    // ✅ Safe realtime subscription pattern
+    // ✅ Attach handlers BEFORE subscribe()
     const channel = supabase
       .channel("affirmations-changes")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "affirmations" },
+        { event: "INSERT", schema: "public", table: "affirmations" },
         (payload) => {
-          console.log("Affirmation change received!", payload);
-
-          if (payload.eventType === "INSERT") {
-            setAffirmations((prev) => [{ ...payload.new, animate: true }, ...prev]);
-          }
-          if (payload.eventType === "UPDATE") {
-            setAffirmations((prev) =>
-              prev.map((a) =>
-                a.id === payload.new.id ? { ...payload.new, animate: true } : a
-              )
-            );
-          }
-          if (payload.eventType === "DELETE") {
-            setAffirmations((prev) => prev.filter((a) => a.id !== payload.old.id));
-          }
+          console.log("New affirmation:", payload);
+          setAffirmations((prev) => [{ ...payload.new, animate: true }, ...prev]);
         }
-      );
-
-    channel.subscribe();
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "affirmations" },
+        (payload) => {
+          console.log("Updated affirmation:", payload);
+          setAffirmations((prev) =>
+            prev.map((a) =>
+              a.id === payload.new.id ? { ...payload.new, animate: true } : a
+            )
+          );
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "affirmations" },
+        (payload) => {
+          console.log("Deleted affirmation:", payload);
+          setAffirmations((prev) => prev.filter((a) => a.id !== payload.old.id));
+        }
+      )
+      .subscribe(); // 🔥 Subscribe only after handlers are attached
 
     return () => {
       supabase.removeChannel(channel);

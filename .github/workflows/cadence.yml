@@ -1,0 +1,56 @@
+name: Legitimacy Cadence Workflows
+
+on:
+  schedule:
+    # Daily at midnight
+    - cron: "0 0 * * *"
+    # Weekly on Monday at midnight
+    - cron: "0 0 * * MON"
+    # Monthly on the 1st at midnight
+    - cron: "0 0 1 * *"
+    # Quarterly (Jan, Apr, Jul, Oct 1st at midnight)
+    - cron: "0 0 1 1,4,7,10 *"
+    # Yearly on Jan 1st at midnight
+    - cron: "0 0 1 1 *"
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  run-cadence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests plotly python-dotenv
+
+      - name: Run cadence script
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TABLE_NAME: legitimacy_flows
+          STAKEHOLDER_WEBHOOK: ${{ secrets.STAKEHOLDER_WEBHOOK }}
+        run: |
+          python - <<'EOF'
+          import os, datetime as dt
+          from cadence_scripts import run_daily, run_weekly, run_monthly, run_quarterly, run_yearly
+
+          today = dt.date.today()
+          # GitHub passes schedule via cron, so we decide cadence by date
+          if today.day == 1 and today.month in [1,4,7,10]:
+              run_quarterly()
+          elif today.day == 1 and today.month == 1:
+              run_yearly()
+          elif today.day == 1:
+              run_monthly()
+          elif today.weekday() == 0:  # Monday
+              run_weekly()
+          else:
+              run_daily()
+          EOF

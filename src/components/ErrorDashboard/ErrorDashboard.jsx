@@ -21,6 +21,10 @@ import {
 } from "./logging/stakeholderLogging";
 import { logStakeholderSignature } from "./logging/signatureLogging";
 
+import { logKPIRefresh } from "./logging/kpiLogging";
+import { logChartInteraction } from "./logging/chartLogging";
+import { logErrorCardInspection } from "./logging/errorCardLogging";
+
 export default function ErrorDashboard() {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -89,8 +93,12 @@ export default function ErrorDashboard() {
         ✦ Error Dashboard ✦
       </h1>
 
-      {/* KPI Panel */}
-      <KPIPanel errors={errors} user={supabase.auth.getUser()} />
+      {/* KPI Panel with Logging */}
+      <KPIPanel
+        errors={errors}
+        user={supabase.auth.getUser()}
+        onRefresh={() => logKPIRefresh(errors)}
+      />
 
       {/* Filters with Audit Logging */}
       <Filters
@@ -215,13 +223,23 @@ export default function ErrorDashboard() {
         </button>
       </div>
 
-      {/* Error Cards */}
-      <ErrorCards errors={errors} user={supabase.auth.getUser()} />
+      {/* Error Cards with Logging */}
+      <ErrorCards
+        errors={errors}
+        user={supabase.auth.getUser()}
+        onInspect={(error, expanded) =>
+          logErrorCardInspection(errors, error, expanded)
+        }
+      />
 
-      {/* Charts */}
-      <Charts errors={errors} user={supabase.auth.getUser()} />
+      {/* Charts with Logging */}
+      <Charts
+        errors={errors}
+        user={supabase.auth.getUser()}
+        onInteraction={(chartType, action) =>
+          logChartInteraction(errors, chartType, action)
+        }
+      />
     </section>
   );
 }
-
-

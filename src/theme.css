@@ -1,167 +1,139 @@
-/* 🌌 Global Aura Background */
+/* 🌌 Aura Theme Variables */
+:root {
+  --text: #eee;
+  --text-h: #0ff;
+  --bg: #000;
+  --border: #2e303a;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --ritual: #ffd700;
+  --aura: #0ff;
+  --shadow-glow: 0 0 20px rgba(0, 200, 255, 0.6);
+  --sans: "Cormorant Garamond", serif;
+  --heading: "Cinzel Decorative", serif;
+  --mono: ui-monospace, consolas, monospace;
+}
+
+/* 🌑 Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #444;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --ritual: #ff0;
+    --aura: #0ff;
+    --shadow-glow: 0 0 25px rgba(192, 132, 252, 0.6);
+  }
+}
+
+/* 🌟 Global Body */
 body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at center, #000 70%, #111 100%);
-  color: #ffd700;
-  font-family: "Segoe UI", sans-serif;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* centers all content horizontally */
+  align-items: center;
 }
 
-/* ✨ Aura Headings */
-h1, h2, .aura-heading {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;    /* ensures headings are centered */
-  color: #fff;
-  text-shadow: 0 0 20px #ff6600, 0 0 40px #ffcc00, 0 0 8px rgba(255,255,255,0.7);
+/* ✨ Headings */
+h1, h2, h3, .aura-heading {
+  font-family: var(--heading);
+  color: var(--text-h);
+  text-shadow: 0 0 8px var(--aura);
+  text-align: center;
   animation: pulseGlow 3s infinite;
-  margin-bottom: 1rem;
 }
 @keyframes pulseGlow {
-  0%   { text-shadow: 0 0 5px #ffd700; }
-  50%  { text-shadow: 0 0 20px #ffd700; }
-  100% { text-shadow: 0 0 5px #ffd700; }
+  0%   { text-shadow: 0 0 5px var(--ritual); }
+  50%  { text-shadow: 0 0 20px var(--ritual); }
+  100% { text-shadow: 0 0 5px var(--ritual); }
 }
 
-/* 🕊️ Glyph Cards Grid */
-.glyph-gallery-inner,
-.glyph-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  justify-items: center;   /* centers each card in its grid cell */
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
+/* 🔮 Highlight Utility */
+.highlight {
+  background-color: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
-/* 🌐 Navigation Bar */
-nav {
-  width: 100%;
-  background-color: #111;
-  padding: 1rem;
-  display: flex;
-  justify-content: center; /* center nav links */
-  align-items: center;
-  position: relative;
-  z-index: 10;
+/* 🌀 Buttons */
+button, .tab-btn {
+  background: transparent;
+  border: 1px solid var(--ritual);
+  color: var(--ritual);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s ease;
 }
-.nav-link, nav a {
-  margin: 0 1rem;
-  color: #ffcc00;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.nav-link:hover, nav a:hover {
-  color: #fff;
-  text-shadow: 0 0 15px #ff6600, 0 0 25px #ffcc00;
-}
-
-/* 🔮 Banner Overlay */
-.banner-overlay {
-  margin: 0 auto 2rem;     /* centers the banner block */
-  max-width: 900px;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;      /* centers text inside banner */
-  background: linear-gradient(90deg, rgba(0,128,255,0.4), rgba(0,255,128,0.4));
-  box-shadow: 0 0 18px rgba(0,128,255,0.8);
-  animation: bannerGlow 4s infinite alternate;
-}
-.banner-overlay h2 {
-  text-shadow: 0 0 6px rgba(255,255,255,0.8);
-}
-@keyframes bannerGlow {
-  0%   { box-shadow: 0 0 12px rgba(74,144,226,0.6); }
-  50%  { box-shadow: 0 0 24px rgba(255,215,0,1); }
-  100% { box-shadow: 0 0 12px rgba(74,144,226,0.6); }
-}
-
-/* 🔮 Forms (AddProjectForm, AddAffirmationForm) */
-.aura-form {
-  margin: 0 auto 2rem;     /* centers form block */
-  max-width: 600px;
-  text-align: center;
-}
-
-/* 🕊️ Glyph Cards */
-.glyph-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 1.5rem;
-  color: #fff;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: auraBorder 6s infinite alternate;
-}
-.glyph-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 0 24px rgba(0,255,128,0.8);
-  background: linear-gradient(135deg, rgba(0,128,255,0.1), rgba(0,255,128,0.1));
-}
-@keyframes auraBorder {
-  0%   { border: 2px solid rgba(0,128,255,0.4); box-shadow: 0 0 12px rgba(0,128,255,0.4); }
-  50%  { border: 2px solid rgba(0,255,128,0.6); box-shadow: 0 0 24px rgba(0,255,128,0.8); }
-  100% { border: 2px solid rgba(0,128,255,0.4); box-shadow: 0 0 12px rgba(0,128,255,0.4); }
-}
-
-/* 🔮 Pledge Line */
-.pledge-line {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  opacity: 0.9;
-  color: #ffd700;
-  text-align: center;      /* centers pledge lines */
-  margin: 0 auto;
-  max-width: 900px;
-  text-shadow: 0 0 10px rgba(255, 204, 0, 0.5), 0 0 6px rgba(255,255,255,0.6);
-  animation: closingArc 2s ease forwards;
-}
-@keyframes closingArc {
-  0% { opacity: 0; transform: translateY(12px); letter-spacing: 2px; }
-  50% { opacity: 0.5; transform: translateY(6px); letter-spacing: 1px; }
-  100% { opacity: 1; transform: translateY(0); letter-spacing: 0.5px; }
-}
-
-/* Projects page aura styling */
-.projects-aura {
-  max-width: 1200px;       /* keeps content centered */
-  margin: 0 auto;          /* centers horizontally */
-  padding: 2rem;
-  text-align: center;
-  color: #ffd700;          /* glowing golden text */
-}
-
-.projects-aura h1,
-.projects-aura h2 {
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8),
-               0 0 16px rgba(255, 215, 0, 0.6);
-}
-
-.projects-aura .pledge-line {
-  font-style: italic;
-  color: #fff8dc;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
-}
-
-/* Grid aura for GlyphCards */
-.projects-aura .glyph-card {
-  background: rgba(20, 20, 20, 0.85);
-  border: 1px solid rgba(255, 215, 0, 0.4);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.projects-aura .glyph-card:hover {
+button:hover, .tab-btn:hover {
+  background: rgba(255,215,0,0.1);
+  box-shadow: 0 0 12px var(--ritual), 0 0 24px rgba(255,215,0,0.7);
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
+
+/* 🌊 Ripple effect */
+.tab-btn:active::after {
+  content:""; position:absolute; left:50%; top:50%;
+  width:5px; height:5px; border-radius:50%;
+  transform:translate(-50%,-50%) scale(1);
+  animation:ripple 0.6s linear;
+}
+@keyframes ripple { to { transform:translate(-50%,-50%) scale(20); opacity:0; } }
+
+/* 🔮 Spinner overlay */
+.spinner-overlay {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
+}
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  width: 50px; height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+.spinner-projects { border-top:6px solid gold; animation: spin 1s linear infinite, pulseGold 2s infinite; }
+.spinner-stakeholders { border-top:6px solid dodgerblue; animation: spin 1s linear infinite, pulseBlue 2s infinite; }
+.spinner-affirmations { border-top:6px solid purple; animation: spin 1s linear infinite, pulsePurple 2s infinite; }
+@keyframes pulseGold { 0%,100%{box-shadow:0 0 20px gold;} 50%{box-shadow:0 0 40px gold;} }
+@keyframes pulseBlue { 0%,100%{box-shadow:0 0 20px dodgerblue;} 50%{box-shadow:0 0 40px dodgerblue;} }
+@keyframes pulsePurple { 0%,100%{box-shadow:0 0 20px purple;} 50%{box-shadow:0 0 40px purple;} }
+
+/* 📝 Aura Inputs */
+.aura-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid var(--ritual);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.6);
+  color: var(--ritual);
+  transition: all 0.3s ease;
+}
+.aura-input:focus {
+  outline: none;
+  box-shadow: 0 0 12px var(--ritual), 0 0 24px rgba(255,215,0,0.7);
+  border-color: var(--ritual);
+  background: rgba(0,0,0,0.8);
+}
+.aura-input.projects:focus { box-shadow: 0 0 12px gold, 0 0 24px rgba(255,215,0,0.7); }
+.aura-input.stakeholders:focus { box-shadow: 0 0 12px dodgerblue, 0 0 24px rgba(30,144,255,0.7); }
+.aura-input.affirmations:focus { box-shadow: 0 0 12px purple, 0 0 24px rgba(128,0,128,0.7); }

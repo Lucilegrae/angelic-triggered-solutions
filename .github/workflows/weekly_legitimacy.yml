@@ -1,0 +1,23 @@
+name: Weekly Legitimacy Report
+
+on:
+  schedule:
+    - cron: "0 8 * * MON"   # every Monday at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          pip install plotly requests python-dotenv
+      - name: Run weekly legitimacy script
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TABLE_NAME: legitimacy_flows
+        run: python weekly_legitimacy.py

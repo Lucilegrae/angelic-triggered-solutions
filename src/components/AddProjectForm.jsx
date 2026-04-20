@@ -1,33 +1,26 @@
 import React, { useState } from "react";
 import { supabase } from "../supabaseClient";
-import "./AuraForms.css"; // ✅ use canonical aura styling
+import FormInput from "./FormInput";
+import "./../theme.css";
 
-export default function AddProjectForm() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [aura, setAura] = useState("");
-  const [pdfLink, setPdfLink] = useState("");
+export default function AddProjectForm({ stakeholderId }) {
+  const [newProject, setNewProject] = useState({ name: "", description: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    // Optional validation for PDF link
-    if (pdfLink && !/^https?:\/\//.test(pdfLink)) {
-      setMessage("Error: PDF link must be a valid URL");
-      setLoading(false);
+    if (!newProject.name.trim()) {
+      setMessage("Error: Project name is required");
       return;
     }
 
+    setLoading(true);
     const { error } = await supabase.from("projects").insert([
       {
-        title,                // ✅ matches schema
-        description,          // ✅ matches schema
-        aura_overlay: aura,   // optional field
-        pdf_export_link: pdfLink // optional field
-        // created_at auto-populates in Supabase
+        name: newProject.name,
+        description: newProject.description,
+        stakeholder_id: stakeholderId,
       },
     ]);
 
@@ -35,50 +28,31 @@ export default function AddProjectForm() {
       setMessage(`Error: ${error.message}`);
     } else {
       setMessage("✨ Project added successfully!");
-      setTitle("");
-      setDescription("");
-      setAura("");
-      setPdfLink("");
+      setNewProject({ name: "", description: "" });
     }
     setLoading(false);
-  }
+  };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="glyph-card aura-form"
-      style={{ marginBottom: "2rem" }}
-    >
+    <form onSubmit={handleSubmit} className="aura-form glyph-card" style={{ marginBottom: "2rem" }}>
       <h3 className="slogan-arc aura-heading">✦ Add New Project ✦</h3>
-      <input
-        type="text"
-        placeholder="Project Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+      <FormInput
+        placeholder="Project Name"
+        value={newProject.name}
+        onChange={(e) => setNewProject({ ...newProject, name: e.target.value })}
         required
       />
-      <textarea
+      <FormInput
+        textarea
         placeholder="Project Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        value={newProject.description}
+        onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
         required
       />
-      <input
-        type="text"
-        placeholder="Aura Overlay"
-        value={aura}
-        onChange={(e) => setAura(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="PDF Export Link"
-        value={pdfLink}
-        onChange={(e) => setPdfLink(e.target.value)}
-      />
-      <button type="submit" disabled={loading}>
+      <button type="submit" className="tab-btn projects" disabled={loading}>
         {loading ? "Adding..." : "Add Project"}
       </button>
-      {message && <p>{message}</p>}
+      {message && <p style={{ marginTop: "1rem" }}>{message}</p>}
     </form>
   );
 }

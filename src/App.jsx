@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Layout from "./components/Layout";
 import Banner from "./components/Banner";
@@ -18,51 +18,67 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./components/Dashboard";       // motif-driven dashboard
+import AuditTrailFeed from "./components/AuditTrailFeed"; // audit feed
 
 import ErrorBoundary from "./components/ErrorBoundary";
+import RouteWrapper from "./components/RouteWrapper";
 import "./theme.css";
 
 // ✅ Lazy load modular ErrorDashboard
 const ErrorDashboard = lazy(() => import("./components/ErrorDashboard/ErrorDashboard"));
 
+// 🔑 Auth context + components
+import { AuthProvider } from "./context/AuthContext";
+import LoginForm from "./components/LoginForm";
+import AuditArchiveTab from "./components/AuditArchiveTab";
+
 export default function App() {
   return (
     <Router>
       <ErrorBoundary>
-        <Layout>
-          <Navbar />
-          <Banner />
-          <GlyphStream />
-          <AffirmationsList />
-          <AddProjectForm />
+        <AuthProvider>
+          <Layout>
+            <Navbar />   {/* 🌌 Navbar now handles all navigation */}
+            <Banner />
+            <GlyphStream />
+            <AffirmationsList />
+            <AddProjectForm />
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/mission" element={<Mission />} />
-            <Route path="/vision" element={<Vision />} />
-            <Route path="/values" element={<Values />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            {/* 🔑 Stakeholder login + archive always available */}
+            <LoginForm />
+            <AuditArchiveTab />
 
-            {/* ✅ Modular ErrorDashboard route */}
-            <Route
-              path="/errors"
-              element={
-                <Suspense fallback={<p>Loading Error Dashboard...</p>}>
-                  <ErrorDashboard />
-                </Suspense>
-              }
-            />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/mission" element={<Mission />} />
+              <Route path="/vision" element={<Vision />} />
+              <Route path="/values" element={<Values />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              {/* 🌌 Motif-driven dashboard + audit feed */}
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/audit" element={<AuditTrailFeed />} />
 
-          <Footer />
-        </Layout>
+              {/* ✅ Modular ErrorDashboard route */}
+              <Route
+                path="/errors"
+                element={
+                  <Suspense fallback={<p>Loading Error Dashboard...</p>}>
+                    <ErrorDashboard />
+                  </Suspense>
+                }
+              />
+
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+
+            <Footer />
+          </Layout>
+        </AuthProvider>
       </ErrorBoundary>
     </Router>
   );
