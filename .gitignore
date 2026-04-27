@@ -1,3 +1,5 @@
+# ✦ Ritualized Git Ignore ✦
+
 # Local Netlify folder
 .netlify
 
@@ -14,7 +16,6 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-*.local
 
 # Editor directories and files
 .vscode/*
@@ -32,9 +33,9 @@ dist-ssr
 
 # ── ATS Covenant: Protect Secrets ──
 # Ignore environment glyphs
-.env
-.env.local
-.env.*.local
+.env              # keep backend secrets private
+.env.*.local      # ignore variant env files
+!.env.local       # explicitly keep frontend env tracked
 
 # Ignore node modules (ritual dependencies)
 node_modules/
@@ -42,12 +43,6 @@ node_modules/
 # Ignore build artifacts
 dist/
 build/
-
-# Ignore logs and diagnostics
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Ignore OS clutter
 .DS_Store
