@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    button { padding: 10px 20px; margin: 5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width: 85%; margin: 40px auto; }
+  </style>
+</head>
+<body>
+  <h1>ATS Interactive Analytics Dashboard</h1>
+  <div class="controls">
+    <button onclick="showChart('crest')">Crest Totals</button>
+    <button onclick="showChart('format')">Format Totals</button>
+    <button onclick="showChart('combined')">Combined View</button>
+  </div>
+  <div class="chart-container">
+    <canvas id="analyticsChart"></canvas>
+  </div>
+
+  <script>
+    const exportHistory = [
+      { crest:"ATS", format:"json", date:"2026-05-14" },
+      { crest:"ATS", format:"csv", date:"2026-05-14" },
+      { crest:"ATS", format:"pdf", date:"2026-05-14" },
+      { crest:"Unity", format:"json", date:"2026-05-14" },
+      { crest:"Unity", format:"csv", date:"2026-05-14" },
+      { crest:"Unity", format:"pdf", date:"2026-05-14" },
+      { crest:"Covenant", format:"json", date:"2026-05-15" },
+      { crest:"Covenant", format:"csv", date:"2026-05-15" },
+      { crest:"Covenant", format:"pdf", date:"2026-05-15" }
+    ];
+
+    function groupByMonth(data) {
+      const result = {};
+      data.forEach(e => {
+        const month = e.date.slice(0,7); // YYYY-MM
+        if (!result[month]) result[month] = { ATS:0, Unity:0, Covenant:0, json:0, csv:0, pdf:0 };
+        result[month][e.crest]++;
+        result[month][e.format]++;
+      });
+      return result;
+    }
+
+    const grouped = groupByMonth(exportHistory);
+    const months = Object.keys(grouped);
+
+    let chart;
+    function showChart(type) {
+      if (chart) chart.destroy();
+      const ctx = document.getElementById("analyticsChart");
+      if (type==="crest") {
+        chart = new Chart(ctx, {
+          type:'bar',
+          data:{
+            labels:months,
+            datasets:[
+              { label:"ATS", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].ATS) },
+              { label:"Unity", backgroundColor:"#2aa198", data:months.map(m=>grouped[m].Unity) },
+              { label:"Covenant", backgroundColor:"#b58900", data:months.map(m=>grouped[m].Covenant) }
+            ]
+          }
+        });
+      }
+      if (type==="format") {
+        chart = new Chart(ctx, {
+          type:'bar',
+          data:{
+            labels:months,
+            datasets:[
+              { label:"JSON", backgroundColor:"#657b83", data:months.map(m=>grouped[m].json) },
+              { label:"CSV", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].csv) },
+              { label:"PDF", backgroundColor:"#b58900", data:months.map(m=>grouped[m].pdf) }
+            ]
+          }
+        });
+      }
+      if (type==="combined") {
+        chart = new Chart(ctx, {
+          type:'line',
+          data:{
+            labels:months,
+            datasets:[
+              { label:"ATS Crest", borderColor:"#268bd2", data:months.map(m=>grouped[m].ATS), fill:false },
+              { label:"Unity Crest", borderColor:"#2aa198", data:months.map(m=>grouped[m].Unity), fill:false },
+              { label:"Covenant Crest", borderColor:"#b58900", data:months.map(m=>grouped[m].Covenant), fill:false },
+              { label:"JSON", borderColor:"#657b83", borderDash:[5,5], data:months.map(m=>grouped[m].json), fill:false },
+              { label:"CSV", borderColor:"#268bd2", borderDash:[5,5], data:months.map(m=>grouped[m].csv), fill:false },
+              { label:"PDF", borderColor:"#b58900", borderDash:[5,5], data:months.map(m=>grouped[m].pdf), fill:false }
+            ]
+          }
+        });
+      }
+    }
+
+    // Default view
+    showChart('crest');
+  </script>
+</body>
+</html>

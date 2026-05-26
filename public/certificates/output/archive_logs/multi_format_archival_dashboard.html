@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Format Archival Export</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    button { padding: 10px 20px; margin: 10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+  </style>
+</head>
+<body>
+  <h1>ATS Multi-Format Archival Export</h1>
+  <div class="controls">
+    <button onclick="exportJSON()">Export JSON</button>
+    <button onclick="exportCSV()">Export CSV</button>
+    <button onclick="exportPDF()">Export PDF</button>
+  </div>
+  <pre id="exportOutput"></pre>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const liveLogs = [
+      { date:"2026-05-14", crest:"ATS" },
+      { date:"2026-05-14", crest:"Unity" },
+      { date:"2026-05-14", crest:"Covenant" },
+      { date:"2026-05-15", crest:"ATS" },
+      { date:"2026-05-15", crest:"Unity" },
+      { date:"2026-05-15", crest:"Covenant" }
+    ];
+
+    function exportJSON() {
+      const archive = { timestamp:new Date().toISOString(), entries:liveLogs };
+      const json = JSON.stringify(archive, null, 2);
+      downloadFile(json, "json");
+    }
+
+    function exportCSV() {
+      let csv = "date,crest\n";
+      liveLogs.forEach(l => { csv += `${l.date},${l.crest}\n`; });
+      downloadFile(csv, "csv");
+    }
+
+    async function exportPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text("ATS Archival Export", 10, 10);
+      liveLogs.forEach((l,i) => doc.text(`${l.date} - ${l.crest}`, 10, 20+(i*10)));
+      doc.save(`ATS_Archive_${new Date().toISOString().split("T")[0]}.pdf`);
+    }
+
+    function downloadFile(content, type) {
+      const blob = new Blob([content], {type:`text/${type}`});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_Archive_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

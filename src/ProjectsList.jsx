@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabas../supabase-js";
 import "./ProjectsList.css"; // aura animations
 
 // Initialize Supabase client using Vite env variables

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Consensus Chronicle Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Consensus Chronicle Dashboard</h1>
+  <div class="chart-container"><canvas id="chronicleChart"></canvas></div>
+  <div class="summary" id="chronicleSummary">Awaiting chronicle data...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>ATS</th><th>Unity</th><th>Covenant</th></tr></thead>
+    <tbody id="chronicleTable"></tbody>
+  </table>
+  <button onclick="exportChronicle()">Export Chronicle Archive</button>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let chronicleChart;
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function buildChronicle() {
+      const datasets = consensusHistory.map((c,i)=>({
+        label:`${c.date} (${c.text})`,
+        borderColor:"#"+Math.floor(Math.random()*16777215).toString(16),
+        data:scenarioTotals(c.factors),
+        fill:false
+      }));
+
+      if (chronicleChart) chronicleChart.destroy();
+      chronicleChart = new Chart(document.getElementById("chronicleChart"), {
+        type:'line',
+        data:{ labels:months, datasets }
+      });
+
+      const table = document.getElementById("chronicleTable");
+      table.innerHTML = "";
+      consensusHistory.forEach(c=>{
+        table.innerHTML += `<tr><td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td><td>${c.factors.ats}</td><td>${c.factors.unity}</td><td>${c.factors.covenant}</td></tr>`;
+      });
+
+      document.getElementById("chronicleSummary").innerText = `Chronicle built with ${consensusHistory.length} consensus outcomes. Latest: "${consensusHistory.slice(-1)[0].text}"`;
+    }
+
+    function exportChronicle() {
+      const archive = { timestamp:new Date().toISOString(), history:consensusHistory };
+      const json = JSON.stringify(archive, null, 2);
+      downloadFile(json, "json");
+
+      let csv = "date,text,votes,ats,unity,covenant\n";
+      consensusHistory.forEach(c=>{
+        csv += `${c.date},"${c.text}",${c.votes},${c.factors.ats},${c.factors.unity},${c.factors.covenant}\n`;
+      });
+      downloadFile(csv, "csv");
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text("ATS Global Consensus Chronicle", 10, 10);
+      consensusHistory.forEach((c,i)=> doc.text(`${c.date} - ${c.text} (Votes: ${c.votes})`, 10, 20+(i*10)));
+      doc.save(`ATS_Consensus_Chronicle_${new Date().toISOString().split("T")[0]}.pdf`);
+    }
+
+    function downloadFile(content, type) {
+      const blob = new Blob([content], {type:`text/${type}`});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_Consensus_Chronicle_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize chronicle
+    buildChronicle();
+  </script>
+</body>
+</html>

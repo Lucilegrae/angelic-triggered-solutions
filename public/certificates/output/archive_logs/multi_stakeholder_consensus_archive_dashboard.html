@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Consensus Archive Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+  </style>
+</head>
+<body>
+  <h1>ATS Consensus Archive Dashboard</h1>
+  <div class="chart-container"><canvas id="consensusChart"></canvas></div>
+  <div class="summary" id="consensusSummary">Awaiting consensus outcomes...</div>
+  <button onclick="exportConsensus()">Export Consensus Archive Now</button>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let consensusChart;
+    let consensusOutcome = { text:"Unity doubles, Covenant declines", votes:5, factors:{ats:1,unity:2,covenant:0.5} };
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function updateConsensus() {
+      const totals = scenarioTotals(consensusOutcome.factors);
+      if (consensusChart) consensusChart.destroy();
+      consensusChart = new Chart(document.getElementById("consensusChart"), {
+        type:'line',
+        data:{ labels:months, datasets:[{ label:"Consensus Forecast", borderColor:"#b58900", data:totals, fill:false }] }
+      });
+      document.getElementById("consensusSummary").innerText = `Consensus: "${consensusOutcome.text}" with ${consensusOutcome.votes} votes. Projected crest exports: ${totals.slice(-1)[0]}`;
+    }
+
+    function exportConsensus() {
+      const archive = { timestamp:new Date().toISOString(), consensus:consensusOutcome };
+      const json = JSON.stringify(archive, null, 2);
+      downloadFile(json, "json");
+
+      let csv = "text,votes,ats,unity,covenant\n";
+      csv += `"${consensusOutcome.text}",${consensusOutcome.votes},${consensusOutcome.factors.ats},${consensusOutcome.factors.unity},${consensusOutcome.factors.covenant}\n`;
+      downloadFile(csv, "csv");
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text("ATS Consensus Archive", 10, 10);
+      doc.text(`Consensus: ${consensusOutcome.text}`, 10, 20);
+      doc.text(`Votes: ${consensusOutcome.votes}`, 10, 30);
+      doc.text(`Factors: ATS×${consensusOutcome.factors.ats}, Unity×${consensusOutcome.factors.unity}, Covenant×${consensusOutcome.factors.covenant}`, 10, 40);
+      doc.save(`ATS_Consensus_Archive_${new Date().toISOString().split("T")[0]}.pdf`);
+    }
+
+    function downloadFile(content, type) {
+      const blob = new Blob([content], {type:`text/${type}`});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_Consensus_Archive_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize chart
+    updateConsensus();
+
+    // Schedule nightly export at 23:59
+    function scheduleNightlyExport() {
+      const now = new Date();
+      const next = new Date();
+      next.setHours(23,59,0,0);
+      if (next <= now) next.setDate(next.getDate()+1);
+      const delay = next.getTime() - now.getTime();
+      setTimeout(function() {
+        exportConsensus();
+        setInterval(exportConsensus, 24*60*60*1000);
+      }, delay);
+    }
+    scheduleNightlyExport();
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Scenario Overlays</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    input { margin:5px; padding:5px; width:80px; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Scenario Overlays</h1>
+  <div class="controls">
+    ATS×<input type="number" id="atsOverlay" value="1">
+    Unity×<input type="number" id="unityOverlay" value="1">
+    Covenant×<input type="number" id="covenantOverlay" value="1">
+    <button onclick="applyScenario()">Apply Scenario Overlay</button>
+  </div>
+  <div class="chart-container"><canvas id="scenarioOverlayChart"></canvas></div>
+  <div class="summary" id="scenarioOverlaySummary">Overlay hypothetical scenarios on top of cumulative statistics...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>Scenario</th><th>Projection</th><th>Cumulative Votes</th><th>Scenario Overlay</th></tr></thead>
+    <tbody id="scenarioOverlayTable"></tbody>
+  </table>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, scenario:"A", factors:{ats:1,unity:1,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, scenario:"B", factors:{ats:1.5,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, scenario:"C", factors:{ats:2,unity:1,covenant:1} }
+    ];
+
+    let scenarioOverlayChart;
+
+    function applyScenario() {
+      const atsFactor=parseFloat(document.getElementById("atsOverlay").value);
+      const unityFactor=parseFloat(document.getElementById("unityOverlay").value);
+      const covenantFactor=parseFloat(document.getElementById("covenantOverlay").value);
+
+      let cumulativeVotes=0;
+      const labels=[], votesData=[], projectionData=[], scenarioData=[];
+      const table=document.getElementById("scenarioOverlayTable");
+      table.innerHTML="";
+
+      negotiationHistory.forEach(c=>{
+        cumulativeVotes+=c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+        const proj=(c.factors.ats*1)+(c.factors.unity*1)+(c.factors.covenant*1);
+        projectionData.push(proj);
+        const scenarioVal=(c.factors.ats*atsFactor)+(c.factors.unity*unityFactor)+(c.factors.covenant*covenantFactor);
+        scenarioData.push(scenarioVal);
+
+        table.innerHTML+=`<tr><td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td><td>${c.scenario}</td><td>${proj}</td><td>${cumulativeVotes}</td><td>${scenarioVal}</td></tr>`;
+      });
+
+      if(scenarioOverlayChart) scenarioOverlayChart.destroy();
+      scenarioOverlayChart=new Chart(document.getElementById("scenarioOverlayChart"),{
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false },
+            { label:"Projection Trend", borderColor:"#b58900", data:projectionData, fill:false, borderDash:[5,5] },
+            { label:"Scenario Overlay", borderColor:"#6c71c4", data:scenarioData, fill:false }
+          ]
+        }
+      });
+
+      document.getElementById("scenarioOverlaySummary").innerText=`Scenario overlay applied → ATS×${atsFactor}, Unity×${unityFactor}, Covenant×${covenantFactor}. Latest overlay projection: ${scenarioData.slice(-1)[0]}, cumulative votes: ${cumulativeVotes}`;
+    }
+
+    // Initialize with default scenario
+    applyScenario();
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import { logAuditTrail } from "../LogAuditTrail";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../.../supabaseClient";
 
 export const logErrorCardInspection = (errors, errorId, action) => {
   logAuditTrail(

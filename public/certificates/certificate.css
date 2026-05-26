@@ -1,0 +1,301 @@
+body.certificate {
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  color: #fff;
+  font-family: 'Segoe UI', serif;
+  text-align: center;
+  padding: 2rem;
+}
+
+header .crest {
+  width: 120px;
+  animation: pulse 3s infinite;
+}
+header h1 {
+  font-size: 2rem;
+  color: gold;
+  text-shadow: 0 0 10px #ffd700;
+}
+header h2 {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.blessing {
+  margin: 2rem auto;
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.chamber-ring {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin: 3rem auto;
+  max-width: 800px;
+}
+.chamber-ring img {
+  width: 80px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.chamber-ring img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px gold);
+}
+
+.seal {
+  margin-top: 3rem;
+}
+.seal img {
+  width: 80px;
+}
+.seal p {
+  margin: 0.5rem 0;
+  color: #ffd700;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 10px gold); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 25px gold); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 10px gold); }
+}
+
+body.certificate {
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at center, #fffbe6, #fdf5d4, #f9e79f);
+  color: #333;
+  text-align: center;
+  padding: 40px;
+  border: 12px double gold;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+header h1 {
+  font-size: 2.2em;
+  color: #b8860b;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+header h2 {
+  font-size: 1.4em;
+  color: #444;
+  margin-top: 5px;
+}
+
+.crest {
+  width: 120px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 15px gold);
+}
+
+.blessing {
+  margin: 30px auto;
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 700px;
+  color: #222;
+}
+
+.blessing .recipient,
+.blessing .branch {
+  font-weight: bold;
+  color: #b8860b;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+.chamber-ring {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px auto;
+  gap: 15px;
+}
+
+.chamber-ring img {
+  width: 80px;
+  height: 80px;
+  border: 3px solid gold;
+  border-radius: 50%;
+  padding: 5px;
+  background: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chamber-ring img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+}
+
+footer .seal {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 3px solid gold;
+}
+
+footer .seal img {
+  width: 100px;
+  filter: drop-shadow(0 0 12px gold);
+}
+
+footer .seal p {
+  font-size: 1.1em;
+  color: #444;
+  margin: 5px 0;
+}
+
+footer .seal .date {
+  font-weight: bold;
+  color: #b8860b;
+}
+
+/* Base certificate styling */
+body.certificate {
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at center, #fffbe6, #fdf5d4, #f9e79f);
+  color: #333;
+  text-align: center;
+  padding: 40px;
+  border: 12px double gold;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+/* Header */
+header h1 {
+  font-size: 2.2em;
+  color: #b8860b;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+header h2 {
+  font-size: 1.4em;
+  color: #444;
+  margin-top: 5px;
+}
+
+.crest {
+  width: 120px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 15px gold);
+}
+
+/* Blessing text */
+.blessing {
+  margin: 30px auto;
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 700px;
+  color: #222;
+}
+
+.blessing .recipient,
+.blessing .branch {
+  font-weight: bold;
+  color: #b8860b;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+/* Chamber ring */
+.chamber-ring {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px auto;
+  gap: 15px;
+}
+
+.chamber-ring img {
+  width: 80px;
+  height: 80px;
+  border: 3px solid gold;
+  border-radius: 50%;
+  padding: 5px;
+  background: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chamber-ring img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+}
+
+/* Branch-specific aura colors */
+.branch-banking { box-shadow: 0 0 20px rgba(0, 102, 204, 0.8); }      /* Blue aura */
+.branch-steel { box-shadow: 0 0 20px rgba(192, 192, 192, 0.8); }      /* Silver aura */
+.branch-government { box-shadow: 0 0 20px rgba(0, 128, 0, 0.8); }     /* Green aura */
+.branch-veterans { box-shadow: 0 0 20px rgba(139, 69, 19, 0.8); }     /* Bronze aura */
+.branch-cement { box-shadow: 0 0 20px rgba(128, 128, 128, 0.8); }     /* Gray aura */
+.branch-community { box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); }  /* Pink aura */
+.branch-landowners { box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); }   /* Orange aura */
+.branch-housing { box-shadow: 0 0 20px rgba(75, 0, 130, 0.8); }       /* Indigo aura */
+.branch-insurance { box-shadow: 0 0 20px rgba(0, 191, 255, 0.8); }    /* Cyan aura */
+.branch-councils { box-shadow: 0 0 20px rgba(255, 255, 0, 0.8); }     /* Yellow aura */
+.branch-partners { box-shadow: 0 0 20px rgba(199, 21, 133, 0.8); }    /* Magenta aura */
+.branch-miners { box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); }        /* Red aura */
+
+/* Footer seal */
+footer .seal {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 3px solid gold;
+}
+
+footer .seal img {
+  width: 100px;
+  filter: drop-shadow(0 0 12px gold);
+}
+
+footer .seal p {
+  font-size: 1.1em;
+  color: #444;
+  margin: 5px 0;
+}
+
+footer .seal .date {
+  font-weight: bold;
+  color: #b8860b;
+}
+
+.legend {
+  margin-top: 40px;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 2px solid gold;
+  border-radius: 10px;
+  background: #fffef5;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.legend h3 {
+  text-align: center;
+  color: #b8860b;
+  margin-bottom: 15px;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+}
+
+.legend ul {
+  list-style: none;
+  padding: 0;
+}
+
+.legend li {
+  font-size: 1em;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px solid gold;
+  border-radius: 4px;
+}
+
+

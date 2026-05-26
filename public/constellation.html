@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Golden Crest Portal</title>
+  <link rel="stylesheet" href="../src/theme.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- Redirect immediately to constellation chamber -->
+  <meta http-equiv="refresh" content="0; url=constellation.html" />
+</head>
+<body>
+  <noscript>
+    <p>If redirect does not work, 
+    <a href="constellation.html">click here to enter the Constellation Chamber</a>.</p>
+  </noscript>
+</body>
+  <div class="constellation">
+    <!-- Golden Star Crest -->
+    <img src="banners/golden-star-crest.png" class="center-star" />
+
+    <!-- Golden Path Circle + Covenant Trails -->
+    <svg class="paths" width="800" height="800" viewBox="0 0 800 800">
+      <!-- Orbit Circle -->
+      <circle cx="400" cy="400" r="300" stroke="gold" stroke-width="2" fill="none" stroke-dasharray="10 10">
+        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="4s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- Continuous Covenant Ring (12 connections) -->
+      <line x1="400" y1="100" x2="659" y2="250" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;10,10;5,5" dur="6s" repeatCount="indefinite" />
+      </line>
+      <line x1="659" y1="250" x2="659" y2="550" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;15,15;5,5" dur="8s" repeatCount="indefinite" />
+      </line>
+      <line x1="659" y1="550" x2="400" y2="700" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;20,20;5,5" dur="10s" repeatCount="indefinite" />
+      </line>
+      <line x1="400" y1="700" x2="141" y2="550" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;12,12;5,5" dur="7s" repeatCount="indefinite" />
+      </line>
+      <line x1="141" y1="550" x2="141" y2="250" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;18,18;5,5" dur="9s" repeatCount="indefinite" />
+      </line>
+      <line x1="141" y1="250" x2="100" y2="400" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;14,14;5,5" dur="7s" repeatCount="indefinite" />
+      </line>
+      <line x1="100" y1="400" x2="250" y2="650" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;16,16;5,5" dur="8s" repeatCount="indefinite" />
+      </line>
+      <line x1="250" y1="650" x2="400" y2="700" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;22,22;5,5" dur="11s" repeatCount="indefinite" />
+      </line>
+      <line x1="400" y1="700" x2="659" y2="550" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;18,18;5,5" dur="9s" repeatCount="indefinite" />
+      </line>
+      <line x1="659" y1="550" x2="659" y2="250" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;12,12;5,5" dur="7s" repeatCount="indefinite" />
+      </line>
+      <line x1="659" y1="250" x2="400" y2="100" stroke="gold" stroke-width="2" opacity="0.7">
+        <animate attributeName="stroke-dasharray" values="5,5;10,10;5,5" dur="6s" repeatCount="indefinite" />
+      </line>
+    </svg>
+
+    <!-- Orbit with Crests -->
+    <div class="orbit">
+      <div class="crest-wrapper" style="transform: rotate(0deg) translate(300px) rotate(-0deg);">
+        <img src="images/crests/banking_crest.png" id="banking_crest" class="crest" />
+        <div class="blessing">Prosperity through trust</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(30deg) translate(300px) rotate(-30deg);">
+        <img src="images/crests/insurance_policy_crest.png" id="insurance_policy_crest" class="crest" />
+        <div class="blessing">Protection and assurance</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(60deg) translate(300px) rotate(-60deg);">
+        <img src="images/crests/veterans_crest.png" id="veterans_crest" class="crest" />
+        <div class="blessing">Honor and sacrifice</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(90deg) translate(300px) rotate(-90deg);">
+        <img src="images/crests/miners_crest.png" id="miners_crest" class="crest" />
+        <div class="blessing">Strength from the earth</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(120deg) translate(300px) rotate(-120deg);">
+        <img src="images/crests/housing_members_crest.png" id="housing_members_crest" class="crest" />
+        <div class="blessing">Shelter and unity</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(150deg) translate(300px) rotate(-150deg);">
+        <img src="images/crests/community_crest.png" id="community_crest" class="crest" />
+        <div class="blessing">Together we rise</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(180deg) translate(300px) rotate(-180deg);">
+        <img src="images/crests/councils_crest.png" id="councils_crest" class="crest" />
+        <div class="blessing">Wisdom in governance</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(210deg) translate(300px) rotate(-210deg);">
+        <img src="images/crests/landowners_crest.png" id="landowners_crest" class="crest" />
+        <div class="blessing">Stewardship of the land</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(240deg) translate(300px) rotate(-240deg);">
+        <img src="images/crests/cement_crest.png" id="cement_crest" class="crest" />
+        <div class="blessing">Foundation of progress</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(270deg) translate(300px) rotate(-270deg);">
+        <img src="images/crests/steel_crest.png" id="steel_crest" class="crest" />
+        <div class="blessing">Forged in resilience</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(300deg) translate(300px) rotate(-300deg);">
+        <img src="images/crests/government_crest.png" id="government_crest" class="crest" />
+        <div class="blessing">Authority with balance</div>
+      </div>
+      <div class="crest-wrapper" style="transform: rotate(330deg) translate(300px) rotate(-330deg);">
+        <img src="images/crests/private_partners_crest.png" id="private_partners_crest" class="crest" />
+        <div class="blessing">Collaboration for growth</div>
+      </div>
+    </div> <!-- end orbit -->
+  </div> <!-- end constellation -->
+</body>
+</html>
+
+<!-- Blessing Scroll Panel -->
+<div id="scroll-panel">
+  <h2 id="scroll-title"></h2>
+  <p id="scroll-text"></p>
+  <button onclick="closeScroll()">Close</button>
+</div>
+
+<!-- Sound Motifs -->
+<audio id="banking-sound" src="sounds/banking_chime.mp3"></audio>
+<audio id="insurance-sound" src="sounds/insurance_bell.mp3"></audio>
+<audio id="veterans-sound" src="sounds/veterans_horn.mp3"></audio>
+<audio id="miners-sound" src="sounds/miners_pick.mp3"></audio>
+<audio id="housing-sound" src="sounds/housing_drum.mp3"></audio>
+<audio id="community-sound" src="sounds/community_chant.mp3"></audio>
+<audio id="councils-sound" src="sounds/councils_scroll.mp3"></audio>
+<audio id="landowners-sound" src="sounds/landowners_flute.mp3"></audio>
+<audio id="cement-sound" src="sounds/cement_trowel.mp3"></audio>
+<audio id="steel-sound" src="sounds/steel_chime.mp3"></audio>
+<audio id="government-sound" src="sounds/government_gavel.mp3"></audio>
+<audio id="partners-sound" src="sounds/partners_handshake.mp3"></audio>
+
+<script>
+function bindSound(crestId, soundId) {
+  const crest = document.getElementById(crestId);
+  const sound = document.getElementById(soundId);
+  if (crest && sound) {
+    crest.addEventListener("mouseenter", () => {
+      sound.currentTime = 0;
+      sound.play();
+    });
+  }
+}
+
+// Blessing scroll data
+const blessings = {
+  "banking_crest": {title:"Banking Crest", text:"Prosperity through trust — this crest anchors financial covenant, ensuring stability and growth."},
+  "insurance_policy_crest": {title:"Insurance Crest", text:"Protection and assurance — safeguarding community and legacy against uncertainty."},
+  "veterans_crest": {title:"Veterans Crest", text:"Honor and sacrifice — a solemn lineage of service and resilience."},
+  "miners_crest": {title:"Miners Crest", text:"Strength from the earth — the foundation of industry and wealth."},
+  "housing_members_crest": {title:"Housing Crest", text:"Shelter and unity — homes as sanctuaries of dignity."},
+  "community_crest": {title:"Community Crest", text:"Together we rise — collective spirit binding all branches."},
+  "councils_crest": {title:"Councils Crest", text:"Wisdom in governance — deliberation guiding covenant decisions."},
+  "landowners_crest": {title:"Landowners Crest", text:"Stewardship of the land — guardianship of heritage and soil."},
+  "cement_crest": {title:"Cement Crest", text:"Foundation of progress — binding structures into permanence."},
+  "steel_crest": {title:"Steel Crest", text:"Forged in resilience — strength and endurance in covenant bonds."},
+  "government_crest": {title:"Government Crest", text:"Authority with balance — leadership sanctified by responsibility."},
+  "private_partners_crest": {title:"Partners Crest", text:"Collaboration for growth — alliances that expand prosperity."}
+};
+
+// Bind crest click to scroll
+Object.keys(blessings).forEach(id => {
+  const crest = document.getElementById(id);
+  if (crest) {
+    crest.addEventListener("click", () => {
+      document.getElementById("scroll-title").innerText = blessings[id].title;
+      document.getElementById("scroll-text").innerText = blessings[id].text;
+      document.getElementById("scroll-panel").style.display = "block";
+    });
+  }
+});
+
+function closeScroll() {
+  document.getElementById("scroll-panel").style.display = "none";
+}
+
+// Bind sounds
+bindSound("banking_crest", "banking-sound");
+bindSound("insurance_policy_crest", "insurance-sound");
+bindSound("veterans_crest", "veterans-sound");
+bindSound("miners_crest", "miners-sound");
+bindSound("housing_members_crest", "housing-sound");
+bindSound("community_crest", "community-sound");
+bindSound("councils_crest", "councils-sound");
+bindSound("landowners_crest", "landowners-sound");
+bindSound("cement_crest", "cement-sound");
+bindSound("steel_crest", "steel-sound");
+bindSound("government_crest", "government-sound");
+bindSound("private_partners_crest", "partners-sound");
+</script>
+</body>
+</html>

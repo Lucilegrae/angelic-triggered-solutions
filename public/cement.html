@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cement Chamber - Angelic Triggered Solutions</title>
+  <link rel="stylesheet" href="src/theme.css">
+</head>
+<body class="cement">
+
+  <!-- Banner -->
+  <header>
+    <div class="banner-container">
+      <img id="banner" src="banners/cement_banner.png" alt="Cement Banner">
+    </div>
+  </header>
+
+  <!-- Crest Row -->
+  <main class="container">
+    <div class="crest-row">
+      <img id="crest" src="images/crests/cement_crest.png" alt="Cement Crest">
+    </div>
+
+    <!-- Scroll Panel -->
+    <div class="scroll-panel">
+      <img src="images/crests/community_crest.png" alt="Community Crest">
+      <div class="blessing-text">
+        <h2>Cement Blessing</h2>
+        <p>May the foundation of cement bind communities and fortify Kubatana District with permanence.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sound Motif -->
+  <audio id="sound" src="sounds/cement_trowel.mp3" preload="auto"></audio>
+  <script>
+    // Play sound motif on crest hover
+    const crest = document.getElementById('crest');
+    const sound = document.getElementById('sound');
+    crest.addEventListener('mouseenter', () => sound.play());
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Angelic Triggered Solutions</p>
+  </footer>
+
+</body>
+</html>

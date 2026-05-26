@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Master Ceremonial Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .section { margin: 40px auto; width: 90%; }
+    .chart-container { width: 85%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>ATS Master Ceremonial Dashboard</h1>
+
+  <!-- Annual Summary -->
+  <div class="section">
+    <h2>Annual Crest Summary</h2>
+    <div class="chart-container"><canvas id="annualChart"></canvas></div>
+  </div>
+
+  <!-- Cumulative Timeline -->
+  <div class="section">
+    <h2>Cumulative Crest Timeline</h2>
+    <div class="chart-container"><canvas id="cumulativeChart"></canvas></div>
+  </div>
+
+  <!-- Scenario Forecast -->
+  <div class="section">
+    <h2>Scenario Forecasts</h2>
+    <div class="chart-container"><canvas id="scenarioChart"></canvas></div>
+  </div>
+
+  <!-- Interactive Toggle -->
+  <div class="section">
+    <h2>Interactive Multi-Crest Toggle</h2>
+    <div class="chart-container"><canvas id="toggleChart"></canvas></div>
+  </div>
+
+  <script>
+    const labelsYears = ["2025","2026"];
+    const annualData = {
+      labels: labelsYears,
+      datasets: [
+        { label:"ATS Crest", backgroundColor:"#268bd2", data:[365,120] },
+        { label:"Unity & Faith", backgroundColor:"#2aa198", data:[365,120] },
+        { label:"Golden Covenant", backgroundColor:"#b58900", data:[365,120] }
+      ]
+    };
+    new Chart(document.getElementById("annualChart"), { type:'bar', data:annualData });
+
+    const labelsDays = ["2026-05-14","2026-05-15","2026-05-16"];
+    const cumulativeData = {
+      labels: labelsDays,
+      datasets: [
+        { label:"ATS Crest", borderColor:"#268bd2", data:[1,2,3], fill:false },
+        { label:"Unity & Faith", borderColor:"#2aa198", data:[1,2,3], fill:false },
+        { label:"Golden Covenant", borderColor:"#b58900", data:[1,2,3], fill:false }
+      ]
+    };
+    new Chart(document.getElementById("cumulativeChart"), { type:'line', data:cumulativeData });
+
+    const labelsScenario = ["2026","2027","2028","2029"];
+    const scenarioData = {
+      labels: labelsScenario,
+      datasets: [
+        { label:"Conservative Growth", borderColor:"#657b83", data:[720,800,880,950], fill:false, borderDash:[5,5] },
+        { label:"Moderate Growth", borderColor:"#268bd2", data:[720,900,1100,1300], fill:false },
+        { label:"Ambitious Growth", borderColor:"#b58900", data:[720,1000,1400,1800], fill:false }
+      ]
+    };
+    new Chart(document.getElementById("scenarioChart"), { type:'line', data:scenarioData });
+
+    const toggleData = {
+      labels: labelsScenario,
+      datasets: [
+        { label:"ATS - Conservative", borderColor:"#268bd2", data:[720,800,880,950], fill:false, borderDash:[5,5] },
+        { label:"ATS - Moderate", borderColor:"#268bd2", data:[720,900,1100,1300], fill:false },
+        { label:"Unity - Conservative", borderColor:"#2aa198", data:[700,780,860,940], fill:false, borderDash:[5,5] },
+        { label:"Unity - Moderate", borderColor:"#2aa198", data:[700,880,1080,1280], fill:false },
+        { label:"Covenant - Conservative", borderColor:"#b58900", data:[710,790,870,950], fill:false, borderDash:[5,5] },
+        { label:"Covenant - Moderate", borderColor:"#b58900", data:[710,890,1090,1290], fill:false }
+      ]
+    };
+    new Chart(document.getElementById("toggleChart"), { type:'line', data:toggleData });
+  </script>
+</body>
+</html>

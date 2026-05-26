@@ -1,0 +1,3 @@
+0 0 * * * /path/to/regenerate_archive.sh >> /path/to/logs/archive_regen.log 2>&1
+crontab -e
+* * * * * ~/angelic-triggered-solutions/angelic-triggered-solutions/public/certificates/output/update_dashboard.sh

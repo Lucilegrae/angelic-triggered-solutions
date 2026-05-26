@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Nightly Auto-Tab Archival</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .archive { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; max-height:200px; overflow-y:auto; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Nightly Auto-Tab Archival</h1>
+  <div class="controls">
+    <label>ATS×<input type="number" id="atsFactor" value="1" onchange="sendFactors()"></label>
+    <label>Unity×<input type="number" id="unityFactor" value="1" onchange="sendFactors()"></label>
+    <label>Covenant×<input type="number" id="covenantFactor" value="1" onchange="sendFactors()"></label>
+  </div>
+  <div class="chart-container"><canvas id="autoTabChart"></canvas></div>
+  <div class="summary" id="autoTabSummary">Stakeholder inputs streaming and auto-archived nightly...</div>
+  <div class="archive" id="autoTabLog">Nightly auto-tab archives will appear here...</div>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let autoTabChart;
+    const stakeholderFactors={};
+    const autoTabLogs=JSON.parse(localStorage.getItem("autoTabLogs")||"{}");
+
+    function overlayProjection(factors){
+      return negotiationHistory.map(c=>
+        (c.factors.ats*factors.ats)+(c.factors.unity*factors.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function updateAutoTab(){
+      const datasets=[];
+      Object.keys(stakeholderFactors).forEach(name=>{
+        datasets.push({
+          label:`${name}'s overlay`,
+          borderColor:"#"+Math.floor(Math.random()*16777215).toString(16),
+          data:overlayProjection(stakeholderFactors[name]),
+          fill:false
+        });
+      });
+
+      if(autoTabChart) autoTabChart.destroy();
+      autoTabChart=new Chart(document.getElementById("autoTabChart"),{
+        type:'line',
+        data:{ labels:negotiationHistory.map(c=>c.date), datasets }
+      });
+
+      const summaryText=Object.keys(stakeholderFactors).map(n=>`${n}: ${overlayProjection(stakeholderFactors[n]).slice(-1)[0]}`).join(" | ");
+      document.getElementById("autoTabSummary").innerText=`Live projections → ${summaryText}`;
+
+      // Render auto-tab logs
+      const logDiv=document.getElementById("autoTabLog");
+      logDiv.innerHTML=Object.keys(autoTabLogs).map(day=>{
+        return `<div><strong>${day}</strong><br>${autoTabLogs[day].map(e=>`[${e.timestamp}] ${e.name} → ATS:${e.ats}, Unity:${e.unity}, Covenant:${e.covenant}`).join("<br>")}</div>`;
+      }).join("<hr>");
+    }
+
+    function sendFactors(){
+      const ats=parseFloat(document.getElementById("atsFactor").value);
+      const unity=parseFloat(document.getElementById("unityFactor").value);
+      const covenant=parseFloat(document.getElementById("covenantFactor").value);
+      const msg={ type:"factors", name:"Stakeholder", ats, unity, covenant };
+      socket.send(JSON.stringify(msg));
+    }
+
+    // WebSocket connection
+    const socket=new WebSocket("ws://localhost:8080");
+    socket.onmessage=function(event){
+      const msg=JSON.parse(event.data);
+      if(msg.type==="factors"){
+        stakeholderFactors[msg.name]={ ats:msg.ats, unity:msg.unity, covenant:msg.covenant };
+        // Daily auto-tab log entry
+        const day=new Date().toISOString().split("T")[0];
+        if(!autoTabLogs[day]) autoTabLogs[day]=[];
+        autoTabLogs[day].push({ timestamp:new Date().toISOString(), name:msg.name, ats:msg.ats, unity:msg.unity, covenant:msg.covenant });
+        localStorage.setItem("autoTabLogs",JSON.stringify(autoTabLogs));
+        updateAutoTab();
+      }
+    };
+
+    // Nightly auto export at 00:00
+    function nightlyExport(){
+      const { jsPDF }=window.jspdf;
+      const day=new Date().toISOString().split("T")[0];
+      if(autoTabLogs[day]){
+        const json=JSON.stringify(autoTabLogs[day],null,2);
+        downloadFile(json,"json",day);
+        let csv="timestamp,name,ats,unity,covenant\n";
+        autoTabLogs[day].forEach(e=>{ csv+=`${e.timestamp},${e.name},${e.ats},${e.unity},${e.covenant}\n`; });
+        downloadFile(csv,"csv",day);
+        const doc=new jsPDF();
+        doc.text(`ATS Regeneration Log ${day}`,10,10);
+        autoTabLogs[day].forEach((e,i)=> doc.text(`${e.timestamp} - ${e.name} ATS:${e.ats}, Unity:${e.unity}, Covenant:${e.covenant}`,10,20+(i*10)));
+        doc.save(`ATS_Regeneration_Log_${day}.pdf`);
+      }
+    }
+
+    function downloadFile(content,type,day){
+      const blob=new Blob([content],{type:`text/${type}`});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.href=url;
+      a.download=`ATS_Regeneration_Log_${day}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function scheduleNightlyExport(){
+      const now=new Date();
+      const next=new Date();
+      next.setHours(0,0,0,0);
+      if(next<=now) next.setDate(next.getDate()+1);
+      const delay=next.getTime()-now.getTime();
+      setTimeout(function(){
+        nightlyExport();
+        setInterval(nightlyExport,24*60*60*1000);
+      },delay);
+    }
+    scheduleNightlyExport();
+
+    // Initialize
+    updateAutoTab();
+  </script>
+</body>
+</html>

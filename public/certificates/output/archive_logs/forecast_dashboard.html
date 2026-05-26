@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Crest Growth Forecast</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .chart-container { width: 85%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Crest Growth Forecast</h1>
+  <div class="chart-container">
+    <canvas id="forecastChart"></canvas>
+  </div>
+  <script>
+    // Example data — replace with parsed archive + forecast model
+    const labels = ["2023", "2024", "2025", "2026", "2027", "2028"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "ATS Crest",
+          borderColor: "#268bd2",
+          backgroundColor: "#268bd2",
+          data: [200, 400, 600, 720, 850, 1000], // forecasted growth
+          fill: false,
+          borderDash: [5, 5] // dashed line for forecast
+        },
+        {
+          label: "Unity & Faith",
+          borderColor: "#2aa198",
+          backgroundColor: "#2aa198",
+          data: [180, 380, 580, 700, 820, 950],
+          fill: false,
+          borderDash: [5, 5]
+        },
+        {
+          label: "Golden Covenant",
+          borderColor: "#b58900",
+          backgroundColor: "#b58900",
+          data: [190, 390, 590, 710, 830, 960],
+          fill: false,
+          borderDash: [5, 5]
+        }
+      ]
+    };
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Forecasted Crest Regeneration (2027–2028)' }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    };
+    new Chart(document.getElementById("forecastChart"), config);
+  </script>
+</body>
+</html>

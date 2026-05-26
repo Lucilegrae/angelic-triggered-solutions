@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
-import "../styles/theme.css";
+import { supabase } from ".../supabaseClient";
+import "../theme.css";
 import AuditTrailPanel from "./AuditTrailPanel";
 
 export default function DashboardInitiation() {

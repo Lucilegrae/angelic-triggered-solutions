@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Archival Exports</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Archival Exports</h1>
+  <div class="controls">
+    <button onclick="exportArchive()">Export Voted Consensus Archive</button>
+  </div>
+  <div class="chart-container"><canvas id="archiveVoteChart"></canvas></div>
+  <div class="summary" id="archiveVoteSummary">Voted consensus outcomes archived nightly...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>Scenario</th><th>Projection</th></tr></thead>
+    <tbody id="archiveVoteTable"></tbody>
+  </table>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, scenario:"A", factors:{ats:1,unity:1,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, scenario:"B", factors:{ats:1.5,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, scenario:"C", factors:{ats:2,unity:1,covenant:1} }
+    ];
+
+    let archiveVoteChart;
+
+    function overlayProjection(factors) {
+      return negotiationHistory.map(c=>
+        (c.factors.ats*factors.ats)+(c.factors.unity*factors.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function buildArchive() {
+      const datasets = negotiationHistory.map(c=>({
+        label:`${c.date} Scenario ${c.scenario}`,
+        borderColor:"#"+Math.floor(Math.random()*16777215).toString(16),
+        data:overlayProjection(c.factors),
+        fill:false
+      }));
+
+      if(archiveVoteChart) archiveVoteChart.destroy();
+      archiveVoteChart=new Chart(document.getElementById("archiveVoteChart"),{
+        type:'line',
+        data:{ labels:negotiationHistory.map(c=>c.date), datasets }
+      });
+
+      const table=document.getElementById("archiveVoteTable");
+      table.innerHTML="";
+      negotiationHistory.forEach(c=>{
+        const proj=overlayProjection(c.factors).slice(-1)[0];
+        table.innerHTML+=`<tr><td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td><td>${c.scenario}</td><td>${proj}</td></tr>`;
+      });
+
+      document.getElementById("archiveVoteSummary").innerText=`Archive built with ${negotiationHistory.length} voted outcomes. Latest projection: ${overlayProjection(negotiationHistory.slice(-1)[0].factors).slice(-1)[0]}`;
+    }
+
+    function exportArchive() {
+      const archive={ timestamp:new Date().toISOString(), history:negotiationHistory };
+      const json=JSON.stringify(archive,null,2);
+      downloadFile(json,"json");
+
+      let csv="date,text,votes,scenario,ats,unity,covenant,projection\n";
+      negotiationHistory.forEach(c=>{
+        const proj=overlayProjection(c.factors).slice(-1)[0];
+        csv+=`${c.date},"${c.text}",${c.votes},${c.scenario},${c.factors.ats},${c.factors.unity},${c.factors.covenant},${proj}\n`;
+      });
+      downloadFile(csv,"csv");
+
+      const { jsPDF }=window.jspdf;
+      const doc=new jsPDF();
+      doc.text("ATS Global Overlay Negotiation Archive",10,10);
+      negotiationHistory.forEach((c,i)=> doc.text(`${c.date} - Scenario ${c.scenario} - ${c.text} (Votes:${c.votes})`,10,20+(i*10)));
+      doc.save(`ATS_Overlay_Negotiation_Archive_${new Date().toISOString().split("T")[0]}.pdf`);
+    }
+
+    function downloadFile(content,type){
+      const blob=new Blob([content],{type:`text/${type}`});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.href=url;
+      a.download=`ATS_Overlay_Negotiation_Archive_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize archive
+    buildArchive();
+
+    // Schedule nightly export at 23:59
+    function scheduleNightlyExport(){
+      const now=new Date();
+      const next=new Date();
+      next.setHours(23,59,0,0);
+      if(next<=now) next.setDate(next.getDate()+1);
+      const delay=next.getTime()-now.getTime();
+      setTimeout(function(){
+        exportArchive();
+        setInterval(exportArchive,24*60*60*1000);
+      },delay);
+    }
+    scheduleNightlyExport();
+  </script>
+</body>
+</html>

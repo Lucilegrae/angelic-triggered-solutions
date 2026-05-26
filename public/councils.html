@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Councils Chamber - Angelic Triggered Solutions</title>
+  <link rel="stylesheet" href="src/theme.css">
+</head>
+<body class="councils">
+
+  <!-- Banner -->
+  <header>
+    <div class="banner-container">
+      <img id="banner" src="banners/councils_banner.png" alt="Councils Banner">
+    </div>
+  </header>
+
+  <!-- Crest Row -->
+  <main class="container">
+    <div class="crest-row">
+      <img id="crest" src="images/crests/councils_crest.png" alt="Councils Crest">
+    </div>
+
+    <!-- Scroll Panel -->
+    <div class="scroll-panel">
+      <img src="images/crests/community_crest.png" alt="Community Crest">
+      <div class="blessing-text">
+        <h2>Councils Blessing</h2>
+        <p>May the councils of wisdom deliberate with fairness and guide Kubatana District with balance.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sound Motif -->
+  <audio id="sound" src="sounds/councils_bell.mp3" preload="auto"></audio>
+  <script>
+    // Play sound motif on crest hover
+    const crest = document.getElementById('crest');
+    const sound = document.getElementById('sound');
+    crest.addEventListener('mouseenter', () => sound.play());
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Angelic Triggered Solutions</p>
+  </footer>
+
+</body>
+</html>

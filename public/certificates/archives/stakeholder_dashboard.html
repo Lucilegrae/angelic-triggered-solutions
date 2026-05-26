@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Global Stakeholder Dashboard</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #fdfaf3; color: #333; }
+  h1 { text-align: center; color: #b8860b; }
+  .summary { width: 80%; margin: 20px auto; padding: 15px; background: #e6d8a3; border-radius: 6px; text-align: center; font-size: 18px; }
+  .summary img { max-height: 80px; margin: 0 20px; vertical-align: middle; }
+  table { width: 95%; margin: auto; border-collapse: collapse; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: center; vertical-align: middle; }
+  th { background: #e6d8a3; }
+  tr:nth-child(even) { background: #f9f9f9; }
+  a { color: #0066cc; text-decoration: none; }
+  img { max-width: 120px; border: 1px solid #ccc; border-radius: 4px; }
+  .download { display:block; margin:20px auto; text-align:center; }
+  .download a { background:#b8860b; color:white; padding:10px 20px; border-radius:5px; text-decoration:none; }
+  .download a:hover { background:#a0740a; }
+  .search { text-align:center; margin:20px; }
+  .search input { padding:8px; margin:5px; border:1px solid #ccc; border-radius:5px; width:60%; }
+</style>
+<script>
+function searchTable() {
+  var input = document.getElementById("searchInput").value.toUpperCase();
+  var table = document.getElementById("stakeTable");
+  var tr = table.getElementsByTagName("tr");
+  for (var i = 1; i < tr.length; i++) {
+    var tds = tr[i].getElementsByTagName("td");
+    var match = false;
+    for (var j = 0; j < tds.length; j++) {
+      if (tds[j] && tds[j].innerHTML.toUpperCase().indexOf(input) > -1) {
+        match = true;
+        break;
+      }
+    }
+    tr[i].style.display = match ? "" : "none";
+  }
+}
+</script>
+</head>
+<body>
+<h1>👥 Global Stakeholder Dashboard</h1>
+<div class="summary">
+  <img src="../assets/ats-crest.png" alt="ATS Crest">
+  🌍 Total Certificates: <strong>1</strong><br>
+  👥 Unique Stakeholders: <strong>1</strong><br>
+  📦 Total Batches: <strong>1</strong><br>
+  <img src="../assets/in-unity-faith.png" alt="Unity Seal">
+</div>
+<div class="download">
+  <a href="master_ledger.csv" download>⬇️ Download Master Ledger (CSV)</a>
+</div>
+<div class="download">
+  <a href="global_booklet.pdf" download>📖 Download Global Booklet (PDF)</a>
+</div>
+<div class="search">
+  <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by Stakeholder, UUID, Policy, or Batch...">
+</div>
+<table id="stakeTable">
+<tr>
+  <th>Date</th>
+  <th>Stakeholder</th>
+  <th>Batch</th>
+  <th>Preview</th>
+  <th>Certificate</th>
+  <th>UUID</th>
+  <th>Policy Number</th>
+</tr>
+<tr><td>2026-05-12</td><td><a href="stakeholders/Test_Stakeholder.html">Test Stakeholder</a></td><td><a href="batches/test_batch/dashboard.html">test_batch</a></td><td><img src="batches/test_batch/test_cert.png" alt="Test Stakeholder"></td><td><a href="batches/test_batch/test_cert.png">View</a></td><td>UUID123</td><td>PolicyABC</td></tr>
+</table>
+<div style="text-align:center; margin:30px; font-size:14px; color:#444; font-style:italic;">
+  ✨ In Unity & Faith — This global registry is sealed under ATS ✨
+</div>
+</body>
+</html>

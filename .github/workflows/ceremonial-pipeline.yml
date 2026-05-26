@@ -1,0 +1,147 @@
+name: Ceremonial Site Full Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    # Weekly audit export (Sunday midnight)
+    - cron: '0 0 * * 0'
+    # Monthly legitimacy export (1st of month, midnight)
+    - cron: '0 0 1 * *'
+
+jobs:
+  supabase-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Supabase CLI
+        run: |
+          curl -fsSL https://get.supabase.com/install.sh | sh
+          echo "$HOME/.supabase/bin" >> $GITHUB_PATH
+
+      - name: Deploy weekly-audit-export function
+        run: |
+          supabase functions deploy weekly-audit-export \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_ID }} \
+            --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Apply migrations
+        run: |
+          supabase db push \
+            --project-ref ${{ secrets.SUPABASE_PROJECT_ID }} \
+            --access-token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+  site-deploy:
+    runs-on: ubuntu-latest
+    needs: supabase-deploy
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React site
+        run: npm run build
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate charts
+        run: |
+          python pledgeschart.py
+          python rollcall_chart.py
+          python sector_chart.py
+          python workforce_chart.py
+          python monthly_legitimacy.py
+
+      - name: Archive ceremonial exports
+        run: python ceremonial_master.py
+
+      - name: Generate gold-motif handout PDFs
+        run: python handout_export.py
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./build
+
+      # Weekly Audit Export Email
+      - name: Send weekly audit export email
+        if: github.event.schedule == '0 0 * * 0'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
+          subject: "Covenant Transparency – Weekly Audit Export"
+          to: "stakeholders@example.com"
+          from: "Angelic Triggered Solutions <ceremonial-pipeline@example.com>"
+          html_body: |
+            <!DOCTYPE html>
+            <html>
+            <body style="font-family:Georgia,serif;background:#fff8e7;color:#333;padding:20px;border:5px solid #d4af37;">
+              <h2 style="color:#d4af37;text-align:center;">✨ Weekly Covenant Transparency ✨</h2>
+              <p>Esteemed Stakeholders,</p>
+              <p>The weekly audit export has been completed:</p>
+              <ul>
+                <li>✨ Audit trail logs updated</li>
+                <li>✨ Supabase governance enforced</li>
+                <li>✨ Distribution archives refreshed</li>
+              </ul>
+              <p>This weekly covenant affirms our dedication to legitimacy and accountability.</p>
+              <p style="color:#d4af37;font-style:italic;">In unity and covenant,<br>Angelic Triggered Solutions</p>
+            </body>
+            </html>
+          attachments: |
+            ./archives/weekly_audit_*.pdf
+
+      # Monthly Legitimacy Export Email
+      - name: Send monthly legitimacy export email
+        if: github.event.schedule == '0 0 1 * *'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
+          subject: "Golden Covenant Renewal – Monthly Legitimacy Export"
+          to: "stakeholders@example.com"
+          from: "Angelic Triggered Solutions <ceremonial-pipeline@example.com>"
+          html_body: |
+            <!DOCTYPE html>
+            <html>
+            <body style="font-family:Georgia,serif;background:#fff8e7;color:#333;padding:20px;border:5px solid #d4af37;">
+              <h2 style="color:#d4af37;text-align:center;">✨ Golden Covenant Renewal ✨</h2>
+              <p>Esteemed Stakeholders,</p>
+              <p>With reverence and unity, we affirm the covenant of legitimacy for this new month. The ceremonial site has been renewed and the following affirmations are now live:</p>
+              <ul>
+                <li>✨ Charts regenerated: pledges, rollcall, sector legitimacy, workforce, and education</li>
+                <li>✨ Handouts archived and timestamped for transparent distribution</li>
+                <li>✨ Governance applied through Supabase functions and RLS policies</li>
+                <li>✨ Deployment completed on Vercel for stakeholder access</li>
+              </ul>
+              <p>Attached you will find the ceremonial handouts and legitimacy charts for your records. These documents stand as a testament to our collective covenant and transparency.</p>
+              <p style="color:#d4af37;font-style:italic;">In unity and covenant,<br>Angelic Triggered Solutions</p>
+            </body>
+            </html>
+          attachments: |
+            ./archives/monthly_legitimacy_*.pdf
+            ./archives/cover_*.pdf

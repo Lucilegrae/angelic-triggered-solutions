@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Archive Index</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #fdfaf3; color: #333; }
+  h1 { text-align: center; color: #b8860b; }
+  .summary { width: 80%; margin: 20px auto; padding: 15px; background: #e6d8a3; border-radius: 6px; text-align: center; font-size: 18px; }
+  .summary img { max-height: 80px; margin: 0 20px; vertical-align: middle; }
+  .download { margin-top: 10px; }
+  .search { text-align:center; margin:20px; }
+  .search input { padding:8px; margin:5px; border:1px solid #ccc; border-radius:5px; width:60%; }
+  ul { width: 80%; margin: auto; list-style-type: none; padding: 0; }
+  li { background: #f9f9f9; margin: 10px 0; padding: 15px; border: 1px solid #ccc; border-radius: 6px; }
+  a { color: #0066cc; text-decoration: none; font-weight: bold; }
+  a:hover { text-decoration: underline; }
+  .stats { font-size: 14px; color: #444; margin-top: 5px; }
+</style>
+<script>
+function searchBatches() {
+  var input = document.getElementById("searchInput").value.toUpperCase();
+  var list = document.getElementById("batchList").getElementsByTagName("li");
+  for (var i = 0; i < list.length; i++) {
+    var text = list[i].innerText.toUpperCase();
+    list[i].style.display = text.indexOf(input) > -1 ? "" : "none";
+  }
+}
+</script>
+</head>
+<body>
+<h1>📚 Ceremonial Archive Index</h1>
+<div class="summary">
+  <img src="../assets/ats-crest.png" alt="ATS Crest">
+  🌍 Total Certificates Issued: <strong>1</strong><br>
+  👥 Unique Stakeholders Served: <strong>1</strong><br>
+  <img src="../assets/in-unity-faith.png" alt="Unity Seal">
+  <div class="download">
+    <a href="master_ledger.csv" download>⬇️ Download Master Ledger (CSV)</a>
+  </div>
+</div>
+<div class="search">
+  <input type="text" id="searchInput" onkeyup="searchBatches()" placeholder="Search batches by date or stakeholder...">
+</div>
+<ul id="batchList">
+<li><strong>Batch: test_batch</strong><br>
+<div class="stats">Certificates: 1 | Stakeholders: 1</div>
+</li>
+</ul>
+</body>
+</html>

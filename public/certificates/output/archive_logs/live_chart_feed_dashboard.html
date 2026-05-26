@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Live Chart Feed Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .section { margin: 40px auto; width: 90%; }
+    .chart-container { width: 85%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>ATS Live Chart Feed Dashboard</h1>
+
+  <!-- Global Summary -->
+  <div class="section">
+    <h2>Global Summary (Live)</h2>
+    <p id="summaryText">Awaiting live updates...</p>
+  </div>
+
+  <!-- Cumulative Timeline -->
+  <div class="section">
+    <h2>Cumulative Crest Timeline (Live)</h2>
+    <div class="chart-container"><canvas id="cumulativeChart"></canvas></div>
+  </div>
+
+  <!-- Scenario Forecast -->
+  <div class="section">
+    <h2>Scenario Forecast (Live)</h2>
+    <div class="chart-container"><canvas id="scenarioChart"></canvas></div>
+  </div>
+
+  <script>
+    const cumulativeData = {
+      labels: [],
+      datasets: [
+        { label:"ATS Crest", borderColor:"#268bd2", data:[], fill:false },
+        { label:"Unity & Faith", borderColor:"#2aa198", data:[], fill:false },
+        { label:"Golden Covenant", borderColor:"#b58900", data:[], fill:false }
+      ]
+    };
+    const cumulativeChart = new Chart(document.getElementById("cumulativeChart"), { type:'line', data:cumulativeData });
+
+    const scenarioData = {
+      labels: ["2026","2027","2028","2029"],
+      datasets: [
+        { label:"Conservative Growth", borderColor:"#657b83", data:[720,800,880,950], fill:false, borderDash:[5,5] },
+        { label:"Moderate Growth", borderColor:"#268bd2", data:[720,900,1100,1300], fill:false },
+        { label:"Ambitious Growth", borderColor:"#b58900", data:[720,1000,1400,1800], fill:false }
+      ]
+    };
+    const scenarioChart = new Chart(document.getElementById("scenarioChart"), { type:'line', data:scenarioData });
+
+    const totals = { ATS:0, Unity:0, Covenant:0 };
+    let days = new Set();
+
+    function updateSummary() {
+      const totalCerts = totals.ATS + totals.Unity + totals.Covenant;
+      const dailyAvg = (totalCerts / days.size).toFixed(2);
+      const balance = `${((totals.ATS/totalCerts)*100).toFixed(0)}% ATS, ${((totals.Unity/totalCerts)*100).toFixed(0)}% Unity, ${((totals.Covenant/totalCerts)*100).toFixed(0)}% Covenant`;
+      document.getElementById("summaryText").innerText = `Total: ${totalCerts} | ATS: ${totals.ATS}, Unity: ${totals.Unity}, Covenant: ${totals.Covenant} | Daily Avg: ${dailyAvg} | Balance: ${balance}`;
+    }
+
+    // Connect to WebSocket server (replace ws://localhost:8080 with your pipeline endpoint)
+    const socket = new WebSocket("ws://localhost:8080");
+
+    socket.onmessage = function(event) {
+      const log = JSON.parse(event.data); // { date:"2026-05-16", crest:"ATS" }
+      totals[log.crest]++;
+      days.add(log.date);
+
+      // Update cumulative chart
+      if (!cumulativeData.labels.includes(log.date)) {
+        cumulativeData.labels.push(log.date);
+        cumulativeData.datasets.forEach(ds => ds.data.push(0));
+      }
+      const idx = cumulativeData.labels.indexOf(log.date);
+      if (log.crest === "ATS") cumulativeData.datasets[0].data[idx]++;
+      if (log.crest === "Unity") cumulativeData.datasets[1].data[idx]++;
+      if (log.crest === "Covenant") cumulativeData.datasets[2].data[idx]++;
+      cumulativeChart.update();
+
+      // Update summary
+      updateSummary();
+    };
+  </script>
+</body>
+</html>

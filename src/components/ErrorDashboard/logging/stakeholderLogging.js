@@ -1,5 +1,5 @@
 import { logAuditTrail } from "../LogAuditTrail";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../.../supabaseClient";
 
 export const logStakeholderExport = (errors, type) => {
   logAuditTrail(supabase.auth.getUser(), errors, "STAKEHOLDER_EXPORT", { type, rowCount: errors.length });

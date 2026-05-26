@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase, createMultiChannel, removeChannel } from "../supabaseClient";
+import { supabase, createMultiChannel, removeChannel } from ".../supabaseClient";
 
 /**
  * useRealtimeTables

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Crest-Specific Scenario Forecast</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    .chart-container { width: 85%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Crest-Specific Scenario Forecast</h1>
+  <div class="controls">
+    <label for="crestSelect">Choose Crest: </label>
+    <select id="crestSelect" onchange="updateScenario()">
+      <option value="ats">ATS Crest</option>
+      <option value="unity">Unity & Faith</option>
+      <option value="covenant">Golden Covenant</option>
+    </select>
+    <label for="scenarioSelect">Choose Scenario: </label>
+    <select id="scenarioSelect" onchange="updateScenario()">
+      <option value="conservative">Conservative</option>
+      <option value="moderate">Moderate</option>
+      <option value="ambitious">Ambitious</option>
+    </select>
+  </div>
+  <div class="chart-container">
+    <canvas id="crestScenarioChart"></canvas>
+  </div>
+  <script>
+    const labels = ["2026", "2027", "2028", "2029"];
+    const scenarios = {
+      ats: {
+        conservative: [720, 800, 880, 950],
+        moderate: [720, 900, 1100, 1300],
+        ambitious: [720, 1000, 1400, 1800]
+      },
+      unity: {
+        conservative: [700, 780, 860, 940],
+        moderate: [700, 880, 1080, 1280],
+        ambitious: [700, 980, 1380, 1780]
+      },
+      covenant: {
+        conservative: [710, 790, 870, 950],
+        moderate: [710, 890, 1090, 1290],
+        ambitious: [710, 990, 1390, 1790]
+      }
+    };
+
+    let chartConfig = {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "ATS Crest - Conservative Growth",
+          borderColor: "#268bd2",
+          backgroundColor: "#268bd2",
+          data: scenarios.ats.conservative,
+          fill: false,
+          borderDash: [5, 5]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Crest-Specific Scenario Forecast' }
+        },
+        scales: { y: { beginAtZero: true } }
+      }
+    };
+
+    let crestScenarioChart = new Chart(document.getElementById("crestScenarioChart"), chartConfig);
+
+    function updateScenario() {
+      const crest = document.getElementById("crestSelect").value;
+      const scenario = document.getElementById("scenarioSelect").value;
+      crestScenarioChart.data.datasets[0].data = scenarios[crest][scenario];
+      crestScenarioChart.data.datasets[0].label = crest.charAt(0).toUpperCase() + crest.slice(1) + " Crest - " + scenario.charAt(0).toUpperCase() + scenario.slice(1) + " Growth";
+      crestScenarioChart.update();
+    }
+  </script>
+</body>
+</html>

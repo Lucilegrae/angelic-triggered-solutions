@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Stakeholder Slider Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { width:80%; margin:20px auto; }
+    label { display:block; margin:10px 0; }
+    input[type=range] { width:100%; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .presence { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Multi-Stakeholder Slider Dashboard</h1>
+  <div class="controls">
+    <label>ATS Factor: <span id="atsVal">1</span>
+      <input type="range" id="atsSlider" min="0" max="3" step="0.1" value="1" oninput="sendFactors()">
+    </label>
+    <label>Unity Factor: <span id="unityVal">1</span>
+      <input type="range" id="unitySlider" min="0" max="3" step="0.1" value="1" oninput="sendFactors()">
+    </label>
+    <label>Covenant Factor: <span id="covenantVal">1</span>
+      <input type="range" id="covenantSlider" min="0" max="3" step="0.1" value="1" oninput="sendFactors()">
+    </label>
+  </div>
+  <div class="chart-container"><canvas id="sharedChart"></canvas></div>
+  <div class="summary" id="sharedSummary">Stakeholders adjusting sliders will shape the shared forecast...</div>
+  <div class="presence" id="presenceList">Connected stakeholders: none yet...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let sharedChart;
+    const stakeholderFactors = {};
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function sendFactors() {
+      const atsFactor = parseFloat(document.getElementById("atsSlider").value);
+      const unityFactor = parseFloat(document.getElementById("unitySlider").value);
+      const covenantFactor = parseFloat(document.getElementById("covenantSlider").value);
+
+      document.getElementById("atsVal").innerText = atsFactor;
+      document.getElementById("unityVal").innerText = unityFactor;
+      document.getElementById("covenantVal").innerText = covenantFactor;
+
+      const msg = { type:"factors", name:"Stakeholder", ats:atsFactor, unity:unityFactor, covenant:covenantFactor };
+      socket.send(JSON.stringify(msg));
+    }
+
+    function updateSharedForecast() {
+      const datasets = [];
+      Object.keys(stakeholderFactors).forEach(name=>{
+        datasets.push({
+          label:`${name}'s forecast`,
+          borderColor:"#"+Math.floor(Math.random()*16777215).toString(16),
+          data:scenarioTotals(stakeholderFactors[name]),
+          fill:false
+        });
+      });
+
+      if (sharedChart) sharedChart.destroy();
+      sharedChart = new Chart(document.getElementById("sharedChart"), {
+        type:'line',
+        data:{ labels:months, datasets }
+      });
+
+      const summaryText = Object.keys(stakeholderFactors).map(n=> `${n}: ${scenarioTotals(stakeholderFactors[n]).slice(-1)[0]}`).join(" | ");
+      document.getElementById("sharedSummary").innerText = `Projected crest exports → ${summaryText}`;
+    }
+
+    // WebSocket feed
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="factors") {
+        stakeholderFactors[msg.name] = { ats:msg.ats, unity:msg.unity, covenant:msg.covenant };
+        updateSharedForecast();
+        document.getElementById("presenceList").innerText = "Connected stakeholders: " + Object.keys(stakeholderFactors).join(", ");
+      }
+    };
+
+    // Initialize chart
+    updateSharedForecast();
+  </script>
+</body>
+</html>

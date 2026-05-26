@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Archival Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .chart-container { width: 85%; margin: 40px auto; }
+  </style>
+</head>
+<body>
+  <h1>ATS Archival Analytics</h1>
+
+  <!-- Monthly Totals per Crest -->
+  <div class="chart-container">
+    <h2>Monthly Totals per Crest</h2>
+    <canvas id="crestChart"></canvas>
+  </div>
+
+  <!-- Monthly Totals per Format -->
+  <div class="chart-container">
+    <h2>Monthly Totals per Format</h2>
+    <canvas id="formatChart"></canvas>
+  </div>
+
+  <script>
+    // Example export history (replace with actual archival logs)
+    const exportHistory = [
+      { crest:"ATS", format:"json", date:"2026-05-14" },
+      { crest:"ATS", format:"csv", date:"2026-05-14" },
+      { crest:"ATS", format:"pdf", date:"2026-05-14" },
+      { crest:"Unity", format:"json", date:"2026-05-14" },
+      { crest:"Unity", format:"csv", date:"2026-05-14" },
+      { crest:"Unity", format:"pdf", date:"2026-05-14" },
+      { crest:"Covenant", format:"json", date:"2026-05-15" },
+      { crest:"Covenant", format:"csv", date:"2026-05-15" },
+      { crest:"Covenant", format:"pdf", date:"2026-05-15" }
+    ];
+
+    function groupByMonth(data, key) {
+      const result = {};
+      data.forEach(e => {
+        const month = e.date.slice(0,7); // YYYY-MM
+        if (!result[month]) result[month] = { ATS:0, Unity:0, Covenant:0, json:0, csv:0, pdf:0 };
+        result[month][e.crest]++;
+        result[month][e.format]++;
+      });
+      return result;
+    }
+
+    const grouped = groupByMonth(exportHistory);
+
+    const months = Object.keys(grouped);
+    const crestChart = new Chart(document.getElementById("crestChart"), {
+      type:'bar',
+      data:{
+        labels:months,
+        datasets:[
+          { label:"ATS", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].ATS) },
+          { label:"Unity", backgroundColor:"#2aa198", data:months.map(m=>grouped[m].Unity) },
+          { label:"Covenant", backgroundColor:"#b58900", data:months.map(m=>grouped[m].Covenant) }
+        ]
+      }
+    });
+
+    const formatChart = new Chart(document.getElementById("formatChart"), {
+      type:'bar',
+      data:{
+        labels:months,
+        datasets:[
+          { label:"JSON", backgroundColor:"#657b83", data:months.map(m=>grouped[m].json) },
+          { label:"CSV", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].csv) },
+          { label:"PDF", backgroundColor:"#b58900", data:months.map(m=>grouped[m].pdf) }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Analytics Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    button { padding: 10px 20px; margin: 5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width: 85%; margin: 40px auto; }
+  </style>
+</head>
+<body>
+  <h1>ATS Real-Time Analytics Dashboard</h1>
+  <div class="controls">
+    <button onclick="showChart('crest')">Crest Totals</button>
+    <button onclick="showChart('format')">Format Totals</button>
+    <button onclick="showChart('combined')">Combined View</button>
+  </div>
+  <div class="chart-container">
+    <canvas id="analyticsChart"></canvas>
+  </div>
+
+  <script>
+    const grouped = {}; // { month: { ATS, Unity, Covenant, json, csv, pdf } }
+    const months = [];
+
+    let chart;
+    function showChart(type) {
+      if (chart) chart.destroy();
+      const ctx = document.getElementById("analyticsChart");
+      if (type==="crest") {
+        chart = new Chart(ctx, {
+          type:'bar',
+          data:{
+            labels:months,
+            datasets:[
+              { label:"ATS", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].ATS||0) },
+              { label:"Unity", backgroundColor:"#2aa198", data:months.map(m=>grouped[m].Unity||0) },
+              { label:"Covenant", backgroundColor:"#b58900", data:months.map(m=>grouped[m].Covenant||0) }
+            ]
+          }
+        });
+      }
+      if (type==="format") {
+        chart = new Chart(ctx, {
+          type:'bar',
+          data:{
+            labels:months,
+            datasets:[
+              { label:"JSON", backgroundColor:"#657b83", data:months.map(m=>grouped[m].json||0) },
+              { label:"CSV", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].csv||0) },
+              { label:"PDF", backgroundColor:"#b58900", data:months.map(m=>grouped[m].pdf||0) }
+            ]
+          }
+        });
+      }
+      if (type==="combined") {
+        chart = new Chart(ctx, {
+          type:'line',
+          data:{
+            labels:months,
+            datasets:[
+              { label:"ATS Crest", borderColor:"#268bd2", data:months.map(m=>grouped[m].ATS||0), fill:false },
+              { label:"Unity Crest", borderColor:"#2aa198", data:months.map(m=>grouped[m].Unity||0), fill:false },
+              { label:"Covenant Crest", borderColor:"#b58900", data:months.map(m=>grouped[m].Covenant||0), fill:false },
+              { label:"JSON", borderColor:"#657b83", borderDash:[5,5], data:months.map(m=>grouped[m].json||0), fill:false },
+              { label:"CSV", borderColor:"#268bd2", borderDash:[5,5], data:months.map(m=>grouped[m].csv||0), fill:false },
+              { label:"PDF", borderColor:"#b58900", borderDash:[5,5], data:months.map(m=>grouped[m].pdf||0), fill:false }
+            ]
+          }
+        });
+      }
+    }
+
+    function updateData(log) {
+      const month = log.date.slice(0,7);
+      if (!grouped[month]) grouped[month] = { ATS:0, Unity:0, Covenant:0, json:0, csv:0, pdf:0 };
+      grouped[month][log.crest]++;
+      grouped[month][log.format]++;
+      if (!months.includes(month)) months.push(month);
+      if (chart) chart.update();
+    }
+
+    // Connect to WebSocket server (replace ws://localhost:8080 with your pipeline endpoint)
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const log = JSON.parse(event.data); // { date:"2026-05-16", crest:"ATS", format:"pdf" }
+      updateData(log);
+    };
+
+    // Default view
+    showChart('crest');
+  </script>
+</body>
+</html>

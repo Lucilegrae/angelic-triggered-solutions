@@ -1,7 +1,7 @@
 import React from "react";
 import AuditTrailPanel from "./AuditTrailPanel";
 import useAuditTrails from "../hooks/useAuditTrails";
-import "../styles/theme.css";
+import "../theme.css";
 
 function Chamber({ stakeholderId, role }) {
   const { trails, loading } = useAuditTrails(stakeholderId);

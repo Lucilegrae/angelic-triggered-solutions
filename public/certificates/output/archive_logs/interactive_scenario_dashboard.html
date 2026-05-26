@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Scenario Forecast</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    .chart-container { width: 85%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Interactive Scenario Forecast</h1>
+  <div class="controls">
+    <label for="scenarioSelect">Choose Scenario: </label>
+    <select id="scenarioSelect" onchange="updateScenario()">
+      <option value="conservative">Conservative</option>
+      <option value="moderate">Moderate</option>
+      <option value="ambitious">Ambitious</option>
+    </select>
+  </div>
+  <div class="chart-container">
+    <canvas id="interactiveChart"></canvas>
+  </div>
+  <script>
+    const labels = ["2026", "2027", "2028", "2029"];
+    const scenarios = {
+      conservative: [720, 800, 880, 950],
+      moderate: [720, 900, 1100, 1300],
+      ambitious: [720, 1000, 1400, 1800]
+    };
+
+    let chartConfig = {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Crest Forecast",
+          borderColor: "#b58900",
+          backgroundColor: "#b58900",
+          data: scenarios.conservative,
+          fill: false,
+          borderDash: [5, 5]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Interactive Crest Forecast' }
+        },
+        scales: { y: { beginAtZero: true } }
+      }
+    };
+
+    let forecastChart = new Chart(document.getElementById("interactiveChart"), chartConfig);
+
+    function updateScenario() {
+      const selected = document.getElementById("scenarioSelect").value;
+      forecastChart.data.datasets[0].data = scenarios[selected];
+      forecastChart.data.datasets[0].label = selected.charAt(0).toUpperCase() + selected.slice(1) + " Growth";
+      forecastChart.update();
+    }
+  </script>
+</body>
+</html>

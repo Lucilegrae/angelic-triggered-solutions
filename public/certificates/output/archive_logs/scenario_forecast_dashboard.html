@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scenario Forecast Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    input { margin:5px; padding:5px; width:120px; }
+    button { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Scenario Forecast Dashboard</h1>
+  <div class="controls">
+    <label>ATS Factor: <input type="number" id="atsFactor" value="1"></label>
+    <label>Unity Factor: <input type="number" id="unityFactor" value="1"></label>
+    <label>Covenant Factor: <input type="number" id="covenantFactor" value="1"></label>
+    <button onclick="applyScenario()">Apply Scenario</button>
+  </div>
+  <div class="chart-container"><canvas id="scenarioChart"></canvas></div>
+  <div class="summary" id="scenarioSummary">Define a scenario to project ceremonial futures...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let scenarioChart;
+
+    function applyScenario() {
+      const atsFactor = parseFloat(document.getElementById("atsFactor").value);
+      const unityFactor = parseFloat(document.getElementById("unityFactor").value);
+      const covenantFactor = parseFloat(document.getElementById("covenantFactor").value);
+
+      const crestTotals = months.map(m=> 
+        (grouped[m].ATS||0)*atsFactor + 
+        (grouped[m].Unity||0)*unityFactor + 
+        (grouped[m].Covenant||0)*covenantFactor
+      );
+
+      if (scenarioChart) scenarioChart.destroy();
+      scenarioChart = new Chart(document.getElementById("scenarioChart"), {
+        type:'line',
+        data:{
+          labels:months,
+          datasets:[
+            { label:"Scenario Forecast", borderColor:"#b58900", data:crestTotals, fill:false }
+          ]
+        }
+      });
+      document.getElementById("scenarioSummary").innerText = 
+        `Scenario applied: ATS×${atsFactor}, Unity×${unityFactor}, Covenant×${covenantFactor}. Projected crest exports: ${crestTotals.slice(-1)[0]}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate Regeneration Statistics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .chart-container { width: 80%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Certificate Regeneration Statistics</h1>
+  <div class="chart-container">
+    <canvas id="regenerationChart"></canvas>
+  </div>
+  <script>
+    // Example data — replace with parsed archive logs
+    const labels = ["2026-05-14", "2026-05-15", "2026-05-16"];
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: "Certificates Regenerated",
+        backgroundColor: "#b58900",
+        borderColor: "#657b83",
+        data: [3, 3, 3], // counts per day
+      }]
+    };
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Daily Regeneration Counts' }
+        }
+      }
+    };
+    new Chart(document.getElementById("regenerationChart"), config);
+  </script>
+</body>
+</html>

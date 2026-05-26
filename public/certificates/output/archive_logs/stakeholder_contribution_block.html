@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Stakeholder Contribution Block</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .contribution { text-align:center; margin:20px; }
+    textarea { width:80%; height:80px; margin:10px; padding:10px; }
+    button { padding:10px 20px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .log { width:90%; margin:20px auto; border:1px solid #b58900; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Stakeholder Contribution Block</h1>
+  <div class="contribution">
+    <textarea id="noteBox" placeholder="Enter ceremonial note or affirmation..."></textarea><br>
+    <button onclick="sendContribution()">Submit Contribution</button>
+  </div>
+  <div class="log" id="contributionLog">
+    <h3>Live Contributions</h3>
+    <ul id="logList"></ul>
+  </div>
+
+  <script>
+    const socket = new WebSocket("ws://localhost:8080"); // replace with pipeline endpoint
+
+    function sendContribution() {
+      const note = document.getElementById("noteBox").value;
+      if (!note) return;
+      const msg = { type:"contribution", name:"Stakeholder", text:note, date:new Date().toISOString() };
+      socket.send(JSON.stringify(msg));
+      document.getElementById("noteBox").value = "";
+    }
+
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="contribution") {
+        const list = document.getElementById("logList");
+        list.innerHTML += `<li><strong>${msg.name}</strong> (${msg.date}): ${msg.text}</li>`;
+      }
+    };
+  </script>
+</body>
+</html>

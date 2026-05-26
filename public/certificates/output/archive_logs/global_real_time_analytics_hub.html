@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Real-Time Analytics Hub</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .tabs { display:flex; justify-content:center; margin:20px; }
+    .tab { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; cursor:pointer; }
+    .tab:hover { background:#2aa198; }
+    .panel { display:none; padding:20px; border:2px solid #b58900; background:#fff; width:90%; margin:20px auto; }
+    .active { display:block; }
+    .chart-container { width:85%; margin:20px auto; }
+    input { padding:8px; width:300px; margin:5px; }
+    button { padding:8px 16px; margin:5px; background:#b58900; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#cb4b16; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Real-Time Analytics Hub</h1>
+  <div class="tabs">
+    <div class="tab" onclick="showPanel('analytics')">Live Analytics</div>
+    <div class="tab" onclick="showPanel('archive')">Archival Export</div>
+    <div class="tab" onclick="showPanel('search')">Search History</div>
+  </div>
+
+  <!-- Analytics Panel -->
+  <div id="analytics" class="panel active">
+    <h2>Real-Time Analytics</h2>
+    <div class="controls">
+      <button onclick="showChart('crest')">Crest Totals</button>
+      <button onclick="showChart('format')">Format Totals</button>
+      <button onclick="showChart('combined')">Combined View</button>
+    </div>
+    <div class="chart-container"><canvas id="analyticsChart"></canvas></div>
+  </div>
+
+  <!-- Archive Panel -->
+  <div id="archive" class="panel">
+    <h2>Archival Export</h2>
+    <button onclick="exportLayered('ATS')">Export ATS</button>
+    <button onclick="exportLayered('Unity')">Export Unity</button>
+    <button onclick="exportLayered('Covenant')">Export Covenant</button>
+    <pre id="archiveOutput"></pre>
+  </div>
+
+  <!-- Search Panel -->
+  <div id="search" class="panel">
+    <h2>Search Export History</h2>
+    <input type="text" id="searchBox" placeholder="Search (e.g. ATS May PDF)">
+    <button onclick="applySearch()">Search</button>
+    <table>
+      <thead><tr><th>Crest</th><th>Format</th><th>Date</th></tr></thead>
+      <tbody id="searchTable"></tbody>
+    </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const grouped = {}; const months = [];
+    let chart;
+    const exportHistory = [
+      { crest:"ATS", format:"json", date:"2026-05-14" },
+      { crest:"Unity", format:"csv", date:"2026-05-14" },
+      { crest:"Covenant", format:"pdf", date:"2026-05-15" }
+    ];
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showChart(type) {
+      if (chart) chart.destroy();
+      const ctx = document.getElementById("analyticsChart");
+      chart = new Chart(ctx,{type:'bar',data:{labels:months,datasets:[]}}); // simplified init
+    }
+
+    function updateData(log) {
+      const month = log.date.slice(0,7);
+      if (!grouped[month]) grouped[month] = { ATS:0, Unity:0, Covenant:0, json:0, csv:0, pdf:0 };
+      grouped[month][log.crest]++; grouped[month][log.format]++;
+      if (!months.includes(month)) months.push(month);
+      if (chart) chart.update();
+    }
+
+    // WebSocket feed
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const log = JSON.parse(event.data); // { date:"2026-05-16", crest:"ATS", format:"pdf" }
+      exportHistory.push(log);
+      updateData(log);
+    };
+
+    function exportLayered(crest) {
+      const groupedLogs = exportHistory.filter(l=>l.crest===crest);
+      const json = JSON.stringify({ crest, timestamp:new Date().toISOString(), entries:groupedLogs }, null, 2);
+      document.getElementById("archiveOutput").innerText = json;
+    }
+
+    function buildTable(data) {
+      const table = document.getElementById("searchTable");
+      table.innerHTML = "";
+      data.forEach(e => table.innerHTML += `<tr><td>${e.crest}</td><td>${e.format}</td><td>${e.date}</td></tr>`);
+    }
+
+    function applySearch() {
+      const query = document.getElementById("searchBox").value.toLowerCase();
+      const filtered = exportHistory.filter(e =>
+        e.crest.toLowerCase().includes(query) ||
+        e.format.toLowerCase().includes(query) ||
+        e.date.toLowerCase().includes(query)
+      );
+      buildTable(filtered);
+    }
+
+    buildTable(exportHistory);
+    showChart('crest');
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
+import { supabase } from ".../supabaseClient";
 import "./AuraCards.css";
 import "./AuraGrid.css";
 import "./AuraHeadings.css";

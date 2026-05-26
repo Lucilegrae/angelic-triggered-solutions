@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-User Ceremonial Hub</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .tabs { display:flex; justify-content:center; margin:20px; }
+    .tab { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; cursor:pointer; }
+    .tab:hover { background:#2aa198; }
+    .panel { display:none; padding:20px; border:2px solid #b58900; background:#fff; width:90%; margin:20px auto; }
+    .active { display:block; }
+    .chart-container { width:85%; margin:20px auto; }
+    .status { text-align:center; margin:20px; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h1>ATS Multi-User Ceremonial Hub</h1>
+  <div class="tabs">
+    <div class="tab" onclick="showPanel('analytics')">Live Analytics</div>
+    <div class="tab" onclick="showPanel('archive')">Archival Export</div>
+    <div class="tab" onclick="showPanel('search')">Search History</div>
+    <div class="tab" onclick="showPanel('presence')">Stakeholder Presence</div>
+  </div>
+
+  <!-- Analytics Panel -->
+  <div id="analytics" class="panel active">
+    <h2>Real-Time Analytics</h2>
+    <div class="chart-container"><canvas id="analyticsChart"></canvas></div>
+  </div>
+
+  <!-- Archive Panel -->
+  <div id="archive" class="panel">
+    <h2>Archival Export</h2>
+    <pre id="archiveOutput"></pre>
+  </div>
+
+  <!-- Search Panel -->
+  <div id="search" class="panel">
+    <h2>Search Export History</h2>
+    <input type="text" id="searchBox" placeholder="Search (e.g. ATS May PDF)">
+    <button onclick="applySearch()">Search</button>
+    <table>
+      <thead><tr><th>Crest</th><th>Format</th><th>Date</th></tr></thead>
+      <tbody id="searchTable"></tbody>
+    </table>
+  </div>
+
+  <!-- Presence Panel -->
+  <div id="presence" class="panel">
+    <h2>Stakeholder Presence</h2>
+    <div class="status" id="presenceStatus">No stakeholders connected yet...</div>
+    <ul id="presenceList"></ul>
+  </div>
+
+  <script>
+    const grouped = {}; const months = []; let chart;
+    const exportHistory = [];
+    const stakeholders = new Set();
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function updateData(log) {
+      const month = log.date.slice(0,7);
+      if (!grouped[month]) grouped[month] = { ATS:0, Unity:0, Covenant:0, json:0, csv:0, pdf:0 };
+      grouped[month][log.crest]++; grouped[month][log.format]++;
+      if (!months.includes(month)) months.push(month);
+      if (chart) chart.update();
+    }
+
+    function buildTable(data) {
+      const table = document.getElementById("searchTable");
+      table.innerHTML = "";
+      data.forEach(e => table.innerHTML += `<tr><td>${e.crest}</td><td>${e.format}</td><td>${e.date}</td></tr>`);
+    }
+
+    function applySearch() {
+      const query = document.getElementById("searchBox").value.toLowerCase();
+      const filtered = exportHistory.filter(e =>
+        e.crest.toLowerCase().includes(query) ||
+        e.format.toLowerCase().includes(query) ||
+        e.date.toLowerCase().includes(query)
+      );
+      buildTable(filtered);
+    }
+
+    function updatePresence(name) {
+      stakeholders.add(name);
+      document.getElementById("presenceStatus").innerText = `${stakeholders.size} stakeholders connected`;
+      const list = document.getElementById("presenceList");
+      list.innerHTML = "";
+      stakeholders.forEach(s => list.innerHTML += `<li>${s}</li>`);
+    }
+
+    // WebSocket feed (replace ws://localhost:8080 with your pipeline endpoint)
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="log") {
+        exportHistory.push(msg);
+        updateData(msg);
+      }
+      if (msg.type==="presence") {
+        updatePresence(msg.name);
+      }
+    };
+
+    // Initialize chart
+    chart = new Chart(document.getElementById("analyticsChart"), {
+      type:'bar',
+      data:{ labels:months, datasets:[
+        { label:"ATS", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].ATS||0) },
+        { label:"Unity", backgroundColor:"#2aa198", data:months.map(m=>grouped[m].Unity||0) },
+        { label:"Covenant", backgroundColor:"#b58900", data:months.map(m=>grouped[m].Covenant||0) }
+      ]}
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Archival Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .filters { text-align: center; margin: 20px; }
+    select, input { margin: 5px; padding: 5px; }
+    table { width: 90%; margin: 20px auto; border-collapse: collapse; }
+    th, td { border: 1px solid #b58900; padding: 10px; text-align: center; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+  <h1>ATS Advanced Archival Search</h1>
+  <div class="filters">
+    <input type="text" id="keyword" placeholder="Keyword (e.g. ATS May PDF)">
+    <label>Crest:
+      <select id="crestFilter">
+        <option value="all">All</option>
+        <option value="ATS">ATS</option>
+        <option value="Unity">Unity</option>
+        <option value="Covenant">Covenant</option>
+      </select>
+    </label>
+    <label>Format:
+      <select id="formatFilter">
+        <option value="all">All</option>
+        <option value="json">JSON</option>
+        <option value="csv">CSV</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </label>
+    <label>Date From:
+      <input type="date" id="dateFrom">
+    </label>
+    <label>Date To:
+      <input type="date" id="dateTo">
+    </label>
+    <button onclick="applyFilters()">Search</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Crest</th>
+        <th>Format</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="resultsTable"></tbody>
+  </table>
+
+  <script>
+    const exportHistory = [
+      { crest:"ATS", format:"json", date:"2026-05-14" },
+      { crest:"ATS", format:"csv", date:"2026-05-14" },
+      { crest:"ATS", format:"pdf", date:"2026-05-14" },
+      { crest:"Unity", format:"json", date:"2026-05-14" },
+      { crest:"Unity", format:"csv", date:"2026-05-14" },
+      { crest:"Unity", format:"pdf", date:"2026-05-14" },
+      { crest:"Covenant", format:"json", date:"2026-05-15" },
+      { crest:"Covenant", format:"csv", date:"2026-05-15" },
+      { crest:"Covenant", format:"pdf", date:"2026-05-15" }
+    ];
+
+    function buildTable(data) {
+      const table = document.getElementById("resultsTable");
+      table.innerHTML = "";
+      data.forEach(e => {
+        table.innerHTML += `<tr><td>${e.crest}</td><td>${e.format}</td><td>${e.date}</td></tr>`;
+      });
+    }
+
+    function applyFilters() {
+      const keyword = document.getElementById("keyword").value.toLowerCase();
+      const crest = document.getElementById("crestFilter").value;
+      const format = document.getElementById("formatFilter").value;
+      const dateFrom = document.getElementById("dateFrom").value;
+      const dateTo = document.getElementById("dateTo").value;
+
+      let filtered = exportHistory;
+      if (crest!=="all") filtered = filtered.filter(e=>e.crest===crest);
+      if (format!=="all") filtered = filtered.filter(e=>e.format===format);
+      if (dateFrom) filtered = filtered.filter(e=>e.date>=dateFrom);
+      if (dateTo) filtered = filtered.filter(e=>e.date<=dateTo);
+      if (keyword) filtered = filtered.filter(e =>
+        e.crest.toLowerCase().includes(keyword) ||
+        e.format.toLowerCase().includes(keyword) ||
+        e.date.toLowerCase().includes(keyword)
+      );
+
+      buildTable(filtered);
+    }
+
+    // Initial table
+    buildTable(exportHistory);
+  </script>
+</body>
+</html>

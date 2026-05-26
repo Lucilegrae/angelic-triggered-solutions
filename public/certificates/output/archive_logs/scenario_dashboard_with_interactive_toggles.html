@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scenario Dashboard with Interactive Toggles</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    label { margin:10px; display:inline-block; }
+    input { margin:5px; padding:5px; width:100px; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Scenario Dashboard with Interactive Toggles</h1>
+  <div class="controls">
+    <label><input type="checkbox" id="scenarioA" checked> Scenario A (ATS×1, Unity×1, Covenant×1)</label>
+    <label><input type="checkbox" id="scenarioB" checked> Scenario B (ATS×1, Unity×2, Covenant×0.5)</label>
+    <label><input type="checkbox" id="scenarioC" checked> Scenario C (ATS×1.5, Unity×1, Covenant×1)</label>
+    <button onclick="updateChart()">Update Chart</button>
+  </div>
+  <div class="chart-container"><canvas id="toggleChart"></canvas></div>
+  <div class="summary" id="toggleSummary">Toggle scenarios to compare ceremonial futures...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let toggleChart;
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function updateChart() {
+      const datasets = [];
+      if (document.getElementById("scenarioA").checked) {
+        datasets.push({ label:"Scenario A", borderColor:"#268bd2", data:scenarioTotals({ats:1,unity:1,covenant:1}), fill:false });
+      }
+      if (document.getElementById("scenarioB").checked) {
+        datasets.push({ label:"Scenario B", borderColor:"#2aa198", data:scenarioTotals({ats:1,unity:2,covenant:0.5}), fill:false });
+      }
+      if (document.getElementById("scenarioC").checked) {
+        datasets.push({ label:"Scenario C", borderColor:"#b58900", data:scenarioTotals({ats:1.5,unity:1,covenant:1}), fill:false });
+      }
+
+      if (toggleChart) toggleChart.destroy();
+      toggleChart = new Chart(document.getElementById("toggleChart"), {
+        type:'line',
+        data:{ labels:months, datasets }
+      });
+
+      const summaryText = datasets.map(d=> `${d.label}: ${d.data.slice(-1)[0]}`).join(" | ");
+      document.getElementById("toggleSummary").innerText = `Projected crest exports → ${summaryText}`;
+    }
+
+    // Initialize chart
+    updateChart();
+  </script>
+</body>
+</html>

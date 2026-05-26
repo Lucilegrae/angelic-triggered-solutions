@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Batch Archival Automation</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .status { text-align: center; margin: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>ATS Batch Archival Automation</h1>
+  <div class="status" id="status">Awaiting nightly export...</div>
+
+  <script>
+    // Example live data store (replace with WebSocket feed or pipeline logs)
+    let liveLogs = [
+      { date:"2026-05-14", crest:"ATS" },
+      { date:"2026-05-14", crest:"Unity" },
+      { date:"2026-05-14", crest:"Covenant" }
+    ];
+
+    function exportLogs() {
+      const archive = {
+        timestamp: new Date().toISOString(),
+        totals: {
+          ATS: liveLogs.filter(l=>l.crest==="ATS").length,
+          Unity: liveLogs.filter(l=>l.crest==="Unity").length,
+          Covenant: liveLogs.filter(l=>l.crest==="Covenant").length
+        },
+        entries: liveLogs
+      };
+      const json = JSON.stringify(archive, null, 2);
+
+      // Trigger download (nightly file)
+      const blob = new Blob([json], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_Archive_${new Date().toISOString().split("T")[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      document.getElementById("status").innerText = `Exported archive at ${new Date().toLocaleTimeString()}`;
+    }
+
+    // Schedule nightly export at 23:59
+    function scheduleNightlyExport() {
+      const now = new Date();
+      const next = new Date();
+      next.setHours(23,59,0,0);
+      if (next <= now) next.setDate(next.getDate()+1);
+      const delay = next.getTime() - now.getTime();
+      setTimeout(function() {
+        exportLogs();
+        setInterval(exportLogs, 24*60*60*1000); // repeat every 24h
+      }, delay);
+    }
+
+    scheduleNightlyExport();
+  </script>
+</body>
+</html>

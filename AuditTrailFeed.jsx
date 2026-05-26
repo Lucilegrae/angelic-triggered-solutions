@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import supabase from "../supabaseClient"; // adjust path to your Supabase client
+import supabase from "../supabaseClient";   // ✅ adjust path if needed
+import "../theme.css";                      // ✅ unified aura stylesheet
 
-function AuditTrailFeed() {
+export default function AuditTrailFeed() {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
@@ -23,11 +24,11 @@ function AuditTrailFeed() {
   }, []);
 
   return (
-    <div className="audit-feed">
-      <h2>Legitimacy Flow Timeline</h2>
+    <div className="audit-feed glyph-card reveal">
+      <h2 className="aura-heading">✦ Legitimacy Flow Timeline</h2>
       <ul>
         {records.map((row, idx) => (
-          <li key={idx} className="audit-entry">
+          <li key={idx} className="audit-entry pledge-line">
             <div className="audit-meta">
               <span className="audit-time">
                 {new Date(row.timestamp).toLocaleString()}
@@ -47,5 +48,3 @@ function AuditTrailFeed() {
     </div>
   );
 }
-
-export default AuditTrailFeed;

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Interactive Filters</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    select, input { margin:5px; padding:5px; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Interactive Filters</h1>
+  <div class="controls">
+    <label>Crest Filter:
+      <select id="crestFilter" onchange="applyFilters()">
+        <option value="all">All</option>
+        <option value="ATS">ATS</option>
+        <option value="Unity">Unity</option>
+        <option value="Covenant">Covenant</option>
+      </select>
+    </label>
+    <label>Vote Threshold:
+      <input type="number" id="voteThreshold" value="0" onchange="applyFilters()">
+    </label>
+    <label>Date Range:
+      <input type="date" id="startDate" onchange="applyFilters()"> to
+      <input type="date" id="endDate" onchange="applyFilters()">
+    </label>
+    <button onclick="applyFilters()">Apply Filters</button>
+  </div>
+  <div class="chart-container"><canvas id="filterScenarioChart"></canvas></div>
+  <div class="summary" id="filterScenarioSummary">Filter scenarios by crest, votes, and date...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>ATS</th><th>Unity</th><th>Covenant</th><th>Scenario A</th><th>Scenario B</th><th>Scenario C</th><th>Cumulative Votes</th></tr></thead>
+    <tbody id="filterScenarioTable"></tbody>
+  </table>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let filterScenarioChart;
+
+    function applyFilters() {
+      const crestFilter=document.getElementById("crestFilter").value;
+      const voteThreshold=parseInt(document.getElementById("voteThreshold").value);
+      const startDate=document.getElementById("startDate").value;
+      const endDate=document.getElementById("endDate").value;
+
+      let cumulativeVotes=0;
+      const labels=[], votesData=[], scenarioAData=[], scenarioBData=[], scenarioCData=[];
+      const table=document.getElementById("filterScenarioTable");
+      table.innerHTML="";
+
+      negotiationHistory.forEach(c=>{
+        if(c.votes<voteThreshold) return;
+        if(startDate && c.date<startDate) return;
+        if(endDate && c.date>endDate) return;
+
+        cumulativeVotes+=c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+
+        let scenarioAVal=(crestFilter==="all"||crestFilter==="ATS"?c.factors.ats*1:0)+(crestFilter==="all"||crestFilter==="Unity"?c.factors.unity*1:0)+(crestFilter==="all"||crestFilter==="Covenant"?c.factors.covenant*1:0);
+        let scenarioBVal=(crestFilter==="all"||crestFilter==="ATS"?c.factors.ats*1.5:0)+(crestFilter==="all"||crestFilter==="Unity"?c.factors.unity*2:0)+(crestFilter==="all"||crestFilter==="Covenant"?c.factors.covenant*0.5:0);
+        let scenarioCVal=(crestFilter==="all"||crestFilter==="ATS"?c.factors.ats*2:0)+(crestFilter==="all"||crestFilter==="Unity"?c.factors.unity*1:0)+(crestFilter==="all"||crestFilter==="Covenant"?c.factors.covenant*1:0);
+
+        scenarioAData.push(scenarioAVal);
+        scenarioBData.push(scenarioBVal);
+        scenarioCData.push(scenarioCVal);
+
+        table.innerHTML+=`<tr>
+          <td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td>
+          <td>${c.factors.ats}</td><td>${c.factors.unity}</td><td>${c.factors.covenant}</td>
+          <td>${scenarioAVal}</td><td>${scenarioBVal}</td><td>${scenarioCVal}</td><td>${cumulativeVotes}</td>
+        </tr>`;
+      });
+
+      if(filterScenarioChart) filterScenarioChart.destroy();
+      filterScenarioChart=new Chart(document.getElementById("filterScenarioChart"),{
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false },
+            { label:"Scenario A", borderColor:"#2aa198", data:scenarioAData, fill:false },
+            { label:"Scenario B", borderColor:"#b58900", data:scenarioBData, fill:false },
+            { label:"Scenario C", borderColor:"#cb4b16", data:scenarioCData, fill:false }
+          ]
+        }
+      });
+
+      document.getElementById("filterScenarioSummary").innerText=
+        `Filters → Crest:${crestFilter}, Vote Threshold:${voteThreshold}, Date Range:${startDate||"start"} to ${endDate||"end"}. Latest projections → A:${scenarioAData.slice(-1)[0]||"N/A"}, B:${scenarioBData.slice(-1)[0]||"N/A"}, C:${scenarioCData.slice(-1)[0]||"N/A"}, cumulative votes:${cumulativeVotes}`;
+    }
+
+    // Initialize
+    applyFilters();
+  </script>
+</body>
+</html>

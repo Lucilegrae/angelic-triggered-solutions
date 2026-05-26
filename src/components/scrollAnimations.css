@@ -1,0 +1,28 @@
+.fade-in-aura {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: auraFadeIn 0.8s ease forwards;
+}
+
+@keyframes auraFadeIn {
+  0% { opacity: 0; transform: translateY(10px); box-shadow: none; }
+  50% { opacity: 0.5; transform: translateY(0); box-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
+  100% { opacity: 1; transform: translateY(0); box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+}
+
+.golden-star-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.golden-star-container svg {
+  filter: drop-shadow(0 0 10px gold);
+}
+
+.pulse {
+  transform: scale(1.3);
+  text-shadow: 0 0 20px gold, 0 0 40px orange;
+  transition: all 0.3s ease;
+}

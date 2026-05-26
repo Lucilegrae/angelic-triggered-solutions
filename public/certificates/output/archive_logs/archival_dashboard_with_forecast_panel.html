@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Archival Dashboard with Forecast Panel</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .tabs { display:flex; justify-content:center; margin:20px; }
+    .tab { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; cursor:pointer; }
+    .tab:hover { background:#2aa198; }
+    .panel { display:none; padding:20px; border:2px solid #b58900; background:#fff; width:90%; margin:20px auto; }
+    .active { display:block; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Archival Dashboard with Forecast Panel</h1>
+  <div class="tabs">
+    <div class="tab" onclick="showPanel('analytics')">Analytics</div>
+    <div class="tab" onclick="showPanel('archive')">Crest Exports</div>
+    <div class="tab" onclick="showPanel('search')">Search</div>
+    <div class="tab" onclick="showPanel('contributions')">Contributions</div>
+    <div class="tab" onclick="showPanel('forecast')">Forecast</div>
+  </div>
+
+  <!-- Forecast Panel -->
+  <div id="forecast" class="panel">
+    <h2>Forecasted Trends</h2>
+    <div class="chart-container"><canvas id="forecastChart"></canvas></div>
+    <div class="summary" id="forecastSummary">Forecast pending...</div>
+  </div>
+
+  <script>
+    const grouped = {}; const months = []; const contributions = [];
+    let forecastChart;
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if (id==="forecast") buildForecast();
+    }
+
+    function buildForecast() {
+      const labels = [...months];
+      const crestForecast = labels.map(m=> (grouped[m]?.ATS||0) + (grouped[m]?.Unity||0) + (grouped[m]?.Covenant||0));
+      const contribForecast = labels.map((m,i)=> contributions.length ? Math.round(contributions.length*(i+1)/labels.length) : 0);
+
+      if (forecastChart) forecastChart.destroy();
+      forecastChart = new Chart(document.getElementById("forecastChart"), {
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Crest Exports Forecast", borderColor:"#268bd2", data:crestForecast, fill:false },
+            { label:"Contributions Forecast", borderColor:"#b58900", data:contribForecast, fill:false }
+          ]
+        }
+      });
+      document.getElementById("forecastSummary").innerText = `Projected crest exports: ${crestForecast.slice(-1)[0]}, projected contributions: ${contribForecast.slice(-1)[0]}`;
+    }
+  </script>
+</body>
+</html>

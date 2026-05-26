@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Multi-Scenario Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    input { margin:5px; padding:5px; width:80px; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Multi-Scenario Comparison</h1>
+  <div class="controls">
+    <h3>Scenario A</h3>
+    ATS×<input type="number" id="atsA" value="1">
+    Unity×<input type="number" id="unityA" value="1">
+    Covenant×<input type="number" id="covenantA" value="1"><br>
+    <h3>Scenario B</h3>
+    ATS×<input type="number" id="atsB" value="1.5">
+    Unity×<input type="number" id="unityB" value="2">
+    Covenant×<input type="number" id="covenantB" value="0.5"><br>
+    <h3>Scenario C</h3>
+    ATS×<input type="number" id="atsC" value="2">
+    Unity×<input type="number" id="unityC" value="1">
+    Covenant×<input type="number" id="covenantC" value="1"><br>
+    <button onclick="applyScenarios()">Apply Scenarios</button>
+  </div>
+  <div class="chart-container"><canvas id="multiScenarioChart"></canvas></div>
+  <div class="summary" id="multiScenarioSummary">Compare multiple scenario overlays against cumulative statistics...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>Scenario</th><th>Cumulative Votes</th><th>Scenario A</th><th>Scenario B</th><th>Scenario C</th></tr></thead>
+    <tbody id="multiScenarioTable"></tbody>
+  </table>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, scenario:"A", factors:{ats:1,unity:1,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, scenario:"B", factors:{ats:1.5,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, scenario:"C", factors:{ats:2,unity:1,covenant:1} }
+    ];
+
+    let multiScenarioChart;
+
+    function applyScenarios() {
+      const atsA=parseFloat(document.getElementById("atsA").value);
+      const unityA=parseFloat(document.getElementById("unityA").value);
+      const covenantA=parseFloat(document.getElementById("covenantA").value);
+
+      const atsB=parseFloat(document.getElementById("atsB").value);
+      const unityB=parseFloat(document.getElementById("unityB").value);
+      const covenantB=parseFloat(document.getElementById("covenantB").value);
+
+      const atsC=parseFloat(document.getElementById("atsC").value);
+      const unityC=parseFloat(document.getElementById("unityC").value);
+      const covenantC=parseFloat(document.getElementById("covenantC").value);
+
+      let cumulativeVotes=0;
+      const labels=[], votesData=[], scenarioAData=[], scenarioBData=[], scenarioCData=[];
+      const table=document.getElementById("multiScenarioTable");
+      table.innerHTML="";
+
+      negotiationHistory.forEach(c=>{
+        cumulativeVotes+=c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+
+        const scenarioAVal=(c.factors.ats*atsA)+(c.factors.unity*unityA)+(c.factors.covenant*covenantA);
+        const scenarioBVal=(c.factors.ats*atsB)+(c.factors.unity*unityB)+(c.factors.covenant*covenantB);
+        const scenarioCVal=(c.factors.ats*atsC)+(c.factors.unity*unityC)+(c.factors.covenant*covenantC);
+
+        scenarioAData.push(scenarioAVal);
+        scenarioBData.push(scenarioBVal);
+        scenarioCData.push(scenarioCVal);
+
+        table.innerHTML+=`<tr><td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td><td>${c.scenario}</td><td>${cumulativeVotes}</td><td>${scenarioAVal}</td><td>${scenarioBVal}</td><td>${scenarioCVal}</td></tr>`;
+      });
+
+      if(multiScenarioChart) multiScenarioChart.destroy();
+      multiScenarioChart=new Chart(document.getElementById("multiScenarioChart"),{
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false },
+            { label:"Scenario A", borderColor:"#2aa198", data:scenarioAData, fill:false },
+            { label:"Scenario B", borderColor:"#b58900", data:scenarioBData, fill:false },
+            { label:"Scenario C", borderColor:"#cb4b16", data:scenarioCData, fill:false }
+          ]
+        }
+      });
+
+      document.getElementById("multiScenarioSummary").innerText=`Scenario A latest:${scenarioAData.slice(-1)[0]} | Scenario B latest:${scenarioBData.slice(-1)[0]} | Scenario C latest:${scenarioCData.slice(-1)[0]} | Cumulative votes:${cumulativeVotes}`;
+    }
+
+    // Initialize
+    applyScenarios();
+  </script>
+</body>
+</html>

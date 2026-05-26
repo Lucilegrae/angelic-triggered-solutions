@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Searchable Archive Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    .day { margin: 20px auto; width: 80%; border: 2px solid #b58900; padding: 20px; background: #fff; }
+    .crest { display: inline-block; margin: 10px; text-align: center; }
+    .crest img { width: 120px; height: auto; border: 1px solid #ccc; padding: 5px; background: #fafafa; }
+    pre { background: #f0f0f0; padding: 10px; border: 1px solid #ccc; }
+  </style>
+  <script>
+    function filterArchive() {
+      let dateFilter = document.getElementById("dateFilter").value.toLowerCase();
+      let crestFilter = document.getElementById("crestFilter").value.toLowerCase();
+      let days = document.getElementsByClassName("day");
+      for (let i = 0; i < days.length; i++) {
+        let day = days[i];
+        let text = day.innerText.toLowerCase();
+        if (text.includes(dateFilter) && text.includes(crestFilter)) {
+          day.style.display = "block";
+        } else {
+          day.style.display = "none";
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Searchable Archive Dashboard</h1>
+  <div class="controls">
+    <label>Date: <input type="text" id="dateFilter" onkeyup="filterArchive()" placeholder="YYYY-MM-DD"></label>
+    <label>Crest: <input type="text" id="crestFilter" onkeyup="filterArchive()" placeholder="ATS / Unity / Covenant"></label>
+  </div>
+  <!-- Example block for one archived day -->
+  <div class="day">
+    <h2>Run Date: YYYY-MM-DD</h2>
+    <p>Total Certificates Regenerated: (from log)</p>
+    <div class="crest">
+      <img src="../output/output_ats-crest.png" alt="ATS Crest"><br>ATS Crest
+    </div>
+    <div class="crest">
+      <img src="../output/output_in-unity-faith.png" alt="Unity & Faith Crest"><br>Unity & Faith
+    </div>
+    <div class="crest">
+      <img src="../output/output_golden-covenant.png" alt="Golden Covenant Crest"><br>Golden Covenant
+    </div>
+    <h3>Regeneration Log</h3>
+    <pre>(contents of regeneration_log_YYYY-MM-DD.txt)</pre>
+  </div>
+</body>
+</html>

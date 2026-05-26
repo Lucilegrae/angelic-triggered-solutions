@@ -1,4 +1,4 @@
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../.../supabaseClient";
 
 export async function logAuditTrail(user, errors) {
   const { data, error } = await supabase.from("audit_trail").insert({

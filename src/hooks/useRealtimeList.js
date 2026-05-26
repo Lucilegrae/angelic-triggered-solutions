@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createMultiChannel, removeChannel } from "../supabaseClient";
+import { createMultiChannel, removeChannel } from ".../supabaseClient";
 
 /**
  * ✅ Generic realtime list hook

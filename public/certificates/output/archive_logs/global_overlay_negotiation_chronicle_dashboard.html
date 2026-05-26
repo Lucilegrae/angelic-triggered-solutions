@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Overlay Negotiation Chronicle Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { width:80%; margin:20px auto; }
+    textarea { width:80%; height:60px; margin:10px; padding:10px; }
+    button { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .votes { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle Dashboard</h1>
+  <div class="controls">
+    <textarea id="proposalBox" placeholder="Propose an overlay scenario..."></textarea><br>
+    <button onclick="sendProposal()">Submit Proposal</button>
+  </div>
+  <div class="votes" id="proposalList">
+    <h3>Active Proposals</h3>
+    <ul id="proposalItems"></ul>
+  </div>
+  <div class="chart-container"><canvas id="negotiationChart"></canvas></div>
+  <div class="summary" id="negotiationSummary">Stakeholders propose and vote to converge on a unified overlay forecast...</div>
+
+  <script>
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let negotiationChart;
+    const proposals = [];
+
+    function overlayProjection(factors) {
+      return consensusHistory.map(c=>
+        (c.factors.ats*factors.ats)+(c.factors.unity*factors.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function sendProposal() {
+      const text = document.getElementById("proposalBox").value;
+      if.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function sendProposal() {
+      const text = document.getElementById("proposalBox").value;
+      if (!text) return;
+      const msg = { type:"proposal", name:"Stakeholder", text, votes:0, factors:{ats:1,unity:1,covenant:1} };
+      socket.send(JSON.stringify(msg));
+      document.getElementById("proposalBox").value = "";
+    }
+
+    function addProposal(msg) {
+      proposals.push(msg);
+      const list = document.getElementById("proposalItems");
+      const idx = proposals.length-1;
+      list.innerHTML += `<li>${msg.name}: ${msg.text} 
+        <button onclick="vote(${idx})">Vote</button> 
+        (Votes: <span id="votes${idx}">${msg.votes}</span>)</li>`;
+    }
+
+    function vote(idx) {
+      proposals[idx].votes++;
+      document.getElementById("votes"+idx).innerText = proposals[idx].votes;
+      updateConsensus();
+    }
+
+    function updateConsensus() {
+      const top = proposals.reduce((a,b)=> a.votes>=b.votes?a:b, proposals[0]);
+      if (!top) return;
+      const totals = overlayProjection(top.factors);
+      if (negotiationChart) negotiationChart.destroy();
+      negotiationChart = new Chart(document.getElementById("negotiationChart"), {
+        type:'line',
+        data:{ labels:consensusHistory.map(c=>c.date), datasets:[{ label:"Consensus Overlay Forecast", borderColor:"#b58900", data:totals, fill:false }] }
+      });
+      document.getElementById("negotiationSummary").innerText = `Consensus: "${top.text}" with ${top.votes} votes. Latest overlay projection: ${totals.slice(-1)[0]}`;
+    }
+
+    // WebSocket feed
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="proposal") { addProposal(msg); }
+    };
+
+    // Initialize chart
+    updateConsensus();
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Layered Archival Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .tabs { display: flex; justify-content: center; margin: 20px; }
+    .tab { padding: 10px 20px; margin: 5px; background:#268bd2; color:#fff; cursor:pointer; }
+    .tab:hover { background:#2aa198; }
+    .panel { display:none; padding:20px; border:2px solid #b58900; background:#fff; width:80%; margin:20px auto; }
+    .active { display:block; }
+    button { padding: 8px 16px; margin: 5px; background:#b58900; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#cb4b16; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Layered Archival Dashboard</h1>
+  <div class="tabs">
+    <div class="tab" onclick="showPanel('ATS')">ATS Crest</div>
+    <div class="tab" onclick="showPanel('Unity')">Unity & Faith</div>
+    <div class="tab" onclick="showPanel('Covenant')">Golden Covenant</div>
+  </div>
+
+  <div id="ATS" class="panel active">
+    <h2>ATS Crest Archives</h2>
+    <button onclick="exportLayered('ATS','json')">Export JSON</button>
+    <button onclick="exportLayered('ATS','csv')">Export CSV</button>
+    <button onclick="exportLayered('ATS','pdf')">Export PDF</button>
+  </div>
+
+  <div id="Unity" class="panel">
+    <h2>Unity & Faith Archives</h2>
+    <button onclick="exportLayered('Unity','json')">Export JSON</button>
+    <button onclick="exportLayered('Unity','csv')">Export CSV</button>
+    <button onclick="exportLayered('Unity','pdf')">Export PDF</button>
+  </div>
+
+  <div id="Covenant" class="panel">
+    <h2>Golden Covenant Archives</h2>
+    <button onclick="exportLayered('Covenant','json')">Export JSON</button>
+    <button onclick="exportLayered('Covenant','csv')">Export CSV</button>
+    <button onclick="exportLayered('Covenant','pdf')">Export PDF</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const liveLogs = [
+      { date:"2026-05-14", crest:"ATS" },
+      { date:"2026-05-14", crest:"Unity" },
+      { date:"2026-05-14", crest:"Covenant" },
+      { date:"2026-05-15", crest:"ATS" },
+      { date:"2026-05-15", crest:"Unity" },
+      { date:"2026-05-15", crest:"Covenant" }
+    ];
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function exportLayered(crest, type) {
+      const grouped = liveLogs.filter(l => l.crest===crest);
+      if (type==="json") {
+        const json = JSON.stringify({ crest, timestamp:new Date().toISOString(), entries:grouped }, null, 2);
+        downloadFile(json, "json", crest);
+      }
+      if (type==="csv") {
+        let csv = "date,crest\n";
+        grouped.forEach(l => { csv += `${l.date},${l.crest}\n`; });
+        downloadFile(csv, "csv", crest);
+      }
+      if (type==="pdf") {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text(`ATS Archival Export - ${crest}`, 10, 10);
+        grouped.forEach((l,i) => doc.text(`${l.date} - ${l.crest}`, 10, 20+(i*10)));
+        doc.save(`ATS_${crest}_Archive_${new Date().toISOString().split("T")[0]}.pdf`);
+      }
+    }
+
+    function downloadFile(content, type, crest) {
+      const blob = new Blob([content], {type:`text/${type}`});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_${crest}_Archive_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

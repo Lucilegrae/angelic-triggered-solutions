@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Archive Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .day { margin: 20px auto; width: 80%; border: 2px solid #b58900; padding: 20px; background: #fff; }
+    .crest { display: inline-block; margin: 10px; text-align: center; }
+    .crest img { width: 120px; height: auto; border: 1px solid #ccc; padding: 5px; background: #fafafa; }
+    pre { background: #f0f0f0; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Global Archive Dashboard</h1>
+  <!-- Loop through archived logs -->
+  <!-- Example block for one day -->
+  <div class="day">
+    <h2>Run Date: YYYY-MM-DD</h2>
+    <p>Total Certificates Regenerated: (from log)</p>
+    <div class="crest">
+      <img src="../output/output_ats-crest.png" alt="ATS Crest"><br>ATS Crest
+    </div>
+    <div class="crest">
+      <img src="../output/output_in-unity-faith.png" alt="Unity & Faith Crest"><br>Unity & Faith
+    </div>
+    <div class="crest">
+      <img src="../output/output_golden-covenant.png" alt="Golden Covenant Crest"><br>Golden Covenant
+    </div>
+    <h3>Regeneration Log</h3>
+    <pre>(contents of regeneration_log_YYYY-MM-DD.txt)</pre>
+  </div>
+</body>
+</html>

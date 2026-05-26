@@ -18,3 +18,8 @@ body {
   font-style: italic;
   color: #ffccff;
 }
+.nav-link[href="/index"] {
+  color: gold;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Voting</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { width:80%; margin:20px auto; }
+    button { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .votes { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Voting</h1>
+  <div class="controls">
+    <button onclick="voteScenario('A')">Vote Scenario A</button>
+    <button onclick="voteScenario('B')">Vote Scenario B</button>
+    <button onclick="voteScenario('C')">Vote Scenario C</button>
+  </div>
+  <div class="votes" id="voteList">
+    <h3>Votes</h3>
+    <p>Scenario A: <span id="votesA">0</span></p>
+    <p>Scenario B: <span id="votesB">0</span></p>
+    <p>Scenario C: <span id="votesC">0</span></p>
+  </div>
+  <div class="chart-container"><canvas id="voteScenarioChart"></canvas></div>
+  <div class="summary" id="voteScenarioSummary">Stakeholders vote to converge on a unified forecast...</div>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let voteScenarioChart;
+    const voteCounts = { A:0, B:0, C:0 };
+
+    function overlayProjection(factors) {
+      return negotiationHistory.map(c=>
+        (c.factors.ats*factors.ats)+(c.factors.unity*factors.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function voteScenario(scenario) {
+      voteCounts[scenario]++;
+      document.getElementById("votesA").innerText = voteCounts.A;
+      document.getElementById("votesB").innerText = voteCounts.B;
+      document.getElementById("votesC").innerText = voteCounts.C;
+      updateConsensus();
+    }
+
+    function updateConsensus() {
+      let topScenario = "A";
+      if(voteCounts.B >= voteCounts[topScenario]) topScenario = "B";
+      if(voteCounts.C >= voteCounts[topScenario]) topScenario = "C";
+
+      let factors;
+      if(topScenario==="A") factors={ats:1,unity:1,covenant:1};
+      if(topScenario==="B") factors={ats:1.5,unity:2,covenant:0.5};
+      if(topScenario==="C") factors={ats:2,unity:1,covenant:1};
+
+      const totals = overlayProjection(factors);
+
+      if(voteScenarioChart) voteScenarioChart.destroy();
+      voteScenarioChart = new Chart(document.getElementById("voteScenarioChart"), {
+        type:'line',
+        data:{ labels:negotiationHistory.map(c=>c.date), datasets:[{ label:`Consensus Scenario ${topScenario}`, borderColor:"#b58900", data:totals, fill:false }] }
+      });
+
+      document.getElementById("voteScenarioSummary").innerText = 
+        `Consensus: Scenario ${topScenario} with votes A:${voteCounts.A}, B:${voteCounts.B}, C:${voteCounts.C}. Latest projection: ${totals.slice(-1)[0]}`;
+    }
+
+    // Initialize chart
+    updateConsensus();
+  </script>
+</body>
+</html>

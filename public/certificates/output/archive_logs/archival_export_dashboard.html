@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Archival Export Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    button { padding: 10px 20px; margin: 10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+  </style>
+</head>
+<body>
+  <h1>ATS Archival Export</h1>
+  <div class="controls">
+    <button onclick="exportLogs()">Export Current Logs</button>
+  </div>
+  <pre id="exportOutput"></pre>
+
+  <script>
+    // Example live data store
+    const liveLogs = [
+      { date:"2026-05-14", crest:"ATS" },
+      { date:"2026-05-14", crest:"Unity" },
+      { date:"2026-05-14", crest:"Covenant" },
+      { date:"2026-05-15", crest:"ATS" },
+      { date:"2026-05-15", crest:"Unity" },
+      { date:"2026-05-15", crest:"Covenant" },
+      { date:"2026-05-16", crest:"ATS" },
+      { date:"2026-05-16", crest:"Unity" },
+      { date:"2026-05-16", crest:"Covenant" }
+    ];
+
+    function exportLogs() {
+      const archive = {
+        timestamp: new Date().toISOString(),
+        totals: {
+          ATS: liveLogs.filter(l=>l.crest==="ATS").length,
+          Unity: liveLogs.filter(l=>l.crest==="Unity").length,
+          Covenant: liveLogs.filter(l=>l.crest==="Covenant").length
+        },
+        entries: liveLogs
+      };
+      const json = JSON.stringify(archive, null, 2);
+      document.getElementById("exportOutput").innerText = json;
+
+      // Optional: trigger download
+      const blob = new Blob([json], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_Archive_${new Date().toISOString().split("T")[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

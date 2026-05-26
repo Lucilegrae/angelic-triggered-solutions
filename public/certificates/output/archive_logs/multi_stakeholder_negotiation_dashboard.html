@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Stakeholder Negotiation Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { width:80%; margin:20px auto; }
+    textarea { width:80%; height:60px; margin:10px; padding:10px; }
+    button { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .votes { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Multi-Stakeholder Negotiation Dashboard</h1>
+  <div class="controls">
+    <textarea id="proposalBox" placeholder="Propose a ceremonial forecast scenario..."></textarea><br>
+    <button onclick="sendProposal()">Submit Proposal</button>
+  </div>
+  <div class="votes" id="proposalList">
+    <h3>Active Proposals</h3>
+    <ul id="proposalItems"></ul>
+  </div>
+  <div class="chart-container"><canvas id="negotiationChart"></canvas></div>
+  <div class="summary" id="negotiationSummary">Stakeholders propose and vote to converge on a unified forecast...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let negotiationChart;
+    const proposals = [];
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function sendProposal() {
+      const text = document.getElementById("proposalBox").value;
+      if (!text) return;
+      const msg = { type:"proposal", name:"Stakeholder", text, votes:0, factors:{ats:1,unity:1,covenant:1} };
+      socket.send(JSON.stringify(msg));
+      document.getElementById("proposalBox").value = "";
+    }
+
+    function addProposal(msg) {
+      proposals.push(msg);
+      const list = document.getElementById("proposalItems");
+      const idx = proposals.length-1;
+      list.innerHTML += `<li>${msg.name}: ${msg.text} 
+        <button onclick="vote(${idx})">Vote</button> 
+        (Votes: <span id="votes${idx}">${msg.votes}</span>)</li>`;
+    }
+
+    function vote(idx) {
+      proposals[idx].votes++;
+      document.getElementById("votes"+idx).innerText = proposals[idx].votes;
+      updateConsensus();
+    }
+
+    function updateConsensus() {
+      const top = proposals.reduce((a,b)=> a.votes>=b.votes?a:b, proposals[0]);
+      if (!top) return;
+      const totals = scenarioTotals(top.factors);
+      if (negotiationChart) negotiationChart.destroy();
+      negotiationChart = new Chart(document.getElementById("negotiationChart"), {
+        type:'line',
+        data:{ labels:months, datasets:[{ label:"Consensus Forecast", borderColor:"#b58900", data:totals, fill:false }] }
+      });
+      document.getElementById("negotiationSummary").innerText = `Consensus: "${top.text}" with ${top.votes} votes. Projected crest exports: ${totals.slice(-1)[0]}`;
+    }
+
+    // WebSocket feed
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="proposal") { addProposal(msg); }
+    };
+
+    // Initialize chart
+    updateConsensus();
+  </script>
+</body>
+</html>

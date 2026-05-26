@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Overlay Chronicle Dashboard with Multi-Stakeholder Sliders</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { width:80%; margin:20px auto; }
+    label { display:block; margin:10px 0; }
+    input[type=range] { width:100%; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .presence { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Chronicle Dashboard with Multi-Stakeholder Sliders</h1>
+  <div class="controls">
+    <label>ATS Factor: <span id="atsVal">1</span>
+      <input type="range" id="atsSlider" min="0" max="3" step="0.1" value="1" oninput="sendFactors()">
+    </label>
+    <label>Unity Factor: <span id="unityVal">1</span>
+      <input type="range" id="unitySlider" min="0" max="3" step="0.1" value="1" oninput="sendFactors()">
+    </label>
+    <label>Covenant Factor: <span id="covenantVal">1</span>
+      <input type="range" id="covenantSlider" min="0" max="3" step="0.1" value="1" oninput="sendFactors()">
+    </label>
+  </div>
+  <div class="chart-container"><canvas id="multiStakeholderChart"></canvas></div>
+  <div class="summary" id="multiStakeholderSummary">Stakeholders adjusting sliders will shape the shared overlay chronicle...</div>
+  <div class="presence" id="presenceList">Connected stakeholders: none yet...</div>
+
+  <script>
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let multiStakeholderChart;
+    const stakeholderFactors = {};
+
+    function sendFactors() {
+      const atsFactor = parseFloat(document.getElementById("atsSlider").value);
+      const unityFactor = parseFloat(document.getElementById("unitySlider").value);
+      const covenantFactor = parseFloat(document.getElementById("covenantSlider").value);
+
+      document.getElementById("atsVal").innerText = atsFactor;
+      document.getElementById("unityVal").innerText = unityFactor;
+      document.getElementById("covenantVal").innerText = covenantFactor;
+
+      const msg = { type:"factors", name:"Stakeholder", ats:atsFactor, unity:unityFactor, covenant:covenantFactor };
+      socket.send(JSON.stringify(msg));
+    }
+
+    function overlayProjection(factors) {
+      return consensusHistory.map(c=>
+        (c.factors.ats*factors.ats)+(c.factors.unity*factors.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function updateSharedChronicle() {
+      const datasets = [];
+      Object.keys(stakeholderFactors).forEach(name=>{
+        datasets.push({
+          label:`${name}'s overlay`,
+          borderColor:"#"+Math.floor(Math.random()*16777215).toString(16),
+          data:overlayProjection(stakeholderFactors[name]),
+          fill:false
+        });
+      });
+
+      if (multiStakeholderChart) multiStakeholderChart.destroy();
+      multiStakeholderChart = new Chart(document.getElementById("multiStakeholderChart"), {
+        type:'line',
+        data:{ labels:consensusHistory.map(c=>c.date), datasets }
+      });
+
+      const summaryText = Object.keys(stakeholderFactors).map(n=> `${n}: ${overlayProjection(stakeholderFactors[n]).slice(-1)[0]}`).join(" | ");
+      document.getElementById("multiStakeholderSummary").innerText = `Shared overlay projections → ${summaryText}`;
+    }
+
+    // WebSocket feed
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="factors") {
+        stakeholderFactors[msg.name] = { ats:msg.ats, unity:msg.unity, covenant:msg.covenant };
+        updateSharedChronicle();
+        document.getElementById("presenceList").innerText = "Connected stakeholders: " + Object.keys(stakeholderFactors).join(", ");
+      }
+    };
+
+    // Initialize chart
+    updateSharedChronicle();
+  </script>
+</body>
+</html>

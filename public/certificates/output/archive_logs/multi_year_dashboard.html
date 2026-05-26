@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Year Crest Trend</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .chart-container { width: 85%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Multi-Year Crest Trend</h1>
+  <div class="chart-container">
+    <canvas id="trendChart"></canvas>
+  </div>
+  <script>
+    // Example data — replace with parsed archive logs
+    const labels = ["2023", "2024", "2025", "2026"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "ATS Crest",
+          borderColor: "#268bd2",
+          backgroundColor: "#268bd2",
+          data: [200, 400, 600, 720],
+          fill: false
+        },
+        {
+          label: "Unity & Faith",
+          borderColor: "#2aa198",
+          backgroundColor: "#2aa198",
+          data: [180, 380, 580, 700],
+          fill: false
+        },
+        {
+          label: "Golden Covenant",
+          borderColor: "#b58900",
+          backgroundColor: "#b58900",
+          data: [190, 390, 590, 710],
+          fill: false
+        }
+      ]
+    };
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Multi-Year Crest Regeneration Trend' }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    };
+    new Chart(document.getElementById("trendChart"), config);
+  </script>
+</body>
+</html>

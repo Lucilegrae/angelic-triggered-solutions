@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scenario Dashboard with Interactive Sliders</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { width:80%; margin:20px auto; }
+    label { display:block; margin:10px 0; }
+    input[type=range] { width:100%; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Scenario Dashboard with Interactive Sliders</h1>
+  <div class="controls">
+    <label>ATS Factor: <span id="atsVal">1</span>
+      <input type="range" id="atsSlider" min="0" max="3" step="0.1" value="1" oninput="updateScenario()">
+    </label>
+    <label>Unity Factor: <span id="unityVal">1</span>
+      <input type="range" id="unitySlider" min="0" max="3" step="0.1" value="1" oninput="updateScenario()">
+    </label>
+    <label>Covenant Factor: <span id="covenantVal">1</span>
+      <input type="range" id="covenantSlider" min="0" max="3" step="0.1" value="1" oninput="updateScenario()">
+    </label>
+  </div>
+  <div class="chart-container"><canvas id="sliderChart"></canvas></div>
+  <div class="summary" id="sliderSummary">Adjust sliders to project ceremonial futures...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let sliderChart;
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function updateScenario() {
+      const atsFactor = parseFloat(document.getElementById("atsSlider").value);
+      const unityFactor = parseFloat(document.getElementById("unitySlider").value);
+      const covenantFactor = parseFloat(document.getElementById("covenantSlider").value);
+
+      document.getElementById("atsVal").innerText = atsFactor;
+      document.getElementById("unityVal").innerText = unityFactor;
+      document.getElementById("covenantVal").innerText = covenantFactor;
+
+      const totals = scenarioTotals({ats:atsFactor, unity:unityFactor, covenant:covenantFactor});
+
+      if (sliderChart) sliderChart.destroy();
+      sliderChart = new Chart(document.getElementById("sliderChart"), {
+        type:'line',
+        data:{
+          labels:months,
+          datasets:[
+            { label:"Scenario Forecast", borderColor:"#b58900", data:totals, fill:false }
+          ]
+        }
+      });
+
+      document.getElementById("sliderSummary").innerText = 
+        `Factors → ATS×${atsFactor}, Unity×${unityFactor}, Covenant×${covenantFactor}. Projected crest exports: ${totals.slice(-1)[0]}`;
+    }
+
+    // Initialize chart
+    updateScenario();
+  </script>
+</body>
+</html>

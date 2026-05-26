@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chronicle Dashboard with Scenario Overlays</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    input { margin:5px; padding:5px; width:100px; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Interactive Chronicle Dashboard with Scenario Overlays</h1>
+  <div class="controls">
+    <h3>Overlay Scenario</h3>
+    ATS×<input type="number" id="atsOverlay" value="1">
+    Unity×<input type="number" id="unityOverlay" value="1">
+    Covenant×<input type="number" id="covenantOverlay" value="1">
+    <button onclick="applyOverlay()">Apply Overlay</button>
+  </div>
+  <div class="chart-container"><canvas id="overlayChart"></canvas></div>
+  <div class="summary" id="overlaySummary">Overlay scenarios on top of the cumulative chronicle...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>ATS</th><th>Unity</th><th>Covenant</th><th>Cumulative Votes</th></tr></thead>
+    <tbody id="chronicleTable"></tbody>
+  </table>
+
+  <script>
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let overlayChart;
+
+    function buildChronicle() {
+      let cumulativeVotes = 0;
+      const labels = [];
+      const votesData = [];
+      const atsData = [];
+      const unityData = [];
+      const covenantData = [];
+
+      const table = document.getElementById("chronicleTable");
+      table.innerHTML = "";
+
+      consensusHistory.forEach(c=>{
+        cumulativeVotes += c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+        atsData.push(c.factors.ats);
+        unityData.push(c.factors.unity);
+        covenantData.push(c.factors.covenant);
+
+        table.innerHTML += `<tr>
+          <td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td>
+          <td>${c.factors.ats}</td><td>${c.factors.unity}</td><td>${c.factors.covenant}</td>
+          <td>${cumulativeVotes}</td>
+        </tr>`;
+      });
+
+      if (overlayChart) overlayChart.destroy();
+      overlayChart = new Chart(document.getElementById("overlayChart"), {
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false },
+            { label:"ATS Factors", borderColor:"#2aa198", data:atsData, fill:false },
+            { label:"Unity Factors", borderColor:"#b58900", data:unityData, fill:false },
+            { label:"Covenant Factors", borderColor:"#cb4b16", data:covenantData, fill:false }
+          ]
+        }
+      });
+
+      document.getElementById("overlaySummary").innerText = 
+        `Chronicle includes ${consensusHistory.length} outcomes. Total votes: ${cumulativeVotes}. Latest factors → ATS×${consensusHistory.slice(-1)[0].factors.ats}, Unity×${consensusHistory.slice(-1)[0].factors.unity}, Covenant×${consensusHistory.slice(-1)[0].factors.covenant}`;
+    }
+
+    function applyOverlay() {
+      const atsFactor = parseFloat(document.getElementById("atsOverlay").value);
+      const unityFactor = parseFloat(document.getElementById("unityOverlay").value);
+      const covenantFactor = parseFloat(document.getElementById("covenantOverlay").value);
+
+      const overlayData = consensusHistory.map(c=>
+        (c.factors.ats*atsFactor)+(c.factors.unity*unityFactor)+(c.factors.covenant*covenantFactor)
+      );
+
+      overlayChart.data.datasets.push({
+        label:`Overlay Scenario ATS×${atsFactor}, Unity×${unityFactor}, Covenant×${covenantFactor}`,
+        borderColor:"#6c71c4",
+        data:overlayData,
+        fill:false,
+        borderDash:[5,5]
+      });
+      overlayChart.update();
+
+      document.getElementById("overlaySummary").innerText = 
+        `Overlay applied → ATS×${atsFactor}, Unity×${unityFactor}, Covenant×${covenantFactor}. Latest overlay projection: ${overlayData.slice(-1)[0]}`;
+    }
+
+    // Initialize chronicle
+    buildChronicle();
+  </script>
+</body>
+</html>

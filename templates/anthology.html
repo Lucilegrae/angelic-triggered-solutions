@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lineage Anthology of Onboarding Certificates</title>
+  <style>
+    body {
+      font-family: "Georgia", serif;
+      background: url('./public/constellations/parchment-overlay.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #2b1d0e;
+      margin: 0;
+      padding: 0;
+    }
+    .scroll {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 12px solid #d4af37;
+      border-image: url('./public/constellations/scroll-aura-border.png') 30 round;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    h1 {
+      text-align: center;
+      color: #d4af37;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .controls input, .controls select, .controls button {
+      margin: 5px;
+      padding: 8px;
+      font-size: 1em;
+    }
+    .entry {
+      margin-bottom: 20px;
+      padding: 20px;
+      border-bottom: 1px dashed #d4af37;
+      position: relative;
+      overflow: hidden;
+    }
+    .blessing {
+      font-style: italic;
+      color: #6b4e16;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #444;
+    }
+    /* Legend styling */
+    .legend img {
+      border: 2px solid #d4af37;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(212,175,55,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .legend img:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(212,175,55,0.9);
+    }
+    .legend span {
+      display:block;
+      margin-top:5px;
+      font-weight:bold;
+      color:#2b1d0e;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll">
+    <h1>Lineage Anthology of Onboarding Certificates</h1>
+
+    <!-- Crest Legend Panel -->
+    <div class="legend" style="text-align:center; margin-bottom:30px;">
+      <h2 style="color:#d4af37;">Circle of Five Crests</h2>
+      <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:15px;">
+        <div>
+          <img src="./public/seals/flame.png" alt="Flame Crest" style="width:50px;height:50px;"><br>
+          <span>Flame</span>
+        </div>
+        <div>
+          <img src="./public/seals/river.png" alt="River Crest" style="width:50px;height:50px;"><br>
+          <span>River</span>
+        </div>
+        <div>
+          <img src="./public/seals/stone.png" alt="Stone Crest" style="width:50px;height:50px;"><br>
+          <span>Stone</span>
+        </div>
+        <div>
+          <img src="./public/seals/celestial.png" alt="Celestial Crest" style="width:50px;height:50px;"><br>
+          <span>Celestial</span>
+        </div>
+        <div>
+          <img src="./public/seals/ouroboros.png" alt="Ouroboros Crest" style="width:50px;height:50px;"><br>
+          <span>Ouroboros</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter controls -->
+    <div class="controls">
+      <select id="crestFilter">
+        <option value="">Filter by Crest</option>
+        <option value="flame">Flame</option>
+        <option value="river">River</option>
+        <option value="stone">Stone</option>
+        <option value="celestial">Celestial</option>
+        <option value="ouroboros">Ouroboros</option>
+      </select>
+      <input type="text" id="certSearch" placeholder="Enter Certificate Number">
+      <select id="statusFilter">
+        <option value="">Filter by Status</option>
+        <option value="active">Active</option>
+        <option value="expired">Expired</option>
+      </select>
+      <br>
+      <label>Issued From: <input type="date" id="dateFrom"></label>
+      <label>To: <input type="date" id="dateTo"></label>
+      <br>
+      <button id="applyFilter">Apply Filter</button>
+      <button id="resetFilter">Reset</button>
+      <button id="exportCSV">Export CSV</button>
+      <button id="exportPDF">Export PDF</button>
+    </div>
+
+    <!-- Visitor controls -->
+    <div id="controls" style="text-align:center; margin:20px;">
+      <button id="muteToggle">🔇 Mute / Unmute</button>
+      <label style="margin-left:10px;">
+        Volume:
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.5">
+      </label>
+    </div>
+
+    <div id="entries"></div>
+
+    <footer>
+      “This anthology sanctifies the covenantal journey, affirming unity across all crests and generations.”<br>
+      Authorized by Angelic Triggered Solutions (ATS)
+    </footer>
+  </div>
+
+  <!-- Ambient audio motifs -->
+  <audio id="flame-sound" src="./public/sounds/flame.mp3" preload="auto" loop></audio>
+  <audio id="river-sound" src="./public/sounds/river.mp3" preload="auto" loop></audio>
+  <audio id="stone-sound" src="./public/sounds/stone.mp3" preload="auto" loop></audio>
+  <audio id="celestial-sound" src="./public/sounds/celestial.mp3" preload="auto" loop></audio>
+  <audio id="ouroboros-sound" src="./public/sounds/ouroboros.mp3" preload="auto" loop></audio>
+
+  <!-- PDF libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const supabase = createClient('YOUR_SUPABASE_URL','YOUR_SUPABASE_KEY');
+
+    const container = document.getElementById('entries');
+    const crestFilter = document.getElementById('crestFilter');
+    const certSearch = document.getElementById('certSearch');
+    const statusFilter = document.getElementById('statusFilter');
+    const dateFrom = document.getElementById('dateFrom');
+    const dateTo = document.getElementById('dateTo');
+    const applyFilter = document.getElementById('applyFilter');
+    const resetFilter = document.getElementById('resetFilter');
+    const exportCSV = document.getElementById('exportCSV');
+    const exportPDF = document.getElementById('exportPDF');
+
+    const muteToggle = document.getElementById('muteToggle');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const sounds = [
+      document.getElementById('flame-sound'),
+      document.getElementById('river-sound'),
+      document.getElementById('stone-sound'),
+      document.getElementById('celestial-sound'),
+      document.getElementById('ouroboros-sound')
+    ];
+
+    let muted = false;
+    let currentData = [];
+
+    function renderEntry(cert) {
+      const log = cert.lineage_log;
+      if (!log) return;
+
+      const crestClass = (cert.crest_affiliation || '').toLowerCase();
+      const crestSeals = {
+        flame: './public/seals/flame.png',
+        river: './public/seals/river.png',
+        stone: './public/seals/stone.png',
+        celestial: './public/seals/celestial.png',
+        ouroboros: './public/seals/ouroboros.png'
+      };
+      const crestSeal = crestSeals[crestClass] || '';
+
+      const entry = document.createElement('div');
+      entry.className = `entry ${crestClass}`;
+      entry.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px;">
+          ${crestSeal ? `<img src="${crestSeal}" alt="${cert.crest_affiliation} seal" style="width:40px;height:40px;">` : ''}
+          <strong>[${cert.issued_at}]</strong> Certificate ${cert.certificate_number} for ${cert.crest_affiliation} (${cert.status})
+        </div>
+        <ul>${log.actions ? log.actions.map(a => `<li>${a}</li>`).join('') : ''}</ul>
+        <div class="blessing">“${log.affirmation || ''}”</div>
+      `;
+      container.appendChild(entry);
+
+      // 🎶 Play crest-specific sound motif
+      const soundMap = {
+        flame: document.getElementById('flame-sound'),
+        river: document.getElementById('river-sound'),
+        stone: document.getElementById('stone-sound'),
+        celestial: document.getElementById('celestial-sound'),
+        ouroboros: document.getElementById('ouroboros-sound')
+      };
+      const sound = soundMap[crestClass];
+      if (sound && !muted) {
+        sound.currentTime = 0;
+        sound.play().catch(err => console.log("Audio play blocked:", err));
+      }
+    }
+
+    async function loadEntries(filters = {}) {
+      let query = supabase
+        .from('certifications')
+        .select('certificate_number, crest_affiliation, issued_at, status, lineage_log')
+        .order('issued_at', { ascending: false });
+
+      if (filters.certificate_number) query = query.eq('certificate_number', filters.certificate_number);
+      if (filters.crest_affiliation) query = query.eq('crest_affiliation', filters.crest_affiliation);
+      if (filters.status) query = query.eq('status', filters.status);
+      if (filters.dateFrom) query = query.gte('issued_at', filters.dateFrom);
+      if (filters.dateTo) query = query.lte('issued_at', filters.dateTo);
+
+      const { data, error } = await query;
+      if (error) { console.error(error); return; }
+
+      currentData = data;
+      container.innerHTML = '';
+      data.forEach(renderEntry);
+    }
+
+    // Initial load
+    loadEntries();
+
+    // Apply filter
+    applyFilter.addEventListener('click', () => {
+      const crest = crestFilter.value;
+      const certNum = certSearch.value.trim();
+      const status = statusFilter.value;
+      const fromDate = dateFrom.value;
+      const toDate = dateTo.value;
+
+      const filters = {};
+      if (crest) filters.crest_affiliation = crest;
+      if (certNum) filters.certificate_number = certNum;
+      if (status) filters.status = status;
+      if (fromDate) filters.dateFrom = fromDate;
+      if (toDate) filters.dateTo = toDate;
+
+      loadEntries(filters);
+    });
+
+    // Reset filter
+    resetFilter.addEventListener('click', () => {
+      crestFilter.value = '';
+      certSearch.value = '';
+      statusFilter.value = '';
+      dateFrom.value = '';
+      dateTo.value = '';
+      loadEntries();
+    });
+
+    // Export CSV
+    exportCSV.addEventListener('click', () => {
+      if (!currentData.length) {
+        alert("No data to export.");
+        return;
+      }
+
+      const headers = ["certificate_number","crest_affiliation","issued_at","status","lineage_log"];
+      const rows = currentData.map(cert => [
+        cert.certificate_number,
+        cert.crest_affiliation,
+        cert.issued_at,
+        cert.status,
+        JSON.stringify(cert.lineage_log)
+      ]);
+
+      let csvContent = "data:text/csv;charset=utf-8," 
+        + [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "certifications_export.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Real-time subscription
+    supabase.channel('anthology_channel')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'certifications' }, payload => {
+        renderEntry(payload.new);
+      })
+      .subscribe();
+
+    // 🎛 Visitor Controls
+    muteToggle.addEventListener('click', () => {
+      muted = !muted;
+      sounds.forEach(s => s.muted = muted);
+    });
+
+    volumeSlider.addEventListener('input', e => {
+      const vol = parseFloat(e.target.value);
+      sounds.forEach(s => s.volume = vol);
+    });
+
+    // Export PDF
+    exportPDF.addEventListener('click', async () => {
+      const { jsPDF } = window.jspdf;
+
+      const scrollElement = document.querySelector('.scroll');
+      const canvas = await html2canvas(scrollElement, { scale: 2 });
+      const imgData = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      const imgWidth = pageWidth;
+      const imgHeight = canvas.height * pageWidth / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+      pdf.setFont('Georgia', 'italic');
+      pdf.setTextColor(212, 175, 55);
+      pdf.text(
+        "Sanctified Anthology Export — Angelic Triggered Solutions",
+        pageWidth / 2,
+        pageHeight - 10,
+        { align: 'center' }
+      );
+
+      pdf.save('certifications_scroll.pdf');
+    });
+  </script>
+</body>
+</html>

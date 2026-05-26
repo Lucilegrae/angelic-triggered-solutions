@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Scenario Comparison Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    input { margin:5px; padding:5px; width:100px; }
+    button { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Multi-Scenario Comparison Dashboard</h1>
+  <div class="controls">
+    <h3>Scenario A</h3>
+    ATS×<input type="number" id="atsA" value="1">
+    Unity×<input type="number" id="unityA" value="1">
+    Covenant×<input type="number" id="covenantA" value="1"><br>
+    <h3>Scenario B</h3>
+    ATS×<input type="number" id="atsB" value="1">
+    Unity×<input type="number" id="unityB" value="2">
+    Covenant×<input type="number" id="covenantB" value="0.5"><br>
+    <h3>Scenario C</h3>
+    ATS×<input type="number" id="atsC" value="1.5">
+    Unity×<input type="number" id="unityC" value="1">
+    Covenant×<input type="number" id="covenantC" value="1"><br>
+    <button onclick="applyScenarios()">Compare Scenarios</button>
+  </div>
+  <div class="chart-container"><canvas id="comparisonChart"></canvas></div>
+  <div class="summary" id="comparisonSummary">Define scenarios to compare ceremonial futures...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let comparisonChart;
+
+    function scenarioTotals(factors) {
+      return months.map(m=>
+        (grouped[m].ATS||0)*factors.ats +
+        (grouped[m].Unity||0)*factors.unity +
+        (grouped[m].Covenant||0)*factors.covenant
+      );
+    }
+
+    function applyScenarios() {
+      const factorsA = { ats:parseFloat(document.getElementById("atsA").value), unity:parseFloat(document.getElementById("unityA").value), covenant:parseFloat(document.getElementById("covenantA").value) };
+      const factorsB = { ats:parseFloat(document.getElementById("atsB").value), unity:parseFloat(document.getElementById("unityB").value), covenant:parseFloat(document.getElementById("covenantB").value) };
+      const factorsC = { ats:parseFloat(document.getElementById("atsC").value), unity:parseFloat(document.getElementById("unityC").value), covenant:parseFloat(document.getElementById("covenantC").value) };
+
+      const totalsA = scenarioTotals(factorsA);
+      const totalsB = scenarioTotals(factorsB);
+      const totalsC = scenarioTotals(factorsC);
+
+      if (comparisonChart) comparisonChart.destroy();
+      comparisonChart = new Chart(document.getElementById("comparisonChart"), {
+        type:'line',
+        data:{
+          labels:months,
+          datasets:[
+            { label:"Scenario A", borderColor:"#268bd2", data:totalsA, fill:false },
+            { label:"Scenario B", borderColor:"#2aa198", data:totalsB, fill:false },
+            { label:"Scenario C", borderColor:"#b58900", data:totalsC, fill:false }
+          ]
+        }
+      });
+      document.getElementById("comparisonSummary").innerText = 
+        `Scenario A projected crest exports: ${totalsA.slice(-1)[0]}, Scenario B: ${totalsB.slice(-1)[0]}, Scenario C: ${totalsC.slice(-1)[0]}`;
+    }
+  </script>
+</body>
+</html>

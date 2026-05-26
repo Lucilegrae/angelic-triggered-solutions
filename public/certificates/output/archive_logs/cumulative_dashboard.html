@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cumulative Crest Timeline</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .chart-container { width: 80%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Cumulative Crest Timeline</h1>
+  <div class="chart-container">
+    <canvas id="cumulativeChart"></canvas>
+  </div>
+  <script>
+    // Example data — replace with parsed archive logs
+    const labels = ["2026-05-14", "2026-05-15", "2026-05-16"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "ATS Crest",
+          backgroundColor: "#268bd2",
+          borderColor: "#268bd2",
+          data: [1, 2, 3], // cumulative ATS totals
+          fill: false
+        },
+        {
+          label: "Unity & Faith",
+          backgroundColor: "#2aa198",
+          borderColor: "#2aa198",
+          data: [1, 2, 3], // cumulative Unity totals
+          fill: false
+        },
+        {
+          label: "Golden Covenant",
+          backgroundColor: "#b58900",
+          borderColor: "#b58900",
+          data: [1, 2, 3], // cumulative Covenant totals
+          fill: false
+        }
+      ]
+    };
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Cumulative Crest Regeneration Over Time' }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    };
+    new Chart(document.getElementById("cumulativeChart"), config);
+  </script>
+</body>
+</html>

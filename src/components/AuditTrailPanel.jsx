@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { supabase } from "../supabaseClient";
+import { supabase } from ".../supabaseClient";
 import "../theme.css"; // aura modal styles already defined
 
 export default function AuditTrailPanel({ stakeholderId, role }) {

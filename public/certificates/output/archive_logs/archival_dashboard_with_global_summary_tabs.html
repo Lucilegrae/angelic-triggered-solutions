@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Archival Dashboard with Global Summary Tabs</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .tabs { display:flex; justify-content:center; margin:20px; }
+    .tab { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; cursor:pointer; }
+    .tab:hover { background:#2aa198; }
+    .panel { display:none; padding:20px; border:2px solid #b58900; background:#fff; width:90%; margin:20px auto; }
+    .active { display:block; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    textarea { width:80%; height:80px; margin:10px; padding:10px; }
+    button { padding:10px 20px; margin:5px; background:#b58900; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#cb4b16; }
+  </style>
+</head>
+<body>
+  <h1>ATS Archival Dashboard with Global Summary Tabs</h1>
+  <div class="tabs">
+    <div class="tab" onclick="showPanel('analytics')">Analytics</div>
+    <div class="tab" onclick="showPanel('archive')">Crest Exports</div>
+    <div class="tab" onclick="showPanel('search')">Search</div>
+    <div class="tab" onclick="showPanel('contributions')">Contributions</div>
+  </div>
+
+  <!-- Analytics Panel -->
+  <div id="analytics" class="panel active">
+    <h2>Real-Time Analytics</h2>
+    <div class="chart-container"><canvas id="analyticsChart"></canvas></div>
+    <div class="summary" id="analyticsSummary">No analytics yet...</div>
+  </div>
+
+  <!-- Archive Panel -->
+  <div id="archive" class="panel">
+    <h2>Crest Exports</h2>
+    <pre id="archiveOutput"></pre>
+    <div class="summary" id="archiveSummary">Awaiting nightly preservation...</div>
+  </div>
+
+  <!-- Search Panel -->
+  <div id="search" class="panel">
+    <h2>Search Export History</h2>
+    <input type="text" id="searchBox" placeholder="Search (e.g. ATS May PDF)">
+    <button onclick="applySearch()">Search</button>
+    <table>
+      <thead><tr><th>Crest</th><th>Format</th><th>Date</th></tr></thead>
+      <tbody id="searchTable"></tbody>
+    </table>
+    <div class="summary" id="searchSummary">No search performed yet...</div>
+  </div>
+
+  <!-- Contributions Panel -->
+  <div id="contributions" class="panel">
+    <h2>Stakeholder Contributions</h2>
+    <textarea id="noteBox" placeholder="Enter ceremonial note..."></textarea><br>
+    <button onclick="sendContribution()">Submit</button>
+    <ul id="contributionList"></ul>
+    <div class="summary" id="contributionSummary">No contributions archived yet...</div>
+  </div>
+
+  <script>
+    const grouped = {}; const months = []; let chart;
+    const exportHistory = []; const contributions = [];
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function updateData(log) {
+      const month = log.date.slice(0,7);
+      if (!grouped[month]) grouped[month] = { ATS:0, Unity:0, Covenant:0, json:0, csv:0, pdf:0 };
+      grouped[month][log.crest]++; grouped[month][log.format]++;
+      if (!months.includes(month)) months.push(month);
+      if (chart) chart.update();
+      document.getElementById("analyticsSummary").innerText = `Global totals updated: ${JSON.stringify(grouped)}`;
+    }
+
+    function buildTable(data) {
+      const table = document.getElementById("searchTable");
+      table.innerHTML = "";
+      data.forEach(e => table.innerHTML += `<tr><td>${e.crest}</td><td>${e.format}</td><td>${e.date}</td></tr>`);
+      document.getElementById("searchSummary").innerText = `Search returned ${data.length} results.`;
+    }
+
+    function applySearch() {
+      const query = document.getElementById("searchBox").value.toLowerCase();
+      const filtered = exportHistory.filter(e =>
+        e.crest.toLowerCase().includes(query) ||
+        e.format.toLowerCase().includes(query) ||
+        e.date.toLowerCase().includes(query)
+      );
+      buildTable(filtered);
+    }
+
+    function sendContribution() {
+      const note = document.getElementById("noteBox").value;
+      if (!note) return;
+      const msg = { type:"contribution", name:"Stakeholder", text:note, date:new Date().toISOString() };
+      socket.send(JSON.stringify(msg));
+      document.getElementById("noteBox").value = "";
+    }
+
+    function addContribution(msg) {
+      contributions.push(msg);
+      const list = document.getElementById("contributionList");
+      list.innerHTML += `<li><strong>${msg.name}</strong> (${msg.date}): ${msg.text}</li>`;
+      document.getElementById("contributionSummary").innerText = `Total contributions: ${contributions.length}`;
+    }
+
+    // WebSocket feed
+    const socket = new WebSocket("ws://localhost:8080");
+    socket.onmessage = function(event) {
+      const msg = JSON.parse(event.data);
+      if (msg.type==="log") { exportHistory.push(msg); updateData(msg); document.getElementById("archiveSummary").innerText = `Last export: ${msg.date}`; }
+      if (msg.type==="contribution") { addContribution(msg); }
+    };
+
+    // Initialize chart
+    chart = new Chart(document.getElementById("analyticsChart"), {
+      type:'bar',
+      data:{ labels:months, datasets:[
+        { label:"ATS", backgroundColor:"#268bd2", data:months.map(m=>grouped[m].ATS||0) },
+        { label:"Unity", backgroundColor:"#2aa198", data:months.map(m=>grouped[m].Unity||0) },
+        { label:"Covenant", backgroundColor:"#b58900", data:months.map(m=>grouped[m].Covenant||0) }
+      ]}
+    });
+  </script>
+</body>
+</html>

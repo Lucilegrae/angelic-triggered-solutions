@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Archival Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    table { width: 90%; margin: 20px auto; border-collapse: collapse; }
+    th, td { border: 1px solid #b58900; padding: 10px; text-align: center; }
+    th { background: #eee; }
+    .status { text-align: center; margin: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Archival Summary</h1>
+  <div class="status" id="status">Loading summary...</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Crest</th>
+        <th>Total Exports</th>
+        <th>JSON</th>
+        <th>CSV</th>
+        <th>PDF</th>
+        <th>Last Export</th>
+      </tr>
+    </thead>
+    <tbody id="summaryTable"></tbody>
+  </table>
+
+  <script>
+    // Example export history (replace with actual archival logs)
+    const exportHistory = [
+      { crest:"ATS", format:"json", date:"2026-05-14" },
+      { crest:"ATS", format:"csv", date:"2026-05-14" },
+      { crest:"ATS", format:"pdf", date:"2026-05-14" },
+      { crest:"Unity", format:"json", date:"2026-05-14" },
+      { crest:"Unity", format:"csv", date:"2026-05-14" },
+      { crest:"Unity", format:"pdf", date:"2026-05-14" },
+      { crest:"Covenant", format:"json", date:"2026-05-14" },
+      { crest:"Covenant", format:"csv", date:"2026-05-14" },
+      { crest:"Covenant", format:"pdf", date:"2026-05-14" }
+    ];
+
+    function buildSummary() {
+      const crests = ["ATS","Unity","Covenant"];
+      const table = document.getElementById("summaryTable");
+      table.innerHTML = "";
+      crests.forEach(crest => {
+        const crestExports = exportHistory.filter(e=>e.crest===crest);
+        const total = crestExports.length;
+        const jsonCount = crestExports.filter(e=>e.format==="json").length;
+        const csvCount = crestExports.filter(e=>e.format==="csv").length;
+        const pdfCount = crestExports.filter(e=>e.format==="pdf").length;
+        const lastExport = crestExports.length ? crestExports[crestExports.length-1].date : "N/A";
+        const row = `<tr><td>${crest}</td><td>${total}</td><td>${jsonCount}</td><td>${csvCount}</td><td>${pdfCount}</td><td>${lastExport}</td></tr>`;
+        table.innerHTML += row;
+      });
+      document.getElementById("status").innerText = `Global summary updated at ${new Date().toLocaleTimeString()}`;
+    }
+
+    buildSummary();
+  </script>
+</body>
+</html>

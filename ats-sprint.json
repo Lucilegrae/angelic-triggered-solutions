@@ -1,0 +1,35 @@
+{
+  "name": "Angelic Triggered Solutions - 3 Day Sprint",
+  "lists": [
+    { "name": "To Do" },
+    { "name": "In Progress" },
+    { "name": "Done" }
+  ],
+  "cards": [
+    { "name": "Deploy Supabase migrations", "list": "To Do" },
+    { "name": "Configure RLS policies", "list": "To Do" },
+    { "name": "Seed sample data", "list": "To Do" },
+    { "name": "Implement Supabase client (supabaseClient.js)", "list": "To Do" },
+    { "name": "Connect crest-specific forms", "list": "To Do" },
+    { "name": "Add validation rules (formValidation.js)", "list": "To Do" },
+    { "name": "Wire forms into OnboardingPanels.jsx", "list": "To Do" },
+    { "name": "Add ConfirmationModal.js + RippleEffect.js", "list": "To Do" },
+
+    { "name": "Build GoldenStar.js covenant dashboard", "list": "To Do" },
+    { "name": "Implement ProgressBars.js (aura rings)", "list": "To Do" },
+    { "name": "Integrate legitimacy scripts (weekly, monthly, quarterly)", "list": "To Do" },
+    { "name": "Connect StakeholdersList.jsx to Supabase", "list": "To Do" },
+    { "name": "Implement project creation (ProjectsList.jsx, ProjectCard.js, ProjectModal.js)", "list": "To Do" },
+    { "name": "Integrate AuditTrailFeed.jsx with Supabase logs", "list": "To Do" },
+    { "name": "Wire charts (rollcall, sector, pledges, workforce)", "list": "To Do" },
+
+    { "name": "Finalize anthology scroll (anthology.html)", "list": "To Do" },
+    { "name": "Integrate affirmations, benedictions, glyphs", "list": "To Do" },
+    { "name": "Implement PortalChambers.js", "list": "To Do" },
+    { "name": "Wire CSV/PDF exports to UI buttons", "list": "To Do" },
+    { "name": "Ensure crest seals + legend panel in exports", "list": "To Do" },
+    { "name": "Polish theme.css + crestColors.js", "list": "To Do" },
+    { "name": "Finalize CI/CD workflow (supabase-deploy.yml)", "list": "To Do" },
+    { "name": "Run end-to-end tests (supabaseTest.js, supabase_test.py)", "list": "To Do" }
+  ]
+}

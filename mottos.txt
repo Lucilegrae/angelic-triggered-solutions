@@ -1,0 +1,24 @@
+[Light]
+Guardian of Covenant Light
+Sentinel of Radiant Dawn
+Bearer of Celestial Glow
+
+[Flame]
+Bearer of Ancestral Flame
+Custodian of Eternal Ember
+Keeper of Sacred Fire
+
+[Path]
+Warden of Celestial Paths
+Navigator of Ancestral Trails
+Guide of Covenant Journey
+
+[WeekdayUniversal]
+Steward of Cosmic Balance
+Keeper of Ancestral Memory
+Guardian of Eternal Covenant
+
+[WeekendUniversal]
+Herald of Dawn’s Renewal
+Custodian of Sacred Rest
+Bearer of Celestial Harmony

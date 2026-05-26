@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Global Overlay Chronicle Dashboard with Sliders</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    label { display:block; margin:10px 0; }
+    input[type=range] { width:80%; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Chronicle Dashboard with Interactive Sliders</h1>
+  <div class="controls">
+    <label>ATS Factor: <span id="atsVal">1</span>
+      <input type="range" id="atsSlider" min="0" max="3" step="0.1" value="1" oninput="updateOverlay()">
+    </label>
+    <label>Unity Factor: <span id="unityVal">1</span>
+      <input type="range" id="unitySlider" min="0" max="3" step="0.1" value="1" oninput="updateOverlay()">
+    </label>
+    <label>Covenant Factor: <span id="covenantVal">1</span>
+      <input type="range" id="covenantSlider" min="0" max="3" step="0.1" value="1" oninput="updateOverlay()">
+    </label>
+    <label><input type="checkbox" id="toggleConsensus" checked> Show Consensus (Cumulative Votes)</label>
+    <label><input type="checkbox" id="toggleOverlay" checked> Show Overlay Projection</label>
+    <button onclick="updateOverlay()">Update Chart</button>
+  </div>
+  <div class="chart-container"><canvas id="sliderToggleChart"></canvas></div>
+  <div class="summary" id="sliderToggleSummary">Adjust sliders and toggles to shape the ceremonial chronicle...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>ATS</th><th>Unity</th><th>Covenant</th><th>Overlay Projection</th><th>Cumulative Votes</th></tr></thead>
+    <tbody id="chronicleTable"></tbody>
+  </table>
+
+  <script>
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let sliderToggleChart;
+
+    function updateOverlay() {
+      const atsFactor = parseFloat(document.getElementById("atsSlider").value);
+      const unityFactor = parseFloat(document.getElementById("unitySlider").value);
+      const covenantFactor = parseFloat(document.getElementById("covenantSlider").value);
+
+      document.getElementById("atsVal").innerText = atsFactor;
+      document.getElementById("unityVal").innerText = unityFactor;
+      document.getElementById("covenantVal").innerText = covenantFactor;
+
+      let cumulativeVotes = 0;
+      const labels = [];
+      const votesData = [];
+      const overlayData = [];
+
+      const table = document.getElementById("chronicleTable");
+      table.innerHTML = "";
+
+      consensusHistory.forEach(c=>{
+        cumulativeVotes += c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+        const overlayVal = (c.factors.ats*atsFactor)+(c.factors.unity*unityFactor)+(c.factors.covenant*covenantFactor);
+        overlayData.push(overlayVal);
+
+        table.innerHTML += `<tr>
+          <td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td>
+          <td>${c.factors.ats}</td><td>${c.factors.unity}</td><td>${c.factors.covenant}</td>
+          <td>${overlayVal}</td><td>${cumulativeVotes}</td>
+        </tr>`;
+      });
+
+      const datasets = [];
+      if (document.getElementById("toggleConsensus").checked) {
+        datasets.push({ label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false });
+      }
+      if (document.getElementById("toggleOverlay").checked) {
+        datasets.push({ label:"Overlay Projection", borderColor:"#6c71c4", data:overlayData, fill:false, borderDash:[5,5] });
+      }
+
+      if (sliderToggleChart) sliderToggleChart.destroy();
+      sliderToggleChart = new Chart(document.getElementById("sliderToggleChart"), {
+        type:'line',
+        data:{ labels:labels, datasets }
+      });
+
+      document.getElementById("sliderToggleSummary").innerText = 
+        `Factors → ATS×${atsFactor}, Unity×${unityFactor}, Covenant×${covenantFactor}. Consensus toggled: ${document.getElementById("toggleConsensus").checked}, Overlay toggled: ${document.getElementById("toggleOverlay").checked}. Latest overlay projection: ${overlayData.slice(-1)[0]}, cumulative votes: ${cumulativeVotes}`;
+    }
+
+    // Initialize chart
+    updateOverlay();
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+name: Archive Regeneration
+
+on:
+  push:
+    paths:
+      - "public/certificates/archives/batches/**"
+  schedule:
+    - cron: "0 0 * * *"   # nightly run at midnight
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install ImageMagick
+        run: sudo apt-get install -y imagemagick
+
+      - name: Run regeneration script
+        run: bash regenerate_archive.sh
+
+      - name: Commit and push updates
+        run: |
+          git config --global user.name "ATS Automation"
+          git config --global user.email "automation@ats.local"
+          git add public/certificates/archives/*
+          git commit -m "Automated archive regeneration"
+          git push
+
+      - name: Send notification email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.mail.yahoo.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "✨ ATS Archive Regeneration Complete"
+          to: "stakeholders@example.com"
+          from: "pnovontony@yahoo.com"
+          body: |
+            📜 ATS Archive Regeneration Complete
+
+            🌍 Certificates: ${{ env.TOTAL_CERTS }}
+            👥 Stakeholders: ${{ env.TOTAL_STAKEHOLDERS }}
+            📦 Batches: ${{ env.TOTAL_BATCHES }}
+
+            📖 Global booklet and dashboards updated.
+
+            ✨ In Unity & Faith — Sealed under ATS ✨
+
+      - name: Notify Teams
+        run: |
+          curl -H 'Content-Type: application/json' \
+          -d '{
+            "text": "📜 ATS Archive Regeneration Complete\n\n🌍 Certificates: ${{ env.TOTAL_CERTS }}\n👥 Stakeholders: ${{ env.TOTAL_STAKEHOLDERS }}\n📦 Batches: ${{ env.TOTAL_BATCHES }}\n\n📖 Global booklet and dashboards updated.\n\n✨ In Unity & Faith — Sealed under ATS ✨"
+          }' \
+          ${{ secrets.TEAMS_WEBHOOK_URL }}

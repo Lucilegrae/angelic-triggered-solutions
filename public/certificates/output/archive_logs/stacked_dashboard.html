@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Stacked Crest Regeneration Statistics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .chart-container { width: 80%; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <h1>Stacked Crest Regeneration Statistics</h1>
+  <div class="chart-container">
+    <canvas id="stackedChart"></canvas>
+  </div>
+  <script>
+    // Example data — replace with parsed archive logs
+    const labels = ["2026-05-14", "2026-05-15", "2026-05-16"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "ATS Crest",
+          backgroundColor: "#268bd2",
+          data: [1, 1, 1]
+        },
+        {
+          label: "Unity & Faith",
+          backgroundColor: "#2aa198",
+          data: [1, 1, 1]
+        },
+        {
+          label: "Golden Covenant",
+          backgroundColor: "#b58900",
+          data: [1, 1, 1]
+        }
+      ]
+    };
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Daily Crest Regeneration (Stacked)' }
+        },
+        scales: {
+          x: { stacked: true },
+          y: { stacked: true }
+        }
+      }
+    };
+    new Chart(document.getElementById("stackedChart"), config);
+  </script>
+</body>
+</html>

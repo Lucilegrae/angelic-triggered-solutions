@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Real-Time Global Summary</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .summary { width: 80%; margin: 20px auto; border: 2px solid #b58900; padding: 20px; background: #fff; }
+    .summary h2 { color: #268bd2; }
+    .stats { display: flex; justify-content: space-around; margin-top: 20px; }
+    .stat { text-align: center; }
+    .stat h3 { margin: 5px 0; color: #2aa198; }
+    .stat p { font-size: 1.2em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>ATS Real-Time Global Summary</h1>
+  <div class="summary">
+    <h2>Overall Regeneration Totals</h2>
+    <div class="stats">
+      <div class="stat"><h3>Total Certificates</h3><p id="totalCerts">Loading...</p></div>
+      <div class="stat"><h3>ATS Crest</h3><p id="atsTotal">Loading...</p></div>
+      <div class="stat"><h3>Unity & Faith</h3><p id="unityTotal">Loading...</p></div>
+      <div class="stat"><h3>Golden Covenant</h3><p id="covenantTotal">Loading...</p></div>
+    </div>
+    <h2>Balance & Averages</h2>
+    <div class="stats">
+      <div class="stat"><h3>Daily Average</h3><p id="dailyAvg">Loading...</p></div>
+      <div class="stat"><h3>Monthly Average</h3><p id="monthlyAvg">Loading...</p></div>
+      <div class="stat"><h3>Crest Balance</h3><p id="crestBalance">Loading...</p></div>
+    </div>
+  </div>
+
+  <script>
+    // Simulated fetch from archive logs (replace with actual API or file read)
+    function fetchLogs() {
+      return [
+        { date: "2026-05-14", crest: "ATS" },
+        { date: "2026-05-14", crest: "Unity" },
+        { date: "2026-05-14", crest: "Covenant" },
+        { date: "2026-05-15", crest: "ATS" },
+        { date: "2026-05-15", crest: "Unity" },
+        { date: "2026-05-15", crest: "Covenant" },
+        { date: "2026-05-16", crest: "ATS" },
+        { date: "2026-05-16", crest: "Unity" },
+        { date: "2026-05-16", crest: "Covenant" }
+      ];
+    }
+
+    function updateSummary() {
+      const logs = fetchLogs();
+      const totals = { ATS:0, Unity:0, Covenant:0 };
+      logs.forEach(log => { totals[log.crest]++; });
+
+      const totalCerts = totals.ATS + totals.Unity + totals.Covenant;
+      const days = new Set(logs.map(l => l.date)).size;
+      const dailyAvg = (totalCerts / days).toFixed(2);
+      const months = 1; // replace with actual month count
+      const monthlyAvg = (totalCerts / months).toFixed(2);
+      const balance = `${((totals.ATS/totalCerts)*100).toFixed(0)}% ATS, ${((totals.Unity/totalCerts)*100).toFixed(0)}% Unity, ${((totals.Covenant/totalCerts)*100).toFixed(0)}% Covenant`;
+
+      document.getElementById("totalCerts").innerText = totalCerts;
+      document.getElementById("atsTotal").innerText = totals.ATS;
+      document.getElementById("unityTotal").innerText = totals.Unity;
+      document.getElementById("covenantTotal").innerText = totals.Covenant;
+      document.getElementById("dailyAvg").innerText = dailyAvg;
+      document.getElementById("monthlyAvg").innerText = monthlyAvg;
+      document.getElementById("crestBalance").innerText = balance;
+    }
+
+    // Initial update
+    updateSummary();
+    // Auto-refresh every 10 seconds
+    setInterval(updateSummary, 10000);
+  </script>
+</body>
+</html>

@@ -1,48 +1,57 @@
-import React from "react";
-import "./../styles/theme.css";   // 🌌 Import aura theme
+import React, { useEffect, useState } from "react";
+import supabase from ".../supabaseClient";   // ✅ adjust path if needed
+import "../theme.css";                      // ✅ unified aura stylesheet
 
-function AuditTrailFeed() {
-  const sampleLogs = [
-    {
-      id: 1,
-      stakeholder: "Community Representative",
-      action: "Submitted proposal 'Water Reticulation Project'",
-      date: "2026-04-01",
-      aura: "projects"
-    },
-    {
-      id: 2,
-      stakeholder: "Ministry of Finance Auditor",
-      action: "Approved proposal 'Housing Expansion Phase 1'",
-      date: "2026-04-02",
-      aura: "stakeholders"
-    },
-    {
-      id: 3,
-      stakeholder: "Investor Analyst",
-      action: "Commented on KPI 'Jobs Created'",
-      date: "2026-04-03",
-      aura: "affirmations"
-    }
-  ];
+export default function AuditTrailFeed() {
+  const [records, setRecords] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, error } = await supabase
+        .from("v_audit_trail_narration")
+        .select("*")
+        .order("timestamp", { ascending: false })
+        .limit(20);
+
+      if (error) {
+        console.error("Error fetching audit trail:", error);
+      } else {
+        setRecords(data);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <section className="aura-bg p-8 min-h-screen text-white">
-      <h1 className="aura-heading">Audit Trail Feed</h1>
+    <section className="aura-bg min-h-screen p-8 text-white">
+      <h1 className="aura-heading">✦ Legitimacy Flow Timeline</h1>
       <div className="grid grid-cols-1 gap-6">
-        {sampleLogs.map(log => (
+        {records.map((row, idx) => (
           <div
-            key={log.id}
-            className={`tab-content fade-in ${log.aura} p-4 rounded-lg`}
+            key={idx}
+            className={`glyph-card reveal p-4 rounded-lg`}
           >
-            <p className="font-bold">{log.stakeholder}</p>
-            <p>{log.action}</p>
-            <p className="text-sm text-gray-400">{log.date}</p>
+            <div className="audit-meta">
+              <span className="audit-time pledge-line">
+                {new Date(row.timestamp).toLocaleString()}
+              </span>
+              <span className="audit-stakeholder pledge-line">
+                {row.stakeholder}
+              </span>
+            </div>
+            <div className="audit-narration pledge-line">{row.narration}</div>
+            {row.comment && (
+              <div className="audit-comment pledge-line">💬 {row.comment}</div>
+            )}
+            {row.signature && (
+              <div className="audit-signature pledge-line">
+                ✍️ Signed: {row.signature}
+              </div>
+            )}
           </div>
         ))}
       </div>
     </section>
   );
 }
-
-export default AuditTrailFeed;

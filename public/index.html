@@ -1,21 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Angelic Triggered Solutions</title>
-<<<<<<< HEAD
-    <meta name="description" content="Visionary systems architecting for Zimbabwean communities." />
-    <meta property="og:title" content="Angelic Triggered Solutions" />
-    <meta property="og:description" content="Motif-driven projects, services, and communal affirmation." />
-    <meta property="og:image" content="/logo.png" />
-  </head>
-  <body>
-    <div id="root"></div>
-=======
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
->>>>>>> cf9d65af (Supabase showcase with aura overlays)
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Circle of Eleven - Angelic Triggered Solutions</title>
+  <link rel="stylesheet" href="src/theme.css">
+</head>
+<body class="constellation">
+
+  <!-- Central Golden Star Crest -->
+  <header>
+    <div class="banner-container">
+      <img id="golden-star" src="images/crests/golden_star_crest.png" alt="Golden Star Crest">
+      <h1>Circle of Eleven Constellation</h1>
+    </div>
+  </header>
+
+  <!-- Constellation Grid -->
+  <main class="container">
+    <div class="grid">
+      <a href="banking.html"><img src="images/crests/banking_crest.png" alt="Banking Crest"></a>
+      <a href="veterans.html"><img src="images/crests/veterans_crest.png" alt="Veterans Crest"></a>
+      <a href="miners.html"><img src="images/crests/miners_crest.png" alt="Miners Crest"></a>
+      <a href="housing.html"><img src="images/crests/housing_members_crest.png" alt="Housing Crest"></a>
+      <a href="landowners.html"><img src="images/crests/landowners_crest.png" alt="Landowners Crest"></a>
+      <a href="cement.html"><img src="images/crests/cement_crest.png" alt="Cement Crest"></a>
+      <a href="steel.html"><img src="images/crests/steel_crest.png" alt="Steel Crest"></a>
+      <a href="government.html"><img src="images/crests/government_crest.png" alt="Government Crest"></a>
+      <a href="partners.html"><img src="images/crests/private_partners_crest.png" alt="Partners Crest"></a>
+      <a href="community.html"><img src="images/crests/community_crest.png" alt="Community Crest"></a>
+      <a href="councils.html"><img src="images/crests/councils_crest.png" alt="Councils Crest"></a>
+      <a href="insurance_policy.html"><img src="images/crests/insurance_policy_crest.png" alt="Insurance Policy Crest"></a>
+    </div>
+  </main>
+
+  <!-- Legend Panel -->
+  <aside class="legend">
+    <h2>Branch Colors</h2>
+    <ul>
+      <li><span style="color:#00bfff;">●</span> Banking – Blue (trust)</li>
+      <li><span style="color:#ff4500;">●</span> Veterans – Orange‑Red (valor)</li>
+      <li><span style="color:#8b4513;">●</span> Miners – Brown (earth)</li>
+      <li><span style="color:#228b22;">●</span> Housing – Green (growth)</li>
+      <li><span style="color:#daa520;">●</span> Landowners – Golden (heritage)</li>
+      <li><span style="color:#808080;">●</span> Cement – Grey (foundation)</li>
+      <li><span style="color:#4682b4;">●</span> Steel – Steel‑Blue (strength)</li>
+      <li><span style="color:#800080;">●</span> Government – Purple (authority)</li>
+      <li><span style="color:#ff69b4;">●</span> Partners – Pink (unity)</li>
+      <li><span style="color:#32cd32;">●</span> Community – Lime Green (solidarity)</li>
+      <li><span style="color:#1e90ff;">●</span> Councils – Sky Blue (wisdom)</li>
+      <li><span style="color:#ffdf00;">●</span> Insurance – Yellow (protection)</li>
+    </ul>
+  </aside>
+
+  <!-- Ambient Sound -->
+  <audio id="ambient-sound" src="sounds/constellation_ambient.mp3" loop preload="auto"></audio>
+
+  <!-- Cosmic Aura + Trails + Sound Resonance -->
+  <script>
+    // Ambient sound
+    const ambient = document.getElementById('ambient-sound');
+    ambient.volume = 0.2;
+    ambient.play();
+
+    document.querySelectorAll('.grid img').forEach(img => {
+      img.addEventListener('mouseenter', () => ambient.volume = 0.5);
+      img.addEventListener('mouseleave', () => ambient.volume = 0.2);
+    });
+
+    // Main aura
+    const mainAura = document.createElement('div');
+    Object.assign(mainAura.style, {
+      position: 'fixed',
+      width: '150px',
+      height: '150px',
+      borderRadius: '50%',
+      pointerEvents: 'none',
+      background: 'radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%)',
+      mixBlendMode: 'screen',
+      zIndex: '9999'
+    });
+    document.body.appendChild(mainAura);
+
+    // Trailing comet orbs
+    const trailCount = 6;
+    const trails = [];
+    for (let i = 0; i < trailCount; i++) {
+      const orb = document.createElement('div');
+      Object.assign(orb.style, {
+        position: 'fixed',
+        width: `${35 - i*4}px`,
+        height: `${35 - i*4}px`,
+        borderRadius: '50%',
+        pointerEvents: 'none',
+        background: 'radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%)',
+        mixBlendMode: 'screen',
+        zIndex: '9998'
+      });
+      document.body.appendChild(orb);
+      trails.push({ element: orb, x: 0, y: 0 });
+    }
+
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      mainAura.style.transform = `translate(${mouseX - 75}px, ${mouseY - 75}px)`;
+    });
+
+    function animateTrails() {
+      trails.forEach((trail, i) => {
+        trail.x += (mouseX - trail.x) * (0.05 + i*0.02);
+        trail.y += (mouseY - trail.y) * (0.05 + i*0.02);
+        trail.element.style.transform = `translate(${trail.x - (20 - i*2)}px, ${trail.y - (20 - i*2)}px)`;
+      });
+      requestAnimationFrame(animateTrails);
+    }
+    animateTrails();
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Angelic Triggered Solutions — Kubatana District</p>
+  </footer>
+
+</body>
 </html>

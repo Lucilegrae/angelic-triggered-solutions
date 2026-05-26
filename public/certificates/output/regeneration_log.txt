@@ -1,0 +1,6 @@
+=== Certificate Regeneration Summary: Thu May 14 11:07:32 CAT 2026 ===
+Generated: output_ats-crest.png using ats-crest.svg
+Generated: output_in-unity-faith.png using in-unity-faith.svg
+Generated: output_golden-covenant.png using golden-covenant.svg
+Total certificates regenerated: 3
+==============================================

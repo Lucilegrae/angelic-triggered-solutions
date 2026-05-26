@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
+import { supabase } from ".../supabaseClient";
 
 /**
  * ✅ Realtime lists hook with preload + filters + audit trail logging

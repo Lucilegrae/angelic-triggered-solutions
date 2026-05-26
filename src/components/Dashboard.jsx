@@ -1,7 +1,7 @@
 import React from "react";
 import KPICard from "./KPICard";
 import ProposalCard from "./ProposalCard";
-import "./../styles/theme.css";   // 🌌 Import aura theme
+import "./../theme.css";   // 🌌 Import aura theme
 
 function Dashboard() {
   return (

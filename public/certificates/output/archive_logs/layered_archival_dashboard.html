@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Layered Archival Export</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .controls { text-align: center; margin: 20px; }
+    button { padding: 10px 20px; margin: 10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+  </style>
+</head>
+<body>
+  <h1>ATS Layered Archival Export</h1>
+  <div class="controls">
+    <button onclick="exportLayered()">Export Layered Archives</button>
+  </div>
+  <pre id="exportOutput"></pre>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const liveLogs = [
+      { date:"2026-05-14", crest:"ATS" },
+      { date:"2026-05-14", crest:"Unity" },
+      { date:"2026-05-14", crest:"Covenant" },
+      { date:"2026-05-15", crest:"ATS" },
+      { date:"2026-05-15", crest:"Unity" },
+      { date:"2026-05-15", crest:"Covenant" }
+    ];
+
+    function exportLayered() {
+      const grouped = { ATS:[], Unity:[], Covenant:[] };
+      liveLogs.forEach(l => grouped[l.crest].push(l));
+
+      Object.keys(grouped).forEach(crest => {
+        // JSON
+        const json = JSON.stringify({ crest, timestamp:new Date().toISOString(), entries:grouped[crest] }, null, 2);
+        downloadFile(json, "json", crest);
+
+        // CSV
+        let csv = "date,crest\n";
+        grouped[crest].forEach(l => { csv += `${l.date},${l.crest}\n`; });
+        downloadFile(csv, "csv", crest);
+
+        // PDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text(`ATS Archival Export - ${crest}`, 10, 10);
+        grouped[crest].forEach((l,i) => doc.text(`${l.date} - ${l.crest}`, 10, 20+(i*10)));
+        doc.save(`ATS_${crest}_Archive_${new Date().toISOString().split("T")[0]}.pdf`);
+      });
+
+      document.getElementById("exportOutput").innerText = "Layered archives exported for ATS, Unity & Faith, and Golden Covenant.";
+    }
+
+    function downloadFile(content, type, crest) {
+      const blob = new Blob([content], {type:`text/${type}`});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_${crest}_Archive_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

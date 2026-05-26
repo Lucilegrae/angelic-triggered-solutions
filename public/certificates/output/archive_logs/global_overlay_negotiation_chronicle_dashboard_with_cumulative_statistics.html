@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Cumulative Statistics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Cumulative Statistics</h1>
+  <div class="chart-container"><canvas id="cumulativeChart"></canvas></div>
+  <div class="summary" id="cumulativeSummary">Cumulative statistics of archived outcomes...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>Scenario</th><th>Projection</th><th>Cumulative Votes</th></tr></thead>
+    <tbody id="cumulativeTable"></tbody>
+  </table>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, scenario:"A", factors:{ats:1,unity:1,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, scenario:"B", factors:{ats:1.5,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, scenario:"C", factors:{ats:2,unity:1,covenant:1} }
+    ];
+
+    let cumulativeChart;
+
+    function overlayProjection(factors) {
+      return (factors.ats*1)+(factors.unity*1)+(factors.covenant*1);
+    }
+
+    function buildCumulative() {
+      let cumulativeVotes=0;
+      const labels=[], votesData=[], projectionData=[];
+      const table=document.getElementById("cumulativeTable");
+      table.innerHTML="";
+
+      negotiationHistory.forEach(c=>{
+        cumulativeVotes+=c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+        const proj=overlayProjection(c.factors);
+        projectionData.push(proj);
+
+        table.innerHTML+=`<tr><td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td><td>${c.scenario}</td><td>${proj}</td><td>${cumulativeVotes}</td></tr>`;
+      });
+
+      if(cumulativeChart) cumulativeChart.destroy();
+      cumulativeChart=new Chart(document.getElementById("cumulativeChart"),{
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false },
+            { label:"Projection Trend", borderColor:"#b58900", data:projectionData, fill:false, borderDash:[5,5] }
+          ]
+        }
+      });
+
+      document.getElementById("cumulativeSummary").innerText=`Chronicle includes ${negotiationHistory.length} outcomes. Total votes: ${cumulativeVotes}. Latest projection: ${projectionData.slice(-1)[0]}`;
+    }
+
+    // Initialize
+    buildCumulative();
+  </script>
+</body>
+</html>

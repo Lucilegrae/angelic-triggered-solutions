@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nightly Auto-Tab Archival</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdf6e3; color: #333; }
+    h1 { text-align: center; color: #b58900; }
+    .status { text-align: center; margin: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>ATS Nightly Auto-Tab Archival</h1>
+  <div class="status" id="status">Awaiting nightly export...</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const liveLogs = [
+      { date:"2026-05-14", crest:"ATS" },
+      { date:"2026-05-14", crest:"Unity" },
+      { date:"2026-05-14", crest:"Covenant" },
+      { date:"2026-05-15", crest:"ATS" },
+      { date:"2026-05-15", crest:"Unity" },
+      { date:"2026-05-15", crest:"Covenant" }
+    ];
+
+    function exportLayered(crest) {
+      const grouped = liveLogs.filter(l => l.crest===crest);
+
+      // JSON
+      const json = JSON.stringify({ crest, timestamp:new Date().toISOString(), entries:grouped }, null, 2);
+      downloadFile(json, "json", crest);
+
+      // CSV
+      let csv = "date,crest\n";
+      grouped.forEach(l => { csv += `${l.date},${l.crest}\n`; });
+      downloadFile(csv, "csv", crest);
+
+      // PDF
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text(`ATS Archival Export - ${crest}`, 10, 10);
+      grouped.forEach((l,i) => doc.text(`${l.date} - ${l.crest}`, 10, 20+(i*10)));
+      doc.save(`ATS_${crest}_Archive_${new Date().toISOString().split("T")[0]}.pdf`);
+    }
+
+    function downloadFile(content, type, crest) {
+      const blob = new Blob([content], {type:`text/${type}`});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `ATS_${crest}_Archive_${new Date().toISOString().split("T")[0]}.${type}`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function nightlyExport() {
+      ["ATS","Unity","Covenant"].forEach(crest => exportLayered(crest));
+      document.getElementById("status").innerText = `Nightly export completed at ${new Date().toLocaleTimeString()}`;
+    }
+
+    // Schedule nightly export at 00:00
+    function scheduleNightlyExport() {
+      const now = new Date();
+      const next = new Date();
+      next.setHours(0,0,0,0);
+      if (next <= now) next.setDate(next.getDate()+1);
+      const delay = next.getTime() - now.getTime();
+      setTimeout(function() {
+        nightlyExport();
+        setInterval(nightlyExport, 24*60*60*1000); // repeat every 24h
+      }, delay);
+    }
+
+    scheduleNightlyExport();
+  </script>
+</body>
+</html>

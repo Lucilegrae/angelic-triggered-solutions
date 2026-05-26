@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Chronicle Timeline Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    select, input { margin:5px; padding:5px; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Interactive Chronicle Timeline Dashboard</h1>
+  <div class="controls">
+    <label>Filter by Crest:
+      <select id="crestFilter" onchange="buildChronicle()">
+        <option value="all">All</option>
+        <option value="ATS">ATS</option>
+        <option value="Unity">Unity</option>
+        <option value="Covenant">Covenant</option>
+      </select>
+    </label>
+    <label>Highlight Date:
+      <input type="date" id="highlightDate" onchange="buildChronicle()">
+    </label>
+  </div>
+  <div class="chart-container"><canvas id="chronicleChart"></canvas></div>
+  <div class="summary" id="chronicleSummary">Use filters to explore the ceremonial chronicle...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>ATS</th><th>Unity</th><th>Covenant</th></tr></thead>
+    <tbody id="chronicleTable"></tbody>
+  </table>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let chronicleChart;
+
+    function scenarioTotals(factors, crestFilter) {
+      return months.map(m=>{
+        let total = 0;
+        if (crestFilter==="all"||crestFilter==="ATS") total += (grouped[m].ATS||0)*factors.ats;
+        if (crestFilter==="all"||crestFilter==="Unity") total += (grouped[m].Unity||0)*factors.unity;
+        if (crestFilter==="all"||crestFilter==="Covenant") total += (grouped[m].Covenant||0)*factors.covenant;
+        return total;
+      });
+    }
+
+    function buildChronicle() {
+      const crestFilter = document.getElementById("crestFilter").value;
+      const highlightDate = document.getElementById("highlightDate").value;
+
+      const datasets = consensusHistory.map(c=>{
+        const highlighted = (highlightDate && c.date===highlightDate);
+        return {
+          label:`${c.date} (${c.text})`,
+          borderColor: highlighted ? "#cb4b16" : "#"+Math.floor(Math.random()*16777215).toString(16),
+          data:scenarioTotals(c.factors, crestFilter),
+          fill:false,
+          borderWidth: highlighted ? 3 : 1
+        };
+      });
+
+      if (chronicleChart) chronicleChart.destroy();
+      chronicleChart = new Chart(document.getElementById("chronicleChart"), {
+        type:'line',
+        data:{ labels:months, datasets }
+      });
+
+      const table = document.getElementById("chronicleTable");
+      table.innerHTML = "";
+      consensusHistory.forEach(c=>{
+        table.innerHTML += `<tr><td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td><td>${c.factors.ats}</td><td>${c.factors.unity}</td><td>${c.factors.covenant}</td></tr>`;
+      });
+
+      document.getElementById("chronicleSummary").innerText = `Chronicle built with ${consensusHistory.length} outcomes. Crest filter: ${crestFilter}. Highlight: ${highlightDate||"none"}`;
+    }
+
+    // Initialize chronicle
+    buildChronicle();
+  </script>
+</body>
+</html>

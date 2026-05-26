@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient"; // adjust import to your setup
+import { supabase } from ".../supabaseClient"; // adjust import to your setup
 import { useAuth } from "../context/AuthContext";
 
 export default function AuditArchiveTab() {

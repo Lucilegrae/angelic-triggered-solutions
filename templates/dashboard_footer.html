@@ -1,0 +1,30 @@
+<body>
+  <!-- Unified Blessing + Certificate Panel -->
+  <div id="affirmation-panel"></div>
+
+  <script>
+    async function loadAffirmationPanel() {
+      const res = await fetch("/rest/v1/covenant_affirmation_panel?select=*");
+      const data = await res.json();
+      const panel = data[0];
+
+      document.getElementById("affirmation-panel").innerHTML = `
+        <div class="blessing-current">
+          <h2>✨ Current Blessing ✨</h2>
+          <p>${panel.current_blessing}</p>
+        </div>
+        <div class="divider"></div>
+        <div class="certificate-latest">
+          <h2>📜 Latest Certificate Issued</h2>
+          <p><strong>${panel.latest_certificate_title}</strong></p>
+          <p>${panel.latest_certificate_text}</p>
+          <p><em>Issued to: ${panel.latest_certificate_issued_to}</em></p>
+          <p><em>Date: ${panel.latest_certificate_date}</em></p>
+        </div>
+      `;
+    }
+
+    // Run once page loads
+    document.addEventListener("DOMContentLoaded", loadAffirmationPanel);
+  </script>
+</body>

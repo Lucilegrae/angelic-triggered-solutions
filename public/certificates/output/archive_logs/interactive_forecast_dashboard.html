@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Forecast Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    button { padding:10px 20px; margin:5px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Interactive Forecast Dashboard</h1>
+  <div class="controls">
+    <button onclick="buildForecast('linear')">Linear</button>
+    <button onclick="buildForecast('exponential')">Exponential</button>
+    <button onclick="buildForecast('moving')">Moving Average</button>
+  </div>
+  <div class="chart-container"><canvas id="forecastChart"></canvas></div>
+  <div class="summary" id="forecastSummary">Choose a model to project ceremonial futures...</div>
+
+  <script>
+    const grouped = {
+      "2026-03": { ATS:2, Unity:1, Covenant:1 },
+      "2026-04": { ATS:3, Unity:2, Covenant:2 },
+      "2026-05": { ATS:4, Unity:3, Covenant:2 }
+    };
+    const months = Object.keys(grouped);
+    let forecastChart;
+
+    function buildForecast(model) {
+      const crestTotals = months.map(m=> (grouped[m].ATS||0)+(grouped[m].Unity||0)+(grouped[m].Covenant||0));
+      let forecast = [];
+
+      if (model==="linear") {
+        const slope = (crestTotals[crestTotals.length-1]-crestTotals[0])/(crestTotals.length-1);
+        forecast = crestTotals.map((v,i)=> v + slope*i);
+      }
+      if (model==="exponential") {
+        const growth = crestTotals[crestTotals.length-1]/crestTotals[0];
+        forecast = crestTotals.map((v,i)=> Math.round(crestTotals[0]*Math.pow(growth, i/(crestTotals.length-1))));
+      }
+      if (model==="moving") {
+        forecast = crestTotals.map((v,i,arr)=> {
+          const slice = arr.slice(Math.max(0,i-2),i+1);
+          return Math.round(slice.reduce((a,b)=>a+b,0)/slice.length);
+        });
+      }
+
+      if (forecastChart) forecastChart.destroy();
+      forecastChart = new Chart(document.getElementById("forecastChart"), {
+        type:'line',
+        data:{
+          labels:months,
+          datasets:[
+            { label:`${model} forecast`, borderColor:"#b58900", data:forecast, fill:false }
+          ]
+        }
+      });
+      document.getElementById("forecastSummary").innerText = `Model: ${model}, projected crest exports: ${forecast.slice(-1)[0]}`;
+    }
+  </script>
+</body>
+</html>

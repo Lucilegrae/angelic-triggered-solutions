@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Interactive Toggles</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    label { margin:10px; display:inline-block; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    table { width:90%; margin:20px auto; border-collapse:collapse; }
+    th, td { border:1px solid #b58900; padding:8px; text-align:center; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Interactive Toggles</h1>
+  <div class="controls">
+    <label><input type="checkbox" id="toggleConsensus" checked> Show Consensus (Cumulative Votes)</label>
+    <label><input type="checkbox" id="toggleScenarioA" checked> Show Scenario A</label>
+    <label><input type="checkbox" id="toggleScenarioB" checked> Show Scenario B</label>
+    <label><input type="checkbox" id="toggleScenarioC" checked> Show Scenario C</label>
+    <button onclick="applyToggles()">Update Chart</button>
+  </div>
+  <div class="chart-container"><canvas id="toggleScenarioChart"></canvas></div>
+  <div class="summary" id="toggleScenarioSummary">Toggle scenarios and consensus datasets dynamically...</div>
+  <table>
+    <thead><tr><th>Date</th><th>Consensus Text</th><th>Votes</th><th>ATS</th><th>Unity</th><th>Covenant</th><th>Scenario A</th><th>Scenario B</th><th>Scenario C</th><th>Cumulative Votes</th></tr></thead>
+    <tbody id="toggleScenarioTable"></tbody>
+  </table>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let toggleScenarioChart;
+
+    function applyToggles() {
+      let cumulativeVotes=0;
+      const labels=[], votesData=[], scenarioAData=[], scenarioBData=[], scenarioCData=[];
+      const table=document.getElementById("toggleScenarioTable");
+      table.innerHTML="";
+
+      negotiationHistory.forEach(c=>{
+        cumulativeVotes+=c.votes;
+        labels.push(c.date);
+        votesData.push(cumulativeVotes);
+
+        const scenarioAVal=(c.factors.ats*1)+(c.factors.unity*1)+(c.factors.covenant*1);
+        const scenarioBVal=(c.factors.ats*1.5)+(c.factors.unity*2)+(c.factors.covenant*0.5);
+        const scenarioCVal=(c.factors.ats*2)+(c.factors.unity*1)+(c.factors.covenant*1);
+
+        scenarioAData.push(scenarioAVal);
+        scenarioBData.push(scenarioBVal);
+        scenarioCData.push(scenarioCVal);
+
+        table.innerHTML+=`<tr>
+          <td>${c.date}</td><td>${c.text}</td><td>${c.votes}</td>
+          <td>${c.factors.ats}</td><td>${c.factors.unity}</td><td>${c.factors.covenant}</td>
+          <td>${scenarioAVal}</td><td>${scenarioBVal}</td><td>${scenarioCVal}</td><td>${cumulativeVotes}</td>
+        </tr>`;
+      });
+
+      const datasets=[];
+      if(document.getElementById("toggleConsensus").checked){
+        datasets.push({ label:"Cumulative Votes", borderColor:"#268bd2", data:votesData, fill:false });
+      }
+      if(document.getElementById("toggleScenarioA").checked){
+        datasets.push({ label:"Scenario A", borderColor:"#2aa198", data:scenarioAData, fill:false });
+      }
+      if(document.getElementById("toggleScenarioB").checked){
+        datasets.push({ label:"Scenario B", borderColor:"#b58900", data:scenarioBData, fill:false });
+      }
+      if(document.getElementById("toggleScenarioC").checked){
+        datasets.push({ label:"Scenario C", borderColor:"#cb4b16", data:scenarioCData, fill:false });
+      }
+
+      if(toggleScenarioChart) toggleScenarioChart.destroy();
+      toggleScenarioChart=new Chart(document.getElementById("toggleScenarioChart"),{
+        type:'line',
+        data:{ labels:labels, datasets }
+      });
+
+      document.getElementById("toggleScenarioSummary").innerText=
+        `Toggles → Consensus:${document.getElementById("toggleConsensus").checked}, A:${document.getElementById("toggleScenarioA").checked}, B:${document.getElementById("toggleScenarioB").checked}, C:${document.getElementById("toggleScenarioC").checked}. Latest projections → A:${scenarioAData.slice(-1)[0]}, B:${scenarioBData.slice(-1)[0]}, C:${scenarioCData.slice(-1)[0]}, cumulative votes:${cumulativeVotes}`;
+    }
+
+    // Initialize
+    applyToggles();
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Negotiation Chronicle Dashboard with Live WebSocket Feeds</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+    .presence { margin:20px auto; width:90%; border:1px solid #268bd2; padding:10px; background:#fff; }
+  </style>
+</head>
+<body>
+  <h1>ATS Global Overlay Negotiation Chronicle with Live WebSocket Feeds</h1>
+  <div class="controls">
+    <label>ATS×<input type="number" id="atsFactor" value="1" onchange="sendFactors()"></label>
+    <label>Unity×<input type="number" id="unityFactor" value="1" onchange="sendFactors()"></label>
+    <label>Covenant×<input type="number" id="covenantFactor" value="1" onchange="sendFactors()"></label>
+  </div>
+  <div class="chart-container"><canvas id="liveFeedChart"></canvas></div>
+  <div class="summary" id="liveFeedSummary">Stakeholder inputs streaming in real time...</div>
+  <div class="presence" id="presenceList">Connected stakeholders: none yet...</div>
+
+  <script>
+    const negotiationHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let liveFeedChart;
+    const stakeholderFactors={};
+
+    function overlayProjection(factors){
+      return negotiationHistory.map(c=>
+        (c.factors.ats*factors.ats)+(c.factors.unity*factors.unity)+(c.factors.covenant*factors.covenant)
+      );
+    }
+
+    function updateLiveFeed(){
+      const datasets=[];
+      Object.keys(stakeholderFactors).forEach(name=>{
+        datasets.push({
+          label:`${name}'s overlay`,
+          borderColor:"#"+Math.floor(Math.random()*16777215).toString(16),
+          data:overlayProjection(stakeholderFactors[name]),
+          fill:false
+        });
+      });
+
+      if(liveFeedChart) liveFeedChart.destroy();
+      liveFeedChart=new Chart(document.getElementById("liveFeedChart"),{
+        type:'line',
+        data:{ labels:negotiationHistory.map(c=>c.date), datasets }
+      });
+
+      const summaryText=Object.keys(stakeholderFactors).map(n=>`${n}: ${overlayProjection(stakeholderFactors[n]).slice(-1)[0]}`).join(" | ");
+      document.getElementById("liveFeedSummary").innerText=`Live projections → ${summaryText}`;
+    }
+
+    function sendFactors(){
+      const ats=parseFloat(document.getElementById("atsFactor").value);
+      const unity=parseFloat(document.getElementById("unityFactor").value);
+      const covenant=parseFloat(document.getElementById("covenantFactor").value);
+      const msg={ type:"factors", name:"Stakeholder", ats, unity, covenant };
+      socket.send(JSON.stringify(msg));
+    }
+
+    // WebSocket connection
+    const socket=new WebSocket("ws://localhost:8080");
+    socket.onmessage=function(event){
+      const msg=JSON.parse(event.data);
+      if(msg.type==="factors"){
+        stakeholderFactors[msg.name]={ ats:msg.ats, unity:msg.unity, covenant:msg.covenant };
+        updateLiveFeed();
+        document.getElementById("presenceList").innerText="Connected stakeholders: "+Object.keys(stakeholderFactors).join(", ");
+      }
+    };
+
+    // Initialize
+    updateLiveFeed();
+  </script>
+</body>
+</html>

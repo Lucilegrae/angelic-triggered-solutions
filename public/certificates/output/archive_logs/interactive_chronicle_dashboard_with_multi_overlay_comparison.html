@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chronicle Dashboard with Multi-Overlay Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fdf6e3; color:#333; }
+    h1 { text-align:center; color:#b58900; }
+    .controls { text-align:center; margin:20px; }
+    input { margin:5px; padding:5px; width:80px; }
+    button { padding:10px 20px; margin:10px; background:#268bd2; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2aa198; }
+    .chart-container { width:85%; margin:20px auto; }
+    .summary { margin:20px auto; width:90%; border:1px solid #b58900; padding:10px; background:#fefefe; }
+  </style>
+</head>
+<body>
+  <h1>ATS Chronicle Dashboard with Multi-Overlay Comparison</h1>
+  <div class="controls">
+    <h3>Overlay A</h3>
+    ATS×<input type="number" id="atsA" value="1">
+    Unity×<input type="number" id="unityA" value="1">
+    Covenant×<input type="number" id="covenantA" value="1"><br>
+    <h3>Overlay B</h3>
+    ATS×<input type="number" id="atsB" value="1.5">
+    Unity×<input type="number" id="unityB" value="2">
+    Covenant×<input type="number" id="covenantB" value="0.5"><br>
+    <h3>Overlay C</h3>
+    ATS×<input type="number" id="atsC" value="2">
+    Unity×<input type="number" id="unityC" value="1">
+    Covenant×<input type="number" id="covenantC" value="1"><br>
+    <button onclick="applyOverlays()">Apply Overlays</button>
+  </div>
+  <div class="chart-container"><canvas id="multiOverlayChart"></canvas></div>
+  <div class="summary" id="multiOverlaySummary">Compare multiple overlays against the ceremonial chronicle...</div>
+
+  <script>
+    const consensusHistory = [
+      { date:"2026-03-31", text:"ATS steady, Unity rises", votes:4, factors:{ats:1,unity:1.5,covenant:1} },
+      { date:"2026-04-30", text:"Unity doubles, Covenant declines", votes:6, factors:{ats:1,unity:2,covenant:0.5} },
+      { date:"2026-05-15", text:"ATS strengthens, Covenant steady", votes:5, factors:{ats:1.5,unity:1,covenant:1} }
+    ];
+
+    let multiOverlayChart;
+
+    function applyOverlays() {
+      const atsA = parseFloat(document.getElementById("atsA").value);
+      const unityA = parseFloat(document.getElementById("unityA").value);
+      const covenantA = parseFloat(document.getElementById("covenantA").value);
+
+      const atsB = parseFloat(document.getElementById("atsB").value);
+      const unityB = parseFloat(document.getElementById("unityB").value);
+      const covenantB = parseFloat(document.getElementById("covenantB").value);
+
+      const atsC = parseFloat(document.getElementById("atsC").value);
+      const unityC = parseFloat(document.getElementById("unityC").value);
+      const covenantC = parseFloat(document.getElementById("covenantC").value);
+
+      const labels = consensusHistory.map(c=>c.date);
+
+      const overlayA = consensusHistory.map(c=>(c.factors.ats*atsA)+(c.factors.unity*unityA)+(c.factors.covenant*covenantA));
+      const overlayB = consensusHistory.map(c=>(c.factors.ats*atsB)+(c.factors.unity*unityB)+(c.factors.covenant*covenantB));
+      const overlayC = consensusHistory.map(c=>(c.factors.ats*atsC)+(c.factors.unity*unityC)+(c.factors.covenant*covenantC));
+
+      if (multiOverlayChart) multiOverlayChart.destroy();
+      multiOverlayChart = new Chart(document.getElementById("multiOverlayChart"), {
+        type:'line',
+        data:{
+          labels:labels,
+          datasets:[
+            { label:"Overlay A", borderColor:"#268bd2", data:overlayA, fill:false },
+            { label:"Overlay B", borderColor:"#2aa198", data:overlayB, fill:false },
+            { label:"Overlay C", borderColor:"#b58900", data:overlayC, fill:false }
+          ]
+        }
+      });
+
+      document.getElementById("multiOverlaySummary").innerText = 
+        `Overlay A latest: ${overlayA.slice(-1)[0]} | Overlay B latest: ${overlayB.slice(-1)[0]} | Overlay C latest: ${overlayC.slice(-1)[0]}`;
+    }
+
+    // Initialize with defaults
+    applyOverlays();
+  </script>
+</body>
+</html>

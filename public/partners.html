@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Partners Chamber - Angelic Triggered Solutions</title>
+  <link rel="stylesheet" href="src/theme.css">
+</head>
+<body class="partners">
+
+  <!-- Banner -->
+  <header>
+    <div class="banner-container">
+      <img id="banner" src="banners/partners_banner.png" alt="Partners Banner">
+    </div>
+  </header>
+
+  <!-- Crest Row -->
+  <main class="container">
+    <div class="crest-row">
+      <img id="crest" src="images/crests/private_partners_crest.png" alt="Partners Crest">
+    </div>
+
+    <!-- Scroll Panel -->
+    <div class="scroll-panel">
+      <img src="images/crests/community_crest.png" alt="Community Crest">
+      <div class="blessing-text">
+        <h2>Partners Blessing</h2>
+        <p>May the unity of partners weave collaboration and empower Kubatana District with harmony.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sound Motif -->
+  <audio id="sound" src="sounds/partners_chorus.mp3" preload="auto"></audio>
+  <script>
+    // Play sound motif on crest hover
+    const crest = document.getElementById('crest');
+    const sound = document.getElementById('sound');
+    crest.addEventListener('mouseenter', () => sound.play());
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Angelic Triggered Solutions</p>
+  </footer>
+
+</body>
+</html>
