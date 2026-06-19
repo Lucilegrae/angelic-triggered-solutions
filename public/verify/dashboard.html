@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATS Certificate Dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background:#050816; color:#f5f5f5; margin:0; padding:1rem; }
+    h1 { margin-top:0; }
+    .top-bar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-bottom:.5rem;
+    }
+    .top-bar-right {
+      font-size:.8rem;
+      opacity:.8;
+    }
+    .controls {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-bottom:1rem;
+      align-items:center;
+    }
+    .controls input[type="text"] {
+      padding:.4rem .6rem;
+      border-radius:6px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#f9fafb;
+      min-width:160px;
+    }
+    .controls select {
+      padding:.35rem .6rem;
+      border-radius:6px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#f9fafb;
+    }
+    .pill-bar {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+    }
+    .pill {
+      padding:.25rem .6rem;
+      border-radius:999px;
+      border:1px solid #374151;
+      font-size:.75rem;
+      cursor:pointer;
+      background:#020617;
+      color:#e5e7eb;
+    }
+    .pill.active {
+      background:#fbbf24;
+      color:#111827;
+      border-color:#fbbf24;
+    }
+    .btn {
+      padding:.35rem .7rem;
+      border-radius:6px;
+      border:none;
+      font-size:.8rem;
+      cursor:pointer;
+      background:#fbbf24;
+      color:#111827;
+    }
+    .btn.secondary {
+      background:#111827;
+      color:#e5e7eb;
+      border:1px solid #374151;
+    }
+    .btn:active { transform:scale(.97); }
+
+    .analytics {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-bottom:1rem;
+    }
+    .analytics-card {
+      background:#020617;
+      border-radius:10px;
+      padding:.6rem .8rem;
+      min-width:120px;
+      box-shadow:0 0 15px rgba(0,0,0,0.5);
+      font-size:.8rem;
+    }
+    .analytics-card-title {
+      font-size:.7rem;
+      opacity:.7;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+    .analytics-card-value {
+      font-size:1.1rem;
+      font-weight:600;
+      margin-top:.15rem;
+    }
+
+    .grid { display:flex; flex-wrap:wrap; gap:1rem; }
+    .card {
+      background:#0b1020;
+      border-radius:12px;
+      padding:1rem;
+      width:100%;
+      max-width:320px;
+      box-shadow:0 0 20px rgba(0,0,0,0.6);
+    }
+    .card h2 { margin:0 0 .25rem; font-size:1.1rem; }
+    .badge { display:inline-block; padding:.15rem .5rem; border-radius:999px; font-size:.7rem; background:#111827; }
+    .meta { font-size:.8rem; opacity:.8; margin:.25rem 0; }
+
+    /* Modal */
+    .modal-backdrop {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:50;
+    }
+    .modal-backdrop.show { display:flex; }
+    .modal {
+      background:#020617;
+      border-radius:12px;
+      max-width:95%;
+      max-height:90%;
+      padding:1rem;
+      box-shadow:0 0 30px rgba(0,0,0,0.8);
+      color:#f9fafb;
+    }
+    .modal-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:.5rem;
+    }
+    .modal-header h3 {
+      margin:0;
+      font-size:1rem;
+    }
+    .modal-close {
+      background:none;
+      border:none;
+      color:#9ca3af;
+      font-size:1.2rem;
+      cursor:pointer;
+    }
+    .modal-body {
+      font-size:.85rem;
+      margin-bottom:.5rem;
+    }
+    .modal-body div { margin-bottom:.15rem; }
+    .modal img {
+      max-width:100%;
+      max-height:60vh;
+      border-radius:8px;
+      background:#020617;
+      display:block;
+      margin:.5rem auto 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <h1>ATS Certificate Dashboard</h1>
+    <div class="top-bar-right">
+      <span id="status">Loading certificates…</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input id="search" type="text" placeholder="Search name, serial, sector…">
+    <select id="sort">
+      <option value="issued_desc">Newest first</option>
+      <option value="issued_asc">Oldest first</option>
+      <option value="name_asc">Name A–Z</option>
+      <option value="name_desc">Name Z–A</option>
+    </select>
+    <button class="btn secondary" id="export-csv">Export CSV (current view)</button>
+    <div class="pill-bar" id="sector-pills"></div>
+  </div>
+
+  <div class="analytics" id="analytics-bar"></div>
+
+  <div class="grid" id="cert-grid"></div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Certificate preview</h3>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-name"></div>
+        <div id="modal-serial"></div>
+        <div id="modal-sector"></div>
+        <div id="modal-issued"></div>
+      </div>
+      <img id="modal-image" src="" alt="Certificate preview">
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="modal-backdrop" id="qr-modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="qr-modal-title">QR Code</h3>
+        <button class="modal-close" id="qr-modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="qr-modal-name"></div>
+        <div id="qr-modal-serial"></div>
+        <div id="qr-modal-sector"></div>
+      </div>
+      <img id="qr-modal-image" src="" alt="QR preview">
+      <button class="btn" id="qr-verify-btn">Verify Now</button>
+    </div>
+  </div>
+
+  <!-- Verification Modal -->
+  <div class="modal-backdrop" id="verify-modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="verify-modal-title">Verification Result</h3>
+        <button class="modal-close" id="verify-modal-close">&times;</button>
+      </div>
+
+      <div class="modal-body" id="verify-modal-body">
+        <!-- Filled dynamically -->
+      </div>
+
+      <button class="btn secondary" id="verify-modal-close-btn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    let allCerts = [];
+    let activeSector = 'ALL';
+
+    function normalizeString(v) {
+      if (v === null || v === undefined) return '';
+      return String(v);
+    }
+
+    function buildSectorPills(certs) {
+      const pills = document.getElementById('sector-pills');
+      pills.innerHTML = '';
+      const sectors = new Set();
+      certs.forEach(c => {
+        if (c.sector) sectors.add(normalizeString(c.sector).toUpperCase());
+      });
+      const ordered = ['ALL', ...Array.from(sectors).sort()];
+      ordered.forEach(sec => {
+        const pill = document.createElement('button');
+        pill.className = 'pill' + (sec === 'ALL' ? ' active' : '');
+        pill.textContent = sec;
+        pill.dataset.sector = sec;
+        pill.addEventListener('click', () => {
+          activeSector = sec;
+          document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          renderCertificates();
+        });
+        pills.appendChild(pill);
+      });
+    }
+
+    function buildAnalytics(certs) {
+      const bar = document.getElementById('analytics-bar');
+      bar.innerHTML = '';
+      if (!certs.length) return;
+
+      const total = certs.length;
+      const bySector = {};
+      certs.forEach(c => {
+        const sec = normalizeString(c.sector).toUpperCase() || 'UNKNOWN';
+        bySector[sec] = (bySector[sec] || 0) + 1;
+      });
+
+      const totalCard = document.createElement('div');
+      totalCard.className = 'analytics-card';
+      totalCard.innerHTML = '<div class="analytics-card-title">Total certificates</div>' +
+                            '<div class="analytics-card-value">' + total + '</div>';
+      bar.appendChild(totalCard);
+
+      Object.keys(bySector).sort().forEach(sec => {
+        const card = document.createElement('div');
+        card.className = 'analytics-card';
+        card.innerHTML = '<div class="analytics-card-title">' + sec + '</div>' +
+                         '<div class="analytics-card-value">' + bySector[sec] + '</div>';
+        bar.appendChild(card);
+      });
+    }
+
+    function openQRModal(cert) {
+      const backdrop = document.getElementById('qr-modal-backdrop');
+      const titleEl = document.getElementById('qr-modal-title');
+      const nameEl = document.getElementById('qr-modal-name');
+      const serialEl = document.getElementById('qr-modal-serial');
+      const sectorEl = document.getElementById('qr-modal-sector');
+      const imgEl = document.getElementById('qr-modal-image');
+      const verifyBtn = document.getElementById('qr-verify-btn');
+
+      const name = cert.profile && cert.profile.name ? cert.profile.name : cert.ins_uuid;
+
+      titleEl.textContent = name;
+      nameEl.textContent = 'Name: ' + name;
+      serialEl.textContent = 'Serial: ' + cert.serial;
+      sectorEl.textContent = 'Sector: ' + (cert.sector || 'UNKNOWN').toUpperCase();
+
+      // Build QR path (same folder as certificate)
+      const qrPath = cert.certificate_path.replace('.png', '_qr.png');
+      imgEl.src = '/' + qrPath.replace(/^public\//, '');
+
+      // Verification button
+      verifyBtn.onclick = () => verifyCertificate(cert);
+
+      backdrop.classList.add('show');
+    }
+
+    function closeQRModal() {
+      const backdrop = document.getElementById('qr-modal-backdrop');
+      const imgEl = document.getElementById('qr-modal-image');
+      imgEl.src = '';
+      backdrop.classList.remove('show');
+    }
+
+    document.getElementById('qr-modal-backdrop').addEventListener('click', (e) => {
+      if (e.target.id === 'qr-modal-backdrop') {
+        closeQRModal();
+      }
+    });
+
+    document.getElementById('qr-modal-close').addEventListener('click', closeQRModal);
+
+    function openVerifyModal(contentHTML) {
+      const backdrop = document.getElementById('verify-modal-backdrop');
+      const body = document.getElementById('verify-modal-body');
+
+      body.innerHTML = contentHTML;
+      backdrop.classList.add('show');
+    }
+
+    function closeVerifyModal() {
+      const backdrop = document.getElementById('verify-modal-backdrop');
+      backdrop.classList.remove('show');
+    }
+
+    document.getElementById('verify-modal-backdrop').addEventListener('click', (e) => {
+      if (e.target.id === 'verify-modal-backdrop') {
+        closeVerifyModal();
+      }
+    });
+
+    document.getElementById('verify-modal-close').addEventListener('click', closeVerifyModal);
+    document.getElementById('verify-modal-close-btn').addEventListener('click', closeVerifyModal);
+
+    function getFilteredSortedCerts() {
+      const searchVal = normalizeString(document.getElementById('search').value).toLowerCase();
+      const sortVal = document.getElementById('sort').value;
+
+      let filtered = allCerts.slice();
+
+      if (activeSector !== 'ALL') {
+        filtered = filtered.filter(c => normalizeString(c.sector).toUpperCase() === activeSector);
+      }
+
+      if (searchVal) {
+        filtered = filtered.filter(c => {
+          const name = normalizeString(c.profile && c.profile.name).toLowerCase();
+          const serial = normalizeString(c.serial).toLowerCase();
+          const sector = normalizeString(c.sector).toLowerCase();
+          const uuid = normalizeString(c.ins_uuid).toLowerCase();
+          return (
+            name.includes(searchVal) ||
+            serial.includes(searchVal) ||
+            sector.includes(searchVal) ||
+            uuid.includes(searchVal)
+          );
+        });
+      }
+
+      filtered.sort((a, b) => {
+        const nameA = normalizeString(a.profile && a.profile.name).toLowerCase();
+        const nameB = normalizeString(b.profile && b.profile.name).toLowerCase();
+        const dateA = normalizeString(a.issued_at);
+        const dateB = normalizeString(b.issued_at);
+        if (sortVal === 'issued_desc') {
+          return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
+        }
+        if (sortVal === 'issued_asc') {
+          return dateA < dateB ? -1 : dateA > dateB ? 1 : 0;
+        }
+        if (sortVal === 'name_asc') {
+          return nameA.localeCompare(nameB);
+        }
+        if (sortVal === 'name_desc') {
+          return nameB.localeCompare(nameA);
+        }
+        return 0;
+      });
+
+      return filtered;
+    }
+
+    function renderCertificates() {
+      const grid = document.getElementById('cert-grid');
+      const filtered = getFilteredSortedCerts();
+
+      grid.innerHTML = '';
+
+      if (filtered.length === 0) {
+        const empty = document.createElement('div');
+        empty.textContent = 'No certificates match your filters.';
+        empty.style.opacity = '0.7';
+        grid.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const title = document.createElement('h2');
+        title.textContent = c.profile && c.profile.name ? c.profile.name : c.ins_uuid;
+        card.appendChild(title);
+
+        const badge = document.createElement('div');
+        badge.className = 'badge';
+        badge.textContent = (normalizeString(c.sector) || 'UNKNOWN').toUpperCase();
+        card.appendChild(badge);
+
+        const meta1 = document.createElement('div');
+        meta1.className = 'meta';
+        meta1.textContent = `Serial: ${normalizeString(c.serial) || '—'}`;
+        card.appendChild(meta1);
+
+        const meta2 = document.createElement('div');
+        meta2.className = 'meta';
+        meta2.textContent = `Issued: ${normalizeString(c.issued_at) || '—'}`;
+        card.appendChild(meta2);
+
+        if (c.profile) {
+          const meta3 = document.createElement('div');
+          meta3.className = 'meta';
+          meta3.textContent = `Status: ${normalizeString(c.profile.status) || '—'} · Sub: ${c.profile.subscription_amount ?? '—'}`;
+          card.appendChild(meta3);
+        }
+
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.textContent = 'Certificate preview';
+        btn.addEventListener('click', () => openModal(c));
+        card.appendChild(btn);
+
+        const qrBtn = document.createElement('button');
+        qrBtn.className = 'btn secondary';
+        qrBtn.textContent = 'QR Code';
+        qrBtn.addEventListener('click', () => openQRModal(c));
+        card.appendChild(qrBtn);
+
+        grid.appendChild(card);
+      });
+    }
+
+    function exportCurrentViewToCSV() {
+      const rows = [];
+      const filtered = getFilteredSortedCerts();
+
+      rows.push(['Name','INS UUID','Serial','Sector','Issued','Status','Subscription']);
+
+      filtered.forEach(c => {
+        const name = normalizeString(c.profile && c.profile.name);
+        const uuid = normalizeString(c.ins_uuid);
+        const serial = normalizeString(c.serial);
+        const sector = normalizeString(c.sector).toUpperCase() || 'UNKNOWN';
+        const issued = normalizeString(c.issued_at);
+        const status = normalizeString(c.profile && c.profile.status);
+        const sub = c.profile && c.profile.subscription_amount != null ? c.profile.subscription_amount : '';
+        rows.push([name, uuid, serial, sector, issued, status, sub]);
+      });
+
+      const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ats_certificates_view.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    async function verifyCertificate(cert) {
+      const url = `http://127.0.0.1:5050/api/verify?ins_uuid=${cert.ins_uuid}&serial=${cert.serial}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.ok) {
+          openVerifyModal(`
+            <div style="color:#f87171;font-weight:600;font-size:1.1rem;">Verification Failed</div>
+            <div>Reason: ${data.reason || 'Unknown error'}</div>
+          `);
+          return;
+        }
+
+        const isValid = data.valid === true;
+
+        const badge = isValid
+          ? `<div style="background:#16a34a;padding:.3rem .6rem;border-radius:6px;display:inline-block;margin-bottom:.5rem;">VALID</div>`
+          : `<div style="background:#dc2626;padding:.3rem .6rem;border-radius:6px;display:inline-block;margin-bottom:.5rem;">INVALID</div>`;
+
+        const html = `
+          ${badge}
+          <div><strong>Name:</strong> ${data.profile?.name || cert.profile?.name || cert.ins_uuid}</div>
+          <div><strong>Serial:</strong> ${data.serial}</div>
+          <div><strong>Sector:</strong> ${(data.sector || 'UNKNOWN').toUpperCase()}</div>
+          <div><strong>Issued:</strong> ${data.issued_at}</div>
+          <hr style="opacity:.2;margin:.6rem 0;">
+          <div><strong>INS UUID:</strong> ${data.ins_uuid}</div>
+          <div><strong>Status:</strong> ${data.profile?.status || '—'}</div>
+          <div><strong>Subscription:</strong> ${data.profile?.subscription_amount ?? '—'}</div>
+        `;
+
+        openVerifyModal(html);
+
+      } catch (e) {
+        openVerifyModal(`
+          <div style="color:#f87171;font-weight:600;font-size:1.1rem;">Verification Error</div>
+          <div>Could not contact verification server.</div>
+        `);
+        console.error(e);
+      }
+    }
+
+    document.getElementById('search').addEventListener('input', () => renderCertificates());
+    document.getElementById('sort').addEventListener('change', () => renderCertificates());
+    document.getElementById('export-csv').addEventListener('click', exportCurrentViewToCSV);
+
+    loadCertificates();
+  </script>
+</body>
+</html>

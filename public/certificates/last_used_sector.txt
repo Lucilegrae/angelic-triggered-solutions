@@ -1,0 +1,234 @@
+[H[2J[3J
+============================================================
+            ATS FEDERATION — SECTOR SELECTION
+============================================================
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: mining
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining
+ 2) Steel
+ 3) Banking
+ 4) Veterans
+ 5) Community Members
+ 6) Councils
+ 7) Transport
+ 8) Suppliers
+ 9) Housing
+10) Insurance
+11) Government
+
+Invalid sector.
+[H[2J[3J
+============================================================
+            ATS FEDERATION — SECTOR SELECTION
+============================================================
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: 
+──────────────────────────────────────────────
+      ATS FEDERATION — SECTOR SELECTION
+──────────────────────────────────────────────
+Choose the sector whose authority this
+certificate will represent:
+
+Last used sector: mining
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining              – Extractive industries, minerals, ore, quarrying
+ 2) Steel               – Metallurgy, furnaces, industrial steelworks
+ 3) Banking             – Financial institutions, capital, treasury
+ 4) Veterans            – War veterans, service honour, national duty
+ 5) Community Members   – Civil society, residents, local participation
+ 6) Councils            – Municipal governance, districts, local authority
+ 7) Transport           – Logistics, mobility, fleet, transit operations
+ 8) Suppliers           – Vendors, procurement, supply chain partners
+ 9) Housing             – Settlements, accommodation, residential services
+10) Insurance           – Risk management, coverage, protection services
+11) Government          – Ministries, departments, public administration
+
+Press Enter without choosing to reuse last sector or type manually.
+
+community members
+Press Enter to reuse it.
+
+ 1) Mining
+ 2) Steel
+ 3) Banking
+ 4) Veterans
+ 5) Community Members
+ 6) Councils
+ 7) Transport
+ 8) Suppliers
+ 9) Housing
+10) Insurance
+11) Government
+
+mining

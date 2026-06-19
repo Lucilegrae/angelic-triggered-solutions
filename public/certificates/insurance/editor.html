@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Insurance Profile Editor</title>
+<style>
+body { font-family: system-ui; background:#020617; color:#e5e7eb; margin:0; }
+header { padding:16px 24px; background:#0f172a; display:flex; justify-content:space-between; align-items:center; }
+h1 { margin:0; font-size:20px; }
+main { padding:20px; max-width:800px; margin:0 auto; }
+.card { background:#0f172a; border:1px solid #1f2937; border-radius:10px; padding:20px; margin-bottom:20px; }
+label { font-size:14px; color:#9ca3af; }
+input, textarea { width:100%; padding:10px; margin-top:4px; margin-bottom:12px; border-radius:6px; border:1px solid #374151; background:#020617; color:#e5e7eb; }
+button { padding:10px 16px; border-radius:6px; border:none; background:#2563eb; color:white; cursor:pointer; }
+button.secondary { background:#111827; border:1px solid #374151; }
+.badge { padding:4px 10px; border-radius:999px; background:#1d4ed8; font-size:12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ATS Insurance Profile Editor</h1>
+  <div style="font-size:12px;color:#9ca3af;">Angelic Triggered Solutions · Local Admin</div>
+</header>
+
+<main>
+
+  <div class="card">
+    <h2>Load Profile</h2>
+    <label>INS UUID</label>
+    <input id="insInput" placeholder="INS-UUID-xxxx" />
+    <button onclick="loadProfile()">Load</button>
+  </div>
+
+  <div id="editor" class="card" style="display:none;">
+    <h2>Edit Profile</h2>
+
+    <label>Name</label>
+    <input id="name">
+
+    <label>Policy Number</label>
+    <input id="policy_number">
+
+    <label>Policy Company</label>
+    <input id="policy_company">
+
+    <label>Beneficiaries (comma-separated)</label>
+    <textarea id="beneficiaries"></textarea>
+
+    <label>ID Number</label>
+    <input id="id_number">
+
+    <label>Address</label>
+    <input id="address">
+
+    <label>Phone</label>
+    <input id="phone">
+
+    <label>Email</label>
+    <input id="email">
+
+    <label>Subscription Amount</label>
+    <input id="subscription_amount" type="number">
+
+    <label>Currency</label>
+    <input id="currency">
+
+    <label>Registered At</label>
+    <input id="registered_at" type="date">
+
+    <label>Insured Amount</label>
+    <input id="insured_amount" type="number">
+
+    <label>Pension Maturity Date</label>
+    <input id="pension_maturity_date" type="date">
+
+    <label>Status</label>
+    <input id="status">
+
+    <button onclick="saveProfile()">Save Changes</button>
+  </div>
+
+</main>
+
+<script>
+let currentUUID = null;
+let currentData = null;
+
+function loadProfile() {
+  const uuid = document.getElementById('insInput').value.trim();
+  if (!uuid) return;
+
+  fetch('profiles/' + uuid + '.json')
+    .then(r => r.json())
+    .then(data => {
+      currentUUID = uuid;
+      currentData = data;
+
+      document.getElementById('editor').style.display = 'block';
+
+      document.getElementById('name').value = data.name;
+      document.getElementById('policy_number').value = data.policy_number;
+      document.getElementById('policy_company').value = data.policy_company;
+      document.getElementById('beneficiaries').value = data.beneficiaries.join(', ');
+      document.getElementById('id_number').value = data.id_number;
+      document.getElementById('address').value = data.address;
+      document.getElementById('phone').value = data.phone;
+      document.getElementById('email').value = data.email || "";
+      document.getElementById('subscription_amount').value = data.subscription_amount;
+      document.getElementById('currency').value = data.currency;
+      document.getElementById('registered_at').value = data.registered_at;
+      document.getElementById('insured_amount').value = data.insured_amount;
+      document.getElementById('pension_maturity_date').value = data.pension_maturity_date;
+      document.getElementById('status').value = data.status;
+    })
+    .catch(() => alert("Profile not found."));
+}
+
+function saveProfile() {
+  const updated = {
+    ins_uuid: currentUUID,
+    name: document.getElementById('name').value,
+    policy_number: document.getElementById('policy_number').value,
+    policy_company: document.getElementById('policy_company').value,
+    beneficiaries: document.getElementById('beneficiaries').value.split(',').map(s => s.trim()).filter(s => s),
+    id_number: document.getElementById('id_number').value,
+    address: document.getElementById('address').value,
+    phone: document.getElementById('phone').value,
+    email: document.getElementById('email').value,
+    subscription_amount: Number(document.getElementById('subscription_amount').value),
+    currency: document.getElementById('currency').value,
+    registered_at: document.getElementById('registered_at').value,
+    insured_amount: Number(document.getElementById('insured_amount').value),
+    pension_maturity_date: document.getElementById('pension_maturity_date').value,
+    status: document.getElementById('status').value,
+    upgrades: currentData.upgrades || [],
+    downgrades: currentData.downgrades || []
+  };
+
+  const blob = new Blob([JSON.stringify(updated, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = currentUUID + '.json';
+  a.click();
+
+  alert("Profile updated. Replace the file in /profiles/ to apply changes.");
+}
+</script>
+
+</body>
+</html>

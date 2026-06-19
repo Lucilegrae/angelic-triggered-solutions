@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-406",
+  "name": "Unknown",
+  "policy_number": "ATS-MISSING-406",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-05-18",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "unknown-sector",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_MINERS.png",
+      "uuid": "a3c7328b-4495-44cb-84f2-fc6b106985ac",
+      "updated_at": "2026-05-18"
+    }
+  ],
+  "downgrades": []
+}

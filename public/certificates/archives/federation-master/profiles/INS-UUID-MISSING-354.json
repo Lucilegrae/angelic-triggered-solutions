@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-354",
+  "name": "Unknown",
+  "policy_number": "ATS-MISSING-354",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-05-18",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "unknown-sector",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_GOVERNMENT.png",
+      "uuid": "0fc01805-35e6-4205-8f49-cf1c1ffcbb11",
+      "updated_at": "2026-05-18"
+    }
+  ],
+  "downgrades": []
+}

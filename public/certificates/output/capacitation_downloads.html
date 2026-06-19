@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Capacitation Downloads</title>
+<style>
+body { font-family: system-ui; background:#f5f5f8; padding:20px; }
+h1 { text-align:center; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+.card { background:white; padding:15px; border-radius:8px; box-shadow:0 0 6px rgba(0,0,0,0.15); }
+.card img { width:100%; border-radius:6px; }
+.btn { display:block; margin-top:10px; padding:10px; background:#0057ff; color:white; text-align:center; border-radius:6px; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<h1>✨ ATS Capacitation Certificates ✨</h1>
+<div class="grid">
+<script>
+fetch('ledger.json')
+  .then(r => r.json())
+  .then(rows => {
+    rows.forEach(r => {
+
+      // FIX PATH: remove "public/certificates/output/"
+      const file = r.Certificate_File.replace("public/certificates/output/", "");
+
+      document.write(`
+        <div class="card">
+          <img src="${file}" />
+          <h3>${r.Name}</h3>
+          <p>${r.Stakeholder}</p>
+          <p>Member #${r.Membership_Number}</p>
+          <a class="btn" href="${file}" download>⬇ Download Certificate</a>
+        </div>
+      `);
+    });
+  });
+</script>
+</div>
+
+<a class="btn" style="margin-top:30px;" href="all_certificates.zip">📘 Download All Certificates</a>
+
+</body>
+</html>

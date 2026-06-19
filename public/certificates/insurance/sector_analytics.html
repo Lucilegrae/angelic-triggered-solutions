@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Sector Analytics</title>
+<style>
+body { font-family: system-ui; background:#020617; color:#e5e7eb; margin:0; }
+header { padding:16px 24px; background:#0f172a; display:flex; justify-content:space-between; align-items:center; }
+h1 { margin:0; font-size:22px; }
+main { padding:20px; max-width:1100px; margin:0 auto; }
+.card { background:#0f172a; border:1px solid #1f2937; border-radius:10px; padding:20px; margin-bottom:20px; }
+table { width:100%; border-collapse:collapse; margin-top:10px; }
+th, td { padding:10px; border-bottom:1px solid #1f2937; text-align:left; }
+th { color:#93c5fd; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ATS Sector Analytics</h1>
+  <div style="font-size:12px;color:#9ca3af;">Angelic Triggered Solutions · Sector Intelligence</div>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Sector Performance</h2>
+    <table id="sectorTable">
+      <thead>
+        <tr>
+          <th>Sector</th>
+          <th>Members</th>
+          <th>Total Paid (USD)</th>
+          <th>Projected Maturity (USD)</th>
+          <th>Avg Monthly (USD)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+async function loadAnalytics() {
+  const data = await fetch('sector_analytics.json').then(r => r.json());
+  const tbody = document.querySelector('#sectorTable tbody');
+  tbody.innerHTML = '';
+
+  for (const [sector, s] of Object.entries(data)) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${sector}</td>
+      <td>${s.members}</td>
+      <td>${s.total_paid.toFixed(2)}</td>
+      <td>${s.projected_maturity.toFixed(2)}</td>
+      <td>${s.avg_monthly.toFixed(2)}</td>
+    `;
+    tbody.appendChild(row);
+  }
+}
+
+loadAnalytics();
+</script>
+
+</body>
+</html>

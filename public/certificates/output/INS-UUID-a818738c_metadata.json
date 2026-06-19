@@ -1,0 +1,14 @@
+{
+  "ins_uuid": "INS-UUID-a818738c",
+  "serial": "ATS-20260607-A81873",
+  "sector": "banking",
+  "issued_at": "2026-06-07",
+  "certificate_path": "public/certificates/output/certificate_banking_INS-UUID-a818738c.png",
+  "profile": {
+    "name": "Ashley BankAbc",
+    "status": "active",
+    "subscription_amount": 0,
+    "registered_at": "2026-06-07",
+    "sector": "banking"
+  }
+}

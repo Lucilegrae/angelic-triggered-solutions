@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-429",
+  "name": "Unknown",
+  "policy_number": "ATS-MISSING-429",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-05-18",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "unknown-sector",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_LANDOWNERS.png",
+      "uuid": "579a4338-aa00-4244-a239-7e6ffa7a5351",
+      "updated_at": "2026-05-18"
+    }
+  ],
+  "downgrades": []
+}

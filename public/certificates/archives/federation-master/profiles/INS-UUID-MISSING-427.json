@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-427",
+  "name": "Unknown",
+  "policy_number": "ATS-MISSING-427",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-05-18",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "unknown-sector",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_HOUSING.png",
+      "uuid": "177155ec-1a60-40d9-983f-611d447f7c23",
+      "updated_at": "2026-05-18"
+    }
+  ],
+  "downgrades": []
+}

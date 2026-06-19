@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Financial Summary Dashboard</title>
+<style>
+body { font-family: system-ui; background:#020617; color:#e5e7eb; margin:0; }
+header { padding:16px 24px; background:#0f172a; display:flex; justify-content:space-between; align-items:center; }
+h1 { margin:0; font-size:22px; }
+main { padding:20px; max-width:1100px; margin:0 auto; }
+.card { background:#0f172a; border:1px solid #1f2937; border-radius:10px; padding:20px; margin-bottom:20px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+.value { font-size:26px; font-weight:bold; margin-top:10px; }
+.label { font-size:14px; color:#9ca3af; }
+table { width:100%; border-collapse:collapse; margin-top:20px; }
+th, td { padding:10px; border-bottom:1px solid #1f2937; text-align:left; }
+th { color:#93c5fd; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ATS Financial Summary Dashboard</h1>
+  <div style="font-size:12px;color:#9ca3af;">Angelic Triggered Solutions · Financial Intelligence</div>
+</header>
+
+<main>
+
+  <div class="card">
+    <h2>Global Financial Summary</h2>
+    <div class="grid" id="globalStats"></div>
+  </div>
+
+  <div class="card">
+    <h2>Sector Breakdown</h2>
+    <table id="sectorTable">
+      <thead>
+        <tr>
+          <th>Sector</th>
+          <th>Members</th>
+          <th>Total Paid</th>
+          <th>Projected Maturity</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</main>
+
+<script>
+async function loadProfiles() {
+  const index = await fetch('profiles_index.json').then(r => r.json());
+  const profiles = [];
+
+  for (const uuid of index) {
+    try {
+      const p = await fetch('profiles/' + uuid + '.json').then(r => r.json());
+      profiles.push(p);
+    } catch (e) {}
+  }
+
+  return profiles;
+}
+
+function calculateFinancials(profiles) {
+  const sectors = {};
+  let globalPaid = 0;
+  let globalProjected = 0;
+
+  profiles.forEach(p => {
+    const sector = p.status || "unknown";
+    const monthly = Number(p.subscription_amount || 0);
+
+    // Estimate months contributed
+    const start = new Date(p.registered_at);
+    const end = new Date();
+    const months = (end.getFullYear() - start.getFullYear()) * 12 +
+                   (end.getMonth() - start.getMonth());
+
+    const totalPaid = monthly * months;
+    const projected = totalPaid * 1.05; // simple 5% growth
+
+    globalPaid += totalPaid;
+    globalProjected += projected;
+
+    if (!sectors[sector]) {
+      sectors[sector] = { members:0, paid:0, projected:0 };
+    }
+
+    sectors[sector].members++;
+    sectors[sector].paid += totalPaid;
+    sectors[sector].projected += projected;
+  });
+
+  return { sectors, globalPaid, globalProjected };
+}
+
+function renderDashboard(data) {
+  const global = document.getElementById('globalStats');
+  global.innerHTML = `
+    <div>
+      <div class="label">Total Paid</div>
+      <div class="value">${data.globalPaid.toFixed(2)} USD</div>
+    </div>
+    <div>
+      <div class="label">Projected Maturity</div>
+      <div class="value">${data.globalProjected.toFixed(2)} USD</div>
+    </div>
+    <div>
+      <div class="label">Total Members</div>
+      <div class="value">${Object.values(data.sectors).reduce((a,b)=>a+b.members,0)}</div>
+    </div>
+  `;
+
+  const tbody = document.querySelector('#sectorTable tbody');
+  tbody.innerHTML = '';
+
+  for (const [sector, s] of Object.entries(data.sectors)) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${sector}</td>
+      <td>${s.members}</td>
+      <td>${s.paid.toFixed(2)} USD</td>
+      <td>${s.projected.toFixed(2)} USD</td>
+    `;
+    tbody.appendChild(row);
+  }
+}
+
+loadProfiles().then(profiles => {
+  const data = calculateFinancials(profiles);
+  renderDashboard(data);
+});
+</script>
+
+</body>
+</html>

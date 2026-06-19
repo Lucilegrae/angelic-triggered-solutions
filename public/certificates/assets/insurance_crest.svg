@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1024" height="1024" viewBox="0 0 1024 1024">
+
+  <!-- ====== GRADIENT DEFINITIONS ====== -->
+  <defs>
+    <radialGradient id="goldGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFF6D0"/>
+      <stop offset="40%" stop-color="#F4D98A"/>
+      <stop offset="100%" stop-color="#C18A2F"/>
+    </radialGradient>
+
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#163A8C"/>
+      <stop offset="100%" stop-color="#0A2A66"/>
+    </linearGradient>
+
+    <linearGradient id="ribbonBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1D3F8F"/>
+      <stop offset="100%" stop-color="#0A2A66"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ====== CROWN ====== -->
+  <g id="ats-crown" transform="translate(312,80)">
+    <path d="M40,120 L360,120 L340,60 L280,110 L220,40 L160,110 L100,60 Z"
+          fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="6"/>
+    <rect x="60" y="120" width="280" height="40" rx="8"
+          fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="5"/>
+    <circle cx="120" cy="100" r="10" fill="#C62828"/>
+    <circle cx="200" cy="90" r="10" fill="#2E7D32"/>
+    <circle cx="280" cy="100" r="10" fill="#1565C0"/>
+  </g>
+
+  <!-- ====== HALO ====== -->
+  <ellipse cx="512" cy="250" rx="170" ry="55"
+           fill="#F9EFAE" fill-opacity="0.7"
+           stroke="#F7D76A" stroke-width="6"/>
+
+  <!-- ====== WINGS ====== -->
+  <path d="M320,280 C220,320 190,380 190,440
+           C190,500 230,540 270,560
+           C250,520 250,490 260,460
+           C230,450 220,420 230,390
+           C245,360 270,340 300,330 Z"
+        fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="5"/>
+
+  <path d="M704,280 C804,320 834,380 834,440
+           C834,500 794,540 754,560
+           C774,520 774,490 764,460
+           C794,450 804,420 794,390
+           C780,360 754,340 724,330 Z"
+        fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="5"/>
+
+  <!-- ====== LAURELS ====== -->
+  <path d="M380,520 C320,520 290,480 290,440
+           C290,400 310,360 340,340
+           C330,360 325,380 325,400
+           C325,430 340,460 365,480 Z"
+        fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="4"/>
+
+  <path d="M644,520 C704,520 734,480 734,440
+           C734,400 714,360 684,340
+           C694,360 699,380 699,400
+           C699,430 684,460 659,480 Z"
+        fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="4"/>
+
+  <!-- ====== SHIELD ====== -->
+  <path d="M512,260 L360,520 Q512,620 664,520 Z"
+        fill="url(#blueGrad)" stroke="url(#goldGrad)" stroke-width="10"/>
+
+  <!-- ====== ANGEL + STAR ====== -->
+  <g>
+    <path d="M512,290 L470,380 L554,380 Z" fill="url(#goldGrad)"/>
+    <circle cx="512" cy="270" r="18" fill="url(#goldGrad)"/>
+    <path d="M470,320 C440,330 430,350 430,370
+             C430,390 445,405 460,410 Z"
+          fill="url(#goldGrad)"/>
+    <path d="M554,320 C584,330 594,350 594,370
+             C594,390 579,405 564,410 Z"
+          fill="url(#goldGrad)"/>
+    <g fill="none" stroke="#F9EFAE" stroke-width="6">
+      <path d="M512,320 L488,360 L536,360 Z"/>
+      <path d="M512,380 L488,340 L536,340 Z"/>
+    </g>
+  </g>
+
+  <!-- ====== INSURANCE SYMBOLS ====== -->
+
+  <!-- Umbrella -->
+  <g transform="translate(260,520)">
+    <path d="M0,40 Q80,-40 160,40
+             Q120,20 80,40
+             Q40,20 0,40 Z"
+          fill="url(#blueGrad)" stroke="url(#goldGrad)" stroke-width="8"/>
+    <path d="M80,40 L80,110" stroke="url(#goldGrad)" stroke-width="6"/>
+    <path d="M40,40 L65,105" stroke="url(#goldGrad)" stroke-width="5"/>
+    <path d="M120,40 L95,105" stroke="url(#goldGrad)" stroke-width="5"/>
+    <path d="M80,110 L80,170 Q80,190 60,190"
+          fill="none" stroke="url(#goldGrad)" stroke-width="7"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Policy Scroll -->
+  <g transform="translate(604,520)">
+    <rect x="10" y="30" width="160" height="110" rx="18"
+          fill="url(#blueGrad)" stroke="url(#goldGrad)" stroke-width="8"/>
+    <path d="M10,40 Q30,10 60,40
+             Q90,10 120,40
+             Q150,10 170,40"
+          fill="none" stroke="url(#goldGrad)" stroke-width="7"/>
+    <path d="M10,140 Q30,170 60,140
+             Q90,170 120,140
+             Q150,170 170,140"
+          fill="none" stroke="url(#goldGrad)" stroke-width="7"/>
+    <line x1="30" y1="70" x2="150" y2="70"
+          stroke="#F9EFAE" stroke-width="4"/>
+    <line x1="30" y1="90" x2="150" y2="90"
+          stroke="#F9EFAE" stroke-width="3"/>
+    <line x1="30" y1="110" x2="120" y2="110"
+          stroke="#F9EFAE" stroke-width="3"/>
+    <circle cx="140" cy="118" r="10"
+            fill="url(#goldGrad)" stroke="#8A5A16" stroke-width="3"/>
+  </g>
+
+  <!-- ====== RIBBON ====== -->
+  <g transform="translate(140,780)">
+    <path d="M0,40 Q200,0 420,0
+             Q640,0 840,40
+             L840,110
+             Q640,70 420,70
+             Q200,70 0,110 Z"
+          fill="url(#ribbonBlue)" stroke="url(#goldGrad)" stroke-width="8"/>
+
+    <text x="420" y="60"
+          font-family="Cinzel, 'Trajan Pro', serif"
+          font-size="30"
+          fill="#F9EFAE"
+          text-anchor="middle"
+          style="letter-spacing:2px;">
+      ANGELIC TRIGGERED SOLUTIONS — INSURANCE POLICY SECTOR
+    </text>
+  </g>
+
+</svg>

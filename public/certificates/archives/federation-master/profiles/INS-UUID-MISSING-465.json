@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-465",
+  "name": "John Doe",
+  "policy_number": "ATS-20260606-F21286",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-06-06",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "community",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_community-members-sector_fcfde52f-8b86-47a2-9239-e32caba0832b.png",
+      "uuid": "fcfde52f-8b86-47a2-9239-e32caba0832b",
+      "updated_at": "2026-06-06"
+    }
+  ],
+  "downgrades": []
+}

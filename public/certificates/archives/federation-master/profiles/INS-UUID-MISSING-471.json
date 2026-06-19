@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-471",
+  "name": "Sylvester Madanhire",
+  "policy_number": "ATS-20260606-818089",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-06-06",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "community",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_community-members-sector_da0f9ac8-d22a-4af8-afad-2b44c0caeaa7.png",
+      "uuid": "da0f9ac8-d22a-4af8-afad-2b44c0caeaa7",
+      "updated_at": "2026-06-06"
+    }
+  ],
+  "downgrades": []
+}

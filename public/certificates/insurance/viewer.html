@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Insurance Profile Viewer</title>
+<style>
+body { font-family: system-ui; background:#0b1020; color:#f5f5f5; padding:20px; }
+.container { max-width:600px; margin:0 auto; background:#111827; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.5); }
+h1 { text-align:center; }
+label { font-weight:bold; }
+.row { margin-bottom:8px; }
+.badge { display:inline-block; padding:4px 8px; border-radius:999px; background:#2563eb; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Insurance Profile</h1>
+  <div id="content">Loading...</div>
+</div>
+<script>
+function getParam(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+function daysBetween(a, b) {
+  const ms = b - a;
+  return Math.floor(ms / (1000*60*60*24));
+}
+
+(async () => {
+  const token = getParam('token');
+  const content = document.getElementById('content');
+
+  if (!token) {
+    content.innerHTML = "No token provided.";
+    return;
+  }
+
+  try {
+    const resp = await fetch('profiles/' + token + '.json');
+    if (!resp.ok) {
+      content.innerHTML = "Profile not found for token: " + token;
+      return;
+    }
+    const p = await resp.json();
+
+    const today = new Date();
+    const maturity = new Date(p.pension_maturity_date);
+    const daysToMaturity = daysBetween(today, maturity);
+
+    content.innerHTML = `
+      <div class="row"><label>Name:</label> ${p.name}</div>
+      <div class="row"><label>Policy Number:</label> ${p.policy_number}</div>
+      <div class="row"><label>Company:</label> ${p.policy_company}</div>
+      <div class="row"><label>Status:</label> <span class="badge">${p.status}</span></div>
+      <div class="row"><label>Beneficiaries:</label> ${p.beneficiaries.join(', ')}</div>
+      <div class="row"><label>ID Number:</label> ${p.id_number}</div>
+      <div class="row"><label>Address:</label> ${p.address}</div>
+      <div class="row"><label>Phone:</label> ${p.phone}</div>
+      <div class="row"><label>Email:</label> ${p.email}</div>
+      <div class="row"><label>Subscription:</label> ${p.subscription_amount} ${p.currency}</div>
+      <div class="row"><label>Insured Amount:</label> ${p.insured_amount} ${p.currency}</div>
+      <div class="row"><label>Registered At:</label> ${p.registered_at}</div>
+      <div class="row"><label>Pension Maturity Date:</label> ${p.pension_maturity_date}</div>
+      <div class="row"><label>Time to Maturity:</label> ${daysToMaturity} days</div>
+      <div class="row"><label>Upgrades:</label> ${p.upgrades.join('<br>') || 'None'}</div>
+      <div class="row"><label>Downgrades:</label> ${p.downgrades.join('<br>') || 'None'}</div>
+    `;
+  } catch (e) {
+    content.innerHTML = "Error loading profile.";
+  }
+})();
+</script>
+</body>
+</html>

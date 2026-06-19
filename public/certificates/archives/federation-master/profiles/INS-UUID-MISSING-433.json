@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-433",
+  "name": "Unknown",
+  "policy_number": "ATS-MISSING-433",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-05-18",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "unknown-sector",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_VETERANS.png",
+      "uuid": "9fad8e8f-01d3-43be-b18d-045f5d683c98",
+      "updated_at": "2026-05-18"
+    }
+  ],
+  "downgrades": []
+}

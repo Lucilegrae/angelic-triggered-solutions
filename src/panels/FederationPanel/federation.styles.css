@@ -1,0 +1,6 @@
+.federation-panel {
+  padding: 1rem;
+}
+.federation-panel.error {
+  color: #b00020;
+}

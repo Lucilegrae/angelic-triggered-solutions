@@ -1,0 +1,6 @@
+.cosmic-panel {
+  padding: 1rem;
+}
+.cosmic-panel.error {
+  color: #b00020;
+}

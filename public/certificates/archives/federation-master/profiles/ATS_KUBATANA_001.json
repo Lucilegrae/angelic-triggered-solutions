@@ -1,0 +1,26 @@
+{
+  "ins_uuid": "ATS_KUBATANA_001",
+  "name": "PRINCE MASVIKEPI",
+  "policy_number": "b6f8bb74-32ae-4046-83a6-611bab252cb2",
+  "policy_company": "ATS",
+  "beneficiaries": [
+    "Takunda Masvikepi",
+    "Anthony Masvikepi",
+    "Jason Masvikepi",
+    "Victoria Masvikepi",
+    "Joseph Masvikepi",
+    "Kushinga Masvikepi"
+  ],
+  "id_number": "63-1256532 D-47",
+  "address": "5 Elephant Close, Borrowdale West, Harare",
+  "phone": "+263779129187",
+  "email": "pnovontony@yahoo.com",
+  "subscription_amount": 110,
+  "currency": "USD",
+  "registered_at": "2026-06-06",
+  "insured_amount": 55000,
+  "pension_maturity_date": "2031-06-06",
+  "status": "Active",
+  "upgrades": [],
+  "downgrades": []
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Insurance Admin Dashboard</title>
+<style>
+body { font-family: system-ui; background:#020617; color:#e5e7eb; margin:0; }
+header { padding:16px 24px; background:#0f172a; display:flex; justify-content:space-between; align-items:center; }
+h1 { margin:0; font-size:20px; }
+main { padding:20px; max-width:1000px; margin:0 auto; }
+.card { background:#020617; border:1px solid #1f2937; border-radius:10px; padding:16px; margin-bottom:16px; }
+label { font-size:14px; color:#9ca3af; }
+input { width:100%; padding:8px; margin-top:4px; margin-bottom:8px; border-radius:6px; border:1px solid #374151; background:#020617; color:#e5e7eb; }
+button { padding:8px 14px; border-radius:6px; border:none; background:#2563eb; color:white; cursor:pointer; }
+button.secondary { background:#111827; border:1px solid #374151; }
+table { width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; }
+th, td { padding:8px; border-bottom:1px solid #1f2937; text-align:left; }
+.badge { padding:2px 8px; border-radius:999px; font-size:11px; background:#1d4ed8; }
+</style>
+</head>
+<body>
+<header>
+  <h1>ATS Insurance Admin Dashboard</h1>
+  <div style="font-size:12px;color:#9ca3af;">Angelic Triggered Solutions · Local Admin</div>
+</header>
+<main>
+
+  <div class="card">
+    <h2>Quick Open Profile</h2>
+    <label>INS UUID (e.g. INS-UUID-1234)</label>
+    <input id="insInput" placeholder="INS-UUID-..." />
+    <button onclick="openViewer()">Open Viewer</button>
+  </div>
+
+  <div class="card">
+    <h2>Profiles Index</h2>
+    <p style="font-size:13px;color:#9ca3af;">
+      This table is built from <code>profiles_index.json</code>. Regenerate it when you add or edit profiles.
+    </p>
+    <button class="secondary" onclick="reloadIndex()">Reload Index</button>
+    <table id="profilesTable">
+      <thead>
+        <tr>
+          <th>INS UUID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Policy</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="profilesBody">
+        <tr><td colspan="5" style="text-align:center;color:#6b7280;">No data loaded.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+<script>
+function openViewer() {
+  const v = document.getElementById('insInput').value.trim();
+  if (!v) return;
+  window.location.href = 'viewer.html?token=' + encodeURIComponent(v);
+}
+
+async function reloadIndex() {
+  const body = document.getElementById('profilesBody');
+  body.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#6b7280;">Loading...</td></tr>';
+  try {
+    const r = await fetch('profiles_index.json');
+    if (!r.ok) {
+      body.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#f97373;">profiles_index.json not found.</td></tr>';
+      return;
+    }
+    const rows = await r.json();
+    if (!rows.length) {
+      body.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#6b7280;">No profiles.</td></tr>';
+      return;
+    }
+    body.innerHTML = '';
+    rows.forEach(p => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${p.ins_uuid}</td>
+        <td>${p.name}</td>
+        <td>${p.email || ""}</td>
+        <td>${p.policy_number}</td>
+        <td><span class="badge">${p.status}</span></td>
+        <td>
+          <button onclick="window.location.href='viewer.html?token=${encodeURIComponent(p.ins_uuid)}'">View</button>
+        </td>
+      `;
+      body.appendChild(tr);
+    });
+  } catch (e) {
+    body.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#f97373;">Error loading index.</td></tr>';
+  }
+}
+</script>
+</body>
+</html>

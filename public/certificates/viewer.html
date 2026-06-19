@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATS Certificate Viewer</title>
+  <style>
+    body {
+      font-family: serif;
+      background: #fdf6e3;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #b58900;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .card {
+      background: #fff;
+      border: 4px solid #b58900;
+      border-radius: 10px;
+      padding: 15px;
+      width: 420px;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .caption {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #657b83;
+    }
+    .download-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      background: #b58900;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .download-btn:hover {
+      background: #cb4b16;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✨ ATS Certificate Viewer ✨</h1>
+
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    async function loadCertificates() {
+      const response = await fetch('./output/');
+      const text = await response.text();
+
+      // Extract PNG filenames from directory listing
+      const matches = [...text.matchAll(/href="([^"]+\.png)"/g)];
+
+      const gallery = document.getElementById('gallery');
+
+      matches.forEach(match => {
+        const file = match[1];
+        const sector = file.replace("certificate_", "").replace(".png", "").replace("-", " ");
+
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+          <img src="./output/${file}" alt="${sector} Certificate">
+          <div class="caption">${sector.toUpperCase()}</div>
+          <a class="download-btn" href="./output/${file}" download>⬇️ Download</a>
+        `;
+
+        gallery.appendChild(card);
+      });
+    }
+
+    loadCertificates();
+  </script>
+
+</body>
+</html>

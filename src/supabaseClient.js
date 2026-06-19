@@ -1,4 +1,5 @@
-import { createClient } from "@supabas../supabase-js";
+// ✦ Supabase Client — Golden Aura Edition ✦
+import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -10,7 +11,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 /**
- * Multi-table channel factory
+ * ✦ Multi-table channel factory
+ * Allows subscribing to INSERT / UPDATE / DELETE across multiple tables
  * @param {Array} configs - Array of { table, handlers }
  */
 export function createMultiChannel(configs = []) {
@@ -44,6 +46,9 @@ export function createMultiChannel(configs = []) {
   return channel;
 }
 
+/**
+ * ✦ Remove a Supabase channel
+ */
 export function removeChannel(channel) {
   supabase.removeChannel(channel);
 }

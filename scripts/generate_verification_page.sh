@@ -1,0 +1,66 @@
+#!/bin/bash
+LEDGER="public/certificates/archives/certificate_ledger.csv"
+OUT_HTML="public/certificates/output/verify.html"
+
+mkdir -p "$(dirname "$OUT_HTML")"
+
+cat > "$OUT_HTML" << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ATS Certificate Verification</title>
+<style>
+body { font-family: system-ui, sans-serif; background:#0b1020; color:#f5f5f5; padding:20px; }
+h1 { text-align:center; }
+input, button { padding:8px; font-size:14px; }
+#result { margin-top:20px; padding:10px; background:#111827; border-radius:6px; }
+table { border-collapse: collapse; width:100%; margin-top:10px; }
+th, td { border:1px solid #444; padding:6px; font-size:13px; }
+th { background:#1f2937; }
+</style>
+</head>
+<body>
+<h1>ATS Certificate Verification</h1>
+<p>Paste UUID or Serial Number from the certificate or QR code.</p>
+<input id="query" type="text" placeholder="UUID or Serial Number" style="width:70%;">
+<button onclick="verify()">Verify</button>
+<div id="result"></div>
+<script>
+async function verify() {
+  const q = document.getElementById('query').value.trim();
+  const resDiv = document.getElementById('result');
+  if (!q) { resDiv.innerHTML = 'Enter a value.'; return; }
+
+  const resp = await fetch('ledger.json');
+  const data = await resp.json();
+
+  const matches = data.filter(row =>
+    row.UUID === q || row.Serial_Number === q
+  );
+
+  if (matches.length === 0) {
+    resDiv.innerHTML = '<p>No matching certificate found.</p>';
+    return;
+  }
+
+  let html = '<table><tr><th>Name</th><th>Sector</th><th>Membership</th><th>UUID</th><th>Serial</th><th>Certificate</th></tr>';
+  for (const m of matches) {
+    html += '<tr>' +
+      '<td>' + m.Name + '</td>' +
+      '<td>' + m.Stakeholder + '</td>' +
+      '<td>' + m.Membership_Number + '</td>' +
+      '<td>' + m.UUID + '</td>' +
+      '<td>' + m.Serial_Number + '</td>' +
+      '<td><a href=\"/' + m.Certificate_File + '\" target=\"_blank\">View</a></td>' +
+      '</tr>';
+  }
+  html += '</table>';
+  resDiv.innerHTML = html;
+}
+</script>
+</body>
+</html>
+EOF
+
+echo "🌐 Verification page generated: $OUT_HTML"

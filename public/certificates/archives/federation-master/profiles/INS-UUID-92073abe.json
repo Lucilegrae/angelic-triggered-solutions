@@ -1,0 +1,21 @@
+{
+  "ins_uuid": "INS-UUID-92073abe",
+  "name": "Ashley BankAbc",
+  "policy_number": "PENDING",
+  "policy_company": "PENDING",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-06-07",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "Uninitialized",
+  "upgrades": [],
+  "downgrades": [],
+  "sector": "banking",
+  "certificate_serial": "ATS-20260607-CDED4D",
+  "certificate_issued_at": "2026-06-07"
+}

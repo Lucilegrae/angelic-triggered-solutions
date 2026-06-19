@@ -1,0 +1,25 @@
+{
+  "ins_uuid": "INS-UUID-MISSING-459",
+  "name": "Prince Masvikepi",
+  "policy_number": "ATS-20260605-7A8E90",
+  "policy_company": "ATS",
+  "beneficiaries": [],
+  "id_number": "PENDING",
+  "address": "PENDING",
+  "phone": "PENDING",
+  "email": "PENDING",
+  "subscription_amount": 0,
+  "currency": "USD",
+  "registered_at": "2026-06-05",
+  "insured_amount": 0,
+  "pension_maturity_date": "PENDING",
+  "status": "mining",
+  "upgrades": [
+    {
+      "certificate": "public/certificates/output/certificate_mining-sector_2da523f5-a705-4137-a3f3-e7d06bcfdb77.png",
+      "uuid": "2da523f5-a705-4137-a3f3-e7d06bcfdb77",
+      "updated_at": "2026-06-05"
+    }
+  ],
+  "downgrades": []
+}
