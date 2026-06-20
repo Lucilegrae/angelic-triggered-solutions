@@ -7,15 +7,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Supabase CLI
         run: npm install -g supabase
 
       - name: Authenticate Supabase
-        run: supabase login --token ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
 
       - name: Deploy JWKS function
-        run: supabase functions deploy jwks --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: supabase functions deploy jwks --project-ref "$SUPABASE_PROJECT_ID"
