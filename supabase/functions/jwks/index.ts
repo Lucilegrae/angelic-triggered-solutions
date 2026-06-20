@@ -1,3 +1,7 @@
+export const config = {
+  auth: false,
+};
+
 import { serve } from "https://deno.land/std/http/server.ts";
 
 serve(() => {
