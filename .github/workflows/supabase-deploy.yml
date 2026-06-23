@@ -15,8 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Supabase CLI
-        run: npm install -g supabase-cli
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
 
       - name: Authenticate Supabase
         run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
@@ -26,3 +28,4 @@ jobs:
 
       - name: Deploy JWKS function
         run: supabase functions deploy public-jwks --project-ref "$SUPABASE_PROJECT_ID" --no-verify-jwt
+
