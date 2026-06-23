@@ -12,6 +12,9 @@ jobs:
       SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
 
     steps:
+      - name: List deployed functions
+        run: supabase functions list --project-ref "$SUPABASE_PROJECT_ID"
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
