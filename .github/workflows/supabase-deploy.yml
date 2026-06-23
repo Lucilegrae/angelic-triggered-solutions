@@ -25,4 +25,4 @@ jobs:
         run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
 
       - name: Deploy JWKS function
-        run: supabase functions deploy jwks --project-ref "$SUPABASE_PROJECT_ID" --no-verify-jwt
+        run: supabase functions deploy public-jwks --project-ref "$SUPABASE_PROJECT_ID" --no-verify-jwt
