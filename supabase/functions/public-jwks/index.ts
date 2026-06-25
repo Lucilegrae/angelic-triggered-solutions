@@ -11,8 +11,8 @@ serve(() => {
         {
           kty: "EC",
           crv: "P-256",
-          x: "gFQyKF7Vi_Z_gdzBsmD4w7__4JoU6Ne9inBdg3QU4io",
-          y: "atB8f3DtajbYCLlRSkuAN_Mus95gnAlzlz3GW2L5L68",
+          x: "2Q5UudEvgh993o3Jf46b9DliWetrauL_k1qkiFX5lI",
+          y: "0r3FSXfDEY1Y0UHLV57vEht-NwGiKsBGakCj_IMtG",
           use: "sig",
           alg: "ES256",
           kid: "ats-es256-key-1"
@@ -27,5 +27,3 @@ serve(() => {
     }
   );
 });
-
-// redeploy trigger
