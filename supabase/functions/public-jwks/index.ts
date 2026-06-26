@@ -5,8 +5,8 @@ export const handler = async () => {
         {
           kty: "EC",
           crv: "P-256",
-          x: "9zoJsudVEghQ93o3jF46b9DNiw8etraU_k1qkiFX5lI",
-          y: "Of3SRYKEDfy1V0UHLTv57HetN-MwGiKsB6aHcj_IMTg",
+          x: "Szxp-e49CSqYSeOQGiyAUK1Vm2DllvSQ-74-6l4or7k",
+          y: "Gv3Oq-BFcANVfJqPCKHP5pVm2JBdROAMFlfeYhnx-Bk",
           use: "sig",
           alg: "ES256",
           kid: "ats-es256-key-1"
