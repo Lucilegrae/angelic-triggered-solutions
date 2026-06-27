@@ -2,6 +2,9 @@ name: Supabase Deploy
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -28,4 +31,3 @@ jobs:
 
       - name: Deploy JWKS function
         run: supabase functions deploy public-jwks --project-ref "$SUPABASE_PROJECT_ID" --no-verify-jwt
-

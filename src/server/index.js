@@ -61,6 +61,7 @@ app.get("/ats/token", async (req, res) => {
       sub: "prince",
       role: "ats-admin",
       iss: "ats-core",
+      aud: "ats-core"   // ⭐ REQUIRED FOR VERIFICATION
     });
 
     res.json({ token });
