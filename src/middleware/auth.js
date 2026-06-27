@@ -1,32 +1,39 @@
-import { verifyATS } from "../auth/verifyATS.js";
+import jwt from "jsonwebtoken";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const pubPath = path.join(__dirname, "../../security/keys/ats-es256-public.pem");
+
+console.log("ATS PUBLIC KEY PATH:", pubPath);
+
+const publicKey = fs.readFileSync(pubPath, "utf8");
+
+console.log("ATS PUBLIC KEY START:", publicKey.slice(0, 40));
 
 export async function atsAuth(req, res, next) {
+  const auth = req.headers.authorization;
+
+  if (!auth || !auth.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Missing bearer token" });
+  }
+
+  const token = auth.slice("Bearer ".length).trim();
+
   try {
-    const auth = req.headers.authorization;
+    const decoded = jwt.verify(token, publicKey, {
+      algorithms: ["ES256"],
+      audience: "ats-core",
+      issuer: "ats-core"
+    });
 
-    if (!auth || !auth.startsWith("Bearer ")) {
-      return res.status(401).json({
-        error: "Missing Authorization header"
-      });
-    }
-
-    const token = auth.slice("Bearer ".length).trim();
-    const result = await verifyATS(token);
-
-    if (!result.valid) {
-      return res.status(401).json({
-        error: "Invalid token",
-        detail: result.error
-      });
-    }
-
-    req.user = result.payload;
+    req.user = decoded;
     next();
   } catch (err) {
     console.error("[ATS AUTH ERROR]", err);
-    return res.status(500).json({
-      error: "Auth middleware failure",
-      detail: err.message
-    });
+    return res.status(401).json({ error: "Invalid or expired token" });
   }
 }
