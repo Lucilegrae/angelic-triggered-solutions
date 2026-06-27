@@ -1,23 +1,13 @@
-export const handler = async () => {
-  return new Response(
-    JSON.stringify({
-      keys: [
-        {
-          kty: "EC",
-          crv: "P-256",
-          x: "Szxp-e49CSqYSeOQGiyAUK1Vm2DllvSQ-74-6l4or7k",
-          y: "Gv3Oq-BFcANVfJqPCKHP5pVm2JBdROAMFlfeYhnx-Bk",
-          use: "sig",
-          alg: "ES256",
-          kid: "ats-es256-key-1"
-        }
-      ]
-    }),
+export const jwks = {
+  keys: [
     {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=60"
-      }
+      kty: "EC",
+      crv: "P-256",
+      alg: "ES256",
+      use: "sig",
+      kid: "ats-es256-key-1",
+      x: "da1kIcrNs38aTFnQuWal8eFwRXKaYBl5Pn17uFA0L2g",
+      y: "GYT_IxKC-alKRnUdorR20T0Y1kIvtcaoNdLdWEqCk68"
     }
-  );
+  ]
 };
