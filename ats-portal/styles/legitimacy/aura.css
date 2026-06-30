@@ -1,0 +1,27 @@
+/* 🌌 Aura Pulse */
+@keyframes auraPulse {
+  0% { box-shadow: 0 0 4px var(--aura); }
+  50% { box-shadow: 0 0 18px var(--aura); }
+  100% { box-shadow: 0 0 4px var(--aura); }
+}
+
+/* 🌟 Aura Glow */
+@keyframes auraGlow {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* 🔮 Aura Ring Expansion */
+@keyframes auraRing {
+  0% { transform: scale(0.9); opacity: 0.4; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* ✨ Aura Variables */
+:root {
+  --aura-initiated: #1e90ff;
+  --aura-verified: #32cd32;
+  --aura-sanctified: #ffd700;
+  --aura-commissioned: #8a2be2;
+}

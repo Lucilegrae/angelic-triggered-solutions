@@ -1,0 +1,50 @@
+/* 🌌 Aura Form Container */
+.aura-form {
+  background: rgba(0,0,0,0.75);
+  border: 2px solid var(--aura);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px var(--aura), 0 0 24px var(--ritual);
+}
+
+/* 🌌 Aura Field */
+.aura-field {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid var(--aura);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.6);
+  color: var(--ritual);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aura-field:focus {
+  outline: none;
+  border-color: var(--ritual);
+  box-shadow: 0 0 12px var(--aura), 0 0 24px var(--ritual);
+  animation: fieldGlow 2s infinite ease-in-out;
+}
+
+@keyframes fieldGlow {
+  0% { box-shadow: 0 0 6px var(--aura); }
+  50% { box-shadow: 0 0 12px var(--ritual), 0 0 24px var(--aura); }
+  100% { box-shadow: 0 0 6px var(--aura); }
+}
+
+/* 🌌 Aura Submit Button */
+.aura-submit {
+  background: transparent;
+  border: 2px solid var(--aura);
+  color: var(--ritual);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aura-submit:hover {
+  background: var(--aura);
+  color: black;
+  box-shadow: 0 0 12px var(--ritual), 0 0 24px var(--aura);
+}
