@@ -1,25 +1,43 @@
-import { serve } from "https://deno.land/std/http/server.ts";
+import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 
-serve(() => {
-  return new Response(
-    JSON.stringify({
-      keys: [
-        {
-          kty: "EC",
-          crv: "P-256",
-          alg: "ES256",
-          use: "sig",
-          kid: "ats-es256-key-1",
-          x: "da1kIcrNs38aTFnQuWal8eFwRXKaYBl5Pn17uFA0L2g",
-          y: "GYT_IxKC-alKRnUdorR20T0Y1kIvtcaoNdLdWEqCk68"
+serve(async () => {
+  const jwksUrl = Deno.env.get("SUPABASE_JWKS_URL");
+
+  if (!jwksUrl) {
+    return new Response(
+      JSON.stringify({
+        error: "SUPABASE_JWKS_URL environment variable is not configured."
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json"
         }
-      ]
-    }),
-    {
+      }
+    );
+  }
+
+  try {
+    const response = await fetch(jwksUrl);
+
+    return new Response(await response.text(), {
+      status: response.status,
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=3600"
+        "Cache-Control": "public, max-age=300"
       }
-    }
-  );
+    });
+  } catch (err) {
+    return new Response(
+      JSON.stringify({
+        error: err instanceof Error ? err.message : "Unknown error"
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+  }
 });
