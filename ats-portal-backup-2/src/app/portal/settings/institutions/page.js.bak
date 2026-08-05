@@ -1,0 +1,15 @@
+export default async function InstitutionTypeSettings() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Institution Type Settings</h2>
+
+      <p className="text-slate-400 mb-4">
+        Define and manage institution types (schools, churches, companies, ministries, etc.).
+      </p>
+
+      <p className="text-slate-500">
+        Type list and edit forms will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

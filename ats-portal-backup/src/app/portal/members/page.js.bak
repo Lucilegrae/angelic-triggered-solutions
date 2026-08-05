@@ -1,0 +1,18 @@
+export default async function MembersList() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Members</h2>
+
+      <a
+        href="/portal/members/new"
+        className="bg-blue-600 px-4 py-2 rounded text-white"
+      >
+        + Register New Member
+      </a>
+
+      <p className="text-slate-400 mt-6">
+        Member listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

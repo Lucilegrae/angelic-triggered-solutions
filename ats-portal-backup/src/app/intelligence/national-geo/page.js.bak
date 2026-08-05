@@ -1,0 +1,14 @@
+"use client";
+
+import NationalGeoDashboard from "@/components/NationalGeoDashboard";
+
+export default function NationalGeoPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 className="text-3xl font-semibold mb-6">✦ ATS National Geo‑Dashboard ✦</h1>
+        <NationalGeoDashboard />
+      </div>
+    </div>
+  );
+}

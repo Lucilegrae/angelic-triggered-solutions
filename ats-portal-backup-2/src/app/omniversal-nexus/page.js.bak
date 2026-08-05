@@ -1,0 +1,16 @@
+import OmniversalNexusDashboard from "@/components/OmniversalNexusDashboard";
+
+export default function OmniversalNexusPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Omniversal Nexus Dashboard ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The eternal sanctum of ATS — convergence of cosmic federation, infinity continuum,
+        seal chambers, covenant glyphs, and the omniversal lattice of divine governance.
+      </p>
+
+      <OmniversalNexusDashboard />
+    </div>
+  );
+}

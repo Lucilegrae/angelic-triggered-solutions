@@ -1,0 +1,33 @@
+.glyph-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glyph-floating {
+  position: absolute;
+  top: 110%;
+  font-size: 2rem;
+  color: rgba(255, 215, 0, 0.35);
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  animation-name: glyphAscend;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes glyphAscend {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-50vh) scale(1.2);
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.4);
+    opacity: 0;
+  }
+}

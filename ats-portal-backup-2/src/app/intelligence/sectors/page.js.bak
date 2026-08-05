@@ -1,0 +1,21 @@
+"use client";
+
+import SectorIntelligenceDashboard from "@/components/SectorIntelligenceDashboard";
+
+export default function SectorIntelligencePage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ Sector Intelligence Dashboard ✦
+        </h1>
+
+        <p className="text-slate-400 mb-6">
+          Aggregated legitimacy, upliftment, and blessings across all sectors.
+        </p>
+
+        <SectorIntelligenceDashboard />
+      </div>
+    </div>
+  );
+}

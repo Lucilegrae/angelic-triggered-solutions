@@ -1,0 +1,11 @@
+{
+  "member_id": "ATS-20260606-A35BFF",
+  "tier": "B",
+  "priority": "Property Tier B (50k)",
+  "unit_id": "Madzimbamuto District 1",
+  "family_slot": 3,
+  "allocation_clock_start": "2026-07-07",
+  "allocation_deadline_note": "Start + 15 months (auto-calculated in backend)",
+  "status": "Unit Assigned",
+  "engine": "ATS-Unit-Assignment-5-Family"
+}

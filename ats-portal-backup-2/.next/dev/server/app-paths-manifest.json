@@ -1,0 +1,8 @@
+{
+  "/portal/login/page": "app/portal/login/page.js",
+  "/portal/ministry/page": "app/portal/ministry/page.js",
+  "/portal/page": "app/portal/page.js",
+  "/portal/intelligence/dashboard/page": "app/portal/intelligence/dashboard/page.js",
+  "/portal/staff/page": "app/portal/staff/page.js",
+  "/portal/payments/page": "app/portal/payments/page.js"
+}

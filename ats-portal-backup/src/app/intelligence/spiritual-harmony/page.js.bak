@@ -1,0 +1,14 @@
+"use client";
+
+import SpiritualHarmonyEngine from "@/components/SpiritualHarmonyEngine";
+
+export default function SpiritualHarmonyPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 class="text-3xl font-semibold mb-6">✦ Spiritual Harmony Intelligence ✦</h1>
+        <SpiritualHarmonyEngine />
+      </div>
+    </div>
+  );
+}

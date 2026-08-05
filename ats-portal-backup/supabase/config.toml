@@ -1,0 +1,16 @@
+# ATS Supabase Configuration
+project_id = "wtifrlhiyzudgppqswzw"
+api_url = "https://wtifrlhiyzudgppqswzw.supabase.co"
+
+# NEW API Keys (from your screenshot)
+anon_key = "sb_publishable_eLu_k-kp9xTcQcM0hTRIwg_trevTugn"
+service_role_key = "sb_secret_iRuhI3FqQfwztd1kpejyFg_aYxeuxps"
+
+# JWT Configuration (ES256 only)
+jwt_algorithm = "ES256"
+
+# Your ATS JWKS endpoint (public ES256 key)
+jwks_url = "https://your-ats-domain/.well-known/jwks.json"
+
+# Optional: ATS internal signing key ID
+jwt_kid = "ats-es256-key-1"

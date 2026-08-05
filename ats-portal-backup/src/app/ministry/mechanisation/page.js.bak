@@ -1,0 +1,5 @@
+import MechanisationApprovalDashboard from "@/components/MechanisationApprovalDashboard";
+
+export default function Page() {
+  return <MechanisationApprovalDashboard />;
+}

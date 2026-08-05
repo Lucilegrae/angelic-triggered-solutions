@@ -1,0 +1,1635 @@
+.next/types/app/portal/miners/safety/[id]/page.ts(37,29): error TS2344: Type '{ params: { id: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ id: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+.next/types/app/portal/miners/sites/[id]/page.ts(37,29): error TS2344: Type '{ params: { id: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ id: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+src/app/api/environment/esg/route.ts(5,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/environment/incidents/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/environment/metrics/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/environment/profile/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/baselines/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/export/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/fixes/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/fusion/route.ts(5,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/profile/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/rover/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/gnss/sessions/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/miners/[id]/profile/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/miners/forecast/route.ts(5,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/miners/list/route.ts(5,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/miners/payout/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/miners/safety/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/api/miners/sites/[id]/route.ts(8,20): error TS2349: This expression is not callable.
+  Type 'SupabaseClient<any, "public", "public", any, any>' has no call signatures.
+src/app/dashboard/workflows/charts/aging.tsx(2,34): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorAgingCurve' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/decay.tsx(2,34): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorDecayChart' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/dependency.tsx(2,39): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorDependencyGraph' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/escalation.tsx(1,39): error TS2307: Cannot find module '@/hooks/useWorkflowEscalation' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/escalation.tsx(2,41): error TS2307: Cannot find module '@/components/WorkflowCharts/WorkflowEscalationPanel' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/heatmap.tsx(2,31): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorHeatmap' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/influence-matrix.tsx(2,35): error TS2307: Cannot find module '@/components/WorkflowCharts/CrossSectorMatrix' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/influence.tsx(2,38): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorInfluenceGraph' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/page.tsx(11,37): error TS2339: Property 'states' does not exist on type '{ getChartData(): never[]; }'.
+src/app/dashboard/workflows/charts/page.tsx(12,36): error TS2339: Property 'daily' does not exist on type '{ getChartData(): never[]; }'.
+src/app/dashboard/workflows/charts/page.tsx(13,38): error TS2339: Property 'ministries' does not exist on type '{ getChartData(): never[]; }'.
+src/app/dashboard/workflows/charts/recovery.tsx(2,37): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorRecoveryChart' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/resilience.tsx(2,39): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorResilienceChart' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/sla-alerts.tsx(1,38): error TS2307: Cannot find module '@/hooks/useWorkflowSLAAlerts' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/sla-alerts.tsx(2,32): error TS2307: Cannot find module '@/components/WorkflowCharts/SLAAlertsPanel' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/sla.tsx(2,32): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorSLAChart' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/stability.tsx(2,38): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorStabilityChart' or its corresponding type declarations.
+src/app/dashboard/workflows/charts/timeline.tsx(2,37): error TS2307: Cannot find module '@/components/WorkflowCharts/SectorTimelineChart' or its corresponding type declarations.
+src/app/dashboard/workflows/page.tsx(11,23): error TS2322: Type '{ total: any; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'total' does not exist on type 'IntrinsicAttributes'.
+src/app/dashboard/workflows/page.tsx(11,35): error TS2339: Property 'total' does not exist on type '{ getDashboardStats(): {}; }'.
+src/app/dashboard/workflows/page.tsx(13,21): error TS2322: Type '{ states: any; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'states' does not exist on type 'IntrinsicAttributes'.
+src/app/dashboard/workflows/page.tsx(13,34): error TS2339: Property 'by_state' does not exist on type '{ getDashboardStats(): {}; }'.
+src/app/dashboard/workflows/page.tsx(15,24): error TS2322: Type '{ items: any; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'items' does not exist on type 'IntrinsicAttributes'.
+src/app/dashboard/workflows/page.tsx(15,36): error TS2339: Property 'recent' does not exist on type '{ getDashboardStats(): {}; }'.
+src/app/portal/Navigation.tsx(13,15): error TS2345: Argument of type 'User | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'User' is not assignable to type 'SetStateAction<null>'.
+    Type 'User' provides no match for the signature '(prevState: null): null'.
+src/app/portal/Navigation.tsx(41,19): error TS2339: Property 'email' does not exist on type 'never'.
+src/app/portal/certificates/[id]/page.tsx(37,65): error TS2339: Property 'certificate_number' does not exist on type 'never'.
+src/app/portal/certificates/[id]/page.tsx(40,53): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/certificates/[id]/page.tsx(45,8): error TS2304: Cannot find name 'GlyphPdfDashboard'.
+src/app/portal/certificates/issue/page.tsx(18,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/certificates/issue/page.tsx(19,21): error TS2322: Type '{ title: string; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/certificates/issue/page.tsx(22,20): error TS2322: Type '{ label: string; placeholder: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'label' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/certificates/issue/page.tsx(23,20): error TS2322: Type '{ label: string; placeholder: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'label' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/certificates/issue/page.tsx(24,20): error TS2322: Type '{ label: string; placeholder: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'label' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/certificates/issue/page.tsx(26,8): error TS2322: Type '{ children: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/communities/page.tsx(49,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(52,54): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(54,57): error TS2339: Property 'ward' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(55,56): error TS2339: Property 'district' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(57,16): error TS2339: Property 'institution_name' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(58,61): error TS2339: Property 'institution_name' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(62,39): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(67,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(69,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(77,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(84,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/communities/page.tsx(91,46): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(49,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(52,54): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(54,61): error TS2339: Property 'district' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(55,55): error TS2339: Property 'address' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(58,39): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(63,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(65,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(73,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(80,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/councils/page.tsx(87,43): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/dashboard/page.tsx(12,15): error TS2345: Argument of type 'User | null' is not assignable to parameter of type 'SetStateAction<null>'.
+  Type 'User' is not assignable to type 'SetStateAction<null>'.
+    Type 'User' provides no match for the signature '(prevState: null): null'.
+src/app/portal/dashboard/page.tsx(28,25): error TS2339: Property 'email' does not exist on type 'never'.
+src/app/portal/environment/esg/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/environment/incidents/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/environment/metrics/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/environment/profile/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/federation/gnss-map/page.tsx(38,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/gnss-map/page.tsx(40,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/gnss-map/page.tsx(45,9): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: MapContainerProps & RefAttributes<LeafletMap>, context?: any): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ children: (Element | Element[])[]; center: number[]; zoom: number; style: { height: string; width: string; }; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+      Property 'center' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+  Overload 2 of 2, '(props: MapContainerProps & RefAttributes<LeafletMap>): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ children: (Element | Element[])[]; center: number[]; zoom: number; style: { height: string; width: string; }; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+      Property 'center' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+src/app/portal/federation/gnss-map/page.tsx(52,40): error TS2339: Property 'lat' does not exist on type 'never'.
+src/app/portal/federation/gnss-map/page.tsx(52,47): error TS2339: Property 'lng' does not exist on type 'never'.
+src/app/portal/federation/gnss-map/page.tsx(54,62): error TS2339: Property 'node_label' does not exist on type 'never'.
+src/app/portal/federation/gnss-map/page.tsx(55,66): error TS2339: Property 'accuracy' does not exist on type 'never'.
+src/app/portal/federation/gnss-map/page.tsx(56,56): error TS2339: Property 'timestamp' does not exist on type 'never'.
+src/app/portal/federation/health/page.tsx(20,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/health/page.tsx(22,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/health/page.tsx(28,27): error TS2339: Property 'ai_score' does not exist on type 'never'.
+src/app/portal/federation/health/page.tsx(38,62): error TS2339: Property 'node_label' does not exist on type 'never'.
+src/app/portal/federation/health/page.tsx(43,28): error TS2339: Property 'federation_health' does not exist on type 'never'.
+src/app/portal/federation/health/page.tsx(46,27): error TS2339: Property 'trust_index' does not exist on type 'never'.
+src/app/portal/federation/health/page.tsx(49,26): error TS2339: Property 'sync_level' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(26,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/heartbeat/page.tsx(28,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/heartbeat/page.tsx(42,60): error TS2339: Property 'node_label' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(43,65): error TS2339: Property 'heartbeat_time' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(46,24): error TS2339: Property 'sync_before' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(46,42): error TS2339: Property 'sync_after' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(49,25): error TS2339: Property 'trust_before' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(49,44): error TS2339: Property 'trust_after' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(52,26): error TS2339: Property 'health_before' does not exist on type 'never'.
+src/app/portal/federation/heartbeat/page.tsx(52,46): error TS2339: Property 'health_after' does not exist on type 'never'.
+src/app/portal/federation/heatmaps/page.tsx(20,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/heatmaps/page.tsx(22,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/heatmaps/page.tsx(28,43): error TS2339: Property 'federation_health' does not exist on type 'never'.
+src/app/portal/federation/heatmaps/page.tsx(37,62): error TS2339: Property 'node_label' does not exist on type 'never'.
+src/app/portal/federation/heatmaps/page.tsx(39,28): error TS2339: Property 'federation_health' does not exist on type 'never'.
+src/app/portal/federation/heatmaps/page.tsx(42,27): error TS2339: Property 'trust_index' does not exist on type 'never'.
+src/app/portal/federation/heatmaps/page.tsx(45,26): error TS2339: Property 'sync_level' does not exist on type 'never'.
+src/app/portal/federation/page.tsx(23,9): error TS2322: Type '{ title: string; date: string; description: string; }' is not assignable to type 'never'.
+src/app/portal/federation/page.tsx(28,9): error TS2322: Type '{ title: string; date: string; description: string; }' is not assignable to type 'never'.
+src/app/portal/federation/page.tsx(33,9): error TS2322: Type '{ title: string; date: string; description: string; }' is not assignable to type 'never'.
+src/app/portal/federation/page.tsx(45,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/page.tsx(47,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/page.tsx(53,28): error TS2322: Type '{ nodes: never[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'nodes' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/page.tsx(55,33): error TS2322: Type '{ nodes: never[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'nodes' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/page.tsx(57,33): error TS2322: Type '{ events: never[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'events' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/sync/page.tsx(32,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/sync/page.tsx(34,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/trust/page.tsx(20,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/trust/page.tsx(22,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/federation/trust/page.tsx(29,15): error TS2339: Property 'trust_index' does not exist on type 'never'.
+src/app/portal/federation/trust/page.tsx(31,19): error TS2339: Property 'trust_index' does not exist on type 'never'.
+src/app/portal/federation/trust/page.tsx(40,62): error TS2339: Property 'node_label' does not exist on type 'never'.
+src/app/portal/federation/trust/page.tsx(42,33): error TS2339: Property 'trust_index' does not exist on type 'never'.
+src/app/portal/federation/trust/page.tsx(45,39): error TS2339: Property 'federation_health' does not exist on type 'never'.
+src/app/portal/federation/trust/page.tsx(48,32): error TS2339: Property 'sync_level' does not exist on type 'never'.
+src/app/portal/federation/vitality/page.tsx(31,6): error TS2559: Type '{ children: Element[]; }' has no properties in common with type 'IntrinsicAttributes'.
+src/app/portal/federation/vitality/page.tsx(33,9): error TS2322: Type '{ title: string; subtitle: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/gnss/[id]/page.tsx(54,52): error TS2339: Property 'location_name' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(58,54): error TS2339: Property 'operator_name' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(59,54): error TS2339: Property 'receiver_type' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(62,29): error TS2339: Property 'latitude' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(62,45): error TS2339: Property 'longitude' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(66,27): error TS2339: Property 'accuracy_cm' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(70,36): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(75,16): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(85,14): error TS2339: Property 'stakeholder_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(89,49): error TS2339: Property 'stakeholder_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(97,14): error TS2339: Property 'mechanisation_request_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(101,50): error TS2339: Property 'mechanisation_request_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(109,14): error TS2339: Property 'insurance_policy_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(113,46): error TS2339: Property 'insurance_policy_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(121,14): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(125,43): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/gnss/[id]/page.tsx(135,12): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/gnss/baselines/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/gnss/export/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/gnss/fixes/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/gnss/fusion/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/gnss/profile/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/gnss/rover/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/gnss/sessions/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/institutions/page.tsx(49,23): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(52,57): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(54,60): error TS2339: Property 'type' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(55,57): error TS2339: Property 'region' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(57,19): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(58,62): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(62,42): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(67,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(69,24): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(77,50): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(84,50): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/institutions/page.tsx(91,50): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(55,55): error TS2339: Property 'policy_name' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(59,60): error TS2339: Property 'stakeholder_name' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(60,56): error TS2339: Property 'premium_amount' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(61,55): error TS2339: Property 'payout_amount' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(63,36): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(68,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(70,22): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(72,22): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(74,22): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(82,58): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(83,53): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(85,17): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(89,28): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(102,17): error TS2339: Property 'beneficiaries' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(102,41): error TS2339: Property 'beneficiaries' does not exist on type 'never'.
+src/app/portal/insurance/[id]/page.tsx(104,21): error TS2339: Property 'beneficiaries' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(63,15): error TS2339: Property 'status_distribution' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(64,15): error TS2339: Property 'status_distribution' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(65,15): error TS2339: Property 'status_distribution' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(68,39): error TS2339: Property 'beneficiary_density' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(69,39): error TS2339: Property 'beneficiary_density' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(71,32): error TS2339: Property 'risk_clusters' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(72,32): error TS2339: Property 'risk_clusters' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(82,51): error TS2339: Property 'total_premiums' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(87,51): error TS2339: Property 'total_payouts' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(92,51): error TS2339: Property 'active_policies' does not exist on type 'never'.
+src/app/portal/insurance/analytics/page.tsx(103,20): error TS2339: Property 'monthly_issuance' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(55,54): error TS2339: Property 'claim_title' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(59,54): error TS2339: Property 'policy_name' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(60,59): error TS2339: Property 'stakeholder_name' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(61,60): error TS2339: Property 'claim_amount' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(63,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(68,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(70,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(72,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(74,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(82,16): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(82,39): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(84,20): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(104,57): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(105,52): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(107,16): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(111,27): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(121,14): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/[id]/page.tsx(141,59): error TS2339: Property 'policy_id' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(49,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(52,54): error TS2339: Property 'claim_title' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(54,59): error TS2339: Property 'policy_name' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(55,59): error TS2339: Property 'stakeholder_name' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(58,32): error TS2339: Property 'claim_amount' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(62,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(67,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(69,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(71,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(73,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(79,18): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(79,37): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(81,22): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(98,16): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(102,49): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(109,49): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/claims/page.tsx(118,51): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(49,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(52,54): error TS2339: Property 'policy_name' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(54,64): error TS2339: Property 'stakeholder_name' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(55,55): error TS2339: Property 'premium_amount' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(56,54): error TS2339: Property 'payout_amount' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(59,35): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(64,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(66,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(68,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(70,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(76,18): error TS2339: Property 'beneficiaries' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(76,37): error TS2339: Property 'beneficiaries' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(78,22): error TS2339: Property 'beneficiaries' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(91,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(98,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(105,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/page.tsx(113,44): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(33,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/insurance/payout/page.tsx(91,19): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(92,56): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(98,38): error TS2339: Property 'base_payout' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(102,47): error TS2339: Property 'interest_accumulated' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(106,42): error TS2339: Property 'risk_adjustment' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(110,47): error TS2339: Property 'total_payout' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(113,23): error TS2339: Property 'beneficiary_breakdown' does not exist on type 'never'.
+src/app/portal/insurance/payout/page.tsx(117,29): error TS2339: Property 'beneficiary_breakdown' does not exist on type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(12,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/intelligence/dashboard/page.tsx(36,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(37,21): error TS2322: Type '{ title: string; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(41,9): error TS2322: Type '{ title: string; labels: string[]; data: number[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(49,9): error TS2322: Type '{ title: string; labels: string[]; data: number[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(58,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(58,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(58,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(58,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(58,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(65,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(66,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(67,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(68,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/intelligence/dashboard/page.tsx(77,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(78,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(79,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(80,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/intelligence/dashboard/page.tsx(83,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/[id]/page.tsx(41,52): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(42,52): error TS2339: Property 'entry_type' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(43,54): error TS2339: Property 'amount_usd' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(44,56): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(46,38): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(53,46): error TS2339: Property 'description' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(60,16): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(64,45): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(72,16): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(76,51): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(84,16): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(88,57): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(96,16): error TS2339: Property 'certificate_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(100,57): error TS2339: Property 'certificate_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(108,16): error TS2339: Property 'claim_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(112,52): error TS2339: Property 'claim_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(120,16): error TS2339: Property 'environment_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(124,57): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(132,16): error TS2339: Property 'safety_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(136,52): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(144,16): error TS2339: Property 'gnss_id' does not exist on type 'never'.
+src/app/portal/ledger/[id]/page.tsx(148,56): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/analytics/page.tsx(84,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(85,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(93,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(94,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(100,32): error TS2339: Property 'type_distribution' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(101,32): error TS2339: Property 'type_distribution' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(103,34): error TS2339: Property 'module_distribution' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(104,34): error TS2339: Property 'module_distribution' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(106,35): error TS2339: Property 'monthly_totals' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(107,35): error TS2339: Property 'monthly_totals' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(110,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(111,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(122,53): error TS2339: Property 'total_entries' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(127,53): error TS2339: Property 'total_value_usd' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(132,53): error TS2339: Property 'active_modules' does not exist on type 'never'.
+src/app/portal/ledger/analytics/page.tsx(174,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(175,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(176,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(177,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(186,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(186,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(186,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(186,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(186,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/analytics/page.tsx(193,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(194,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(195,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(196,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/analytics/page.tsx(199,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomalies/page.tsx(56,51): error TS2339: Property 'total_anomalies' does not exist on type 'never'.
+src/app/portal/ledger/anomalies/page.tsx(61,51): error TS2339: Property 'modules_scanned' does not exist on type 'never'.
+src/app/portal/ledger/anomalies/page.tsx(66,46): error TS2339: Property 'global_risk' does not exist on type 'never'.
+src/app/portal/ledger/anomalies/page.tsx(73,20): error TS2339: Property 'items' does not exist on type 'never'.
+src/app/portal/ledger/anomalies/page.tsx(77,20): error TS2339: Property 'items' does not exist on type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/anomaly-detector/page.tsx(81,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(82,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(89,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(90,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(112,10): error TS18047: 'anomalies' is possibly 'null'.
+src/app/portal/ledger/anomaly-detector/page.tsx(117,12): error TS18047: 'anomalies' is possibly 'null'.
+src/app/portal/ledger/anomaly-detector/page.tsx(167,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(168,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(169,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(170,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(178,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(178,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(178,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(178,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(178,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/anomaly-detector/page.tsx(184,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(185,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(186,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(187,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/anomaly-detector/page.tsx(189,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/astral-harmonizer/page.tsx(81,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(82,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(90,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(91,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(98,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(99,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(113,54): error TS2339: Property 'astral_layer_count' does not exist on type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(118,54): error TS2339: Property 'harmonic_balance_score' does not exist on type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(123,54): error TS2339: Property 'astral_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(128,54): error TS2339: Property 'flags' does not exist on type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(136,23): error TS2339: Property 'astral_breakdown' does not exist on type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(170,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(171,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(172,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(173,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(186,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(187,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(188,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(189,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(196,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(196,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(196,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(196,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(196,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/astral-harmonizer/page.tsx(202,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/[id]/page.tsx(41,52): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/ledger/audit/[id]/page.tsx(42,52): error TS2339: Property 'entry_type' does not exist on type 'never'.
+src/app/portal/ledger/audit/[id]/page.tsx(43,54): error TS2339: Property 'amount_usd' does not exist on type 'never'.
+src/app/portal/ledger/audit/[id]/page.tsx(44,56): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/ledger/audit/[id]/page.tsx(46,36): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/ledger/audit/[id]/page.tsx(53,16): error TS2339: Property 'events' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/audit/page.tsx(64,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(65,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(72,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(73,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(82,24): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(85,58): error TS2339: Property 'action' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(88,29): error TS2339: Property 'actor_name' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(88,47): error TS2339: Property 'actor_role' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(92,36): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(96,31): error TS2339: Property 'details' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(100,42): error TS2339: Property 'timestamp' does not exist on type 'never'.
+src/app/portal/ledger/audit/page.tsx(131,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(132,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(133,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(134,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(143,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(143,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(143,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(143,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(143,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/audit/page.tsx(150,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(151,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(152,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(153,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/audit/page.tsx(156,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/[id]/page.tsx(42,58): error TS2339: Property 'title' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(44,51): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(45,51): error TS2339: Property 'entry_type' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(46,53): error TS2339: Property 'amount_usd' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(47,55): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(50,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(54,30): error TS2339: Property 'description' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(58,15): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(62,25): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(74,15): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(78,44): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(86,15): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(90,44): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(98,15): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(102,50): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(110,15): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(114,56): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(122,15): error TS2339: Property 'claim_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(126,51): error TS2339: Property 'claim_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(134,15): error TS2339: Property 'certificate_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(138,56): error TS2339: Property 'certificate_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(146,15): error TS2339: Property 'environment_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(150,56): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(158,15): error TS2339: Property 'safety_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(162,51): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(170,15): error TS2339: Property 'gnss_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/[id]/page.tsx(174,55): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/certificate/batch/page.tsx(25,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/ledger/certificate/batch/page.tsx(27,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/ledger/certificate/batch/page.tsx(64,20): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/ledger/certificate/batch/page.tsx(67,19): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/ledger/certificate/batch/page.tsx(68,24): error TS2339: Property 'message' does not exist on type 'never'.
+src/app/portal/ledger/certificate/batch/page.tsx(73,25): error TS2339: Property 'certificates' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(20,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/certificate/page.tsx(66,18): error TS18047: 'entry' is possibly 'null'.
+src/app/portal/ledger/certificate/page.tsx(71,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/ledger/certificate/page.tsx(73,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/ledger/certificate/page.tsx(81,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(82,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(90,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(91,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(98,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(99,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(106,60): error TS2339: Property 'entry_type' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(107,54): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(108,56): error TS2339: Property 'serial' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(109,56): error TS2339: Property 'sector' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(110,61): error TS2339: Property 'stakeholder' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(111,54): error TS2339: Property 'date' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(125,22): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(128,21): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(129,26): error TS2339: Property 'message' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(131,49): error TS2339: Property 'path' does not exist on type 'never'.
+src/app/portal/ledger/certificate/page.tsx(152,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(153,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(154,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(155,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(164,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(164,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(164,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(164,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(164,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/certificate/page.tsx(171,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(172,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(173,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(174,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/certificate/page.tsx(177,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/chrome/page.tsx(57,48): error TS2339: Property 'layers' does not exist on type 'never'.
+src/app/portal/ledger/chrome/page.tsx(62,48): error TS2339: Property 'module_themes' does not exist on type 'never'.
+src/app/portal/ledger/chrome/page.tsx(67,48): error TS2339: Property 'insignia_variants' does not exist on type 'never'.
+src/app/portal/ledger/chrome/page.tsx(76,17): error TS2339: Property 'previews' does not exist on type 'never'.
+src/app/portal/ledger/chrome/page.tsx(89,47): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/ledger/compose/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/compose/page.tsx(71,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/ledger/compose/page.tsx(73,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/ledger/compose/page.tsx(84,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/compose/page.tsx(85,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/compose/page.tsx(163,22): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/ledger/compose/page.tsx(166,24): error TS2339: Property 'message' does not exist on type 'never'.
+src/app/portal/ledger/compose/page.tsx(167,22): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/ledger/compose/page.tsx(169,48): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/compose/page.tsx(203,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(204,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(205,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(206,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(215,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(215,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(215,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(215,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(215,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/compose/page.tsx(222,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/compose/page.tsx(223,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/compose/page.tsx(224,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/compose/page.tsx(225,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/compose/page.tsx(228,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/correlation/page.tsx(58,46): error TS2339: Property 'modules_analyzed' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(63,46): error TS2339: Property 'strong_positive' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(68,46): error TS2339: Property 'strong_negative' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(80,21): error TS2339: Property 'modules' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(86,19): error TS2339: Property 'matrix' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(88,57): error TS2339: Property 'modules' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(104,17): error TS2339: Property 'dependencies' does not exist on type 'never'.
+src/app/portal/ledger/correlation/page.tsx(116,45): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/council-governance/page.tsx(64,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(65,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(73,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(74,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(81,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(82,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(94,51): error TS2339: Property 'council_count' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(99,51): error TS2339: Property 'governance_score' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(104,51): error TS2339: Property 'stewardship_score' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(109,51): error TS2339: Property 'flags' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(117,20): error TS2339: Property 'council_breakdown' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(134,20): error TS2339: Property 'flag_list' does not exist on type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(156,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(157,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(158,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(159,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/council-governance/page.tsx(173,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(174,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(175,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(176,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(184,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(184,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(184,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(184,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(184,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/council-governance/page.tsx(190,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/decade/page.tsx(55,14): error TS2339: Property 'baseline_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(56,14): error TS2339: Property 'optimistic_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(57,14): error TS2339: Property 'conservative_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(58,14): error TS2339: Property 'high_stress_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(61,33): error TS2339: Property 'module_projection' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(62,33): error TS2339: Property 'module_projection' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(74,50): error TS2339: Property 'baseline_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(79,50): error TS2339: Property 'optimistic_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(84,50): error TS2339: Property 'conservative_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(89,50): error TS2339: Property 'high_stress_usd' does not exist on type 'never'.
+src/app/portal/ledger/decade/page.tsx(105,49): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/ledger/federation/page.tsx(72,45): error TS2339: Property 'modules_federated' does not exist on type 'never'.
+src/app/portal/ledger/federation/page.tsx(77,45): error TS2339: Property 'integrity_score' does not exist on type 'never'.
+src/app/portal/ledger/federation/page.tsx(82,36): error TS2339: Property 'heartbeat_status' does not exist on type 'never'.
+src/app/portal/ledger/federation/page.tsx(91,16): error TS2339: Property 'module_registry' does not exist on type 'never'.
+src/app/portal/ledger/federation/page.tsx(104,16): error TS2339: Property 'links' does not exist on type 'never'.
+src/app/portal/ledger/federation/page.tsx(116,44): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/gnss-fusion/page.tsx(62,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(63,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(71,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(72,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(79,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(80,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(91,50): error TS2339: Property 'gnss_job_count' does not exist on type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(96,50): error TS2339: Property 'linked_ledger_entries' does not exist on type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(101,50): error TS2339: Property 'total_gnss_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(109,19): error TS2339: Property 'accuracy_impact' does not exist on type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(126,19): error TS2339: Property 'receiver_flow' does not exist on type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(165,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(166,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(167,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(168,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(177,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(177,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(177,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(177,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(177,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/gnss-fusion/page.tsx(184,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(185,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(186,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(187,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/gnss-fusion/page.tsx(190,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/health/page.tsx(53,35): error TS2339: Property 'global_score' does not exist on type 'never'.
+src/app/portal/ledger/health/page.tsx(54,52): error TS2339: Property 'global_status' does not exist on type 'never'.
+src/app/portal/ledger/health/page.tsx(55,59): error TS2339: Property 'trend_direction' does not exist on type 'never'.
+src/app/portal/ledger/health/page.tsx(61,17): error TS2339: Property 'module_scores' does not exist on type 'never'.
+src/app/portal/ledger/health/page.tsx(72,17): error TS2339: Property 'risk_flags' does not exist on type 'never'.
+src/app/portal/ledger/health/page.tsx(76,17): error TS2339: Property 'risk_flags' does not exist on type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/interdimensional-router/page.tsx(81,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(82,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(90,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(91,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(98,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(99,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(113,50): error TS2339: Property 'dimension_count' does not exist on type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(118,50): error TS2339: Property 'cross_dimensional_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(123,50): error TS2339: Property 'stability_score' does not exist on type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(128,50): error TS2339: Property 'flags' does not exist on type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(136,19): error TS2339: Property 'dimension_breakdown' does not exist on type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(170,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(171,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(172,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(173,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/interdimensional-router/page.tsx(186,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(187,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(188,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(189,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(196,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(196,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(196,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(196,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(196,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/interdimensional-router/page.tsx(202,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/liquidity/page.tsx(69,29): error TS2339: Property 'shock_scenarios' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(70,29): error TS2339: Property 'shock_scenarios' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(72,30): error TS2339: Property 'module_liquidity' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(73,30): error TS2339: Property 'module_liquidity' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(85,42): error TS2339: Property 'severity' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(90,47): error TS2339: Property 'total_liquidity_loss_usd' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(95,47): error TS2339: Property 'survival_days' does not exist on type 'never'.
+src/app/portal/ledger/liquidity/page.tsx(111,46): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/ledger/map/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/map/page.tsx(93,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(94,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(102,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(103,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(110,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(111,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(120,47): error TS2339: Property 'module_count' does not exist on type 'never'.
+src/app/portal/ledger/map/page.tsx(125,47): error TS2339: Property 'edge_count' does not exist on type 'never'.
+src/app/portal/ledger/map/page.tsx(130,47): error TS2339: Property 'total_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/map/page.tsx(135,31): error TS2339: Property 'nodes' does not exist on type 'never'.
+src/app/portal/ledger/map/page.tsx(135,49): error TS2339: Property 'edges' does not exist on type 'never'.
+src/app/portal/ledger/map/page.tsx(160,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(161,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(162,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(163,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(171,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(171,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(171,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(171,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(171,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/map/page.tsx(177,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(178,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(179,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(180,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/map/page.tsx(182,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/ministry-oversight/page.tsx(64,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(65,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(73,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(74,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(81,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(82,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(94,53): error TS2339: Property 'ministry_count' does not exist on type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(99,53): error TS2339: Property 'compliance_score' does not exist on type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(104,53): error TS2339: Property 'integrity_score' does not exist on type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(109,53): error TS2339: Property 'flags' does not exist on type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(117,22): error TS2339: Property 'ministry_breakdown' does not exist on type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(134,22): error TS2339: Property 'flag_list' does not exist on type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(156,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(157,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(158,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(159,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/ministry-oversight/page.tsx(173,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(174,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(175,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(176,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(184,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(184,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(184,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(184,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(184,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/ministry-oversight/page.tsx(190,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(64,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(65,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(73,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(74,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(81,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(82,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(91,49): error TS2339: Property 'realm_count' does not exist on type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(96,49): error TS2339: Property 'stability_score' does not exist on type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(101,49): error TS2339: Property 'cross_realm_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(106,49): error TS2339: Property 'flags' does not exist on type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(112,18): error TS2339: Property 'realm_breakdown' does not exist on type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(136,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(137,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(138,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(139,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(152,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(153,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(154,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(155,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(162,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(162,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(162,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(162,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(162,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/multi-realm-oversight/page.tsx(168,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/page.tsx(62,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(63,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(70,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(71,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(80,22): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(81,41): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(84,56): error TS2339: Property 'entry_type' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(86,59): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(87,56): error TS2339: Property 'amount_usd' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(88,58): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(91,29): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(94,18): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(95,62): error TS2339: Property 'miner_name' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(98,18): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(99,56): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(102,18): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(104,35): error TS2339: Property 'coordinator_name' does not exist on type 'never'.
+src/app/portal/ledger/page.tsx(129,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(130,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(131,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(132,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(141,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(141,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(141,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(141,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(141,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/page.tsx(148,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(149,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(150,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(151,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/page.tsx(154,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/predict/page.tsx(55,14): error TS2339: Property 'forecast_7d' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(56,14): error TS2339: Property 'forecast_30d' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(57,14): error TS2339: Property 'forecast_90d' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(60,33): error TS2339: Property 'module_predictions' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(61,33): error TS2339: Property 'module_predictions' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(73,50): error TS2339: Property 'forecast_7d' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(78,50): error TS2339: Property 'forecast_30d' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(83,50): error TS2339: Property 'forecast_90d' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(99,43): error TS2339: Property 'trend_direction' does not exist on type 'never'.
+src/app/portal/ledger/predict/page.tsx(100,54): error TS2339: Property 'trend_description' does not exist on type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/procurement-flow/page.tsx(64,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(65,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(73,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(74,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(81,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(82,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(91,48): error TS2339: Property 'total_value_usd' does not exist on type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(96,48): error TS2339: Property 'active_suppliers' does not exist on type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(101,48): error TS2339: Property 'avg_bag_cost_usd' does not exist on type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(108,17): error TS2339: Property 'site_flow' does not exist on type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(125,17): error TS2339: Property 'supplier_flow' does not exist on type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(161,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(162,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(163,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(164,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(172,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(172,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(172,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(172,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(172,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/procurement-flow/page.tsx(178,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(179,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(180,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(181,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/procurement-flow/page.tsx(183,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/projection/page.tsx(55,16): error TS2339: Property 'year_1_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(56,16): error TS2339: Property 'year_3_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(57,16): error TS2339: Property 'year_5_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(58,16): error TS2339: Property 'year_10_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(61,35): error TS2339: Property 'module_growth' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(62,35): error TS2339: Property 'module_growth' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(74,52): error TS2339: Property 'year_1_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(79,52): error TS2339: Property 'year_3_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(84,52): error TS2339: Property 'year_5_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(89,52): error TS2339: Property 'year_10_usd' does not exist on type 'never'.
+src/app/portal/ledger/projection/page.tsx(105,51): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/reconciliation/page.tsx(97,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(104,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/reconciliation/page.tsx(105,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/reconciliation/page.tsx(147,58): error TS2339: Property 'total_entries' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(152,58): error TS2339: Property 'total_issues' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(157,58): error TS2339: Property 'modules_checked' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(164,27): error TS2339: Property 'module_status' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(175,27): error TS2339: Property 'issues' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(179,27): error TS2339: Property 'issues' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(221,33): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(225,31): error TS2339: Property 'entry_type' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(225,51): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(229,39): error TS2339: Property 'amount_usd' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(229,57): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(232,39): error TS2339: Property 'source_module' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(232,62): error TS2339: Property 'source_reference' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(235,39): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(235,62): error TS2339: Property 'reason' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(239,49): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(244,57): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(245,56): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(247,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(278,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(279,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(280,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(281,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(288,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(288,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(288,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(288,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(288,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/reconciliation/page.tsx(294,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/reconciliation/page.tsx(295,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/reconciliation/page.tsx(296,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/reconciliation/page.tsx(297,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/reconciliation/page.tsx(299,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(21,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/stress/page.tsx(76,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(77,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(84,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(85,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(96,43): error TS18047: 'stress' is possibly 'null'.
+src/app/portal/ledger/stress/page.tsx(101,43): error TS18047: 'stress' is possibly 'null'.
+src/app/portal/ledger/stress/page.tsx(106,43): error TS18047: 'stress' is possibly 'null'.
+src/app/portal/ledger/stress/page.tsx(114,12): error TS18047: 'stress' is possibly 'null'.
+src/app/portal/ledger/stress/page.tsx(161,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(162,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(163,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(164,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(173,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(173,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(173,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(173,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(173,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/stress/page.tsx(180,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(181,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(182,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(183,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/stress/page.tsx(186,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/treasury-command/page.tsx(81,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(82,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(90,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(91,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(98,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(99,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(111,52): error TS2339: Property 'total_liquidity_usd' does not exist on type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(116,52): error TS2339: Property 'national_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(121,52): error TS2339: Property 'stability_score' does not exist on type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(126,52): error TS2339: Property 'flags' does not exist on type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(134,21): error TS2339: Property 'breakdown' does not exist on type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(151,21): error TS2339: Property 'flag_list' does not exist on type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(182,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(183,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(184,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(185,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-command/page.tsx(199,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(200,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(201,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(202,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(210,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(210,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(210,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(210,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(210,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-command/page.tsx(216,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(22,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ledger/treasury-scan/page.tsx(77,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(78,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(86,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(87,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(94,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(95,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(106,48): error TS2339: Property 'liquidity_score' does not exist on type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(111,48): error TS2339: Property 'total_flow_usd' does not exist on type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(116,48): error TS2339: Property 'risk_level' does not exist on type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(124,17): error TS2339: Property 'breakdown' does not exist on type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(170,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(171,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(172,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(173,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(181,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(181,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(181,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(181,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(181,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ledger/treasury-scan/page.tsx(187,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(188,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(189,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(190,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury-scan/page.tsx(192,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ledger/treasury/page.tsx(53,33): error TS2339: Property 'inflows' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(54,33): error TS2339: Property 'inflows' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(56,34): error TS2339: Property 'outflows' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(57,34): error TS2339: Property 'outflows' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(59,33): error TS2339: Property 'module_finance' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(60,33): error TS2339: Property 'module_finance' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(72,50): error TS2339: Property 'balance_usd' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(77,50): error TS2339: Property 'burn_rate_usd' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(82,50): error TS2339: Property 'runway_months' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(102,43): error TS2339: Property 'stability_score' does not exist on type 'never'.
+src/app/portal/ledger/treasury/page.tsx(103,54): error TS2339: Property 'stability_status' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(69,33): error TS2339: Property 'scenarios' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(70,33): error TS2339: Property 'scenarios' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(72,31): error TS2339: Property 'module_impact' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(73,31): error TS2339: Property 'module_impact' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(85,43): error TS2339: Property 'severity' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(90,48): error TS2339: Property 'runway_months' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(95,48): error TS2339: Property 'liquidity_loss_usd' does not exist on type 'never'.
+src/app/portal/ledger/treasury/stress/page.tsx(111,47): error TS2339: Property 'notes' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(55,52): error TS2339: Property 'request_type' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(59,57): error TS2339: Property 'stakeholder_name' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(60,57): error TS2339: Property 'description' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(62,36): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(67,16): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(69,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(71,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(73,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(81,60): error TS2339: Property 'equipment_type' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(82,56): error TS2339: Property 'hp' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(83,54): error TS2339: Property 'category' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(90,14): error TS2339: Property 'gnss_job_id' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(94,41): error TS2339: Property 'gnss_job_id' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(102,14): error TS2339: Property 'insurance_policy_id' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(106,46): error TS2339: Property 'insurance_policy_id' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(114,14): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(118,43): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/mechanisation/[id]/page.tsx(128,12): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(49,22): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(52,56): error TS2339: Property 'request_type' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(55,33): error TS2339: Property 'stakeholder_id' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(59,33): error TS2339: Property 'description' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(63,40): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(68,20): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(70,23): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(75,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(79,51): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/mechanisation/page.tsx(86,51): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/members/[id]/edit/page.tsx(44,43): error TS2339: Property 'surname' does not exist on type '{}'.
+src/app/portal/members/[id]/edit/page.tsx(45,47): error TS2339: Property 'first_names' does not exist on type '{}'.
+src/app/portal/members/[id]/edit/page.tsx(46,39): error TS2339: Property 'dob' does not exist on type '{}'.
+src/app/portal/members/[id]/edit/page.tsx(47,39): error TS2339: Property 'sex' does not exist on type '{}'.
+src/app/portal/members/[id]/edit/page.tsx(48,42): error TS2339: Property 'nat_id' does not exist on type '{}'.
+src/app/portal/members/[id]/edit/page.tsx(49,43): error TS2339: Property 'address' does not exist on type '{}'.
+src/app/portal/members/[id]/edit/page.tsx(50,41): error TS2339: Property 'phone' does not exist on type '{}'.
+src/app/portal/members/[id]/page.tsx(30,53): error TS2339: Property 'surname' does not exist on type 'never'.
+src/app/portal/members/[id]/page.tsx(30,71): error TS2339: Property 'first_names' does not exist on type 'never'.
+src/app/portal/members/[id]/page.tsx(31,65): error TS2339: Property 'nat_id' does not exist on type 'never'.
+src/app/portal/members/[id]/page.tsx(32,59): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/members/[id]/page.tsx(33,61): error TS2339: Property 'address' does not exist on type 'never'.
+src/app/portal/members/page.tsx(44,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/members/page.tsx(45,40): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/members/page.tsx(49,18): error TS2339: Property 'surname' does not exist on type 'never'.
+src/app/portal/members/page.tsx(49,31): error TS2339: Property 'first_names' does not exist on type 'never'.
+src/app/portal/members/page.tsx(51,64): error TS2339: Property 'nat_id' does not exist on type 'never'.
+src/app/portal/members/page.tsx(52,58): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(46,54): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(50,53): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(51,59): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(52,55): error TS2339: Property 'mineral_type' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(54,35): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(62,64): error TS2339: Property 'total_deliveries' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(63,60): error TS2339: Property 'total_output_kg' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(64,61): error TS2339: Property 'daily_average_kg' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(71,16): error TS2339: Property 'coordinators' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(71,38): error TS2339: Property 'coordinators' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(73,20): error TS2339: Property 'coordinators' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(93,16): error TS2339: Property 'community_id' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(97,50): error TS2339: Property 'community_id' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(105,16): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(109,51): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(117,16): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/[id]/page.tsx(121,45): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(52,33): error TS2339: Property 'miner_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(53,33): error TS2339: Property 'miner_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(55,39): error TS2339: Property 'coordinator_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(56,39): error TS2339: Property 'coordinator_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(58,32): error TS2339: Property 'site_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(59,32): error TS2339: Property 'site_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(68,51): error TS2339: Property 'total_output' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(73,51): error TS2339: Property 'daily_average' does not exist on type 'never'.
+src/app/portal/miners/analytics/page.tsx(78,51): error TS2339: Property 'miner_count' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(53,58): error TS2339: Property 'miner_name' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(55,54): error TS2339: Property 'mineral_type' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(56,58): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(57,53): error TS2339: Property 'output_kg' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(58,53): error TS2339: Property 'purity' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(61,31): error TS2339: Property 'payout_value' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(65,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(69,35): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(73,15): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(77,25): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(89,15): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(93,44): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(101,15): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(105,56): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(113,15): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(117,50): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(125,15): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/certificate/[id]/page.tsx(129,44): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(46,54): error TS2339: Property 'claim_title' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(50,53): error TS2339: Property 'miner_name' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(51,55): error TS2339: Property 'mineral_type' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(52,52): error TS2339: Property 'loss_kg' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(54,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(59,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(61,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(71,16): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(71,39): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(73,20): error TS2339: Property 'evidence_urls' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(90,16): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(94,45): error TS2339: Property 'miner_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(102,16): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(106,57): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(114,16): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(118,45): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(126,16): error TS2339: Property 'certificate_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(130,57): error TS2339: Property 'certificate_id' does not exist on type 'never'.
+src/app/portal/miners/claims/[id]/page.tsx(140,14): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(34,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(37,54): error TS2339: Property 'claim_title' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(39,58): error TS2339: Property 'miner_name' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(40,55): error TS2339: Property 'mineral_type' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(41,59): error TS2339: Property 'loss_kg' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(45,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(47,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/miners/claims/page.tsx(53,48): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(36,54): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(39,53): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(40,57): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(42,35): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(48,60): error TS2339: Property 'total_output_kg' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(49,61): error TS2339: Property 'daily_average_kg' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(55,16): error TS2339: Property 'miners' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(55,32): error TS2339: Property 'miners' does not exist on type 'never'.
+src/app/portal/miners/coordinator/[id]/page.tsx(57,20): error TS2339: Property 'miners' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(56,33): error TS2339: Property 'claims' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(57,33): error TS2339: Property 'claims' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(61,15): error TS2339: Property 'status_counts' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(62,15): error TS2339: Property 'status_counts' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(63,15): error TS2339: Property 'status_counts' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(70,51): error TS2339: Property 'coordinator_name' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(77,51): error TS2339: Property 'total_claims' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(82,51): error TS2339: Property 'total_loss_kg' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(87,51): error TS2339: Property 'payout_exposure_usd' does not exist on type 'never'.
+src/app/portal/miners/coordinator/claims/[id]/page.tsx(102,20): error TS2339: Property 'claims' does not exist on type 'never'.
+src/app/portal/miners/delivery/page.tsx(39,19): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/miners/delivery/page.tsx(126,19): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/miners/delivery/page.tsx(127,56): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/miners/delivery/page.tsx(131,66): error TS2339: Property 'delivery_id' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(37,79): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(41,54): error TS2339: Property 'location' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(42,61): error TS2339: Property 'primary_mineral' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(44,42): error TS2339: Property 'last_inspection' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(47,35): error TS2339: Property 'compliance_status' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(55,63): error TS2339: Property 'water_usage_l' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(56,64): error TS2339: Property 'water_contamination_risk' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(58,14): error TS2339: Property 'water_tests' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(62,20): error TS2339: Property 'water_tests' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(76,56): error TS2339: Property 'dust_index' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(77,51): error TS2339: Property 'pm25' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(78,50): error TS2339: Property 'pm10' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(79,64): error TS2339: Property 'air_quality_status' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(86,57): error TS2339: Property 'daily_waste_kg' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(87,61): error TS2339: Property 'hazardous_waste_kg' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(89,14): error TS2339: Property 'waste_logs' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(93,20): error TS2339: Property 'waste_logs' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(107,61): error TS2339: Property 'boundary_status' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(108,55): error TS2339: Property 'boundary_deviation_m' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(110,14): error TS2339: Property 'boundary_polygon' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(112,18): error TS2339: Property 'boundary_polygon' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(125,14): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(129,49): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(137,14): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(141,55): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(149,14): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/environment/[id]/page.tsx(153,43): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/forecast/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/miners/payout/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/miners/safety/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/miners/sites/[id]/page.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/app/portal/miners/sites/analytics/page.tsx(53,32): error TS2339: Property 'site_output' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(54,32): error TS2339: Property 'site_output' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(56,35): error TS2339: Property 'mineral_distribution' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(57,35): error TS2339: Property 'mineral_distribution' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(59,33): error TS2339: Property 'miner_performance' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(60,33): error TS2339: Property 'miner_performance' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(62,39): error TS2339: Property 'coordinator_performance' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(63,39): error TS2339: Property 'coordinator_performance' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(73,51): error TS2339: Property 'total_output' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(78,51): error TS2339: Property 'daily_average' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(83,51): error TS2339: Property 'site_count' does not exist on type 'never'.
+src/app/portal/miners/sites/analytics/page.tsx(106,20): error TS2339: Property 'monthly_output' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(53,58): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(55,55): error TS2339: Property 'location' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(56,62): error TS2339: Property 'primary_mineral' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(58,15): error TS2339: Property 'secondary_minerals' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(60,39): error TS2339: Property 'secondary_minerals' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(65,31): error TS2339: Property 'total_output_kg' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(69,33): error TS2339: Property 'average_purity' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(73,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(77,35): error TS2339: Property 'uuid' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(81,15): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(85,25): error TS2339: Property 'qr_url' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(97,15): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(101,50): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(109,15): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(113,56): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(121,15): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/sites/certificate/[id]/page.tsx(125,44): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(47,67): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(51,55): error TS2339: Property 'surveyor_name' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(52,53): error TS2339: Property 'device_model' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(53,51): error TS2339: Property 'fix_mode' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(54,56): error TS2339: Property 'accuracy_m' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(57,37): error TS2339: Property 'timestamp' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(65,55): error TS2339: Property 'lat' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(66,56): error TS2339: Property 'lng' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(67,56): error TS2339: Property 'elevation_m' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(70,23): error TS2339: Property 'hdop' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(70,43): error TS2339: Property 'vdop' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(70,63): error TS2339: Property 'pdop' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(75,13): error TS2339: Property 'boundary_polygon' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(80,19): error TS2339: Property 'boundary_polygon' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(90,13): error TS2339: Property 'epochs' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(90,28): error TS2339: Property 'epochs' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(94,17): error TS2339: Property 'epochs' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(111,15): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(115,50): error TS2339: Property 'site_id' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(123,15): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(127,56): error TS2339: Property 'coordinator_id' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(135,15): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/sites/gnss/[id]/page.tsx(139,44): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(34,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(35,45): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(38,54): error TS2339: Property 'site_name' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(40,61): error TS2339: Property 'location' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(41,63): error TS2339: Property 'primary_mineral' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(43,16): error TS2339: Property 'secondary_minerals' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(45,31): error TS2339: Property 'secondary_minerals' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(50,26): error TS2339: Property 'total_output_kg' does not exist on type 'never'.
+src/app/portal/miners/sites/page.tsx(54,33): error TS2339: Property 'miner_count' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(61,57): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(65,59): error TS2339: Property 'minister' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(66,66): error TS2339: Property 'deputy_minister' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(67,70): error TS2339: Property 'secretary' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(70,43): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(75,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(77,24): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(87,19): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(91,54): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(99,19): error TS2339: Property 'stakeholder_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(103,54): error TS2339: Property 'stakeholder_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(111,19): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(115,48): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(123,19): error TS2339: Property 'procurement_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(127,53): error TS2339: Property 'procurement_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(135,19): error TS2339: Property 'mechanisation_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(139,55): error TS2339: Property 'mechanisation_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(147,19): error TS2339: Property 'gnss_job_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(151,46): error TS2339: Property 'gnss_job_id' does not exist on type 'never'.
+src/app/portal/ministry/[id]/page.tsx(161,17): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/ministry/page.tsx(20,31): error TS2306: File '/data/data/com.termux/files/home/ats-portal-clean/angelic-triggered-solutions/angelic-triggered-solutions/ats-portal/src/components/cosmic/CosmicGNSSOrbital.tsx' is not a module.
+src/app/portal/ministry/page.tsx(56,8): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(57,23): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(64,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(65,21): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(74,22): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ministry/page.tsx(77,56): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/ministry/page.tsx(78,61): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/ministry/page.tsx(79,54): error TS2339: Property 'minister' does not exist on type 'never'.
+src/app/portal/ministry/page.tsx(85,36): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/ministry/page.tsx(101,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(102,31): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(103,39): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(104,38): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/ministry/page.tsx(112,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(113,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(114,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(115,13): error TS2322: Type '{ x: number; y: number; }' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(124,33): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(124,37): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(124,41): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(124,45): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(124,49): error TS2322: Type 'number' is not assignable to type 'never'.
+src/app/portal/ministry/page.tsx(131,28): error TS2322: Type '{ name: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(16,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(17,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(18,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(19,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(20,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(21,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(22,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/page.tsx(23,29): error TS2322: Type '{ name: string; href: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'name' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/payments/[id]/page.tsx(39,24): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type '(prevState: null) => null'.
+src/app/portal/payments/[id]/page.tsx(43,22): error TS2353: Object literal may only specify known properties, and 'success' does not exist in type '(prevState: null) => null'.
+src/app/portal/payments/[id]/page.tsx(60,52): error TS2339: Property 'amount' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(60,65): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(61,59): error TS2339: Property 'provider' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(62,60): error TS2339: Property 'reference' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(66,16): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(68,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(70,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(72,19): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(75,62): error TS2339: Property 'retry_count' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(77,28): error TS2339: Property 'last_error' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(81,34): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(84,34): error TS2339: Property 'updated_at' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(97,24): error TS2339: Property 'success' does not exist on type 'never'.
+src/app/portal/payments/[id]/page.tsx(99,44): error TS2339: Property 'error' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(24,16): error TS2345: Argument of type 'any[]' is not assignable to parameter of type 'SetStateAction<never[]>'.
+  Type 'any[]' is not assignable to type 'never[]'.
+    Type 'any' is not assignable to type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(46,22): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(50,45): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(54,22): error TS2339: Property 'channel' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(54,53): error TS2339: Property 'reference' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(59,28): error TS2339: Property 'amount' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(59,41): error TS2339: Property 'currency' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(63,28): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(67,33): error TS2339: Property 'retry_count' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(70,18): error TS2339: Property 'last_error' does not exist on type 'never'.
+src/app/portal/payments/retry-queue/page.tsx(72,34): error TS2339: Property 'last_error' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(38,17): error TS2339: Property 'type' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(42,54): error TS2339: Property 'title' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(43,55): error TS2339: Property 'intake_kg' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(44,55): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(46,37): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(53,60): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(54,62): error TS2339: Property 'coordinator_name' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(55,57): error TS2339: Property 'farmer_name' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(56,62): error TS2339: Property 'institution_name' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(63,60): error TS2339: Property 'crop_type' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(64,60): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(71,57): error TS2339: Property 'title' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(72,60): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(73,57): error TS2339: Property 'pledge' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(80,62): error TS2339: Property 'title' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(81,70): error TS2339: Property 'intake_kg' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(88,57): error TS2339: Property 'title' does not exist on type 'never'.
+src/app/portal/procurement/[id]/page.tsx(89,67): error TS2339: Property 'intake_kg' does not exist on type 'never'.
+src/app/portal/procurement/analytics/map/page.tsx(39,9): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: MapContainerProps & RefAttributes<LeafletMap>, context?: any): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ children: Element[]; center: number[]; zoom: number; style: { height: string; width: string; }; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+      Property 'center' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+  Overload 2 of 2, '(props: MapContainerProps & RefAttributes<LeafletMap>): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ children: Element[]; center: number[]; zoom: number; style: { height: string; width: string; }; }' is not assignable to type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+      Property 'center' does not exist on type 'IntrinsicAttributes & MapContainerProps & RefAttributes<LeafletMap>'.
+src/app/portal/procurement/analytics/map/page.tsx(46,11): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: GeoJSONProps & RefAttributes<LeafletGeoJSON<any, any>>, context?: any): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ data: any; style: (feature: any) => { fillColor: string; weight: number; color: string; }; }' is not assignable to type 'IntrinsicAttributes & GeoJSONProps & RefAttributes<LeafletGeoJSON<any, any>>'.
+      Property 'style' does not exist on type 'IntrinsicAttributes & GeoJSONProps & RefAttributes<LeafletGeoJSON<any, any>>'.
+  Overload 2 of 2, '(props: GeoJSONProps & RefAttributes<LeafletGeoJSON<any, any>>): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | ... 4 more ... | undefined', gave the following error.
+    Type '{ data: any; style: (feature: any) => { fillColor: string; weight: number; color: string; }; }' is not assignable to type 'IntrinsicAttributes & GeoJSONProps & RefAttributes<LeafletGeoJSON<any, any>>'.
+      Property 'style' does not exist on type 'IntrinsicAttributes & GeoJSONProps & RefAttributes<LeafletGeoJSON<any, any>>'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(46,60): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(50,59): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(51,63): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(53,41): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(61,70): error TS2339: Property 'total_deliveries' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(62,66): error TS2339: Property 'total_intake' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(63,67): error TS2339: Property 'daily_average' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(70,22): error TS2339: Property 'farmers' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(70,45): error TS2339: Property 'farmers' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(72,26): error TS2339: Property 'farmers' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(92,22): error TS2339: Property 'community_id' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(96,56): error TS2339: Property 'community_id' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(104,22): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(108,57): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(116,22): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/procurement/coordinator/[id]/page.tsx(120,51): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/procurement/drilldown/[id]/page.tsx(16,56): error TS2322: Type '"stakeholders"' is not assignable to type 'null'.
+src/app/portal/procurement/drilldown/[id]/page.tsx(17,35): error TS2322: Type '"institutions"' is not assignable to type 'null'.
+src/app/portal/procurement/drilldown/[id]/page.tsx(20,15): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(relation: string): PostgrestQueryBuilder<any, any, any, string, unknown>', gave the following error.
+    Argument of type 'null' is not assignable to parameter of type 'string'.
+  Overload 2 of 2, '(relation: string): PostgrestQueryBuilder<any, any, any, string, unknown>', gave the following error.
+    Argument of type 'null' is not assignable to parameter of type 'string'.
+src/app/portal/procurement/farmer/[id]/page.tsx(46,55): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(50,54): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(51,58): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(53,36): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(61,65): error TS2339: Property 'total_deliveries' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(62,61): error TS2339: Property 'total_intake' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(63,62): error TS2339: Property 'daily_average' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(70,17): error TS2339: Property 'coordinators' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(70,40): error TS2339: Property 'coordinators' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(72,21): error TS2339: Property 'coordinators' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(92,17): error TS2339: Property 'community_id' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(96,51): error TS2339: Property 'community_id' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(104,17): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(108,52): error TS2339: Property 'institution_id' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(116,17): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/procurement/farmer/[id]/page.tsx(120,46): error TS2339: Property 'ledger_id' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(29,33): error TS2339: Property 'record_type' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(56,22): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(57,46): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(57,61): error TS2339: Property 'record_type' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(61,20): error TS2339: Property 'record_type' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(61,40): error TS2339: Property 'title' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(63,61): error TS2339: Property 'intake_kg' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(64,18): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(65,61): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/procurement/page.tsx(67,61): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/savings/[id]/page.tsx(27,54): error TS2339: Property 'plan' does not exist on type 'never'.
+src/app/portal/savings/[id]/page.tsx(28,61): error TS2339: Property 'plan' does not exist on type 'never'.
+src/app/portal/savings/[id]/page.tsx(33,18): error TS2339: Property 'payments' does not exist on type 'never'.
+src/app/portal/savings/page.tsx(6,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/savings/page.tsx(7,21): error TS2322: Type '{ title: string; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/staff/page.tsx(6,6): error TS2322: Type '{ children: Element[]; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'children' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/staff/page.tsx(7,21): error TS2322: Type '{ title: string; className: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/app/portal/stakeholders/[id]/page.tsx(27,51): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/stakeholders/[id]/page.tsx(28,56): error TS2339: Property 'type' does not exist on type 'never'.
+src/app/portal/stakeholders/[id]/page.tsx(29,57): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/stakeholders/[id]/page.tsx(30,59): error TS2339: Property 'address' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(49,20): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(52,54): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(54,57): error TS2339: Property 'role' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(55,53): error TS2339: Property 'phone' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(57,16): error TS2339: Property 'institution_name' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(58,61): error TS2339: Property 'institution_name' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(61,16): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(62,59): error TS2339: Property 'community_name' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(66,39): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(71,18): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(73,21): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(81,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(88,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/portal/stakeholders/page.tsx(95,47): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/src/components/ATSSuperRibbon.tsx(6,27): error TS2307: Cannot find module './ATSMobileMenu' or its corresponding type declarations.
+src/app/src/components/ATSSuperRibbon.tsx(68,51): error TS2345: Argument of type 'null' is not assignable to parameter of type 'string'.
+src/components/ATSNavigationRibbonRoleAware.tsx(44,51): error TS2345: Argument of type 'null' is not assignable to parameter of type 'string'.
+src/components/SupabaseProvider.tsx(3,10): error TS2305: Module '"@supabase/auth-helpers-react"' has no exported member 'SessionContextProvider'.
+src/components/SupabaseProvider.tsx(4,10): error TS2305: Module '"@supabase/auth-helpers-nextjs"' has no exported member 'createClientComponentClient'.
+src/components/environment/EnvironmentRegistry.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/components/gnss/GNSSRegistry.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/components/miners/MinersRegistry.tsx(5,31): error TS2307: Cannot find module '@/types/supabase' or its corresponding type declarations.
+src/hooks/useCrossSectorInfluence.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useIdentity.ts(6,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useIdentity.ts(7,48): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useIdentity.ts(17,35): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useIdentity.ts(32,39): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useIdentity.ts(41,39): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorAging.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorDecay.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorDependencies.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorHeatmap.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorInfluence.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorRecovery.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorResilience.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorSLA.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorSegmentation.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorStability.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useSectorTimeline.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/hooks/useStaffGuard.ts(5,10): error TS2305: Module '"@supabase/auth-helpers-react"' has no exported member 'useSessionContext'.
+src/lib/supabaseClient.ts(8,38): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/supabaseServer.ts(1,10): error TS2724: '"@supabase/auth-helpers-nextjs"' has no exported member named 'createServerComponentClient'. Did you mean 'createServerClient'?
+src/lib/workflow/WorkflowCharts/SectorDependencyGraph.tsx(3,26): error TS2307: Cannot find module 'react-force-graph-2d' or its corresponding type declarations.
+src/lib/workflow/WorkflowPanel.tsx(1,29): error TS2307: Cannot find module '@/hooks/useWorkflow' or its corresponding type declarations.
+src/lib/workflow/useWorkflow.ts(8,46): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/lib/workflow/useWorkflow.ts(19,46): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/lib/workflow/useWorkflow.ts(29,46): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/lib/workflow/useWorkflowCharts.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/lib/workflow/useWorkflowDashboard.ts(6,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/lib/workflow/useWorkflowEscalation.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.
+src/lib/workflow/useWorkflowSLAAlerts.ts(5,42): error TS2339: Property 'rpc' does not exist on type 'Promise<SupabaseClient<any, "public", "public", any, any>>'.

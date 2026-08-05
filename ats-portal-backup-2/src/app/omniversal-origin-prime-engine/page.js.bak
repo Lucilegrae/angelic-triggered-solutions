@@ -1,0 +1,10 @@
+import AtsOmniversalOriginPrimeEngine from "@/components/cosmic/AtsOmniversalOriginPrimeEngine";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsOmniversalOriginPrimeEngine ✦</h2>
+      <AtsOmniversalOriginPrimeEngine />
+    </div>
+  );
+}

@@ -1,0 +1,10 @@
+import AtsEternalGenesisCrownThrone from "@/components/cosmic/AtsEternalGenesisCrownThrone";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsEternalGenesisCrownThrone ✦</h2>
+      <AtsEternalGenesisCrownThrone />
+    </div>
+  );
+}

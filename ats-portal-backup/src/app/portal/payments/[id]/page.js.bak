@@ -1,0 +1,17 @@
+export default async function PaymentProfile({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Payment Details</h2>
+
+      <p className="text-slate-400">Payment ID: {id}</p>
+
+      <div className="mt-6 flex flex-col gap-3">
+        <a href={`/portal/payments/${id}/receipt`} className="text-blue-400">
+          View Receipt
+        </a>
+      </div>
+    </div>
+  );
+}

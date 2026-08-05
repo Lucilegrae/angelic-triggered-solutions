@@ -1,0 +1,16 @@
+import CelestialThroneSanctum from "@/components/CelestialThroneSanctum";
+
+export default function CelestialThronePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Celestial Throne Sanctum ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The sovereign throne of ATS — radiant authority, infinite light, eternal preservation,
+        crown of glory, and the omniversal seat of divine governance across all realms.
+      </p>
+
+      <CelestialThroneSanctum />
+    </div>
+  );
+}

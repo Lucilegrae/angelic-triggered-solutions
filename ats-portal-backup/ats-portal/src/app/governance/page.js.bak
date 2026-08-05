@@ -1,0 +1,5 @@
+import AtsGovernanceConsole from "@/components/cosmic/AtsGovernanceConsole";
+
+export default function Page() {
+  return <AtsGovernanceConsole />;
+}

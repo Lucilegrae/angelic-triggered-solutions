@@ -1,0 +1,15 @@
+export default async function MechanisationDashboard() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Mechanisation Dashboard</h2>
+
+      <p className="text-slate-400 mb-4">
+        Tracks operational automation, workflow coverage, and process mechanisation across ATS.
+      </p>
+
+      <p className="text-slate-500">
+        Mechanisation indicators will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

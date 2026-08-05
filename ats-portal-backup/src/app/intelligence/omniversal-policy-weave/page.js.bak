@@ -1,0 +1,14 @@
+"use client";
+
+import OmniversalPolicyWeave from "@/components/OmniversalPolicyWeave";
+
+export default function OmniversalPolicyWeavePage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 className="text-3xl font-semibold mb-6">✦ ATS Infinity Omniversal Policy Weave ✦</h1>
+        <OmniversalPolicyWeave />
+      </div>
+    </div>
+  );
+}

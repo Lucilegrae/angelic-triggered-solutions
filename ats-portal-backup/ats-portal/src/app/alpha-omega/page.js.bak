@@ -1,0 +1,16 @@
+import AlphaOmegaConvergence from "@/components/AlphaOmegaConvergence";
+
+export default function AlphaOmegaConvergencePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Alpha‑Omega Convergence ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The eternal fusion of ATS — the Beginning and the End unified, convergence of legacy,
+        preservation, infinite light, crown geometry, and the sovereign cosmic arc.
+      </p>
+
+      <AlphaOmegaConvergence />
+    </div>
+  );
+}

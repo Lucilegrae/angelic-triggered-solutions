@@ -1,0 +1,5 @@
+import MechanisationDashboard from "@/components/MechanisationDashboard";
+
+export default function Page() {
+  return <MechanisationDashboard />;
+}

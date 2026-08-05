@@ -1,11 +1,18 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
-import { supabase } from ".../supabaseClient";
+import { createClient } from "@supabase/supabase-js";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip,
   LineChart, Line, CartesianGrid, ResponsiveContainer, Legend
 } from "recharts";
 import "./AuraGrid.css";
 import "./AuraCards.css";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+);
 
 export default function ErrorDashboard() {
   const [errors, setErrors] = useState([]);
@@ -83,7 +90,6 @@ export default function ErrorDashboard() {
     document.body.removeChild(link);
   };
 
-  // Aggregate severity data
   const severityCounts = errors.reduce((acc, err) => {
     const sev = err.severity || "Medium";
     acc[sev] = (acc[sev] || 0) + 1;
@@ -94,7 +100,6 @@ export default function ErrorDashboard() {
     count
   }));
 
-  // Aggregate daily data
   const dailyCounts = errors.reduce((acc, err) => {
     const date = new Date(err.created_at).toISOString().split("T")[0];
     acc[date] = (acc[date] || 0) + 1;
@@ -105,7 +110,6 @@ export default function ErrorDashboard() {
     count
   }));
 
-  // KPI calculations
   const totalErrors = errors.length;
   const today = new Date().toISOString().split("T")[0];
   const todayErrors = errors.filter(
@@ -122,7 +126,6 @@ export default function ErrorDashboard() {
         ✦ Error Dashboard ✦
       </h1>
 
-      {/* KPI Panel */}
       <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginBottom: "2rem" }}>
         <div style={{ background: "#222", padding: "1rem 2rem", borderRadius: "8px", color: "#fff" }}>
           <h3>Total Errors</h3>
@@ -140,7 +143,6 @@ export default function ErrorDashboard() {
         </div>
       </div>
 
-      {/* Filter Controls */}
       <div style={{ marginBottom: "2rem", display: "flex", gap: "1rem", justifyContent: "center" }}>
         <input
           type="date"
@@ -178,8 +180,8 @@ export default function ErrorDashboard() {
         </button>
       </div>
 
-      {/* Error Cards */}
       {errors.length === 0 && <p>No errors logged yet.</p>}
+
       <div className="aura-grid">
         {errors.map((err) => (
           <div key={err.id} className="glyph-card aura-fade">
@@ -213,7 +215,6 @@ export default function ErrorDashboard() {
         ))}
       </div>
 
-      {/* Error Count by Severity */}
       <div style={{ marginTop: "2rem" }}>
         <h2>Error Count by Severity</h2>
         <ResponsiveContainer width="100%" height={300}>
@@ -227,7 +228,6 @@ export default function ErrorDashboard() {
         </ResponsiveContainer>
       </div>
 
-      {/* Error Trend by Date */}
       <div style={{ marginTop: "2rem" }}>
         <h2>Error Trend by Date</h2>
         <ResponsiveContainer width="100%" height={300}>

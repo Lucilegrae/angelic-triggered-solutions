@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5759],{77615:(e,s,n)=>{"use strict";n.r(s),n.d(s,{default:()=>i});var r=n(95155);async function i({params:e}){let{id:s}=await e;return(0,r.jsxs)("div",{children:["GNSS Profile — ",s]})}},86872:(e,s,n)=>{Promise.resolve().then(n.bind(n,77615))}},e=>{e.O(0,[8441,3794,7358],()=>e(e.s=86872)),_N_E=e.O()}]);

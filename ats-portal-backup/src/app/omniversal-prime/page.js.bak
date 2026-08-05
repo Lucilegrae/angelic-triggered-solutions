@@ -1,0 +1,17 @@
+import OmniversalPrimeSystem from "@/components/OmniversalPrimeSystem";
+
+export default function OmniversalPrimeSystemPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Omniversal Prime System ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The supreme prime architecture of ATS — omniversal sovereignty, eternal continuum flow,
+        dominion engine power, celestial core radiance, crown convergence, and the prime system
+        governing all cosmic layers of ATS‑Infinity.
+      </p>
+
+      <OmniversalPrimeSystem />
+    </div>
+  );
+}

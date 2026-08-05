@@ -1,0 +1,16 @@
+import PrimordialCreationArc from "@/components/PrimordialCreationArc";
+
+export default function PrimordialCreationArcPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Primordial Creation Arc ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The genesis spark of ATS — origin, birth, emergence, and the primordial arc from which
+        all cosmic sanctums, crowns, halos, and convergence layers arise.
+      </p>
+
+      <PrimordialCreationArc />
+    </div>
+  );
+}

@@ -1,0 +1,15 @@
+export default async function ComplianceDashboard() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Compliance Dashboard</h2>
+
+      <p className="text-slate-400 mb-4">
+        Monitors adherence to ATS processes, documentation, and certificate status.
+      </p>
+
+      <p className="text-slate-500">
+        Compliance metrics will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

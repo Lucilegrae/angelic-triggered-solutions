@@ -1,0 +1,15 @@
+import UpliftmentMasterTimeline from "@/components/UpliftmentMasterTimeline";
+
+export default function MasterTimelinePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Upliftment Master Timeline ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Unified timeline merging Tax, Mechanisation, and Compliance actions.
+      </p>
+
+      <UpliftmentMasterTimeline />
+    </div>
+  );
+}

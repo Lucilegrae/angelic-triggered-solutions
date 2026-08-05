@@ -1,0 +1,16 @@
+import RadiantCrownMatrix from "@/components/RadiantCrownMatrix";
+
+export default function RadiantCrownMatrixPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Radiant Crown Matrix ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The luminous crown‑geometry of ATS — radiant jewels, cosmic halos, sovereign arcs,
+        and the eternal matrix linking all crowns across ATS‑Infinity.
+      </p>
+
+      <RadiantCrownMatrix />
+    </div>
+  );
+}

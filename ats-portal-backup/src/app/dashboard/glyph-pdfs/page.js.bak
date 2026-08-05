@@ -1,0 +1,5 @@
+import GlyphPdfDashboard from "@/components/GlyphPdfDashboard";
+
+export default function Page() {
+  return <GlyphPdfDashboard />;
+}

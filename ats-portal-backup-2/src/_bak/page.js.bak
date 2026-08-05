@@ -1,0 +1,16 @@
+export default async function CertificatesList() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Certificates</h2>
+
+      <p className="text-slate-400 mt-6">
+        All ATS certificates (Members, Stakeholders, Institutions, Govt, Councils, Communities, Savings)
+        will appear here once backend integration is complete.
+      </p>
+
+      <p className="text-slate-500 mt-3">
+        Staff will be able to search by certificate number, holder name, category, crest affiliation, or status.
+      </p>
+    </div>
+  );
+}

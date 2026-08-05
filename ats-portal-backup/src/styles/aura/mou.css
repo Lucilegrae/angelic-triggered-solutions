@@ -1,0 +1,32 @@
+.mou-container {
+  background: rgba(0,0,0,0.85);
+  border: 2px solid var(--aura);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 18px var(--aura), 0 0 36px var(--ritual);
+}
+
+.mou-text {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--aura);
+  animation: auraGlow 3s infinite;
+  color: var(--ritual);
+  line-height: 1.6;
+}
+
+.mou-button {
+  background: transparent;
+  border: 2px solid var(--aura);
+  padding: 0.8rem 1.4rem;
+  border-radius: 8px;
+  color: var(--ritual);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mou-button:hover {
+  background: var(--aura);
+  color: black;
+  box-shadow: 0 0 18px var(--ritual), 0 0 36px var(--aura);
+}

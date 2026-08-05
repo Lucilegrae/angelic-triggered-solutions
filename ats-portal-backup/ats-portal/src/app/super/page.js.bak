@@ -1,0 +1,5 @@
+import AtsSuperConsole from "@/components/cosmic/AtsSuperConsole";
+
+export default function Page() {
+  return <AtsSuperConsole />;
+}

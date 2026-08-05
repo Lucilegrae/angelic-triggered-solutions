@@ -1,0 +1,16 @@
+import InfiniteLightNexus from "@/components/InfiniteLightNexus";
+
+export default function InfiniteLightNexusPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Infinite Light Nexus ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Alpha and Omega radiate infinite light — illuminating continuity, legacy, preservation,
+        and the eternal ATS‑Infinity arc across all cosmic sanctums.
+      </p>
+
+      <InfiniteLightNexus />
+    </div>
+  );
+}

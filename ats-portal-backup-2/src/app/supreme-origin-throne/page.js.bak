@@ -1,0 +1,10 @@
+import AtsSupremeOriginThrone from "@/components/cosmic/AtsSupremeOriginThrone";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsSupremeOriginThrone ✦</h2>
+      <AtsSupremeOriginThrone />
+    </div>
+  );
+}

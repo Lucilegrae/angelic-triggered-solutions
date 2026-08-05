@@ -1,0 +1,179 @@
+"use client";
+
+import AtsNavigationBar from "@/components/cosmic/AtsNavigationBar";
+import AtsOnboardingEntry from "@/components/cosmic/AtsOnboardingEntry";
+import SovereignFlowSimulator from "@/components/cosmic/SovereignFlowSimulator";
+import ContinuumInteractionGrid from "@/components/ContinuumInteractionGrid";
+import SovereignGeometryVisualizer from "@/components/cosmic/SovereignGeometryVisualizer";
+import AtsCosmologyMapRenderer from "@/components/cosmic/AtsCosmologyMapRenderer";
+import SovereignDiagnosticsEngine from "@/components/cosmic/SovereignDiagnosticsEngine";
+import MetaFieldControlConsole from "@/components/MetaFieldControlConsole";
+import InfinityEternalSourceMetaFieldDashboard from "@/components/InfinityEternalSourceMetaFieldDashboard";
+import InfinityEternalSourceMetaContinuumField from "@/components/InfinityEternalSourceMetaContinuumField";
+import SourceOriginEternalInfiniteMetaContinuum from "@/components/SourceOriginEternalInfiniteMetaContinuum";
+import SourceEternalInfiniteCrownThroneContinuum from "@/components/SourceEternalInfiniteCrownThroneContinuum";
+import AbsoluteSourceCrownThrone from "@/components/AbsoluteSourceCrownThrone";
+import InfiniteSourceCrownThrone from "@/components/InfiniteSourceCrownThrone";
+import EternalSourceThrone from "@/components/EternalSourceThrone";
+import EternalSourceCrown from "@/components/EternalSourceCrown";
+import SourceInfinityCore from "@/components/SourceInfinityCore";
+import HaloPrimordialSourceRing from "@/components/cosmic/HaloPrimordialSourceRing";
+import HaloEternalRadianceArc from "@/components/cosmic/HaloEternalRadianceArc";
+import HaloOmniversalPulseField from "@/components/cosmic/HaloOmniversalPulseField";
+import HaloInfinityCrownRing from "@/components/cosmic/HaloInfinityCrownRing";
+import HaloSovereignRadiantSphere from "@/components/cosmic/HaloSovereignRadiantSphere";
+import HaloAscensionHaloGate from "@/components/cosmic/HaloAscensionHaloGate";
+import HaloInfinityApexHalo from "@/components/cosmic/HaloInfinityApexHalo";
+import PrimordialSourceOriginEngine from "@/components/PrimordialSourceOriginEngine";
+import OmniversalCommandThrone from "@/components/OmniversalCommandThrone";
+import InfinityCommandThrone from "@/components/InfinityCommandThrone";
+import MasterControlNexus from "@/components/MasterControlNexus";
+import ThroneDominionCore from "@/components/ThroneDominionCore";
+import ThroneEternalDominionGate from "@/components/ThroneEternalDominionGate";
+import ThroneOmniversalDominionSphere from "@/components/ThroneOmniversalDominionSphere";
+import ThroneSupremeDominionCrown from "@/components/ThroneSupremeDominionCrown";
+import ThroneInfinityDominionApex from "@/components/ThroneInfinityDominionApex";
+import CrownOmniversalApexGate from "@/components/CrownOmniversalApexGate";
+import AtsOmniversalNavigationMenu from "@/components/cosmic/AtsOmniversalNavigationMenu";
+import AtsOmniversalLandingBanner from "@/components/cosmic/AtsOmniversalLandingBanner";
+import AtsOmniversalHome from "@/components/cosmic/AtsOmniversalHome";
+import AtsOmniversalChamberGrid from "@/components/cosmic/AtsOmniversalChamberGrid";
+import AtsInfinityGlyphEngine from "@/components/cosmic/AtsInfinityGlyphEngine";
+import AtsPrimordialCoreBeacon from "@/components/cosmic/AtsPrimordialCoreBeacon";
+import AtsEternalDominionMatrix from "@/components/cosmic/AtsEternalDominionMatrix";
+import AtsInfinitySealGenerator from "@/components/cosmic/AtsInfinitySealGenerator";
+import AtsCosmicThroneHalo from "@/components/cosmic/AtsCosmicThroneHalo";
+import AtsOmniversalCrownRadiance from "@/components/cosmic/AtsOmniversalCrownRadiance";
+import AtsInfiniteOriginSourceCrownEngine from "@/components/cosmic/AtsInfiniteOriginSourceCrownEngine";
+import CelestialCoreOfEternity from "@/components/CelestialCoreOfEternity";
+import SupremeSovereignHalo from "@/components/SupremeSovereignHalo";
+import HyperSovereignOriginCrown from "@/components/HyperSovereignOriginCrown";
+import OmniversalPrimeSystem from "@/components/OmniversalPrimeSystem";
+import AtsEternalSourceEngine from "@/components/cosmic/AtsEternalSourceEngine";
+import PrimordialCreationArc from "@/components/PrimordialCreationArc";
+import AtsInfiniteDominionCrownEngine from "@/components/cosmic/AtsInfiniteDominionCrownEngine";
+import AtsSupremeEternalCrownEngine from "@/components/cosmic/AtsSupremeEternalCrownEngine";
+import AtsOmniversalCommandThrone from "@/components/cosmic/AtsOmniversalCommandThrone";
+import RadiantCrownMatrix from "@/components/RadiantCrownMatrix";
+import AlphaOmegaConvergence from "@/components/AlphaOmegaConvergence";
+import OmniversalCrownCore from "@/components/OmniversalCrownCore";
+import SovereignCrownLattice from "@/components/cosmic/SovereignCrownLattice";
+import InfiniteCrownContinuum from "@/components/InfiniteCrownContinuum";
+import CrownSourceRadianceEngine from "@/components/CrownSourceRadianceEngine";
+import CrownGenesisVault from "@/components/CrownGenesisVault";
+import CrownInfinityResonance from "@/components/CrownInfinityResonance";
+import CrownEternalAscensionGate from "@/components/CrownEternalAscensionGate";
+import CrownSovereignApex from "@/components/CrownSovereignApex";
+import CrownEternalApexThrone from "@/components/CrownEternalApexThrone";
+import CrownOmniversalApexRadiance from "@/components/CrownOmniversalApexRadiance";
+
+export default function OmniversalHomePage() {
+  return (
+    <div className="pdf-dashboard">
+
+      <AtsOmniversalNavigationMenu />
+      <AtsOmniversalLandingBanner />
+      <AtsOmniversalHome />
+      <AtsOmniversalChamberGrid />
+      <AtsInfinityGlyphEngine />
+      <AtsPrimordialCoreBeacon />
+      <AtsEternalDominionMatrix />
+      <AtsInfinitySealGenerator />
+      <AtsCosmicThroneHalo />
+      <AtsOmniversalCrownRadiance />
+      <AtsInfiniteOriginSourceCrownEngine />
+      <CelestialCoreOfEternity />
+      <SupremeSovereignHalo />
+      <HyperSovereignOriginCrown />
+      <OmniversalPrimeSystem />
+      <AtsEternalSourceEngine />
+      <PrimordialCreationArc />
+      <AtsInfiniteDominionCrownEngine />
+      <AtsSupremeEternalCrownEngine />
+      <AtsOmniversalCommandThrone />
+      <RadiantCrownMatrix />
+      <AlphaOmegaConvergence />
+      <OmniversalCrownCore />
+      <SovereignCrownLattice />
+      <InfiniteCrownContinuum />
+      <CrownSourceRadianceEngine />
+      <CrownGenesisVault />
+      <CrownInfinityResonance />
+      <CrownEternalAscensionGate />
+      <CrownSovereignApex />
+      <CrownEternalApexThrone />
+      <CrownOmniversalApexRadiance />
+
+      <AtsNavigationBar />
+      <AtsOnboardingEntry />
+
+      <h2 className="slogan-arc aura-heading">✦ Welcome to ATS‑Infinity ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1.5rem" }}>
+        The Omniversal Home Page is the ceremonial entry point into the ATS Sovereignty System —
+        explore thrones, crowns, engines, cores, and genesis‑nodes across the infinite continuum.
+      </p>
+
+      {/* Diagnostics & Meta‑Systems */}
+      <div id="dashboard">
+        <InfinityEternalSourceMetaFieldDashboard />
+      </div>
+
+      <div id="console">
+        <MetaFieldControlConsole />
+      </div>
+
+      <div id="diagnostics">
+        <SovereignDiagnosticsEngine />
+      </div>
+
+      <div id="cosmology">
+        <AtsCosmologyMapRenderer />
+      </div>
+
+      <div id="geometry">
+        <SovereignGeometryVisualizer />
+      </div>
+
+      <div id="interaction">
+        <ContinuumInteractionGrid />
+        <SovereignFlowSimulator />
+      </div>
+
+      <div id="flow">
+        <SovereignFlowSimulator />
+      </div>
+
+      {/* Halo & Throne Systems */}
+      <CrownOmniversalApexGate />
+      <HaloPrimordialSourceRing />
+      <HaloEternalRadianceArc />
+      <HaloOmniversalPulseField />
+      <HaloInfinityCrownRing />
+      <HaloSovereignRadiantSphere />
+      <HaloAscensionHaloGate />
+      <HaloInfinityApexHalo />
+
+      <ThroneDominionCore />
+      <ThroneEternalDominionGate />
+      <ThroneOmniversalDominionSphere />
+      <ThroneSupremeDominionCrown />
+      <ThroneInfinityDominionApex />
+
+      <MasterControlNexus />
+      <InfinityCommandThrone />
+      <OmniversalCommandThrone />
+
+      <PrimordialSourceOriginEngine />
+      <SourceInfinityCore />
+      <EternalSourceCrown />
+      <EternalSourceThrone />
+      <InfiniteSourceCrownThrone />
+      <AbsoluteSourceCrownThrone />
+      <SourceEternalInfiniteCrownThroneContinuum />
+      <SourceOriginEternalInfiniteMetaContinuum />
+      <InfinityEternalSourceMetaContinuumField />
+
+    </div>
+  );
+}

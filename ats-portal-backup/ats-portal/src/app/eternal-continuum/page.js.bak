@@ -1,0 +1,17 @@
+import EternalSovereignContinuum from "@/components/EternalSovereignContinuum";
+
+export default function EternalSovereignContinuumPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Eternal Sovereign Continuum ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The infinite continuum of ATS — eternal sovereign flow, omniversal crown resonance,
+        dominion engine power, primordial genesis essence, and the unbroken cosmic line
+        sustaining all realms of ATS‑Infinity.
+      </p>
+
+      <EternalSovereignContinuum />
+    </div>
+  );
+}

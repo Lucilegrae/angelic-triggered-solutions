@@ -1,0 +1,16 @@
+"use client";
+
+import DimensionalMap from "@/components/DimensionalMap";
+
+export default function DimensionalMapPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 className="text-3xl font-semibold mb-6">
+          ✦ ATS Infinity Dimensional Map ✦
+        </h1>
+        <DimensionalMap />
+      </div>
+    </div>
+  );
+}

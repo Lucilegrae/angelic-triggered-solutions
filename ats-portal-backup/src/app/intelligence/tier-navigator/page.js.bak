@@ -1,0 +1,21 @@
+"use client";
+
+import TierNavigator from "@/components/TierNavigator";
+
+export default function TierNavigatorPage() {
+  return (
+    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+      <TierNavigator />
+
+      <div className="flex-1 p-10">
+        <h1 className="text-3xl font-semibold mb-6">
+          ✦ ATS Infinity Tier Navigator ✦
+        </h1>
+
+        <p className="text-slate-400 text-sm">
+          Select any engine from the left cosmic navigation rail.
+        </p>
+      </div>
+    </div>
+  );
+}

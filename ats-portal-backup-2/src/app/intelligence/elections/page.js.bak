@@ -1,0 +1,14 @@
+"use client";
+
+import ElectionsIntelligenceEngine from "@/components/ElectionsIntelligenceEngine";
+
+export default function ElectionsPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 class="text-3xl font-semibold mb-6">✦ National Elections Intelligence ✦</h1>
+        <ElectionsIntelligenceEngine />
+      </div>
+    </div>
+  );
+}

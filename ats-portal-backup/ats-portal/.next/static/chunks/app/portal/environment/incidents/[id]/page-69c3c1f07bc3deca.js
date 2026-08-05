@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1127],{4446:(e,n,s)=>{Promise.resolve().then(s.bind(s,25623))},25623:(e,n,s)=>{"use strict";s.r(n),s.d(n,{default:()=>i});var t=s(95155);async function i({params:e}){let{id:n}=await e;return(0,t.jsxs)("div",{children:["Environment Incidents — ",n]})}}},e=>{e.O(0,[8441,3794,7358],()=>e(e.s=4446)),_N_E=e.O()}]);

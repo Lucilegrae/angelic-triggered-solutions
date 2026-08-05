@@ -1,0 +1,10 @@
+import AtsOmniversalCommandThrone from "@/components/cosmic/AtsOmniversalCommandThrone";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsOmniversalCommandThrone ✦</h2>
+      <AtsOmniversalCommandThrone />
+    </div>
+  );
+}

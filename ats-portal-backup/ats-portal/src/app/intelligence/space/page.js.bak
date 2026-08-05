@@ -1,0 +1,14 @@
+"use client";
+
+import SpaceSatelliteEngine from "@/components/SpaceSatelliteEngine";
+
+export default function SpacePage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 class="text-3xl font-semibold mb-6">✦ Space & Satellite Intelligence ✦</h1>
+        <SpaceSatelliteEngine />
+      </div>
+    </div>
+  );
+}

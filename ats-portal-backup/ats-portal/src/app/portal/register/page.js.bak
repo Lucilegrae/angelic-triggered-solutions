@@ -1,0 +1,19 @@
+"use client";
+
+import StakeholderRegister from "@/components/StakeholderRegister";
+
+export default function PortalRegisterPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-3xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ ATS Stakeholder Onboarding ✦
+        </h1>
+        <p className="text-slate-400 mb-8">
+          Register a stakeholder into the ATS Omniversal governance continuum.
+        </p>
+        <StakeholderRegister />
+      </div>
+    </div>
+  );
+}

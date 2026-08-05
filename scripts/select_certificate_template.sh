@@ -1,13 +1,22 @@
 #!/bin/bash
 
-SECTOR=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+SECTOR="$1"
+
+TEMPLATES_DIR="public/certificates/archives/federation-master/certificates"
 
 case "$SECTOR" in
-  community* ) echo "templates/community_template.png" ;;
-  veterans* ) echo "templates/veterans_template.png" ;;
-  mining* ) echo "templates/mining_template.png" ;;
-  landowners* ) echo "templates/landowners_template.png" ;;
-  partners* ) echo "templates/partners_template.png" ;;
-  steel* ) echo "templates/steel_template.png" ;;
-  * ) echo "" ;;
+  "Government") echo "$TEMPLATES_DIR/certificate_GOVERNMENT.png" ;;
+  "Banks") echo "$TEMPLATES_DIR/certificate_BANKING.png" ;;
+  "Communities") echo "$TEMPLATES_DIR/certificate_COMMUNITY.png" ;;
+  "Community Members") echo "$TEMPLATES_DIR/certificate_COMMUNITY.png" ;;
+  "Councils") echo "$TEMPLATES_DIR/certificate_COUNCILS.png" ;;
+  "Miners") echo "$TEMPLATES_DIR/certificate_MINERS.png" ;;
+  "Investors") echo "$TEMPLATES_DIR/certificate_PARTNERS.png" ;;
+  "Supplier Profiles") echo "$TEMPLATES_DIR/certificate_PARTNERS.png" ;;
+  "Insurance Profiles") echo "$TEMPLATES_DIR/certificate_INSURANCE.png" ;;
+  "Transporter Profiles") echo "$TEMPLATES_DIR/certificate_MASTER.png" ;;
+  "Donor Profiles") echo "$TEMPLATES_DIR/certificate_MASTER.png" ;;
+  *)
+    echo ""
+    ;;
 esac

@@ -1,0 +1,16 @@
+import CrownOfGloryDashboard from "@/components/CrownOfGloryDashboard";
+
+export default function CrownOfGloryPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Crown of Glory Dashboard ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The sovereign crown of ATS — radiant jewels, eternal majesty, preservation sanctified,
+        and the cosmic glory arc illuminating all realms of ATS‑Infinity.
+      </p>
+
+      <CrownOfGloryDashboard />
+    </div>
+  );
+}

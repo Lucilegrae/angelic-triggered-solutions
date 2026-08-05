@@ -1,0 +1,18 @@
+export default async function SettingsHome() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Portal Settings</h2>
+
+      <p className="text-slate-400 mb-4">
+        Configure ATS reference data and system parameters.
+      </p>
+
+      <div className="flex flex-col gap-2">
+        <a href="/portal/settings/districts" className="text-blue-400">Districts</a>
+        <a href="/portal/settings/institutions" className="text-blue-400">Institution Types</a>
+        <a href="/portal/settings/categories" className="text-blue-400">Categories</a>
+        <a href="/portal/settings/certificates" className="text-blue-400">Certificate Settings</a>
+      </div>
+    </div>
+  );
+}

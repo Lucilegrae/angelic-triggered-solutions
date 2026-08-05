@@ -1,0 +1,22 @@
+"use client";
+
+import StakeholderIntelligenceMasterDashboard from "@/components/StakeholderIntelligenceMasterDashboard";
+
+export default function MasterIntelligencePage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-5xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ Stakeholder Intelligence Master Dashboard ✦
+        </h1>
+
+        <p className="text-slate-400 mb-6">
+          Unified view of legitimacy, upliftment, compliance, and mechanisation
+          across all stakeholders.
+        </p>
+
+        <StakeholderIntelligenceMasterDashboard />
+      </div>
+    </div>
+  );
+}

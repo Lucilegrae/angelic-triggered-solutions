@@ -1,0 +1,17 @@
+import CelestialCoreOfEternity from "@/components/CelestialCoreOfEternity";
+
+export default function CelestialCoreOfEternityPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Celestial Core of Eternity ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The eternal nucleus of ATS — timeless essence, omniversal crown convergence, primordial
+        genesis spark, sovereign dominion radiance, and the everlasting core sustaining all
+        cosmic layers of ATS‑Infinity.
+      </p>
+
+      <CelestialCoreOfEternity />
+    </div>
+  );
+}

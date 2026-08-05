@@ -1,0 +1,37 @@
+"use client";
+
+import BlessingsDashboard from "@/components/BlessingsDashboard";
+import BlessingCreator from "@/components/BlessingCreator";
+import { useUser } from "@/components/useUser";
+
+export default function BlessingsPage() {
+  const { user, loading } = useUser();
+
+  if (loading) {
+    return <p className="text-slate-400">Loading…</p>;
+  }
+
+  if (!user) {
+    return <p className="text-red-400">Sign in to manage blessings.</p>;
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-5xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ Blessings Engine ✦
+        </h1>
+
+        <p className="text-slate-400 mb-6">
+          Manage ceremonial blessings across all stakeholders.
+        </p>
+
+        <div className="mb-10">
+          <BlessingCreator stakeholderId={user.id} />
+        </div>
+
+        <BlessingsDashboard />
+      </div>
+    </div>
+  );
+}

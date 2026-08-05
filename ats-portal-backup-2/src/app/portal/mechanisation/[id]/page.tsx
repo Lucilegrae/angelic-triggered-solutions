@@ -1,0 +1,155 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/supabaseClient";
+
+export default function MechanisationProfile({ params }) {
+  const { id } = params;
+  const [req, setReq] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadRequest() {
+      const { data, error } = await supabase.rpc("get_mechanisation_request", {
+        req_id: id,
+      });
+
+      if (error) {
+        console.error("Mechanisation Profile RPC error:", error);
+      }
+
+      setReq(data || null);
+      setLoading(false);
+    }
+
+    loadRequest();
+  }, [id]);
+
+  async function updateStatus(status) {
+    await supabase.rpc("rpc_update_mechanisation_status", {
+      req_id: id,
+      new_status: status,
+    });
+
+    location.reload();
+  }
+
+  if (loading) {
+    return (
+      <div className="p-6 text-slate-200">
+        <h2>Loading Mechanisation Request…</h2>
+      </div>
+    );
+  }
+
+  if (!req) {
+    return (
+      <div className="p-6 text-slate-200">
+        <h2>Request not found.</h2>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 text-slate-200 max-w-3xl">
+      <h1 className="text-2xl font-bold mb-4">{req.request_type}</h1>
+
+      {/* Core Details */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <p className="text-slate-300">Stakeholder: {req.stakeholder_name}</p>
+        <p className="text-slate-300">Description: {req.description}</p>
+        <p className="text-slate-300">
+          Submitted: {new Date(req.created_at).toLocaleString()}
+        </p>
+
+        <p className="text-slate-300 mt-2">
+          Status:{" "}
+          {req.status === "approved"
+            ? "✔ Approved"
+            : req.status === "rejected"
+            ? "✖ Rejected"
+            : req.status === "pending"
+            ? "⏳ Pending"
+            : req.status}
+        </p>
+      </div>
+
+      {/* Equipment Details */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Equipment Details</h2>
+
+        <p className="text-slate-300">Equipment Type: {req.equipment_type}</p>
+        <p className="text-slate-300">Horsepower: {req.hp}</p>
+        <p className="text-slate-300">Category: {req.category}</p>
+      </div>
+
+      {/* Cross‑Module Intelligence */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Cross‑Module Links</h2>
+
+        {req.gnss_job_id && (
+          <p className="text-slate-300">
+            GNSS Survey:{" "}
+            <a
+              href={`/portal/gnss/${req.gnss_job_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View GNSS Job →
+            </a>
+          </p>
+        )}
+
+        {req.insurance_policy_id && (
+          <p className="text-slate-300 mt-2">
+            Insurance Policy:{" "}
+            <a
+              href={`/portal/insurance/${req.insurance_policy_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Policy →
+            </a>
+          </p>
+        )}
+
+        {req.ledger_id && (
+          <p className="text-slate-300 mt-2">
+            Ledger Entry:{" "}
+            <a
+              href={`/portal/ledger/${req.ledger_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Ledger →
+            </a>
+          </p>
+        )}
+      </div>
+
+      {/* Status Controls */}
+      {req.status === "pending" && (
+        <div className="flex gap-3 mb-6">
+          <button
+            className="bg-green-600 px-3 py-1 rounded hover:bg-green-500"
+            onClick={() => updateStatus("approved")}
+          >
+            Approve Request
+          </button>
+
+          <button
+            className="bg-red-600 px-3 py-1 rounded hover:bg-red-500"
+            onClick={() => updateStatus("rejected")}
+          >
+            Reject Request
+          </button>
+        </div>
+      )}
+
+      {/* Back Link */}
+      <a
+        href="/portal/mechanisation"
+        className="inline-block text-blue-400 hover:text-blue-300"
+      >
+        Back to Mechanisation →
+      </a>
+    </div>
+  );
+}

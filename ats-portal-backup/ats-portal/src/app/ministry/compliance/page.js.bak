@@ -1,0 +1,5 @@
+import MinistryComplianceDashboard from "@/components/MinistryComplianceDashboard";
+
+export default function Page() {
+  return <MinistryComplianceDashboard />;
+}

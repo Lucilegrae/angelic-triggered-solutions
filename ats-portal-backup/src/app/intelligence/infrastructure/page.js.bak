@@ -1,0 +1,14 @@
+"use client";
+
+import InfrastructureHeatmap from "@/components/InfrastructureHeatmap";
+
+export default function InfrastructureHeatmapPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">✦ ATS Infrastructure Heatmap ✦</h1>
+        <InfrastructureHeatmap />
+      </div>
+    </div>
+  );
+}

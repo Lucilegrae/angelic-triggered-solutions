@@ -1,0 +1,33 @@
+"use client";
+
+import { useState } from "react";
+
+export default function NewSavingsPlan() {
+  const [form, setForm] = useState({});
+
+  function updateField(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+    alert("Micro‑Savings registration logic will be added here.");
+  }
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Register New Micro‑Savings Plan</h2>
+
+      <form onSubmit={submitForm} className="grid grid-cols-1 gap-4 max-w-xl">
+        <input name="member_id" placeholder="Member ID" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="premium" placeholder="Premium Amount" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="frequency" placeholder="Frequency (Monthly, Weekly)" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="start_date" placeholder="Start Date" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+
+        <button className="bg-blue-600 px-4 py-2 rounded text-white">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}

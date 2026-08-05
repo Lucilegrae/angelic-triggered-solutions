@@ -1,0 +1,18 @@
+export default async function StaffList() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">ATS Staff</h2>
+
+      <a
+        href="/portal/staff/new"
+        className="bg-blue-600 px-4 py-2 rounded text-white"
+      >
+        + Register New Staff Member
+      </a>
+
+      <p className="text-slate-400 mt-6">
+        Staff listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

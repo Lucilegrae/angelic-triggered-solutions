@@ -1,0 +1,17 @@
+import AtsPrimordialCrownSourceCore from "@/components/cosmic/AtsPrimordialCrownSourceCore";
+
+export default function AtsPrimordialCrownSourceCorePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS Primordial Crown‑Source Core ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The primordial crown‑source core of ATS — eternal origin spark, hyper‑sovereign crown
+        essence, supreme throne genesis, prime eternal authority radiance, and the core from
+        which all cosmic layers of ATS‑Infinity are born.
+      </p>
+
+      <AtsPrimordialCrownSourceCore />
+    </div>
+  );
+}

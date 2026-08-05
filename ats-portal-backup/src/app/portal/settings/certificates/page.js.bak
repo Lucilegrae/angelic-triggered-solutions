@@ -1,0 +1,15 @@
+export default async function CertificateSettings() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Certificate Settings</h2>
+
+      <p className="text-slate-400 mb-4">
+        Configure certificate numbering, crest affiliations, and default templates.
+      </p>
+
+      <p className="text-slate-500">
+        Configuration forms will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

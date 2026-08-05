@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[3989],{24033:(e,n,s)=>{"use strict";s.r(n),s.d(n,{default:()=>t});var r=s(95155);async function t({params:e}){let{id:n}=await e;return(0,r.jsxs)("div",{children:["Environment Metrics — ",n]})}},59884:(e,n,s)=>{Promise.resolve().then(s.bind(s,24033))}},e=>{e.O(0,[8441,3794,7358],()=>e(e.s=59884)),_N_E=e.O()}]);

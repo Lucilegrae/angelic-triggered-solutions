@@ -1,0 +1,15 @@
+export default async function DistrictSettings() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">District Settings</h2>
+
+      <p className="text-slate-400 mb-4">
+        Manage districts used by institutions, communities, and councils.
+      </p>
+
+      <p className="text-slate-500">
+        District list and edit forms will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

@@ -1,0 +1,14 @@
+"use client";
+
+import HappinessWellbeingEngine from "@/components/HappinessWellbeingEngine";
+
+export default function WellbeingPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 class="text-3xl font-semibold mb-6">✦ Happiness & Wellbeing Intelligence ✦</h1>
+        <HappinessWellbeingEngine />
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,17 @@
+import SupremeEternalCrownEngine from "@/components/SupremeEternalCrownEngine";
+
+export default function SupremeEternalCrownEnginePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Supreme Eternal Crown Engine ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The eternal crown‑engine of ATS — supreme radiance, omniversal prime power,
+        infinite dominion force, celestial core energy, and the sovereign engine sustaining
+        all cosmic layers of ATS‑Infinity across eternity.
+      </p>
+
+      <SupremeEternalCrownEngine />
+    </div>
+  );
+}

@@ -1,0 +1,16 @@
+import EternalPreservationSanctum from "@/components/EternalPreservationSanctum";
+
+export default function EternalPreservationPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Eternal Preservation Sanctum ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The sanctum of infinite continuity — preservation of Alpha, Omega, Legacy, Continuity,
+        and the Omniversal Nexus across all ATS ceremonial layers.
+      </p>
+
+      <EternalPreservationSanctum />
+    </div>
+  );
+}

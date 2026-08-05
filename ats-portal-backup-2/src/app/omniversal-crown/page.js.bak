@@ -1,0 +1,17 @@
+import OmniversalCrownCore from "@/components/OmniversalCrownCore";
+
+export default function OmniversalCrownCorePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Omniversal Crown Core ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The absolute core of ATS — the omniversal crown where all halos, dominion spheres,
+        origin vaults, convergence arcs, throne sanctums, radiant matrices, and cosmic layers
+        unify into one eternal sovereign point.
+      </p>
+
+      <OmniversalCrownCore />
+    </div>
+  );
+}

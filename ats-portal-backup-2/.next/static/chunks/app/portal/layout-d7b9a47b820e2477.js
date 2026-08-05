@@ -1,0 +1,19 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[58],{148:(e,s,t)=>{"use strict";t.d(s,{ND:()=>a});let a=(0,t(70016).UU)("https://wtifrlhiyzudgppqswzw.supabase.co","sb_publishable_eLu_k-kp9xTcQcM0hTRIwg_trevTugn")},18112:(e,s,t)=>{Promise.resolve().then(t.bind(t,33470)),Promise.resolve().then(t.bind(t,80900))},33470:(e,s,t)=>{"use strict";t.d(s,{default:()=>o});var a=t(95155),r=t(98500),n=t.n(r),l=t(148),i=t(12115);function o(){let[e,s]=(0,i.useState)(null);return(0,i.useEffect)(()=>{!async function(){let{data:e}=await l.ND.auth.getUser();s(e.user)}()},[]),(0,a.jsxs)("nav",{className:"w-full bg-slate-900 border-b border-slate-800 p-4 flex items-center justify-between",children:[(0,a.jsxs)("div",{className:"flex items-center gap-6",children:[(0,a.jsx)(n(),{href:"/portal/dashboard",className:"text-slate-200 hover:text-white",children:"Dashboard"}),(0,a.jsx)(n(),{href:"/portal/ministry",className:"text-slate-200 hover:text-white",children:"Ministry"}),(0,a.jsx)(n(),{href:"/portal/procurement",className:"text-slate-200 hover:text-white",children:"Procurement"}),(0,a.jsx)(n(),{href:"/portal/mechanisation",className:"text-slate-200 hover:text-white",children:"Mechanisation"}),(0,a.jsx)(n(),{href:"/portal/gnss",className:"text-slate-200 hover:text-white",children:"GNSS"})]}),(0,a.jsxs)("div",{className:"flex items-center gap-4",children:[e&&(0,a.jsx)("span",{className:"text-slate-400 text-sm",children:e.email}),(0,a.jsx)("button",{className:"bg-red-600 px-3 py-1 rounded text-sm hover:bg-red-500",onClick:async()=>{await l.ND.auth.signOut(),window.location.href="/portal/login"},children:"Sign Out"})]})]})}},73837:()=>{},80900:(e,s,t)=>{"use strict";t.d(s,{default:()=>u});var a=t(95155),r=t(58007),n=t(62127);n.qg,n.lK;let l="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_".split(""),i=" 	\n\r=".split(""),o=Array(128);for(let e=0;e<o.length;e+=1)o[e]=-1;for(let e=0;e<i.length;e+=1)o[i[e].charCodeAt(0)]=-2;for(let e=0;e<l.length;e+=1)o[l[e].charCodeAt(0)]=e;var c=t(73837),h=t(41463);if(void 0!==h&&h.env?.npm_package_name){let e=h.env.npm_package_name;["@supabase/auth-helpers-nextjs","@supabase/auth-helpers-react","@supabase/auth-helpers-remix","@supabase/auth-helpers-sveltekit"].includes(e)&&console.warn(`
+╔════════════════════════════════════════════════════════════════════════════╗
+║ ⚠️  IMPORTANT: Package Consolidation Notice                                ║
+║                                                                            ║
+║ The ${e.padEnd(35)} package name is deprecated.  ║
+║                                                                            ║
+║ You are now using @supabase/ssr - a unified solution for all frameworks.  ║
+║                                                                            ║
+║ The auth-helpers packages have been consolidated into @supabase/ssr       ║
+║ to provide better maintenance and consistent APIs across frameworks.      ║
+║                                                                            ║
+║ Please update your package.json to use @supabase/ssr directly:            ║
+║   npm uninstall ${e.padEnd(42)} ║
+║   npm install @supabase/ssr                                               ║
+║                                                                            ║
+║ For more information, visit:                                              ║
+║ https://supabase.com/docs/guides/auth/server-side                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+    `)}function u({children:e}){let s=(0,c.createClientComponentClient)();return(0,a.jsx)(r.SessionContextProvider,{supabaseClient:s,children:e})}}},e=>{e.O(0,[5730,1042,8007,8500,8441,3794,7358],()=>e(e.s=18112)),_N_E=e.O()}]);

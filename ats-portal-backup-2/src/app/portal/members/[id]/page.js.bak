@@ -1,0 +1,17 @@
+export default async function MemberProfile({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Member Profile</h2>
+
+      <p className="text-slate-400">Member ID: {id}</p>
+
+      <div className="mt-6 flex flex-col gap-3">
+        <a href={`/portal/members/${id}/certificate`} className="text-blue-400">View Certificate</a>
+        <a href={`/portal/members/${id}/payments`} className="text-blue-400">View Payments</a>
+        <a href={`/portal/members/${id}/savings`} className="text-blue-400">Micro‑Savings Status</a>
+      </div>
+    </div>
+  );
+}

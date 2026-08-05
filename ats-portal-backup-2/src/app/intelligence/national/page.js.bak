@@ -1,0 +1,21 @@
+"use client";
+
+import NationalIntelligenceOverview from "@/components/NationalIntelligenceOverview";
+
+export default function NationalIntelligencePage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ National Intelligence Overview ✦
+        </h1>
+
+        <p className="text-slate-400 mb-6">
+          National score index, trend charts, and sector pressure indicators.
+        </p>
+
+        <NationalIntelligenceOverview />
+      </div>
+    </div>
+  );
+}

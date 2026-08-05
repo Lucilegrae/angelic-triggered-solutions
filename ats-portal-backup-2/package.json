@@ -1,0 +1,43 @@
+{
+  "name": "ats-portal",
+  "version": "1.0.0",
+  "description": "Angelic Triggered Solutions Portal",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "Prince Masvikepi",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.15.0",
+    "@supabase/auth-helpers-react": "^0.15.0",
+    "@supabase/ssr": "^0.12.3",
+    "@supabase/supabase-js": "^2.110.7",
+    "chart.js": "^4.5.1",
+    "chartjs-chart-matrix": "^3.0.5",
+    "chartjs-chart-sankey": "^0.15.0",
+    "chartjs-plugin-datalabels": "^2.2.0",
+    "jose": "^6.2.3",
+    "jspdf": "^4.2.1",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.25.0",
+    "next": "^16.2.12",
+    "react": "^19.2.7",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^19.2.7",
+    "react-leaflet": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "@types/react": "19.2.17",
+    "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "core-js@3.49.0": true,
+    "sharp@0.34.5": true,
+    "jose@6.2.3": true
+  }
+}

@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[6261],{12825:(e,s,n)=>{"use strict";n.r(s),n.d(s,{default:()=>t});var r=n(95155);async function t({params:e}){let{id:s}=await e;return(0,r.jsxs)("div",{children:["Miner Safety — ",s]})}},83864:(e,s,n)=>{Promise.resolve().then(n.bind(n,12825))}},e=>{e.O(0,[8441,3794,7358],()=>e(e.s=83864)),_N_E=e.O()}]);

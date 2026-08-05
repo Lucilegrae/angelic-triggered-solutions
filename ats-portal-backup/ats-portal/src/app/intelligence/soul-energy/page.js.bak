@@ -1,0 +1,107 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "./supabaseClient";
+
+function heal(row) {
+  const { vitality_index, emotional_resonance, unity_field_strength, ancestral_alignment, future_soul_potential } = row;
+
+  if (vitality_index < 40) return "Deploy ATS soul‑energy revitalization programs.";
+  if (emotional_resonance < 50) return "Initiate emotional healing and joy‑creation circles.";
+  if (unity_field_strength < 50) return "Strengthen unity rituals and community bonding.";
+  if (ancestral_alignment < 50) return "Activate ancestral reconnection ceremonies.";
+  if (future_soul_potential < 50) return "Invest in youth spiritual development.";
+  return "Soul‑energy field stable — maintain monitoring.";
+}
+
+export default function SoulEnergyEngine() {
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase
+        .from("soul_energy_intelligence")
+        .select("*")
+        .order("vitality_index", { ascending: false });
+
+      setRows(data || []);
+    })();
+  }, []);
+
+  return (
+    <div className="pdf-dashboard">
+
+      <h2 className="slogan-arc aura-heading">✦ National Soul‑Energy Intelligence ✦</h2>
+
+      {rows.length > 0 && (
+        <div className="pdf-card mb-6 p-6 bg-slate-900 border border-slate-700 rounded-lg">
+          <h3 className="pdf-title mb-2">Soul‑Energy Summary</h3>
+          <p className="text-slate-300 text-sm">
+            Highest Vitality Region:{" "}
+            <span className="text-pink-400">{rows[0].region}</span>
+          </p>
+          <p className="text-slate-300 text-sm">
+            Peak Vitality Index:{" "}
+            <span className="text-pink-400">{rows[0].vitality_index}%</span>
+          </p>
+        </div>
+      )}
+
+      <div className="pdf-dashboard-grid">
+        {rows.map((r) => (
+          <div key={r.id} className="pdf-card">
+
+            <h3 className="pdf-title">{r.region}</h3>
+
+            {/* Vitality Ring */}
+            <div className="flex items-center justify-center my-4">
+              <div className="relative w-24 h-24">
+                <svg className="w-full h-full">
+                  <circle cx="50%" cy="50%" r="40%" stroke="#1e293b" strokeWidth="10" fill="none" />
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="40%"
+                    stroke="#ec4899"
+                    strokeWidth="10"
+                    fill="none"
+                    strokeDasharray="251"
+                    strokeDashoffset={251 - (251 * r.vitality_index) / 100}
+                    strokeLinecap="round"
+                    className="transition-all duration-700"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center text-pink-400 font-bold">
+                  {r.vitality_index}%
+                </div>
+              </div>
+            </div>
+
+            {/* Emotional Resonance Bar */}
+            <div className="mt-4 mb-4">
+              <p className="text-sm mb-1">Emotional Resonance</p>
+              <div className="w-full h-2 rounded bg-slate-800">
+                <div
+                  className="h-2 rounded bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                  style={{ width: `${r.emotional_resonance}%` }}
+                />
+              </div>
+            </div>
+
+            <p>Unity Field Strength: {r.unity_field_strength}%</p>
+            <p>Ancestral Alignment: {r.ancestral_alignment}%</p>
+            <p>Future‑Soul Potential: {r.future_soul_potential}%</p>
+            <p>ATS Soul Team: {r.ats_soul_team}</p>
+
+            <div className="mt-4 p-3 bg-slate-800 rounded border border-slate-700">
+              <p className="text-sm text-slate-300">
+                <span className="text-pink-400 font-semibold">Healing Protocol:</span> {heal(r)}
+              </p>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

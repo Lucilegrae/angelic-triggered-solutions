@@ -1,0 +1,10 @@
+import AtsPrimordialCrownSourceCore from "@/components/cosmic/AtsPrimordialCrownSourceCore";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsPrimordialCrownSourceCore ✦</h2>
+      <AtsPrimordialCrownSourceCore />
+    </div>
+  );
+}

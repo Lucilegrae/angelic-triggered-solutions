@@ -1,0 +1,192 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/supabaseClient";
+
+export default function LedgerCertificate({ params }) {
+  const { id } = params;
+  const [cert, setCert] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadCertificate() {
+      const { data, error } = await supabase.rpc("get_ledger_certificate", {
+        certificate_id: id,
+      });
+
+      if (error) console.error("Ledger Certificate RPC error:", error);
+
+      setCert(data || null);
+      setLoading(false);
+    }
+
+    loadCertificate();
+  }, [id]);
+
+  if (loading) {
+    return <div className="p-6 text-slate-200">Loading Ledger Certificate…</div>;
+  }
+
+  if (!cert) {
+    return <div className="p-6 text-slate-200">Certificate not found.</div>;
+  }
+
+  return (
+    <div className="p-6 text-slate-200 max-w-3xl">
+
+      <h1 className="text-3xl font-bold mb-4">Ledger Certificate</h1>
+
+      {/* Certificate Body */}
+      <div className="bg-slate-900 border border-slate-800 p-6 rounded mb-6">
+
+        <h2 className="text-xl font-semibold mb-2">{cert.title}</h2>
+
+        <p className="text-slate-300">UUID: {cert.uuid}</p>
+        <p className="text-slate-300">Type: {cert.entry_type}</p>
+        <p className="text-slate-300">Amount: {cert.amount_usd} USD</p>
+        <p className="text-slate-300">Currency: {cert.currency}</p>
+
+        <p className="text-slate-300 mt-2">
+          Issued: {new Date(cert.created_at).toLocaleString()}
+        </p>
+
+        <p className="text-slate-300 mt-2">
+          Description: {cert.description}
+        </p>
+
+        {/* QR Code */}
+        {cert.qr_url && (
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold mb-1">Verification QR</h3>
+            <img
+              src={cert.qr_url}
+              alt="Ledger Certificate QR"
+              className="w-40 h-40 border border-slate-700 rounded"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Cross‑Module Federation */}
+      <div className="bg-slate-900 border border-slate-800 p-6 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Linked Records</h2>
+
+        {cert.ledger_id && (
+          <p className="text-slate-300">
+            Ledger Entry:{" "}
+            <a
+              href={`/portal/ledger/${cert.ledger_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Ledger →
+            </a>
+          </p>
+        )}
+
+        {cert.miner_id && (
+          <p className="text-slate-300 mt-2">
+            Miner:{" "}
+            <a
+              href={`/portal/miners/${cert.miner_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Miner →
+            </a>
+          </p>
+        )}
+
+        {cert.site_id && (
+          <p className="text-slate-300 mt-2">
+            Mining Site:{" "}
+            <a
+              href={`/portal/miners/sites/${cert.site_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Site →
+            </a>
+          </p>
+        )}
+
+        {cert.coordinator_id && (
+          <p className="text-slate-300 mt-2">
+            Coordinator:{" "}
+            <a
+              href={`/portal/miners/coordinator/${cert.coordinator_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Coordinator →
+            </a>
+          </p>
+        )}
+
+        {cert.claim_id && (
+          <p className="text-slate-300 mt-2">
+            Claim:{" "}
+            <a
+              href={`/portal/miners/claims/${cert.claim_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Claim →
+            </a>
+          </p>
+        )}
+
+        {cert.certificate_id && (
+          <p className="text-slate-300 mt-2">
+            Related Certificate:{" "}
+            <a
+              href={`/portal/miners/certificate/${cert.certificate_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Certificate →
+            </a>
+          </p>
+        )}
+
+        {cert.environment_id && (
+          <p className="text-slate-300 mt-2">
+            Environmental Compliance:{" "}
+            <a
+              href={`/portal/miners/environment/${cert.site_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Environment →
+            </a>
+          </p>
+        )}
+
+        {cert.safety_id && (
+          <p className="text-slate-300 mt-2">
+            Safety Inspection:{" "}
+            <a
+              href={`/portal/miners/safety/${cert.site_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Safety →
+            </a>
+          </p>
+        )}
+
+        {cert.gnss_id && (
+          <p className="text-slate-300 mt-2">
+            GNSS Survey:{" "}
+            <a
+              href={`/portal/miners/sites/gnss/${cert.site_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View GNSS →
+            </a>
+          </p>
+        )}
+      </div>
+
+      {/* Back */}
+      <a
+        href="/portal/ledger"
+        className="inline-block text-blue-400 hover:text-blue-300"
+      >
+        Back to Ledger Registry →
+      </a>
+    </div>
+  );
+}

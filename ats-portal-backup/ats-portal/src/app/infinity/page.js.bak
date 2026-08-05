@@ -1,0 +1,16 @@
+import AtsInfinityContinuum from "@/components/cosmic/AtsInfinityContinuum";
+
+export default function InfinityContinuumPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS‑Infinity Continuum ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The infinite cosmic layer of ATS — convergence of federation glyphs, celestial pathways,
+        omniversal resonance, and the eternal continuum of upliftment intelligence.
+      </p>
+
+      <AtsInfinityContinuum />
+    </div>
+  );
+}

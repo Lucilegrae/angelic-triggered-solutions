@@ -1,0 +1,15 @@
+export default async function RiskDashboard() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Risk Dashboard</h2>
+
+      <p className="text-slate-400 mb-4">
+        Highlights exposure, vulnerabilities, and risk signals in ATS operations and data.
+      </p>
+
+      <p className="text-slate-500">
+        Risk metrics will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

@@ -1,0 +1,15 @@
+import StakeholderUpliftmentScores from "@/components/StakeholderUpliftmentScores";
+
+export default function UpliftmentScoresPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Upliftment Scores ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Composite upliftment scoring across all stakeholder governance arcs.
+      </p>
+
+      <StakeholderUpliftmentScores />
+    </div>
+  );
+}

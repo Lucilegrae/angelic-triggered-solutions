@@ -1,0 +1,18 @@
+export default async function CouncilsList() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Councils</h2>
+
+      <a
+        href="/portal/councils/new"
+        className="bg-blue-600 px-4 py-2 rounded text-white"
+      >
+        + Register New Council
+      </a>
+
+      <p className="text-slate-400 mt-6">
+        Council listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

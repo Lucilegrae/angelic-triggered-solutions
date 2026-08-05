@@ -1,0 +1,12 @@
+import CertificateIssuancePanel from "@/components/CertificateIssuancePanel";
+import SealConstellationView from "@/components/SealConstellationView";
+
+export default function GenerateCertificatePage() {
+  return (
+    <div className="dashboard-card">
+      <h1 className="dashboard-title">Generate Certificate</h1>
+      <CertificateIssuancePanel />
+      <SealConstellationView />
+    </div>
+  );
+}

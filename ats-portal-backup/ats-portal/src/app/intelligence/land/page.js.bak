@@ -1,0 +1,14 @@
+"use client";
+
+import LandAllocationDashboard from "@/components/LandAllocationDashboard";
+
+export default function LandAllocationPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">✦ Land Allocation Dashboard ✦</h1>
+        <LandAllocationDashboard />
+      </div>
+    </div>
+  );
+}

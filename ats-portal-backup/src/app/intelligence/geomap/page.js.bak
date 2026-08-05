@@ -1,0 +1,14 @@
+"use client";
+
+import LandGeoMap from "@/components/LandGeoMap";
+
+export default function GeoMapPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">✦ Land Allocation Geo‑Map ✦</h1>
+        <LandGeoMap />
+      </div>
+    </div>
+  );
+}

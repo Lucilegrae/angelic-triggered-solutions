@@ -1,0 +1,17 @@
+import AtsInfiniteOriginSourceCrownEngine from "@/components/cosmic/AtsInfiniteOriginSourceCrownEngine";
+
+export default function AtsInfiniteOriginSourceCrownEnginePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS Infinite Origin‑Source Crown Engine ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The infinite origin‑source crown engine of ATS — primordial crown‑spark power,
+        eternal source‑energy, supreme origin‑throne radiance, prime eternal authority,
+        and the infinite engine sustaining all cosmic layers of ATS‑Infinity.
+      </p>
+
+      <AtsInfiniteOriginSourceCrownEngine />
+    </div>
+  );
+}

@@ -1,0 +1,5 @@
+import TaxReprieveDashboard from "@/components/TaxReprieveDashboard";
+
+export default function Page() {
+  return <TaxReprieveDashboard />;
+}

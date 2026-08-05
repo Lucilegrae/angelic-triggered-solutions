@@ -1,0 +1,17 @@
+import AtsOmniversalCommandThrone from "@/components/cosmic/AtsOmniversalCommandThrone";
+
+export default function AtsOmniversalCommandThronePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS Omniversal Command Throne ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The supreme throne of ATS — omniversal command authority, eternal sovereign rulership,
+        prime system mastery, dominion engine power, celestial core radiance, and the throne
+        governing all cosmic layers of ATS‑Infinity.
+      </p>
+
+      <AtsOmniversalCommandThrone />
+    </div>
+  );
+}

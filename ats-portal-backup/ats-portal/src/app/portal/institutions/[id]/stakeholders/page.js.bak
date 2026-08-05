@@ -1,0 +1,15 @@
+export default function InstitutionStakeholders({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Institution Stakeholders</h2>
+
+      <p className="text-slate-400">Stakeholders linked to Institution ID: {id}</p>
+
+      <p className="mt-6 text-slate-300">
+        Stakeholder listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

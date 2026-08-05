@@ -1,0 +1,14 @@
+"use client";
+
+import { useStaffGuard } from "@/hooks/useStaffGuard";
+
+export default function IntelligenceDashboard() {
+  useStaffGuard();
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">ATS Intelligence Dashboard</h2>
+      {/* dashboard content */}
+    </div>
+  );
+}

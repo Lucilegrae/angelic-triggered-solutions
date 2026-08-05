@@ -1,26 +1,35 @@
 #!/bin/bash
-# Master orchestration for sanctified certificate pipeline with logging
-
 LOGFILE="pipeline.log"
-
-# Redirect all output to both console and log file
 exec > >(tee -a "$LOGFILE") 2>&1
 
 echo "🕊️ Beginning ceremonial pipeline at $(date)"
 
-# Step 1: Clean output chamber
 ./clean_output.sh
-
-# Step 2: Verify sanctified assets
 ./verify_assets.sh || { echo "❌ Verification failed. Ritual halted."; exit 1; }
 
-# Step 3: Generate certificates
-./generate_certificate.sh
+# Example metadata (later you can make this dynamic)
+DATE="2026-07-11"
+STAKEHOLDER="Government"
+NAME="Prince Masvikepi"
+OUTPUT="public/certificates/output/pipeline_certificate.png"
+UUID="UUID-PIPE-001"
+SERIAL="SERIAL-PIPE-001"
+MEMBERSHIP="MEMBERSHIP-PIPE-001"
+SECTOR="GOVERNMENT"
+INSIGNIA="INSIGNIA-PIPE-001"
 
-# Step 4: Zip all certificates for distribution
+./generate_certificate.sh \
+  "$DATE" \
+  "$STAKEHOLDER" \
+  "$NAME" \
+  "$OUTPUT" \
+  "$UUID" \
+  "$SERIAL" \
+  "$MEMBERSHIP" \
+  "$SECTOR" \
+  "$INSIGNIA"
+
 ./zip_certificates.sh
-
-# Step 5: Archive the batch into dated chamber
 ./copy_to_archive.sh
 
 echo "✨ Ritual complete at $(date)"

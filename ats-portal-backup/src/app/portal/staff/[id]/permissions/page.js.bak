@@ -1,0 +1,15 @@
+export default async function StaffPermissions({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Staff Permissions</h2>
+
+      <p className="text-slate-400">Managing permissions for Staff ID: {id}</p>
+
+      <p className="mt-6 text-slate-500">
+        Permission toggles and access controls will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

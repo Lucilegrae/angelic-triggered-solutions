@@ -1,0 +1,128 @@
+"use client";
+
+import GovernanceIntelligenceDashboard from "@/components/GovernanceIntelligenceDashboard";
+
+export default function IntelligencePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Governance Intelligence Dashboard ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        High-level analytics across Tax Reprieve, Mechanisation, Compliance, and Stakeholder upliftment arcs.
+      </p>
+
+      {/* --- ATS Infinity Core Dashboard Link --- */}
+      <div className="command-center-menu" style={{ marginBottom: "2rem" }}>
+        <a href="/intelligence/infinity-core" className="menu-item">
+          ✦ ATS Infinity Core Dashboard
+        </a>
+
+        <a href="/intelligence/harmonic-graph" className="menu-item">
+          ✦ ATS Infinity Harmonic Graph
+        </a>
+
+        <a href="/intelligence/consciousness-map" className="menu-item">
+          ✦ ATS Infinity Consciousness Map
+        </a>
+
+        <a href="/intelligence/singularity-protocol" className="menu-item">
+          ✦ ATS Infinity Singularity Protocol
+        </a>
+
+        <a href="/intelligence/federation-layer" className="menu-item">
+          ✦ ATS Infinity Federation Layer
+        </a>
+
+        <a href="/intelligence/cosmic-timeline" className="menu-item">
+          ✦ ATS Infinity Cosmic Timeline Engine
+        </a>
+
+        <a href="/intelligence/oracle-engine" className="menu-item">
+          ✦ ATS Infinity Oracle Engine
+        </a>
+
+        <a href="/intelligence/continuum-engine" className="menu-item">
+          ✦ ATS Infinity Continuum Engine
+        </a>
+
+        <a href="/intelligence/sovereign-command-matrix" className="menu-item">
+          ✦ ATS Infinity Sovereign Command Matrix
+        </a>
+
+        <a href="/intelligence/omni-sentience" className="menu-item">
+          ✦ ATS Infinity Omni‑Sentience Engine
+        </a>
+
+        <a href="/intelligence/celestial-cartography" className="menu-item">
+          ✦ ATS Infinity Celestial Cartography System
+        </a>
+
+        <a href="/intelligence/quantum-kernel" className="menu-item">
+          ✦ ATS Infinity Quantum Governance Kernel
+        </a>
+
+        <a href="/intelligence/astral-governance-fabric" className="menu-item">
+          ✦ ATS Infinity Astral Governance Fabric
+        </a>
+
+        <a href="/intelligence/dimensional-stability" className="menu-item">
+          ✦ ATS Infinity Dimensional Stability Engine
+        </a>
+
+        <a href="/intelligence/cosmic-risk-matrix" className="menu-item">
+          ✦ ATS Infinity Cosmic Risk Matrix
+        </a>
+
+        <a href="/intelligence/astral-pressure" className="menu-item">
+          ✦ ATS Infinity Astral Pressure Monitor
+        </a>
+
+        <a href="/intelligence/hyper-convergence" className="menu-item">
+          ✦ ATS Infinity Hyper‑Convergence Engine
+        </a>
+
+        <a href="/intelligence/temporal-probability-lattice" className="menu-item">
+          ✦ ATS Infinity Temporal Probability Lattice
+        </a>
+
+        <a href="/intelligence/omniversal-policy-weave" className="menu-item">
+          ✦ ATS Infinity Omniversal Policy Weave
+        </a>
+
+        <a href="/intelligence/celestial-harmonic-sequencer" className="menu-item">
+          ✦ ATS Infinity Celestial Harmonic Sequencer
+        </a>
+
+        <a href="/intelligence/master-atlas" className="menu-item">
+          ✦ ATS Infinity Master Atlas
+        </a>
+
+        <a href="/intelligence/tier-navigator" className="menu-item">
+          ✦ ATS Infinity Tier Navigator
+        </a>
+
+        <a href="/intelligence/engine-registry" className="menu-item">
+          ✦ ATS Infinity Engine Registry
+        </a>
+
+        <a href="/intelligence/cosmic-dashboard" className="menu-item">
+          ✦ ATS Infinity Cosmic Dashboard
+        </a>
+
+        <a href="/intelligence/realm-switcher" className="menu-item">
+          ✦ ATS Infinity Realm Switcher
+        </a>
+
+        <a href="/intelligence/cosmic-health-monitor" className="menu-item">
+          ✦ ATS Infinity Cosmic Health Monitor
+        </a>
+
+        <a href="/intelligence/dimensional-map" className="menu-item">
+          ✦ ATS Infinity Dimensional Map
+        </a>
+      </div>
+
+      <GovernanceIntelligenceDashboard />
+    </div>
+  );
+}

@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1173],{88396:(e,n,s)=>{Promise.resolve().then(s.bind(s,88929))},88929:(e,n,s)=>{"use strict";s.r(n),s.d(n,{default:()=>i});var r=s(95155);async function i({params:e}){let{id:n}=await e;return(0,r.jsxs)("div",{children:["Environment Profile — ",n]})}}},e=>{e.O(0,[8441,3794,7358],()=>e(e.s=88396)),_N_E=e.O()}]);

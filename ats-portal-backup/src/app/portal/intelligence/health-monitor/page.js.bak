@@ -1,0 +1,15 @@
+export default async function HealthMonitor() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">System Health Monitor</h2>
+
+      <p className="text-slate-400 mb-4">
+        Tracks Supabase connectivity, RPC health, error rates, and data freshness.
+      </p>
+
+      <p className="text-slate-500">
+        Health status cards and alerts will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

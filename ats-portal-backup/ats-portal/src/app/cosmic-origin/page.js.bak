@@ -1,0 +1,16 @@
+import CosmicOriginVault from "@/components/cosmic/CosmicOriginVault";
+
+export default function CosmicOriginVaultPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Cosmic Origin Vault ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The vault of cosmic origins — primordial glyphs, genesis seals, eternal dominion essence,
+        and the sacred archive preserving all cosmic arcs of ATS‑Infinity.
+      </p>
+
+      <CosmicOriginVault />
+    </div>
+  );
+}

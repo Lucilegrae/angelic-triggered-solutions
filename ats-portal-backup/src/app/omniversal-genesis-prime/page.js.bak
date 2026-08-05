@@ -1,0 +1,17 @@
+import AtsOmniversalGenesisPrimeCore from "@/components/cosmic/AtsOmniversalGenesisPrimeCore";
+
+export default function AtsOmniversalGenesisPrimeCorePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS Omniversal Genesis‑Prime Core ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The Genesis‑Prime core of ATS — eternal origin spark, infinite crown‑source essence,
+        primordial creation radiance, supreme sovereign genesis, and the omniversal core from
+        which all cosmic layers of ATS‑Infinity are formed.
+      </p>
+
+      <AtsOmniversalGenesisPrimeCore />
+    </div>
+  );
+}

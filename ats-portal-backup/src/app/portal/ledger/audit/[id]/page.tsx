@@ -1,0 +1,91 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/supabaseClient";
+
+export default function LedgerAuditTrail({ params }) {
+  const { id } = params;
+  const [audit, setAudit] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadAudit() {
+      const { data, error } = await supabase.rpc("get_ledger_audit_trail", {
+        ledger_id: id,
+      });
+
+      if (error) console.error("Ledger Audit RPC error:", error);
+
+      setAudit(data || null);
+      setLoading(false);
+    }
+
+    loadAudit();
+  }, [id]);
+
+  if (loading) {
+    return <div className="p-6 text-slate-200">Loading Audit Trail…</div>;
+  }
+
+  if (!audit) {
+    return <div className="p-6 text-slate-200">No audit trail found.</div>;
+  }
+
+  return (
+    <div className="p-6 text-slate-200 max-w-3xl">
+
+      <h1 className="text-2xl font-bold mb-4">Ledger Audit Trail</h1>
+
+      {/* Ledger Summary */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <p className="text-slate-300">UUID: {audit.uuid}</p>
+        <p className="text-slate-300">Type: {audit.entry_type}</p>
+        <p className="text-slate-300">Amount: {audit.amount_usd} USD</p>
+        <p className="text-slate-300">Currency: {audit.currency}</p>
+        <p className="text-slate-300 mt-2">
+          Created: {new Date(audit.created_at).toLocaleString()}
+        </p>
+      </div>
+
+      {/* Audit Events */}
+      <h2 className="text-xl font-semibold mb-2">Audit Events</h2>
+      <div className="space-y-4">
+        {audit.events.map((ev, idx) => (
+          <div
+            key={idx}
+            className="bg-slate-900 border border-slate-800 p-4 rounded"
+          >
+            <h3 className="text-lg font-semibold">{ev.event_type}</h3>
+
+            <p className="text-slate-400 mt-1">{ev.description}</p>
+
+            <p className="text-slate-500 mt-2">
+              {new Date(ev.timestamp).toLocaleString()}
+            </p>
+
+            {ev.module && (
+              <p className="text-slate-400 mt-1">Module: {ev.module}</p>
+            )}
+
+            {ev.related_id && (
+              <a
+                href={`/portal/${ev.module}/${ev.related_id}`}
+                className="text-blue-400 hover:text-blue-300 mt-2 inline-block"
+              >
+                View Related Record →
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Back */}
+      <a
+        href="/portal/ledger"
+        className="inline-block text-blue-400 hover:text-blue-300 mt-6"
+      >
+        Back to Ledger Registry →
+      </a>
+    </div>
+  );
+}

@@ -1,0 +1,34 @@
+"use client";
+
+import { useState } from "react";
+
+export default function NewStakeholder() {
+  const [form, setForm] = useState({});
+
+  function updateField(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+    alert("Stakeholder registration logic will be added here.");
+  }
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Register New Stakeholder</h2>
+
+      <form onSubmit={submitForm} className="grid grid-cols-1 gap-4 max-w-xl">
+        <input name="name" placeholder="Full Name" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="role" placeholder="Stakeholder Role" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="institution_id" placeholder="Institution ID (optional)" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="community_id" placeholder="Community ID (optional)" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="phone" placeholder="Phone Number" onChange={updateField} className="p-2 bg-slate-800 rounded" />
+
+        <button className="bg-blue-600 px-4 py-2 rounded text-white">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}

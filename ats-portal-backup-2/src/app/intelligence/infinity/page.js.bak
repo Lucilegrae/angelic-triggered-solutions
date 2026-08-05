@@ -1,0 +1,33 @@
+"use client";
+
+import { useUser } from "@/components/useUser";
+import StakeholderInfinityProfile from "@/components/StakeholderInfinityProfile";
+
+export default function StakeholderInfinityPage() {
+  const { user, loading } = useUser();
+
+  if (loading) {
+    return <p className="text-slate-400">Loading…</p>;
+  }
+
+  if (!user) {
+    return <p className="text-red-400">Sign in to view your Infinity Profile.</p>;
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ Stakeholder Infinity Profile ✦
+        </h1>
+
+        <p className="text-slate-400 mb-6">
+          Full intelligence profile across legitimacy, upliftment, compliance,
+          mechanisation, and blessings.
+        </p>
+
+        <StakeholderInfinityProfile stakeholder={user} />
+      </div>
+    </div>
+  );
+}

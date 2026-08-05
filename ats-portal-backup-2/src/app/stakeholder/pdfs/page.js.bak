@@ -1,0 +1,9 @@
+"use client";
+import StakeholderPdfList from "@/components/StakeholderPdfList";
+import { useRpcQuery } from "@/components/useRpcQuery";
+
+export default function Page() {
+  const { data: pdfs } = useRpcQuery("list_glyph_pdfs", {}, 200);
+
+  return <StakeholderPdfList pdfs={pdfs || []} />;
+}
