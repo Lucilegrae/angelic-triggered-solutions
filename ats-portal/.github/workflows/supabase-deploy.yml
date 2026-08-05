@@ -14,6 +14,10 @@ jobs:
       run:
         working-directory: ats-portal
 
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+
     steps:
       - uses: actions/checkout@v4
 
