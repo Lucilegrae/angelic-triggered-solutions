@@ -1,14 +1,43 @@
-import { serve } from "https://deno.land/std/http/server.ts";
+import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 
-serve(() => {
-  const jwks = {
-    keys: []
-  };
+serve(async () => {
+  const jwksUrl = Deno.env.get("SUPABASE_JWKS_URL");
 
-  return new Response(JSON.stringify(jwks), {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=300"
-    }
-  });
+  if (!jwksUrl) {
+    return new Response(
+      JSON.stringify({
+        error: "SUPABASE_JWKS_URL environment variable is not configured."
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+  }
+
+  try {
+    const response = await fetch(jwksUrl);
+
+    return new Response(await response.text(), {
+      status: response.status,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=300"
+      }
+    });
+  } catch (err) {
+    return new Response(
+      JSON.stringify({
+        error: err instanceof Error ? err.message : "Unknown error"
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+  }
 });
