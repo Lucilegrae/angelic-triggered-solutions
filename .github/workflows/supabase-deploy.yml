@@ -16,7 +16,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: angelic-triggered-solutions/ats-portal
+        working-directory: ats-portal
 
     steps:
       - name: Checkout repository
