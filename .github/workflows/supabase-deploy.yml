@@ -27,28 +27,21 @@ jobs:
         with:
           version: latest
 
-      - name: Show Supabase CLI version
-        run: supabase --version
-
       - name: Authenticate Supabase
         run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
 
       - name: Verify project
         run: |
           pwd
-          ls -R
           ls -R supabase/functions
           test -f supabase/config.toml
-          test -f supabase/functions/public-jwks/index.ts
 
       - name: List deployed functions
         run: supabase functions list --project-ref "$SUPABASE_PROJECT_ID"
 
       - name: Deploy public-jwks
+        working-directory: ats-portal/supabase
         run: |
-          pwd
-          ls -R supabase/functions
           supabase functions deploy public-jwks \
-            --project-ref "$SUPABASE_PROJECT_ID" \
-            --no-verify-jwt \
-            --debug
+          --project-ref "$SUPABASE_PROJECT_ID" \
+          --no-verify-jwt
