@@ -40,7 +40,8 @@ jobs:
         run: supabase functions list --project-ref "$SUPABASE_PROJECT_ID"
 
       - name: Deploy public-jwks
+        working-directory: ats-portal/supabase
         run: |
           supabase functions deploy public-jwks \
-            --project-ref "$SUPABASE_PROJECT_ID" \
-            --no-verify-jwt
+          --project-ref "$SUPABASE_PROJECT_ID" \
+          --no-verify-jwt
