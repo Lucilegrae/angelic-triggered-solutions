@@ -2,7 +2,3 @@ project_id = "${SUPABASE_PROJECT_ID}"
 
 [functions]
 verify_jwt = false
-
-[functions.public-jwks]
-verify_jwt = false
-
