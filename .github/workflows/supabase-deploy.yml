@@ -1,0 +1,45 @@
+name: Supabase Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ats-portal
+
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v1
+
+      - name: Authenticate Supabase
+        run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
+
+      - name: Push database migrations
+        run: supabase db push
+
+      - name: Deploy all Supabase functions
+        working-directory: ats-portal/supabase
+        run: supabase functions deploy --project-ref "$SUPABASE_PROJECT_ID"
+
+      - name: Deploy JWKS function
+        working-directory: ats-portal/supabase
+        run: supabase functions deploy public-jwks --project-ref "$SUPABASE_PROJECT_ID" --no-verify-jwt
