@@ -1,0 +1,15 @@
+export default async function UpliftmentDashboard() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Upliftment Dashboard</h2>
+
+      <p className="text-slate-400 mb-4">
+        Shows how ATS activities contribute to community upliftment and social impact.
+      </p>
+
+      <p className="text-slate-500">
+        Metrics and charts will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

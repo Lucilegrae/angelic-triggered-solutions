@@ -1,41 +1,108 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
+# ───────────────────────────────────────────────
+#  ENVIRONMENT & SECRETS
+# ───────────────────────────────────────────────
+.env
+.env.*
+.env.local
+.env.production
 *.pem
+*.key
+config/keys/*.pem
+config/keys/*.key
 
-# debug
+# ───────────────────────────────────────────────
+#  NEXT.JS BUILD OUTPUT
+# ───────────────────────────────────────────────
+.next/
+out/
+dist/
+tsconfig.tsbuildinfo
+
+# ───────────────────────────────────────────────
+#  NODE & PACKAGE ARTIFACTS
+# ───────────────────────────────────────────────
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# ───────────────────────────────────────────────
+#  SUPABASE INTERNALS
+# ───────────────────────────────────────────────
+supabase/config.toml
+supabase/.temp/
+supabase/migrations/
 
-# vercel
-.vercel
+# ───────────────────────────────────────────────
+#  CERTIFICATES & PAYLOADS
+# ───────────────────────────────────────────────
+public/certificates/
+public/certificates/**/*.zip
+certificate_payload.json
+allocation_payload.json
+insurance_scaling_payload.json
+onboarding_payload.json
+unit_assignment_payload.json
+tier_payload.json
+scaling_payload.json
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# ───────────────────────────────────────────────
+#  SQL FILES (INTERNAL)
+# ───────────────────────────────────────────────
+*.sql
+
+# ───────────────────────────────────────────────
+#  AUDIO ASSETS (LARGE)
+# ───────────────────────────────────────────────
+public/*.mp3
+public/sounds/
+public/workers/
+public/partners_handshake.mp3
+public/sovereign-ambient.mp3
+
+# ───────────────────────────────────────────────
+#  BACKUPS & TEMPORARY
+# ───────────────────────────────────────────────
+tmp/
+ats-portal-backup/
+ats-portal-backup-2/
+tsc-errors.txt
+
+# ───────────────────────────────────────────────
+#  INTERNAL SCRIPTS (NOT FOR GITHUB)
+# ───────────────────────────────────────────────
+*.sh
+apply_rpc.sh
+allocation_engine.sh
+ats_backend_integration.sh
+generate_certificate.sh
+copy_to_archive.sh
+onboarding.sh
+tier_selection.sh
+unit_assignment.sh
+
+# ───────────────────────────────────────────────
+#  EDITOR & OS NOISE
+# ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# ───────────────────────────────────────────────
+#  ARCHIVES
+# ───────────────────────────────────────────────
+public/certificates/archives/
+public/certificates/archives/zips/
+
+# ───────────────────────────────────────────────
+#  ATS PORTAL INTERNAL STRUCTURES
+# ───────────────────────────────────────────────
+app/layout.js.bak
+app/src/
+backend/
+docs/
+scripts/
+hooks/
+utils/

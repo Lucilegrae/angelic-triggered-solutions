@@ -1,0 +1,84 @@
+"use client";
+
+import { useParams } from "next/navigation";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/supabaseClient";
+
+export default function MinerCoordinatorProfile() {
+  const { id, uuid, role, block } = useParams<{ id?: string; uuid?: string; role?: string; block?: string }>();
+  const { id } = params;
+  const [coord, setCoord] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadCoord() {
+      const { data, error } = await supabase.rpc("get_miner_coordinator", {
+        coordinator_id: id,
+      });
+
+      if (error) console.error("Miner Coordinator RPC error:", error);
+
+      setCoord(data || null);
+      setLoading(false);
+    }
+
+    loadCoord();
+  }, [id]);
+
+  if (loading) {
+    return <div className="p-6 text-slate-200">Loading Coordinator…</div>;
+  }
+
+  if (!coord) {
+    return <div className="p-6 text-slate-200">Coordinator not found.</div>;
+  }
+
+  return (
+    <div className="p-6 text-slate-200 max-w-3xl">
+      <h1 className="text-2xl font-bold mb-4">{coord.name}</h1>
+
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <p className="text-slate-300">Phone: {coord.phone}</p>
+        <p className="text-slate-300">Community: {coord.community_name}</p>
+        <p className="text-slate-300 mt-2">
+          Joined: {new Date(coord.created_at).toLocaleString()}
+        </p>
+      </div>
+
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Performance Stats</h2>
+        <p className="text-slate-300">Total Output: {coord.total_output_kg} kg</p>
+        <p className="text-slate-300">Daily Average: {coord.daily_average_kg} kg</p>
+      </div>
+
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Miners Managed</h2>
+
+        {coord.miners && coord.miners.length > 0 ? (
+          <ul className="list-disc list-inside text-slate-400">
+            {coord.miners.map((m) => (
+              <li key={m.id}>
+                <a
+                  href={`/portal/miners/${m.id}`}
+                  className="text-blue-400 hover:text-blue-300"
+                >
+                  {m.name} — {m.total_output_kg} kg
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-slate-500">No miners linked.</p>
+        )}
+      </div>
+
+      <a
+        href="/portal/miners"
+        className="inline-block text-blue-400 hover:text-blue-300"
+      >
+        Back to Miners Registry →
+      </a>
+    </div>
+  );
+}

@@ -1,0 +1,170 @@
+"use client";
+
+import { safe } from "@/lib/safe";
+import { useParams } from "next/navigation";
+import { useEstatePressure, useMinistryCoverage, useRisk } from "@/hooks/useMinistry";
+import { useRiskPrediction } from "@/hooks/useRiskPrediction";
+
+import GnssEstateMap from "@/components/GnssEstateMap";
+import EstateOccupancyHeatmap from "@/components/EstateOccupancyHeatmap";
+import RiskPieChart from "@/components/charts/RiskPieChart";
+import EstatePressureChart from "@/components/charts/EstatePressureChart";
+import EstateAllocationFlowChart from "@/components/charts/EstateAllocationFlowChart";
+import LifecycleClock from "@/components/LifecycleClock";
+
+export default function EstateIntelPage() {
+  const params = useParams<{ block: string }>();
+  const block = decodeURIComponent(block);
+
+  const token = "";
+
+  const { data: estates } = useEstatePressure(token);
+  const { data: coverage } = useMinistryCoverage(token);
+  const { data: risks } = useRisk(token);
+
+  const estate = estates?.find(
+    (e: any) => e.block_name === block
+  );
+
+  if (!estate || !coverage || !risks) {
+    return <div>Loading estate…</div>;
+  }
+
+  const members = safe(coverage).filter(
+    (m: any) => m.block_name === estate.block_name
+  );
+
+  const estateRisks = safe(risks).filter(
+    (r: any) => r.block_name === estate.block_name
+  );
+
+  const flow = estate.flow || [
+    { date: "2024-01", inflow: 3, outflow: 1 },
+    { date: "2024-02", inflow: 5, outflow: 2 },
+    { date: "2024-03", inflow: 2, outflow: 4 },
+    { date: "2024-04", inflow: 6, outflow: 1 },
+  ];
+
+  const { result, loading, predict } = useRiskPrediction();
+
+  const payload = {
+    total_units: estate.total_units,
+    occupied_slots: estate.occupied_slots,
+    risk_cluster: estateRisks.length,
+    pressure_ratio: estate.occupied_slots / estate.total_capacity,
+    flow_velocity: flow.reduce(
+      (acc: number, f: any) => acc + f.inflow + f.outflow,
+      0
+    ),
+  };
+
+  return (
+    <div className="p-6 space-y-6">
+      <h1 className="text-2xl font-semibold">
+        Estate Intelligence · {estate.block_name}
+      </h1>
+
+      <p className="text-sm text-slate-400">{estate.location}</p>
+
+      <section className="grid grid-cols-2 gap-4 text-xs md:grid-cols-4">
+        <div className="rounded-lg border border-emerald-500/40 bg-slate-900/40 px-3 py-2">
+          <p className="text-slate-400">Total Units</p>
+          <p className="text-sm font-semibold text-emerald-300">
+            {estate.total_units}
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-blue-500/40 bg-slate-900/40 px-3 py-2">
+          <p className="text-slate-400">Occupied</p>
+          <p className="text-sm font-semibold text-blue-300">
+            {estate.occupied_slots}
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-amber-500/40 bg-slate-900/40 px-3 py-2">
+          <p className="text-slate-400">Capacity</p>
+          <p className="text-sm font-semibold text-amber-300">
+            {estate.total_capacity}
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-red-500/40 bg-slate-900/40 px-3 py-2">
+          <p className="text-slate-400">Pressure</p>
+          <p className="text-sm font-semibold text-red-300">
+            {((estate.occupied_slots / estate.total_capacity) * 100).toFixed(0)}%
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Occupancy Heatmap</h2>
+        <EstateOccupancyHeatmap estates={[estate]} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Pressure Trend</h2>
+        <EstatePressureChart data={[estate]} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Risk Distribution</h2>
+        <RiskPieChart data={estateRisks} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Allocation Flow</h2>
+        <EstateAllocationFlowChart flow={flow} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">GNSS Estate Map</h2>
+        <GnssEstateMap estates={[estate]} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Members in Estate</h2>
+
+        <ul className="space-y-1 text-xs">
+          {members.map((m: any, idx: number) => (
+            <li
+              key={idx}
+              className="rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2"
+            >
+              {m.full_name} · Tier {m.tier} · {m.insurance_status}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Lifecycle Clock</h2>
+
+        <LifecycleClock
+          start={estate.allocation_clock_start || "2024-01-01"}
+          deadline={estate.allocation_deadline || "2024-12-31"}
+          monthsRemaining={estate.months_remaining || 6}
+        />
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-sm font-semibold">
+          Predictive Occupancy (ES256-signed)
+        </h2>
+
+        <button
+          onClick={() => predict(payload)}
+          className="rounded border border-red-500/40 px-3 py-1 text-xs text-red-300 hover:bg-red-500/10"
+        >
+          {loading ? "Predicting…" : "Run Occupancy Prediction"}
+        </button>
+
+        {result && (
+          <div className="mt-3 rounded-lg border border-red-500/40 bg-slate-900/40 p-3 text-xs">
+            <p>Score: {result.prediction.score}</p>
+            <p>Band: {result.prediction.band}</p>
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,10 @@
+import GlyphPdfDashboard from "@/components/GlyphPdfDashboard";
+
+export default function CertificateViewer({ params }) {
+  return (
+    <div className="dashboard-card">
+      <h1 className="dashboard-title">Certificate Viewer</h1>
+      <GlyphPdfDashboard uuid={params.uuid} />
+    </div>
+  );
+}

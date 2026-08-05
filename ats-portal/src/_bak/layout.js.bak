@@ -1,0 +1,25 @@
+export default function PortalLayout({ children }) {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex">
+      <aside className="w-64 bg-slate-900 p-4 border-r border-slate-800">
+        <h1 className="text-xl font-bold mb-6">ATS Staff Portal</h1>
+
+        <nav className="flex flex-col gap-3">
+          <a href="/portal">Dashboard</a>
+          <a href="/portal/members">Members</a>
+          <a href="/portal/stakeholders">Stakeholders</a>
+          <a href="/portal/institutions">Institutions</a>
+          <a href="/portal/communities">Communities</a>
+          <a href="/portal/savings">Micro‑Savings</a>
+          <a href="/portal/payments">Payments</a>
+          <a href="/portal/certificates">Certificates</a>
+          <a href="/portal/intelligence/dashboard">Intelligence</a>
+          <a href="/portal/staff">Staff</a>
+          <a href="/portal/settings">Settings</a>
+        </nav>
+      </aside>
+
+      <main className="flex-1 p-6">{children}</main>
+    </div>
+  );
+}

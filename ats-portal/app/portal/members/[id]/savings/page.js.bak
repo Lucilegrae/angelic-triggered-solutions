@@ -1,0 +1,15 @@
+export default function MemberSavings({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Micro‑Savings Status</h2>
+
+      <p className="text-slate-400">Savings for Member ID: {id}</p>
+
+      <p className="mt-6 text-slate-300">
+        Micro‑savings details will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

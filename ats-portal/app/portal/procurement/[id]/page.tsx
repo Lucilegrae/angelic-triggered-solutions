@@ -1,0 +1,103 @@
+"use client";
+
+import { useParams } from "next/navigation";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+
+export default function ProcurementProfile() {
+  const { id } = useParams<{ id: string }>();
+  const type = searchParams.type;
+
+  const [record, setRecord] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      const { data, error } = await supabase.rpc("get_procurement_record", {
+        record_id: id,
+        record_type: type,
+      });
+
+      if (error) console.error("RPC error:", error);
+      setRecord(data || null);
+      setLoading(false);
+    }
+    load();
+  }, [id, type]);
+
+  if (loading) {
+    return <div className="p-6 text-slate-200">Loading procurement record…</div>;
+  }
+
+  if (!record) {
+    return <div className="p-6 text-slate-200">Record not found.</div>;
+  }
+
+  return (
+    <div className="p-6 text-slate-200 max-w-3xl">
+      <h1 className="text-2xl font-bold mb-4 capitalize">
+        {record.type} Procurement
+      </h1>
+
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <p className="text-slate-300">Title: {record.title}</p>
+        <p className="text-slate-300">Intake: {record.intake_kg} kg</p>
+        <p className="text-slate-300">Status: {record.status}</p>
+        <p className="text-slate-300">
+          Created: {new Date(record.created_at).toLocaleString()}
+        </p>
+      </div>
+
+      {type === "export" && (
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+          <h2 className="text-xl font-semibold mb-2">Export Details</h2>
+          <p className="text-slate-300">Community: {record.community_name}</p>
+          <p className="text-slate-300">Coordinator: {record.coordinator_name}</p>
+          <p className="text-slate-300">Farmer: {record.farmer_name}</p>
+          <p className="text-slate-300">Institution: {record.institution_name}</p>
+        </div>
+      )}
+
+      {type === "agriculture" && (
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+          <h2 className="text-xl font-semibold mb-2">Agriculture Details</h2>
+          <p className="text-slate-300">Crop Type: {record.crop_type}</p>
+          <p className="text-slate-300">Community: {record.community_name}</p>
+        </div>
+      )}
+
+      {type === "community" && (
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+          <h2 className="text-xl font-semibold mb-2">Housing Program Details</h2>
+          <p className="text-slate-300">Member: {record.title}</p>
+          <p className="text-slate-300">Community: {record.community_name}</p>
+          <p className="text-slate-300">Pledge: {record.pledge}</p>
+        </div>
+      )}
+
+      {type === "mining" && (
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+          <h2 className="text-xl font-semibold mb-2">Mining Capacitation</h2>
+          <p className="text-slate-300">Stakeholder: {record.title}</p>
+          <p className="text-slate-300">Mechanisation Count: {record.intake_kg}</p>
+        </div>
+      )}
+
+      {type === "insurance" && (
+        <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+          <h2 className="text-xl font-semibold mb-2">Insurance Signup</h2>
+          <p className="text-slate-300">Client: {record.title}</p>
+          <p className="text-slate-300">Legitimacy Score: {record.intake_kg}</p>
+        </div>
+      )}
+
+      <a
+        href="/portal/procurement"
+        className="inline-block text-blue-400 hover:text-blue-300"
+      >
+        Back to Procurement →
+      </a>
+    </div>
+  );
+}

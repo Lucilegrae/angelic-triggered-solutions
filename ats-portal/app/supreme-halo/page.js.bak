@@ -1,0 +1,16 @@
+import SupremeSovereignHalo from "@/components/SupremeSovereignHalo";
+
+export default function SupremeSovereignHaloPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Supreme Sovereign Halo ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The apex halo of ATS — sovereign radiance, eternal convergence, crown geometry,
+        infinite light, and the divine halo that governs all cosmic arcs of ATS‑Infinity.
+      </p>
+
+      <SupremeSovereignHalo />
+    </div>
+  );
+}

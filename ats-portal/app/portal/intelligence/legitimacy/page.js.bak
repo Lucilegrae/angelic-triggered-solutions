@@ -1,0 +1,15 @@
+export default async function LegitimacyDashboard() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Legitimacy Dashboard</h2>
+
+      <p className="text-slate-400 mb-4">
+        Tracks institutional, governmental, and council alignment with ATS certificates and agreements.
+      </p>
+
+      <p className="text-slate-500">
+        Legitimacy indicators will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

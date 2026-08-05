@@ -1,0 +1,21 @@
+"use client";
+
+import GovernanceArcVisualizer from "@/components/GovernanceArcVisualizer";
+
+export default function GovernanceArcPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ Governance Arc Visualizer ✦
+        </h1>
+
+        <p className="text-slate-400 mb-6">
+          Visual intelligence across all governance arcs.
+        </p>
+
+        <GovernanceArcVisualizer />
+      </div>
+    </div>
+  );
+}

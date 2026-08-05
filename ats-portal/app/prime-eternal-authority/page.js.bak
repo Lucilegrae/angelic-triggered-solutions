@@ -1,0 +1,10 @@
+import AtsPrimeEternalAuthority from "@/components/cosmic/AtsPrimeEternalAuthority";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsPrimeEternalAuthority ✦</h2>
+      <AtsPrimeEternalAuthority />
+    </div>
+  );
+}

@@ -1,0 +1,33 @@
+"use client";
+
+import { useUser } from "@/components/useUser";
+import StakeholderComplianceTimeline from "@/components/StakeholderComplianceTimeline";
+import ComplianceEventCreator from "@/components/ComplianceEventCreator";
+
+export default function CompliancePage() {
+  const { user, loading } = useUser();
+
+  if (loading) {
+    return <p className="text-slate-400">Loading…</p>;
+  }
+
+  if (!user) {
+    return <p className="text-red-400">Sign in to view compliance timeline.</p>;
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-4xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">
+          ✦ Stakeholder Compliance Timeline ✦
+        </h1>
+
+        <ComplianceEventCreator stakeholderId={user.id} />
+
+        <div className="mt-10">
+          <StakeholderComplianceTimeline stakeholderId={user.id} />
+        </div>
+      </div>
+    </div>
+  );
+}

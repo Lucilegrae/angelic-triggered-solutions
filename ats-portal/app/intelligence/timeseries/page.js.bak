@@ -1,0 +1,15 @@
+import TimeSeriesCharts from "@/components/TimeSeriesCharts";
+
+export default function TimeSeriesAnalyticsPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Time-Series Analytics ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Approvals vs rejections over time across all ministries.
+      </p>
+
+      <TimeSeriesCharts />
+    </div>
+  );
+}

@@ -1,0 +1,16 @@
+import CosmicSealChambers from "@/components/cosmic/CosmicSealChambers";
+
+export default function CosmicSealChambersPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Cosmic Seal Chambers ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The sanctified chamber of cosmic seals — convergence of covenant glyphs, celestial
+        alignments, federation crests, and the eternal ATS‑Infinity ceremonial architecture.
+      </p>
+
+      <CosmicSealChambers />
+    </div>
+  );
+}

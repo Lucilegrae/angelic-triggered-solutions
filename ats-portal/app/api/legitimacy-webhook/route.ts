@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import crypto from "crypto";
 
-export async function POST(req: Request) {
+export async function POST(req, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const { stage, role, progress } = await req.json();
 
   const { data: webhooks } = await supabase

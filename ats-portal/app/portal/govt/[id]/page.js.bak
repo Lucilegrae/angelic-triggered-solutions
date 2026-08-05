@@ -1,0 +1,20 @@
+export default async function GovernmentProfile({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Government Department Profile</h2>
+
+      <p className="text-slate-400">Department ID: {id}</p>
+
+      <div className="mt-6 flex flex-col gap-3">
+        <a href={`/portal/govt/${id}/certificate`} className="text-blue-400">
+          View Certificate
+        </a>
+        <a href={`/portal/govt/${id}/institutions`} className="text-blue-400">
+          View Linked Institutions
+        </a>
+      </div>
+    </div>
+  );
+}

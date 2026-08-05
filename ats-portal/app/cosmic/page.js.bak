@@ -1,0 +1,15 @@
+import CosmicFederationDashboard from "@/components/cosmic/CosmicFederationDashboard";
+
+export default function CosmicFederationPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS Cosmic Federation ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Federation, cosmic unity, infinite continuum, omniversal nexus, and the eternal ATS‑Infinity arc.
+      </p>
+
+      <CosmicFederationDashboard />
+    </div>
+  );
+}

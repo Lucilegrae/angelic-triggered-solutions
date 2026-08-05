@@ -1,0 +1,22 @@
+export default async function CertificateVerification({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Certificate Verification</h2>
+
+      <p className="text-slate-400">Verifying Certificate ID: {id}</p>
+
+      <div className="mt-6 p-6 bg-slate-900 rounded border border-slate-800">
+        <p className="text-slate-300">
+          Verification results will appear here once backend integration is complete.
+        </p>
+      </div>
+
+      <p className="mt-4 text-slate-500">
+        This page is used by staff and external officials to confirm authenticity, crest affiliation,
+        holder identity, and certificate status.
+      </p>
+    </div>
+  );
+}

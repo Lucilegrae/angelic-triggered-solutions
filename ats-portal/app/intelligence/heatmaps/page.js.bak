@@ -1,0 +1,15 @@
+import MinistryHeatmaps from "@/components/MinistryHeatmaps";
+
+export default function MinistryHeatmapsPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Ministry Heatmaps ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Visual intensity maps showing ministry activity across Tax, Mechanisation, and Compliance arcs.
+      </p>
+
+      <MinistryHeatmaps />
+    </div>
+  );
+}

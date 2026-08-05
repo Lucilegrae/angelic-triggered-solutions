@@ -1,0 +1,15 @@
+export default function GovernmentInstitutions({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Linked Institutions</h2>
+
+      <p className="text-slate-400">Institutions linked to Government Department ID: {id}</p>
+
+      <p className="mt-6 text-slate-300">
+        Institution listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

@@ -1,0 +1,18 @@
+export default async function SavingsList() {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Micro‑Savings Plans</h2>
+
+      <a
+        href="/portal/savings/new"
+        className="bg-blue-600 px-4 py-2 rounded text-white"
+      >
+        + Register New Savings Plan
+      </a>
+
+      <p className="text-slate-400 mt-6">
+        Micro‑savings listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

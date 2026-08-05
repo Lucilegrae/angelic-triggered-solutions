@@ -1,0 +1,5 @@
+import MinistryApprovalDashboard from "@/components/MinistryApprovalDashboard";
+
+export default function Page() {
+  return <MinistryApprovalDashboard />;
+}

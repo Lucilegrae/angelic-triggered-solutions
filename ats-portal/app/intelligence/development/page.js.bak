@@ -1,0 +1,14 @@
+"use client";
+
+import CommunityDevelopmentDashboard from "@/components/CommunityDevelopmentDashboard";
+
+export default function CommunityDevelopmentPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-6xl mx-auto py-12 px-4">
+        <h1 className="text-2xl font-semibold mb-4">✦ Community Development Dashboard ✦</h1>
+        <CommunityDevelopmentDashboard />
+      </div>
+    </div>
+  );
+}

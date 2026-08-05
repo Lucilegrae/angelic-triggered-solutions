@@ -1,0 +1,17 @@
+import AtsInfinityMasterControl from "@/components/cosmic/AtsInfinityMasterControl";
+
+export default function AtsInfinityMasterControlPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ ATS‑Infinity Master Control ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The omniversal command brain of ATS — supreme eternal crown power, prime system authority,
+        sovereign continuum flow, dominion engine force, celestial core radiance, and the master
+        control node governing all cosmic layers of ATS‑Infinity.
+      </p>
+
+      <AtsInfinityMasterControl />
+    </div>
+  );
+}

@@ -1,0 +1,10 @@
+import AtsInfiniteOriginSourceCrownEngine from "@/components/cosmic/AtsInfiniteOriginSourceCrownEngine";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsInfiniteOriginSourceCrownEngine ✦</h2>
+      <AtsInfiniteOriginSourceCrownEngine />
+    </div>
+  );
+}

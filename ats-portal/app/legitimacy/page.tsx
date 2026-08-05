@@ -7,49 +7,50 @@ import { LegitimacyTrajectory } from "@/components/legitimacy/LegitimacyTrajecto
 import { LegitimacyArchive } from "@/components/legitimacy/LegitimacyArchive";
 import { LegitimacyConsistency } from "@/components/legitimacy/LegitimacyConsistency";
 import { LegitimacyTrust } from "@/components/legitimacy/LegitimacyTrust";
-import { LegitimacyInfluence } from "@/components/legitimacy/LegitimacyInfluence";
+import LegitimacyInfluence from "@/components/legitimacy/LegitimacyInfluence";
 import { LegitimacyPowerRankings } from "@/components/legitimacy/LegitimacyPowerRankings";
 import { LegitimacyTimeline } from "@/components/legitimacy/LegitimacyTimeline";
 import { LegitimacyAlignment } from "@/components/legitimacy/LegitimacyAlignment";
 
+type LegitimacyRow = {
+  id: string | number;
+  progress: number;
+  stage: string;
+};
+
 export default function LegitimacyPage() {
-  const [rows, setRows] = useState<any[]>([]);
+  const [rows, setRows] = useState<LegitimacyRow[]>([]);
 
   useEffect(() => {
-    fetch("/api/legitimacy")
-      .then((res) => res.json())
-      .then((d) => setRows(d.legitimacy || []));
+    async function loadLegitimacy() {
+      try {
+        const res = await fetch("/api/legitimacy");
+        const data = await res.json();
+        setRows(data.legitimacy ?? []);
+      } catch (error) {
+        console.error("Failed to load legitimacy data:", error);
+        setRows([]);
+      }
+    }
+
+    loadLegitimacy();
   }, []);
 
   return (
-    <div className="p-6 flex flex-col gap-8 bg-black min-h-screen text-white">
-      <h1 className="text-3xl font-bold aura-title">ATS Legitimacy Dashboard</h1>
+    <div className="p-6 flex min-h-screen flex-col gap-8 bg-black text-white">
+      <h1 className="aura-title text-3xl font-bold">
+        ATS Legitimacy Dashboard
+      </h1>
 
-      {/* Legitimacy Score */}
       <LegitimacyScore />
-
-      {/* Legitimacy Prediction */}
       <LegitimacyTrajectory />
-
-      {/* Legitimacy Consistency */}
       <LegitimacyConsistency />
-
-      {/* Legitimacy Trust */}
       <LegitimacyTrust />
-
-      {/* Legitimacy Influence */}
       <LegitimacyInfluence />
-
-      {/* Legitimacy Power Rankings */}
       <LegitimacyPowerRankings />
-
-      {/* Legitimacy Timeline */}
       <LegitimacyTimeline />
-
-      {/* Legitimacy Alignment */}
       <LegitimacyAlignment />
 
-      {/* Legitimacy Rows */}
       <div className="flex flex-col gap-6">
         {rows.map((row) => (
           <LegitimacyMeter
@@ -60,7 +61,6 @@ export default function LegitimacyPage() {
         ))}
       </div>
 
-      {/* Legitimacy Archive */}
       <LegitimacyArchive />
     </div>
   );

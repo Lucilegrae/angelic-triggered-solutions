@@ -1,0 +1,141 @@
+"use client";
+
+import { useParams } from "next/navigation";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/supabaseClient";
+
+export default function MinerProfile() {
+  const { id } = useParams<{ id: string }>();
+  const [miner, setMiner] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadMiner() {
+      const { data, error } = await supabase.rpc("get_miner_profile", {
+        miner_id: id,
+      });
+
+      if (error) {
+        console.error("Miner Profile RPC error:", error);
+      }
+
+      setMiner(data || null);
+      setLoading(false);
+    }
+
+    loadMiner();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="p-6 text-slate-200">
+        <h2>Loading Miner Profile…</h2>
+      </div>
+    );
+  }
+
+  if (!miner) {
+    return (
+      <div className="p-6 text-slate-200">
+        <h2>Miner not found.</h2>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 text-slate-200 max-w-3xl">
+      <h1 className="text-2xl font-bold mb-4">{miner.name}</h1>
+
+      {/* Core Miner Details */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <p className="text-slate-300">Phone: {miner.phone}</p>
+        <p className="text-slate-300">Mining Site: {miner.site_name}</p>
+        <p className="text-slate-300">Mineral: {miner.mineral_type}</p>
+        <p className="text-slate-300 mt-2">
+          Joined: {new Date(miner.created_at).toLocaleString()}
+        </p>
+      </div>
+
+      {/* Production Stats */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Production Stats</h2>
+
+        <p className="text-slate-300">Total Deliveries: {miner.total_deliveries}</p>
+        <p className="text-slate-300">Total Output: {miner.total_output_kg} kg</p>
+        <p className="text-slate-300">Daily Average: {miner.daily_average_kg} kg</p>
+      </div>
+
+      {/* Coordinators Linked to Miner */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Coordinators</h2>
+
+        {miner.coordinators && miner.coordinators.length > 0 ? (
+          <ul className="list-disc list-inside text-slate-400">
+            {miner.coordinators.map((c) => (
+              <li key={c.id}>
+                <a
+                  href={`/portal/miners/coordinator/${c.id}`}
+                  className="text-blue-400 hover:text-blue-300"
+                >
+                  {c.name} — {c.total_kg} kg handled
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-slate-500">No coordinators linked.</p>
+        )}
+      </div>
+
+      {/* Cross‑Module Federation */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded mb-6">
+        <h2 className="text-xl font-semibold mb-2">Cross‑Module Links</h2>
+
+        {miner.community_id && (
+          <p className="text-slate-300">
+            Community:{" "}
+            <a
+              href={`/portal/communities/${miner.community_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Community →
+            </a>
+          </p>
+        )}
+
+        {miner.institution_id && (
+          <p className="text-slate-300 mt-2">
+            Institution:{" "}
+            <a
+              href={`/portal/institutions/${miner.institution_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Institution →
+            </a>
+          </p>
+        )}
+
+        {miner.ledger_id && (
+          <p className="text-slate-300 mt-2">
+            Ledger Entry:{" "}
+            <a
+              href={`/portal/ledger/${miner.ledger_id}`}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              View Ledger →
+            </a>
+          </p>
+        )}
+      </div>
+
+      {/* Back Link */}
+      <a
+        href="/portal/miners"
+        className="inline-block text-blue-400 hover:text-blue-300"
+      >
+        Back to Miners Registry →
+      </a>
+    </div>
+  );
+}

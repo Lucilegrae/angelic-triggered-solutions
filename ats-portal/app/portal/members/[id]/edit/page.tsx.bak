@@ -1,0 +1,67 @@
+"use client";
+
+import { useParams } from "next/navigation";
+
+import { useEffect, useState } from "react";
+import { useStaffGuard } from "@/hooks/useStaffGuard";
+
+export default function EditMember() {
+  const { id, uuid, role, block } = useParams<{ id?: string; uuid?: string; role?: string; block?: string }>();
+  useStaffGuard();
+
+  const [form, setForm] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState(null);
+
+  useEffect(() => {
+    async function loadMember() {
+      const res = await fetch(`/api/members/${id}/profile`);
+      const data = await res.json();
+      setForm(data);
+      setLoading(false);
+    }
+    loadMember();
+  }, [id]);
+
+  function updateField(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+    const res = await fetch(`/api/members/${id}/update`, {
+      method: "POST",
+      body: JSON.stringify(form),
+    });
+    const data = await res.json();
+    setStatus(data);
+  }
+
+  if (loading) return <p className="text-slate-400">Loading…</p>;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Edit Member</h2>
+
+      <form onSubmit={submitForm} className="grid grid-cols-1 gap-4 max-w-xl">
+        <input name="surname" value={form.surname} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="first_names" value={form.first_names} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="dob" value={form.dob} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="sex" value={form.sex} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="nat_id" value={form.nat_id} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="address" value={form.address} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+        <input name="phone" value={form.phone} onChange={updateField} className="p-2 bg-slate-800 rounded" />
+
+        <button className="bg-blue-600 px-4 py-2 rounded text-white">
+          Save Changes
+        </button>
+      </form>
+
+      {status && (
+        <pre className="mt-4 text-slate-300 bg-slate-900 p-4 rounded border border-slate-800">
+          {JSON.stringify(status, null, 2)}
+        </pre>
+      )}
+    </div>
+  );
+}

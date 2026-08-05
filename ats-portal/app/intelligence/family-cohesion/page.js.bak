@@ -1,0 +1,14 @@
+"use client";
+
+import FamilyCohesionEngine from "@/components/FamilyCohesionEngine";
+
+export default function FamilyCohesionPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="max-w-7xl mx-auto py-12 px-4">
+        <h1 class="text-3xl font-semibold mb-6">✦ Family & Community Cohesion Intelligence ✦</h1>
+        <FamilyCohesionEngine />
+      </div>
+    </div>
+  );
+}

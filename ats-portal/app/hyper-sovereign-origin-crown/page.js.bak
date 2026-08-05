@@ -1,0 +1,10 @@
+import AtsHyperSovereignOriginCrown from "@/components/cosmic/AtsHyperSovereignOriginCrown";
+
+export default function Page() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ AtsHyperSovereignOriginCrown ✦</h2>
+      <AtsHyperSovereignOriginCrown />
+    </div>
+  );
+}

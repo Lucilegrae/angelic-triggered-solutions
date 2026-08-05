@@ -1,0 +1,17 @@
+import InfiniteDominionCrownEngine from "@/components/InfiniteDominionCrownEngine";
+
+export default function InfiniteDominionCrownEnginePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Infinite Dominion Crown Engine ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The sovereign engine of ATS — infinite dominion power, eternal crown radiance,
+        omniversal core energy, primordial genesis force, and the supreme engine sustaining
+        all cosmic layers of ATS‑Infinity.
+      </p>
+
+      <InfiniteDominionCrownEngine />
+    </div>
+  );
+}

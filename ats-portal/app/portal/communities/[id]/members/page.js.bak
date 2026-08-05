@@ -1,0 +1,15 @@
+export default function CommunityMembers({ params }) {
+  const { id } = params;
+
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Community Members</h2>
+
+      <p className="text-slate-400">Members linked to Community ID: {id}</p>
+
+      <p className="mt-6 text-slate-300">
+        Member listing will appear here once backend integration is complete.
+      </p>
+    </div>
+  );
+}

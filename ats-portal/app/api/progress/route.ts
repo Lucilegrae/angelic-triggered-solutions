@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseServerClient } from '@/lib/supabaseServer';
 
-export async function GET(req: NextRequest) {
+export async function GET(req, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const id = req.nextUrl.searchParams.get('id');
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
 

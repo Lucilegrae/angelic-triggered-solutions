@@ -1,0 +1,16 @@
+import EternalDominionSphere from "@/components/EternalDominionSphere";
+
+export default function EternalDominionSpherePage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Eternal Dominion Sphere ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        The infinite dominion of ATS — eternal sovereignty, cosmic authority, supreme halo radiance,
+        crown geometry, convergence arcs, and the dominion sphere governing all realms of ATS‑Infinity.
+      </p>
+
+      <EternalDominionSphere />
+    </div>
+  );
+}

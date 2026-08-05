@@ -1,0 +1,15 @@
+import MinistryPerformanceIndex from "@/components/MinistryPerformanceIndex";
+
+export default function MinistryPerformanceIndexPage() {
+  return (
+    <div className="pdf-dashboard">
+      <h2 className="slogan-arc aura-heading">✦ Ministry Performance Index ✦</h2>
+
+      <p className="text-slate-400" style={{ marginBottom: "1rem" }}>
+        Ranked ministry performance across Tax, Mechanisation, and Compliance upliftment arcs.
+      </p>
+
+      <MinistryPerformanceIndex />
+    </div>
+  );
+}

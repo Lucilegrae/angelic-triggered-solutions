@@ -1,19 +1,27 @@
-import { notFound } from 'next/navigation';
-import { EnrolForm } from '@/components/EnrolForm';
+import { notFound } from "next/navigation";
+import { EnrolForm } from "@/components/EnrolForm";
 
 const allowedRoles = [
-  'community',
-  'miner',
-  'bank',
-  'investor',
-  'government',
-  'suppliers',
-  'transport',
-  'donors',
+  "community",
+  "miner",
+  "bank",
+  "investor",
+  "government",
+  "suppliers",
+  "transport",
+  "donors",
 ];
 
-export default function EnrolRolePage({ params }: { params: { role: string } }) {
-  const { role } = params;
+type PageProps = {
+  params: Promise<{
+    role: string;
+  }>;
+};
+
+export default async function EnrolRolePage({
+  params,
+}: PageProps) {
+  const { role } = await params;
 
   if (!allowedRoles.includes(role)) {
     notFound();
@@ -31,7 +39,7 @@ export default function EnrolRolePage({ params }: { params: { role: string } }) 
         </p>
 
         <div className="mt-6">
-          <EnrolForm role={role as any} />
+          <EnrolForm role={role} />
         </div>
       </div>
     </main>
