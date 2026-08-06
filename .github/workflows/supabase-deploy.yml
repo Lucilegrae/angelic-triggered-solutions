@@ -22,26 +22,69 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Clean Supabase cache
+        run: |
+          rm -rf supabase/.temp
+
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
           version: latest
 
-      - name: Authenticate Supabase
-        run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
-
-      - name: Verify project
+      - name: Show Supabase CLI version
         run: |
+          supabase --version
+
+      - name: Authenticate Supabase
+        run: |
+          supabase login --token "$SUPABASE_ACCESS_TOKEN"
+
+      - name: Verify project structure
+        run: |
+          echo "Current directory:"
           pwd
+
+          echo ""
+          echo "Repository contents:"
+          ls -la
+
+          echo ""
+          echo "Supabase directory:"
+          ls -la supabase
+
+          echo ""
+          echo "Functions:"
           ls -R supabase/functions
+
+          echo ""
+          echo "Configuration:"
+          cat supabase/config.toml
+
+          echo ""
+          echo "All TOML files:"
+          find supabase -name "*.toml"
+
+          echo ""
+          echo "Ensure config exists..."
           test -f supabase/config.toml
 
       - name: List deployed functions
-        run: supabase functions list --project-ref "$SUPABASE_PROJECT_ID"
+        run: |
+          supabase functions list \
+            --project-ref "$SUPABASE_PROJECT_ID" \
+            --debug
 
       - name: Deploy public-jwks
         run: |
           cd supabase
+
+          echo "Working directory:"
+          pwd
+
+          echo ""
+          echo "Deploying public-jwks..."
+
           supabase functions deploy public-jwks \
-          --project-ref "$SUPABASE_PROJECT_ID" \
-          --no-verify-jwt
+            --project-ref "$SUPABASE_PROJECT_ID" \
+            --no-verify-jwt \
+            --debug
