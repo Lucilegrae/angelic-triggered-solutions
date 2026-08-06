@@ -12,64 +12,40 @@ jobs:
 
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
 
     defaults:
       run:
         working-directory: ats-portal
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Clean Supabase cache
-        run: |
-          rm -rf supabase/.temp
 
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
           version: 2.111.0
 
-      - name: Show Supabase CLI version
+      - name: Verify environment
         run: |
-          supabase --version
-
-      - name: Verify Supabase project
-        run: |
-          echo "Current directory:"
+          echo "Directory:"
           pwd
 
-          echo ""
-          echo "Supabase structure:"
-          ls -la supabase
-
-          echo ""
-          echo "Functions:"
+          echo "Supabase files:"
           ls -R supabase/functions
 
-          echo ""
-          echo "Config:"
-          cat supabase/config.toml
+          echo "CLI version:"
+          supabase --version
 
-          echo ""
-          echo "Checking config exists:"
-          test -f supabase/config.toml
-
-      - name: List deployed functions
+      - name: Link Supabase project
         run: |
-          supabase functions list \
-            --project-ref "$SUPABASE_PROJECT_ID" \
-            --debug
+          supabase link \
+            --project-ref "$SUPABASE_PROJECT_REF"
 
       - name: Deploy public-jwks
         run: |
-          cd supabase
-
-          echo "Deploying public-jwks..."
-
           supabase functions deploy public-jwks \
-            --project-ref "$SUPABASE_PROJECT_ID" \
+            --project-ref "$SUPABASE_PROJECT_REF" \
             --no-verify-jwt \
             --debug
