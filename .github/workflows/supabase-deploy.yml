@@ -19,6 +19,7 @@ jobs:
         working-directory: ats-portal
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -29,27 +30,19 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
-          version: latest
+          version: 2.111.0
 
       - name: Show Supabase CLI version
         run: |
           supabase --version
 
-      - name: Authenticate Supabase
-        run: |
-          supabase login --token "$SUPABASE_ACCESS_TOKEN"
-
-      - name: Verify project structure
+      - name: Verify Supabase project
         run: |
           echo "Current directory:"
           pwd
 
           echo ""
-          echo "Repository contents:"
-          ls -la
-
-          echo ""
-          echo "Supabase directory:"
+          echo "Supabase structure:"
           ls -la supabase
 
           echo ""
@@ -57,15 +50,11 @@ jobs:
           ls -R supabase/functions
 
           echo ""
-          echo "Configuration:"
+          echo "Config:"
           cat supabase/config.toml
 
           echo ""
-          echo "All TOML files:"
-          find supabase -name "*.toml"
-
-          echo ""
-          echo "Ensure config exists..."
+          echo "Checking config exists:"
           test -f supabase/config.toml
 
       - name: List deployed functions
@@ -78,10 +67,6 @@ jobs:
         run: |
           cd supabase
 
-          echo "Working directory:"
-          pwd
-
-          echo ""
           echo "Deploying public-jwks..."
 
           supabase functions deploy public-jwks \
