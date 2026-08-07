@@ -45,13 +45,7 @@ jobs:
 
       - name: Deploy public-jwks
         run: |
-          echo "=== ENTERING SUPABASE PROJECT ==="
-          cd "$GITHUB_WORKSPACE/ats-portal/supabase" || {
-            echo "Supabase directory not found. Listing workspace:"
-            ls -R "$GITHUB_WORKSPACE"
-            exit 1
-          }
-
+          cd "$GITHUB_WORKSPACE/supabase"
           supabase functions deploy public-jwks \
             --project-ref "$SUPABASE_PROJECT_REF" \
             --no-verify-jwt \
