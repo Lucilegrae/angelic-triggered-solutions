@@ -22,6 +22,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug workspace
+        run: |
+          echo "=== WORKSPACE ROOT ==="
+          pwd
+          ls -R .
+
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
@@ -29,13 +35,13 @@ jobs:
 
       - name: Verify environment
         run: |
-          echo "Directory:"
+          echo "=== CURRENT DIRECTORY ==="
           pwd
 
-          echo "Supabase files:"
+          echo "=== SUPABASE FUNCTIONS ==="
           ls -R supabase/functions
 
-          echo "CLI version:"
+          echo "=== CLI VERSION ==="
           supabase --version
 
       - name: Link Supabase project
@@ -45,6 +51,7 @@ jobs:
 
       - name: Deploy public-jwks
         run: |
+          cd supabase
           supabase functions deploy public-jwks \
             --project-ref "$SUPABASE_PROJECT_REF" \
             --no-verify-jwt \
