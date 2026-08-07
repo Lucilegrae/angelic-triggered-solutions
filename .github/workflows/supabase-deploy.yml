@@ -1,4 +1,4 @@
-name: Supabase Deploy
+gname: Supabase Deploy
 
 on:
   workflow_dispatch:
@@ -49,10 +49,10 @@ jobs:
           supabase link \
             --project-ref "$SUPABASE_PROJECT_REF"
 
-      - name: Deploy public-jwks
-        run: |
-          cd supabase
-          supabase functions deploy public-jwks \
-            --project-ref "$SUPABASE_PROJECT_REF" \
-            --no-verify-jwt \
-            --debug
+     - name: Deploy public-jwks
+       run: |
+         cd $GITHUB_WORKSPACE/ats-portal/supabase
+         supabase functions deploy public-jwks \
+           --project-ref "$SUPABASE_PROJECT_REF" \
+           --no-verify-jwt \
+           --debug
