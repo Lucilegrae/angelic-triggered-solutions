@@ -1,4 +1,4 @@
-gname: Supabase Deploy
+name: Supabase Deploy
 
 on:
   workflow_dispatch:
@@ -10,13 +10,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env:
-      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_ID }}
-
     defaults:
       run:
         working-directory: ats-portal
+
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_ID }}
 
     steps:
       - name: Checkout repository
@@ -24,7 +24,6 @@ jobs:
 
       - name: Debug workspace
         run: |
-          echo "=== WORKSPACE ROOT ==="
           pwd
           ls -R .
 
@@ -35,13 +34,8 @@ jobs:
 
       - name: Verify environment
         run: |
-          echo "=== CURRENT DIRECTORY ==="
           pwd
-
-          echo "=== SUPABASE FUNCTIONS ==="
           ls -R supabase/functions
-
-          echo "=== CLI VERSION ==="
           supabase --version
 
       - name: Link Supabase project
@@ -49,10 +43,10 @@ jobs:
           supabase link \
             --project-ref "$SUPABASE_PROJECT_REF"
 
-     - name: Deploy public-jwks
-       run: |
-         cd $GITHUB_WORKSPACE/ats-portal/supabase
-         supabase functions deploy public-jwks \
-           --project-ref "$SUPABASE_PROJECT_REF" \
-           --no-verify-jwt \
-           --debug
+      - name: Deploy public-jwks
+        run: |
+          cd "$GITHUB_WORKSPACE/ats-portal/supabase"
+          supabase functions deploy public-jwks \
+            --project-ref "$SUPABASE_PROJECT_REF" \
+            --no-verify-jwt \
+            --debug
