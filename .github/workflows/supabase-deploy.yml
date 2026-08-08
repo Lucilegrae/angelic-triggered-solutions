@@ -38,7 +38,7 @@ jobs:
       - name: Deploy public-jwks
         run: |
           echo "=== ENTERING SUPABASE PROJECT ==="
-          cd "$GITHUB_WORKSPACE/angelic-triggered-solutions/angelic-triggered-solutions/supabase"
+          cd "$GITHUB_WORKSPACE/angelic-triggered-solutions/supabase"
 
           supabase functions deploy public-jwks \
             --project-ref "$SUPABASE_PROJECT_REF" \
