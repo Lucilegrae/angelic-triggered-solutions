@@ -32,13 +32,13 @@ jobs:
       - name: Verify Supabase directory
         run: |
           echo "=== VERIFY SUPABASE DIR ==="
-          ls -R "$GITHUB_WORKSPACE/angelic-triggered-solutions/supabase"
+          ls -R "$GITHUB_WORKSPACE/supabase"
           supabase --version
 
       - name: Deploy public-jwks
         run: |
           echo "=== ENTERING SUPABASE PROJECT ==="
-          cd "$GITHUB_WORKSPACE/angelic-triggered-solutions/supabase"
+          cd "$GITHUB_WORKSPACE/supabase"
 
           supabase functions deploy public-jwks \
             --project-ref "$SUPABASE_PROJECT_REF" \
