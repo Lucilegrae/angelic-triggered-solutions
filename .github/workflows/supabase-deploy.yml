@@ -29,10 +29,10 @@ jobs:
         with:
           version: 2.111.0
 
-      - name: Verify environment
+      - name: Verify Supabase directory
         run: |
           echo "=== VERIFY SUPABASE DIR ==="
-          ls -R "$GITHUB_WORKSPACE/angelic-triggered-solutions/angelic-triggered-solutions/supabase"
+          ls -R "$GITHUB_WORKSPACE/angelic-triggered-solutions/supabase"
           supabase --version
 
       - name: Deploy public-jwks
