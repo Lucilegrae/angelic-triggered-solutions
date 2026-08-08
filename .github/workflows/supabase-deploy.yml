@@ -10,10 +10,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ats-portal
-
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_ID }}
@@ -24,6 +20,7 @@ jobs:
 
       - name: Debug workspace
         run: |
+          echo "=== WORKSPACE ROOT ==="
           pwd
           ls -R .
 
@@ -34,20 +31,16 @@ jobs:
 
       - name: Verify environment
         run: |
-          pwd
-          ls -R supabase/functions
+          echo "=== VERIFY SUPABASE DIR ==="
+          ls -R "$GITHUB_WORKSPACE/angelic-triggered-solutions/angelic-triggered-solutions/supabase"
           supabase --version
-
-      - name: Link Supabase project
-        run: |
-          supabase link \
-            --project-ref "$SUPABASE_PROJECT_REF"
 
       - name: Deploy public-jwks
         run: |
-          cd "$GITHUB_WORKSPACE/supabase"
+          echo "=== ENTERING SUPABASE PROJECT ==="
+          cd "$GITHUB_WORKSPACE/angelic-triggered-solutions/angelic-triggered-solutions/supabase"
+
           supabase functions deploy public-jwks \
             --project-ref "$SUPABASE_PROJECT_REF" \
             --no-verify-jwt \
             --debug
-
